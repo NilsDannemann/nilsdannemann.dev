@@ -1,0 +1,142 @@
+/*---------------------------------------------------------
+ Header (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 21;
+  overflow: hidden;
+  color: #fff;
+  padding: 30px;
+}
+.site-header a {
+  color: inherit;
+  border: 0;
+}
+.header-normal .site-header, .search-no-results .site-header {
+  position: relative;
+  color: #333;
+}
+.header-normal .site-header .archive-header, .search-no-results .site-header .archive-header {
+  color: white;
+}
+
+.site-title {
+  font-size: 50px;
+  font-size: 3.125rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.site-title,
+.custom-logo {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.site-description {
+  color: white;
+  margin-top: 10px;
+}
+.header-normal .site-description {
+  color: #333;
+}
+@media screen and (max-width: 650px) {
+  .site-description {
+    display: none;
+  }
+}
+
+.site-branding {
+  display: inline-block;
+  vertical-align: top;
+  padding: 13px 0;
+}
+
+.site-navigation-toggle {
+  position: absolute;
+  right: 30px;
+  line-height: 1;
+  font-size: 30px;
+  font-size: 1.875rem;
+  margin-top: -5px;
+  top: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .traditional-navigation .traditional-nav {
+    display: none;
+  }
+}
+.traditional-navigation .site-header {
+  padding: 15px 30px;
+  position: relative;
+  color: #000;
+  overflow: visible;
+  min-height: 110px;
+}
+.traditional-navigation .site-description {
+  color: inherit;
+}
+
+.traditional-nav {
+  position: absolute;
+  right: 80px;
+  top: 40px;
+  font-weight: bold;
+  font-size: 19px;
+  font-size: 1.1875rem;
+}
+.admin-bar .traditional-nav {
+  top: 40px;
+}
+.traditional-nav ul ul li:hover > ul {
+  right: 100%;
+  top: 0;
+}
+.traditional-nav ul {
+  list-style: none;
+}
+.traditional-nav ul ul {
+  background: #000;
+  float: right;
+  position: absolute;
+  z-index: 99999;
+  top: 2em;
+  left: -999em;
+  text-align: left;
+}
+.traditional-nav ul ul a {
+  color: #fff;
+  margin: 0;
+  display: block;
+  width: 200px;
+}
+.traditional-nav ul ul li {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin: 0;
+}
+.traditional-nav ul li.menu-item-has-children {
+  padding-bottom: 10px;
+}
+.traditional-nav ul li:hover > ul {
+  left: auto;
+  right: 0;
+}
+.traditional-nav li {
+  position: relative;
+  display: inline-block;
+  margin-left: 45px;
+}
+
+.header-over .site-header {
+  pointer-events: none;
+}
+.header-over .site-branding, .header-over .site-navigation-toggle {
+  pointer-events: all;
+}

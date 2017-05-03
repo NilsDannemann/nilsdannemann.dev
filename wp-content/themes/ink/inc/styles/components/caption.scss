@@ -1,0 +1,26 @@
+/*---------------------------------------------------------
+ Captions (_patterns.scss)
+-------------------------------------------------------- */
+.wp-caption {
+  max-width: 100%;
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 60px;
+  margin: 3.75rem;
+}
+@media screen and (min-width: 650px) {
+  .wp-caption.alignleft {
+    margin-left: 20px !important;
+  }
+  .wp-caption.alignright {
+    margin-right: 20px !important;
+  }
+}
+
+.wp-caption-text,
+.wp-caption-dd {
+  color: #545c5e;
+  line-height: 1.4;
+  margin-top: 5px;
+  margin-top: 0.3125rem;
+}

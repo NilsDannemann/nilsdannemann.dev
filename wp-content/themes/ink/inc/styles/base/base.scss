@@ -1,0 +1,239 @@
+/*---------------------------------------------------------
+ 2. Scaffolding (_scaffolding.scss)
+-------------------------------------------------------- */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 93.75%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+::-moz-selection {
+  background-color: #f3f4f5;
+  color: #13171a;
+  text-shadow: none;
+}
+
+::-webkit-selection {
+  background-color: #f3f4f5;
+  color: #13171a;
+  text-shadow: none;
+}
+
+::selection {
+  background-color: #f3f4f5;
+  color: #13171a;
+  text-shadow: none;
+}
+
+img::selection {
+  background-color: transparent;
+}
+
+img::-moz-selection {
+  background-color: transparent;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+img.size-full, img.size-large, img.wp-post-image {
+  height: auto;
+}
+img[class*="align"], img[class*="wp-image-"], img[class*="attachment-"] {
+  height: auto;
+}
+img.alignleft, img.alignright, img.aligncenter {
+  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+}
+img.wp-smiley {
+  margin: 0;
+  padding: 0;
+  background: 0;
+}
+
+main {
+  display: block;
+}
+
+/*---------------------------------------------------------
+ Media (_patterns.scss)
+-------------------------------------------------------- */
+embed,
+object,
+video,
+iframe {
+  max-width: 100%;
+}
+
+.fluid-width-video-wrapper {
+  width: auto !important;
+}
+
+/*---------------------------------------------------------
+ General (_patterns.scss)
+-------------------------------------------------------- */
+.clear {
+  clear: both;
+}
+
+.alignleft {
+  float: left;
+}
+
+.alignright {
+  float: right;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hide, .updated {
+  display: none;
+  visibility: hidden;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visuallyhidden, .screen-reader-text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.noborder {
+  border: none;
+}
+
+div .alignleft {
+  text-align: left;
+  margin-right: 20px;
+  margin-right: 1.25rem;
+}
+div .alignright {
+  text-align: right;
+  margin-left: 20px;
+  margin-left: 1.25rem;
+}
+div .aligncenter {
+  text-align: center;
+}
+
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+
+.gallery {
+  margin-top: 50px;
+  margin-top: 3.125rem;
+  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
+}
+
+.gallery-item {
+  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
+}
+.gallery-columns-1 .gallery-item {
+  text-align: center;
+}
+
+.wp-caption-text {
+  font-size: 15px;
+}
+
+.site-nav-drawer-open.ie9 .site-nav,
+.site-nav-drawer-open.ie9 .site-nav--scrollable-container {
+  z-index: 10000;
+}
+
+.animate {
+  -webkit-animation: bounceIn 100ms;
+  -moz-animation: bounceIn 100ms;
+  animation: bounceIn 100ms;
+}
+
+@-webkit-keyframes bounceIn {
+  from {
+    -webkit-transform: scale(0.85);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+@-moz-keyframes bounceIn {
+  from {
+    -moz-transform: scale(0.85);
+  }
+  to {
+    -moz-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  from {
+    transform: scale(0.85);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+#infinite-handle {
+  overflow: hidden;
+}
+#infinite-handle a {
+  transition: none;
+}
+#infinite-handle.loading {
+  border: none;
+  text-indent: -9999px;
+  background: none;
+}
+#infinite-handle.loading a {
+  color: transparent;
+}
+#infinite-handle.loading:hover {
+  background: none;
+}
+
+#disqus_thread {
+  max-width: 1010px;
+  margin: 30px auto 10px auto;
+  padding: 0 20px;
+}
