@@ -1,0 +1,115 @@
+# Translation of Development (trunk) in German
+# This file is distributed under the same license as the Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-04-18 09:47:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
+"Project-Id-Version: Development (trunk)\n"
+
+#: includes/class-note-post-type.php:42
+msgid "Add New"
+msgstr "Erstellen"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Dashboard Notes"
+msgstr "WP Dashboard Notes"
+
+#. Author of the plugin/theme
+msgid "Jeroen Sormani"
+msgstr "Jeroen Sormani"
+
+#. Author URI of the plugin/theme
+msgid "http://jeroensormani.com/"
+msgstr "http://jeroensormani.com/"
+
+#: includes/class-note-post-type.php:41
+msgid "Note"
+msgstr "Notiz"
+
+#: includes/class-note-post-type.php:40
+msgid "Notes"
+msgstr "Notizen"
+
+#: includes/class-note-post-type.php:44
+msgid "Edit Note"
+msgstr "Notiz bearbeiten"
+
+#: includes/class-note-post-type.php:45
+msgid "New Note"
+msgstr "Neue Notiz"
+
+#: includes/class-note-post-type.php:46
+msgid "View Note"
+msgstr "Notiz anzeigen"
+
+#: includes/class-note-post-type.php:48
+msgid "No Notes"
+msgstr "Keine Notizen"
+
+#: includes/class-note-post-type.php:49
+msgid "No Notes found in Trash"
+msgstr "Keine Notizen im Papierkorb"
+
+#: includes/class-wpdn-ajax.php:157 includes/class-wpdn-ajax.php:189
+msgid "New note"
+msgstr "Neue Notiz"
+
+#: includes/templates/note-list.php:9
+msgid "List item"
+msgstr "Listenelement"
+
+#: includes/templates/note-list.php:16 includes/templates/note.php:15
+msgid "Just me"
+msgstr "nur ich"
+
+#: includes/templates/note-list.php:24 includes/templates/note.php:23
+msgid "Visibility:"
+msgstr "Sichtbarkeit:"
+
+#: includes/templates/note-list.php:28 includes/templates/note.php:27
+msgid "Give me a color!"
+msgstr "Gib mir eine Farbe!"
+
+#: includes/templates/note-list.php:39
+msgid "Convert to regular note"
+msgstr "In normale Notiz umwandeln"
+
+#: includes/templates/note-list.php:48 includes/templates/note.php:46
+msgid "Delete note"
+msgstr "Notiz löschen"
+
+#: includes/templates/note.php:38
+msgid "Convert to list note"
+msgstr "In Listen-Notiz umwandeln"
+
+#: includes/class-wpdn-admin.php:50
+msgid "Add note"
+msgstr "Notiz erstellen"
+
+#: includes/class-note-post-type.php:47
+msgid "Search Notes"
+msgstr "Notizen (durch-)suchen"
+
+#: includes/class-note-post-type.php:43
+msgid "Add New Note"
+msgstr "Neue Notiz erstellen"
+
+#: includes/templates/note-list.php:20 includes/templates/note.php:19
+msgid "Everyone"
+msgstr "jeder"
+
+#. Description of the plugin/theme
+msgid "Working in a team? Want to make notes? You can do just that with WP Dashboard Notes. Create beautiful notes with a nice user experience."
+msgstr "Ihr arbeitet in einem Team? Ihr möchtet Notizen machen? Genau das könnt Ihr tun mit WP Dashboard Notes – benutzerfreundlich schöne Notizen erstellen."
+
+#: includes/templates/note-list.php:43 includes/templates/note.php:42
+msgid "Add a new note"
+msgstr "Eine neue Notiz erstellen"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/wp-dashboard-notes/"
+msgstr "https://de.wordpress.org/plugins/wp-dashboard-notes/"

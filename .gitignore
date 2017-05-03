@@ -1,0 +1,30 @@
+
+# Created by https://www.gitignore.io/api/wordpress
+
+### WordPress ###
+*.log
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/w3tc-config/
+wp-content/wp-cache-config.php
+wp-content/plugins/hello.php
+wp-content/wflogs/
+
+cgi-bin/
+cache/
+usage/
+logs/
+kas_backup/
+
+/.htaccess
+/prepros.cfg
+/license.txt
+/readme.html
+/sitemap.xml
+/sitemap.xml.gz
