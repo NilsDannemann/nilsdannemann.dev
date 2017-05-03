@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home
+ * Template Name: Template - Home
  *
  * Template for the Start page.
  *
@@ -8,7 +8,7 @@
  * @since 1.1.0.
  */
 
-get_header();
+get_header(); ?>
 
 <div class="hero">
 	Hero
