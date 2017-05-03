@@ -405,3 +405,84 @@ body[class*="page-id"]:not(.page-template-current-php) {
 		padding-top: 50px;
 	}
 }
+
+.single,
+.page {
+
+	.single-sidebar-on {
+		&.site-main,
+		& + .site-footer .inside {
+			max-width: 1210px;
+			margin: 0 auto;
+			padding-right: 30px;
+			padding-left: 30px;
+
+			@include media(max-width 970px) {
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+		}
+
+		.content-area {
+			float: left;
+			width: 74%;
+			max-width: 800px;
+
+			@include media(max-width 970px) {
+				float: none;
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+
+		.widget-area {
+			float: left;
+			max-width: 270px;
+			width: 24%;
+			font-size: 15px;
+			line-height: 1.7;
+
+			@include media(min-width 800px) {
+				margin-left: 2%;
+			}
+
+			@include media(min-width 1170px) {
+				margin-left: 5%;
+			}
+
+			@include media(max-width 970px) {
+				float: none;
+				max-width: 100%;
+				width: 100%;
+			}
+
+			.widget-title {
+				font-size: 18px;
+				margin-bottom: 30px;
+			}
+
+			.textwidget,
+			.widget_categories a,
+			.widget_archive a,
+			.widget_pages a,
+			.widget_meta a,
+			.widget_recent_comments a,
+			.widget_nav_menu a,
+			.main-navigation a {
+				font-size: 17px;
+				line-height: 1.8;
+			}
+		}
+
+		.entry-content img.size-full.alignnone {
+		    width: 125%;
+		    max-width: 125%;
+		    margin-left: -25%;
+
+		    @include media(max-width 970px) {
+			    margin-left: -10%;
+			}
+		}
+
+	}
+}

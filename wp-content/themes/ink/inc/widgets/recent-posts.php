@@ -104,10 +104,16 @@ class Stag_Widget_Recent_Posts extends Stag_Widget {
 
 		$posts_page = get_option( 'page_for_posts' );
 
-		if ( 0 === $posts_page ) {
-			$posts_page = home_url();
+		// If category not selected.
+		if ( 0 === absint( $category ) ) {
+			if ( 0 === absint( $posts_page ) ) {
+				$posts_page = home_url();
+			} else {
+				$posts_page = get_permalink( $posts_page );
+			}
 		} else {
-			$posts_page = get_permalink( $posts_page );
+			// if category selected.
+			$posts_page = get_category_link( absint( $category ) );
 		}
 
 		global $post;

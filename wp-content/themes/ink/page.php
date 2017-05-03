@@ -15,16 +15,24 @@ get_header(); ?>
 
 	<?php get_template_part( '_post', 'cover-wrap' ); ?>
 
-	<main id="main" class="site-main">
+	<main id="main" class="site-main <?php echo esc_attr( ink_single_sidebar_class() ); ?>">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<div class="page-content-wrapper">
 
-			<?php get_template_part( 'content', 'page' ); ?>
+			<div class="content-area">
+				<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php endwhile; // end of the loop. ?>
+					<?php get_template_part( 'content', 'page' ); ?>
+
+					<?php get_template_part( '_post', 'comments' ); ?>
+
+				<?php endwhile; // end of the loop. ?>
+			</div>
+
+			<?php get_sidebar( 'page' ); ?>
+
+		</div>
 
 	</main><!-- #main -->
-
-	<?php get_template_part( '_post', 'comments' ); ?>
 
 <?php get_footer();

@@ -8,10 +8,10 @@ Author URI: http://www.642weather.com/weather/scripts.php
 Text Domain: si-captcha
 Domain Path: /languages
 License: GPLv2 or later
-Version: 3.0.0.12
+Version: 3.0.0.13
 */
 
-$si_captcha_version = '3.0.0.12';
+$si_captcha_version = '3.0.0.13';
 
 /*  Copyright (C) 2008-2017 Mike Challis  (http://www.642weather.com/weather/contact_us.php)
 
@@ -146,7 +146,7 @@ function si_captcha_init() {
      }
 
      // woocommerce checkout form
-     if ( ! is_user_logged_in() && $si_captcha_opt['wc_checkout'] == 'true' ) {
+     if ( ! is_user_logged_in() ) {
            // show captcha for woocommerce checkout but only when the setting is enabled and not logged in
  		   add_action('woocommerce_checkout_after_order_review', array($this, 'si_captcha_wc_checkout_form'), 99);
            add_action('woocommerce_after_checkout_validation', array($this, 'si_captcha_wc_checkout_post') );
@@ -831,6 +831,8 @@ function si_captcha_check_login_captcha($user) {
 function si_captcha_wc_checkout_form() {
     global $si_captcha_opt;
 
+if ($si_captcha_opt['wc_checkout'] == 'true' ) {
+
 // Test for some required things, print error message right here if not OK.
 if ($this->si_captcha_check_requires()) {
 // the captcha html -  form
@@ -852,6 +854,8 @@ echo '</div>
 ';
 }
 
+}
+
 return true;
 } // end function si_captcha_wc_checkout_form
 
@@ -860,11 +864,15 @@ return true;
 function si_captcha_wc_checkout_post() {
     global $si_captcha_dir, $si_captcha_dir_ns, $si_captcha_opt, $si_captcha_checkout_validated;
 
-   $validate_result = $this->si_captcha_validate_code('checkout', 'unlink');
-   if($validate_result != 'valid') {
-            wc_add_notice( $validate_result, 'error' );
-   }  else {
-            $si_captcha_checkout_validated = true;
+   if ($fs_recaptcha_opt['wc_checkout'] == 'true' ) {
+      $validate_result = $this->si_captcha_validate_code('checkout', 'unlink');
+      if($validate_result != 'valid') {
+               wc_add_notice( $validate_result, 'error' );
+      }  else {
+               $si_captcha_checkout_validated = true;
+      }
+   } else {
+           $si_captcha_checkout_validated = true;   // always allow registering during checkot
    }
    return;
 } // function si_captcha_wc_checkout_post

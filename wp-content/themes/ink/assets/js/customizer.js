@@ -46,6 +46,12 @@
 		} );
 	} );
 
+	wp.customize( 'sticky_text', function( value ) {
+		value.bind( function( to ) {
+			$( '.sticky-tag p' ).text( to );
+		} );
+	} );
+
 	// Site layout option
 	wp.customize( 'layout', function( value ) {
 		value.bind( function( to ) {

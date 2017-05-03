@@ -322,3 +322,32 @@ function ink_sanitize_text( $string ) {
 	return wp_kses( $string, $allowedtags );
 }
 endif;
+
+if ( ! function_exists( 'ink_single_sidebar_class' ) ) :
+	/**
+	 * Determind sidebar widget area class depending on enabled single widget areas for post or pages.
+	 *
+	 * @since 2.1.5.
+	 *
+	 * @return string sidebar widget area class.
+	 */
+	function ink_single_sidebar_class() {
+		$post_sidebar = (int) stag_theme_mod( 'layout_options', 'post-sidebar' );
+		$page_sidebar = (int) stag_theme_mod( 'layout_options', 'page-sidebar' );
+		$sidebar_class = '';
+
+		if ( is_page() && 1 === $page_sidebar ) {
+			if ( is_active_sidebar( 'sidebar-2' ) ) {
+				$sidebar_class = 'single-sidebar-on';
+			}
+		} elseif ( is_single() && 1 === $post_sidebar ) {
+			if ( is_active_sidebar( 'sidebar-1' ) ) {
+				$sidebar_class = 'single-sidebar-on';
+			}
+		} else {
+			$sidebar_class = '';
+		}
+
+		return esc_attr( $sidebar_class );
+	}
+endif;

@@ -5,7 +5,7 @@
 		init: function() {
 			// Cache Elements
 			StagTypekit.cache.$textInput = $('input', '#customize-control-stag-typekit-id');
-			StagTypekit.cache.$wrapper = $('#accordion-section-typography');
+			StagTypekit.cache.$wrapper = $('#sub-accordion-section-typography');
 			StagTypekit.cache.$descriptionText = $('p', '#customize-control-stag-typekit-load-fonts');
 			StagTypekit.cache.$reset = $('a:nth-child(1)', StagTypekit.cache.$descriptionText);
 			StagTypekit.cache.$load = $('a:nth-child(2)', StagTypekit.cache.$descriptionText);
@@ -91,6 +91,9 @@
 			// Set the correct current vals
 			StagTypekit.cache.$headerFontSelect.val(headerVal);
 			StagTypekit.cache.$bodyFontSelect.val(bodyVal);
+
+			StagTypekit.cache.$headerFontSelect.trigger('chosen:updated');
+			StagTypekit.cache.$bodyFontSelect.trigger('chosen:updated');
 
 			// Remove the loading indicator
 			StagTypekit.hideSpinner();

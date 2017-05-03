@@ -33,3 +33,6 @@ require_once $inc . 'widgets/contributors.php';
 require_once $inc . 'widgets/recent-posts-grid.php';
 require_once $inc . 'widgets/recent-posts.php';
 require_once $inc . 'widgets/static-content.php';
+require_once $inc . 'widgets/feature-callout.php';
+require_once $inc . 'widgets/featured-slide.php';
+require_once $inc . 'widgets/section-featured-slides.php';

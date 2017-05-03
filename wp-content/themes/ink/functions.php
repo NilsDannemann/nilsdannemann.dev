@@ -132,7 +132,6 @@ function stag_sidebar_init() {
 		'after_title'   => '</h3>',
 		'description'   => ink_sidebar_description( 'sidebar-footer-3' ),
 	));
-
 	register_sidebar(array(
 		'name'          => __( 'Side Drawer Widget Area', 'stag' ),
 		'id'            => 'sidebar-drawer',
@@ -142,6 +141,33 @@ function stag_sidebar_init() {
 		'after_title'   => '</h4>',
 		'description'   => __( 'Sidebar drawer navigation widgets.', 'stag' ),
 	));
+	register_sidebar(array(
+		'name'          => esc_html__( 'Featured Slider Section', 'stag' ),
+		'id'            => 'sidebar-4',
+		'description'   => esc_html__( 'Use only &ldquo;Featured Slide Item&rdquo; widget here.', 'stag' ),
+		'before_widget' => '<li class="slide"><div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div></li>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	));
+	register_sidebar( array(
+		'name'          => esc_html__( 'Single Posts Sidebar', 'stag' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'An optional widget area for single posts.', 'stag' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Single Page Sidebar', 'stag' ),
+		'id'            => 'sidebar-2',
+		'description'   => esc_html__( 'An optional widget area for single pages.', 'stag' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
 }
 add_action( 'widgets_init', 'stag_sidebar_init' );
 
@@ -166,6 +192,9 @@ function stag_scripts_styles() {
 
 	// Main stylesheet.
 	wp_enqueue_style( 'stag-style', get_stylesheet_uri(), $style_dependencies, STAG_THEME_VERSION );
+
+	// RTL Support.
+	wp_style_add_data( 'stag-style', 'rtl', 'replace' );
 
 	/**
 	 * Remove default Subtitles plugin styles.
@@ -231,6 +260,12 @@ function stag_scripts_styles() {
 	// Comment reply.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' ); // Loads the javascript required for threaded comments.
+	}
+
+	// Add tracking code.
+	$tracking_code = stag_theme_mod( 'general_settings', 'google_analytics' );
+	if ( '' !== $tracking_code ) {
+		wp_add_inline_script( 'stag-custom', $tracking_code );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'stag_scripts_styles' );
@@ -300,12 +335,12 @@ function stag_required_plugins() {
 			'required' => false,
 		),
 		array(
-			'name'         => 'Envato WordPress Toolkit',
-			'slug'         => 'envato-wordpress-toolkit',
-			'source'       => 'https://github.com/envato/envato-wordpress-toolkit/archive/master.zip',
+			'name'         => 'Envato Market',
+			'slug'         => 'wp-envato-market',
+			'source'       => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip',
 			'required'     => false,
-			'version'      => '1.7.3',
-			'external_url' => 'https://github.com/envato/envato-wordpress-toolkit/',
+			'version'      => '1.0.0-RC2',
+			'external_url' => 'https://github.com/envato/wp-envato-market/',
 		),
 	);
 

@@ -65,6 +65,15 @@ if ( $restricted_condition ) {
 				</div>
 			<?php endif; ?>
 
+			<?php
+			$sticky_text = stag_theme_mod( 'post_settings', 'sticky_text' );
+
+			if ( is_sticky() && '' !== $sticky_text ) : ?>
+				<div class="sticky-tag">
+					<p><?php echo esc_html( $sticky_text ); ?></p>
+				</div>
+			<?php endif; ?>
+
 			<h1 class="entry-title">
 				<?php the_title(); ?>
 

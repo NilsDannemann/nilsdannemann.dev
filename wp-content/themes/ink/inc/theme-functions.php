@@ -266,24 +266,6 @@ function stag_admin_print_script() {
 add_action( 'admin_print_scripts-post.php', 'stag_admin_print_script' );
 add_action( 'admin_print_scripts-post-new.php', 'stag_admin_print_script' );
 
-/**
- * Output Google Analytics code in footer.
- *
- * @return void
- */
-function stag_google_analytics_code() {
-	$tracking_code = stag_theme_mod( 'general_settings', 'google_analytics' );
-
-	if ( '' === $tracking_code ) {
-		return;
-	}
-
-	?>
-	<script type="text/javascript"><?php echo esc_js( $tracking_code ); ?></script>
-	<?php
-}
-add_action( 'wp_footer', 'stag_google_analytics_code' );
-
 if ( ! function_exists( 'stag_site_layout' ) ) :
 /**
  * Returns user selected layout for blog pages.

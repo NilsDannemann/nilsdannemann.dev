@@ -110,7 +110,6 @@
 .comment-list {
 	@extend %cf;
 	@include rem('margin-top', $base*2);
-	@include rem('margin-bottom', $base*2);
 }
 
 .comment-metadata {
@@ -196,6 +195,7 @@
 }
 
 .comment-respond {
+	@include rem('margin-top', $base*2);
 	@include media(max-width $one) {
 		margin-left: -20px;
 		margin-right: -20px;

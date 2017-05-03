@@ -1,72 +1,48 @@
-window.cImageWidget = window.cImageWidget || {};
+jQuery(document).ready(function($){
 
-(function( window, $, wp, undefined ) {
+	imageWidget = {
 
-	cImageWidget.MediaManager = function(options) {
-		this.options = options;
-		this.media = this;
-		this.target = options.target;
+		// Call this from the upload button to initiate the upload frame.
+		uploader : function( widget_id, widget_id_string, key ) {
 
-		this.$target = $( '#' + this.options.target );
-		this.$trigger = $( '.' + this.options.target + '-add' );
-
-		this.setFrame();
-		this.bindEvents();
-	}
-
-	cImageWidget.MediaManager.prototype.bindEvents = function() {
-		var self = this;
-
-		$(document).on( 'widget-added widget-updated', function(event, $widget) {
-			var widgetNumber = $widget.find( 'input.multi_number' ).val();
-			self.target = self.options.target.replace( '__i__', widgetNumber );
-
-			self.$target = $( '#' + self.target );
-			self.$trigger = $( '.' + self.target + '-add' );
-
-			self.$trigger.on( 'click', function(e) {
-				e.preventDefault();
-
-				self.bindFrame();
+			var frame = wp.media({
+				title : 'Choose an Image',
+				multiple : false,
+				library : { type : 'image' },
+				button : { text : 'Use Image' }
 			});
-		});
 
-		this.$trigger.on( 'click', function(e) {
-			e.preventDefault();
+			// Handle results from media manager.
+			frame.on('close',function( ) {
+				var attachments = frame.state().get('selection').toJSON();
+				imageWidget.render( widget_id, widget_id_string, attachments[0], key );
+				$("#" + widget_id_string + key).trigger('change');
+			});
 
-			self.bindFrame();
-		});
-	}
+			frame.open();
+			return false;
+		},
 
-	cImageWidget.MediaManager.prototype.bindFrame = function() {
-		var self = this;
+		remove : function( widget_id, widget_id_string, key ) {
+			$("#" + widget_id_string + 'preview').html('');
+			$("#" + widget_id_string + key).val('');
+			$("#" + widget_id_string + 'remove').css('display', 'none');
+			$("#" + widget_id_string + key).trigger('change');
+		},
 
-		this.frame.open();
+		// Output Image preview and populate widget form.
+		render : function( widget_id, widget_id_string, attachment, key ) {
+			$("#" + widget_id_string + 'preview').html(imageWidget.imgHTML( attachment ));
+			$("#" + widget_id_string + key).val(attachment.url);
+			$("#" + widget_id_string + 'remove').css('display', 'inline-block');
+		},
 
-		this.frame.on( 'select', function() {
-			self.media.attachItem();
-		});
-	}
+		// Render html for the image.
+		imgHTML : function( attachment ) {
+			var img_html = '<img src="' + attachment.url + '" alt="" />';
+			return img_html;
+		}
 
-	cImageWidget.MediaManager.prototype.setFrame = function() {
-		this.frame = wp.media.frames._frame = wp.media({
-			title: 'Choose an Image',
-			button: {
-				text: 'Use Image'
-			},
-			multiple: false
-		});
-	}
+	};
 
-	cImageWidget.MediaManager.prototype.attachItem = function($el) {
-		var attachment = this.frame
-			.state()
-			.get( 'selection' )
-			.first()
-			.toJSON();
-
-		this.$target.val(attachment.sizes.full.url);
-		this.$target.trigger('change');
-	}
-
-})( this, jQuery, wp );
+});

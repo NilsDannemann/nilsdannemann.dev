@@ -4,10 +4,10 @@
 	{
 		"name": "Process All Remaining Files and Folders",
 		"stepType": 1,
-		"uuidString": "53908EF4-69EF-40CF-BD21-3ACEFD5B1C4B"
+		"uuidString": "42E7FCDF-7B37-4E3B-AB14-F0D136AF5044"
 		}
 	],
-"creatorBuild": "25479",
+"creatorBuild": "25704",
 "files": {
 	"\/.gitignore": {
 		"ft": 8192,
@@ -17,7 +17,7 @@
 		},
 	"\/404.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/404.php",
 		"oF": 0
 		},
@@ -35,7 +35,7 @@
 		},
 	"\/_post-cover-wrap.php": {
 		"ft": 8192,
-		"oA": 1,
+		"oA": 0,
 		"oAP": "\/_post-cover-wrap.php",
 		"oF": 0
 		},
@@ -62,7 +62,7 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/assets\/css\/font-awesome-min.css",
 		"oF": 0,
 		"oS": 0
@@ -72,7 +72,7 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/assets\/css\/font-awesome.min-min.css",
 		"oF": 0,
 		"oS": 0
@@ -120,10 +120,12 @@
 	"\/assets\/img\/down.png": {
 		"ft": 32768,
 		"iS": 199,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/img\/down.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/assets\/img\/favicon.ico": {
 		"ft": 8192,
@@ -172,7 +174,7 @@
 	"\/assets\/js\/customizer.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/assets\/js\/customizer.min.js",
 		"oF": 1,
 		"sC": 0,
@@ -190,8 +192,17 @@
 	"\/assets\/js\/jquery.custom.min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/assets\/js\/jquery.custom.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/assets\/js\/jquery.flexslider.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/js\/jquery.flexslider.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
@@ -478,14 +489,14 @@
 		"oF": 0
 		},
 	"\/config.rb": {
-		"ft": 8192,
+		"ft": 131072,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
 		},
 	"\/contact.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/contact.php",
 		"oF": 0
 		},
@@ -515,7 +526,7 @@
 		},
 	"\/content.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/content.php",
 		"oF": 0
 		},
@@ -533,7 +544,7 @@
 		},
 	"\/functions.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/functions.php",
 		"oF": 0
 		},
@@ -545,7 +556,7 @@
 		},
 	"\/inc\/customizer.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/inc\/customizer.php",
 		"oF": 0
 		},
@@ -563,7 +574,7 @@
 		},
 	"\/inc\/meta\/post.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/inc\/meta\/post.php",
 		"oF": 0
 		},
@@ -585,6 +596,18 @@
 		"oAP": "\/inc\/widgets\/contributors.php",
 		"oF": 0
 		},
+	"\/inc\/widgets\/feature-callout.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/widgets\/feature-callout.php",
+		"oF": 0
+		},
+	"\/inc\/widgets\/featured-slide.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/widgets\/featured-slide.php",
+		"oF": 0
+		},
 	"\/inc\/widgets\/recent-posts-grid.php": {
 		"ft": 8192,
 		"oA": 0,
@@ -593,13 +616,19 @@
 		},
 	"\/inc\/widgets\/recent-posts.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/inc\/widgets\/recent-posts.php",
+		"oF": 0
+		},
+	"\/inc\/widgets\/section-featured-slides.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/widgets\/section-featured-slides.php",
 		"oF": 0
 		},
 	"\/inc\/widgets\/static-content.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/inc\/widgets\/static-content.php",
 		"oF": 0
 		},
@@ -653,7 +682,7 @@
 		},
 	"\/partials\/custom-header.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/partials\/custom-header.php",
 		"oF": 0
 		},
@@ -665,7 +694,7 @@
 		},
 	"\/rcp\/init.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/rcp\/init.php",
 		"oF": 0
 		},
@@ -695,11 +724,13 @@
 		},
 	"\/screenshot.png": {
 		"ft": 32768,
-		"iS": 128707,
+		"iS": 185583,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/screenshot.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/search.php": {
 		"ft": 8192,
@@ -731,6 +762,18 @@
 		"oAP": "\/sidebar-footer-3.php",
 		"oF": 0
 		},
+	"\/sidebar-page.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/sidebar-page.php",
+		"oF": 0
+		},
+	"\/sidebar-post.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/sidebar-post.php",
+		"oF": 0
+		},
 	"\/sidebar.php": {
 		"ft": 8192,
 		"oA": 0,
@@ -757,7 +800,7 @@
 		},
 	"\/stag-customizer\/class-stag-widget.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/stag-customizer\/class-stag-widget.php",
 		"oF": 0
 		},
@@ -785,7 +828,7 @@
 		},
 	"\/stag-customizer\/helper-fonts.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/stag-customizer\/helper-fonts.php",
 		"oF": 0
 		},
@@ -806,7 +849,7 @@
 		},
 	"\/stag-customizer\/js\/customizer-sections.js": {
 		"ft": 64,
-		"mi": 0,
+		"mi": 1,
 		"oA": 0,
 		"oAP": "\/stag-customizer\/js\/customizer-sections.min.js",
 		"oF": 0,
@@ -825,18 +868,22 @@
 	"\/stag-customizer\/libs\/chosen\/chosen-sprite.png": {
 		"ft": 32768,
 		"iS": 538,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/stag-customizer\/libs\/chosen\/chosen-sprite.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/stag-customizer\/libs\/chosen\/chosen-sprite@2x.png": {
 		"ft": 32768,
 		"iS": 738,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/stag-customizer\/libs\/chosen\/chosen-sprite@2x.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/stag-customizer\/libs\/chosen\/chosen.css": {
 		"aP": 0,
@@ -884,18 +931,28 @@
 		},
 	"\/stag-customizer\/stag-customizer.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/stag-customizer\/stag-customizer.php",
 		"oF": 0
+		},
+	"\/style-rtl.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/style-rtl-min.css",
+		"oF": 0,
+		"oS": 0
 		},
 	"\/style.css": {
 		"aP": 0,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/style-min.css",
-		"oF": 0,
+		"oF": 1,
 		"oS": 0
 		},
 	"\/widgetized.php": {
@@ -910,7 +967,7 @@
 "manualImportLinks": {
 	},
 "projectAttributes": {
-	"creationDate": 500199519,
+	"creationDate": 505828836,
 	"displayValue": "ink",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "\/screenshot.png"
@@ -1561,6 +1618,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-await-in-loop": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-bitwise": {
 			"active": 0,
 			"optionString": "{'allow': ['~'], 'int32Hint': true}"
@@ -1579,6 +1640,10 @@
 			},
 		"no-class-assign": {
 			"active": 1,
+			"optionString": ""
+			},
+		"no-compare-neg-zero": {
+			"active": 0,
 			"optionString": ""
 			},
 		"no-cond-assign": {
@@ -1778,6 +1843,10 @@
 			"optionString": "{'grouping': false, 'allowCall': false }"
 			},
 		"no-mixed-spaces-and-tabs": {
+			"active": 0,
+			"optionString": ""
+			},
+		"no-multi-assign": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -2057,6 +2126,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"nonblock-statement-body-position": {
+			"active": 0,
+			"optionString": "'beside'"
+			},
 		"object-curly-newline": {
 			"active": 0,
 			"optionString": "{'ObjectExpression': {'multiline': true}, 'ObjectPattern': {'multiline': true}}"
@@ -2101,9 +2174,17 @@
 			"active": 0,
 			"optionString": "{'destructuring': 'any', 'ignoreReadBeforeAssign': false}"
 			},
+		"prefer-destructuring": {
+			"active": 0,
+			"optionString": "{'array': true, 'object': true}, {'enforceForRenamedProperties': false}"
+			},
 		"prefer-numeric-literals": {
 			"active": 0,
 			"optionString": ""
+			},
+		"prefer-promise-reject-errors": {
+			"active": 0,
+			"optionString": "{'allowEmptyReject': false}"
 			},
 		"prefer-rest-params": {
 			"active": 0,
@@ -2123,7 +2204,7 @@
 			},
 		"quotes": {
 			"active": 0,
-			"optionString": "'double', 'avoid-escape'"
+			"optionString": "'double', {'avoidEscape': true, 'allowTemplateLiterals': true}"
 			},
 		"radix": {
 			"active": 0,
@@ -2135,7 +2216,7 @@
 			},
 		"require-jsdoc": {
 			"active": 0,
-			"optionString": "{'require': {'FunctionDeclaration': true, 'MethodDefinition': false, 'ClassDeclaration': false}}"
+			"optionString": "{'require': {'FunctionDeclaration': true, 'MethodDefinition': false, 'ClassDeclaration': false, 'ArrowFunctionExpression': false}}"
 			},
 		"require-yield": {
 			"active": 0,
@@ -2201,6 +2282,10 @@
 			"active": 0,
 			"optionString": "'never'"
 			},
+		"template-tag-spacing": {
+			"active": 0,
+			"optionString": "'never'"
+			},
 		"unicode-bom": {
 			"active": 0,
 			"optionString": "'never'"
@@ -2239,7 +2324,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http:\/\/stag.dev\/",
+	"externalServerAddress": "http:\/\/localhost\/demo\/",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",
@@ -2644,7 +2729,8 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"quality": 100
 		},
 	"languageDefaultsJS": {
 		"autoOutputAction": 0,
@@ -2737,7 +2823,9 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"enableLossy": 1,
+		"quality": 100
 		},
 	"languageDefaultsPUG": {
 		"autoOutputAction": 0,

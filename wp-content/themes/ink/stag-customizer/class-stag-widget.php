@@ -260,25 +260,26 @@ class Stag_Widget extends WP_Widget {
 				case 'image' :
 					wp_enqueue_media();
 					wp_enqueue_script( 'app-image-widget-admin', get_template_directory_uri() . '/stag-customizer/js/app-image-widget-admin.js', array( 'jquery' ), '', true );
+					$id_prefix = $this->get_field_id( '' );
 				?>
 					<p style="margin-bottom: 0;">
 						<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $setting['label']; ?></label>
 					</p>
-					<p>
-						<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>"value="<?php echo $value; ?>" placeholder="http://" />
-					</p>
+
 					<p style="margin-top: 3px;">
-						<a href="#" class="button-secondary <?php echo esc_attr( $this->get_field_id( $key ) ); ?>-add"><?php _e( 'Choose Image', 'stag' ); ?></a>
+						<div id="<?php echo esc_attr( $id_prefix ); ?>preview" class="stag-image-preview">
+							<style type="text/css">
+								.stag-image-preview img { max-width: 100%; border: 1px solid #e5e5e5; padding: 2px; margin-bottom: 5px;  }
+							</style>
+							<?php if ( ! empty( $value ) ) : ?>
+							<img src="<?php echo esc_url( $value ); ?>" alt="">
+							<?php endif; ?>
+						</div>
+
+						<input type="hidden" class="widefat" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo $this->get_field_name( $key ); ?>"value="<?php echo $value; ?>" placeholder="http://" />
+						<a href="#" class="button-secondary <?php echo esc_attr( $this->get_field_id( $key ) ); ?>-add" onclick="imageWidget.uploader( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', '<?php echo $key; ?>' ); return false;"><?php esc_html_e( 'Choose Image', 'atik' ); ?></a>
+						<a href="#" style="display:inline-block;margin:5px 0 0 3px;<?php if ( empty( $value ) ) echo 'display:none;'; ?>" id="<?php echo esc_attr( $id_prefix ); ?>remove" class="button-link-delete" onclick="imageWidget.remove( '<?php echo $this->id; ?>', '<?php echo $id_prefix; ?>', '<?php echo $key; ?>' ); return false;"><?php esc_html_e( 'Remove', 'atik' ); ?></a>
 					</p>
-					<script>
-						( function( $ ){
-							$(document).on( 'ready widget-added widget-updated', function($) {
-								var <?php echo esc_js( $key ); ?> = new cImageWidget.MediaManager({
-									target: '<?php echo esc_attr( $this->get_field_id( $key ) ); ?>'
-								});
-							});
-						}( jQuery ) );
-					</script>
 				<?php
 				break;
 				default :

@@ -1,5 +1,20 @@
 ### Ink Changelog
 
+# 2.1.6 - Mar 23, 2017
+* Added optional sidebars for Single Posts and Single Pages
+* Added Sticky post label under Appearance > Customize > Theme Options > Post Settings > Sticky Post Label
+* Added new 'Feature Callout' widget
+* Fixed an issue with widget image selector not working correctly when multiple widgets are dropped back to back
+* Added RTL support
+
+# 2.1.5 - Mar 07, 2017
+* Fixed an issue with Recent Posts widget's load button returning incorrect link
+
+# 2.1.4 - Jan 26, 2017
+* Fix an issue with Typekit fonts not loading
+* Fix an issue with custom script escaping
+* Updated Google Fonts library
+
 # 2.1.3 - Jan 04, 2017
 * Fixed an issue with post grid overlay when 'Enable Post Grid Hover Effect' is unchecked
 

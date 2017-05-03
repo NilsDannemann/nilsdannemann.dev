@@ -10,22 +10,30 @@ get_header(); ?>
 
 	<?php get_template_part( '_post', 'cover-wrap' ); ?>
 
-	<main id="main" class="site-main">
+	<main id="main" class="site-main <?php echo esc_attr( ink_single_sidebar_class() ); ?>">
 
-	<?php /* Start the Loop */ ?>
-	<?php while ( have_posts() ) : the_post(); ?>
+		<div class="post-content-wrapper">
 
-		<?php
+			<div class="content-area">
+				<?php /* Start the Loop */ ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-		get_template_part( 'content', 'single' );
+					<?php
 
-		stag_related_posts();
+					get_template_part( 'content', 'single' );
 
-		get_template_part( '_post', 'comments' );
+					stag_related_posts();
 
-		?>
+					get_template_part( '_post', 'comments' );
 
-	<?php endwhile; // end of the loop. ?>
+					?>
+
+				<?php endwhile; // end of the loop. ?>
+			</div>
+
+		<?php get_sidebar( 'post' ); ?>
+
+		</div>
 
 	</main><!-- #main -->
 

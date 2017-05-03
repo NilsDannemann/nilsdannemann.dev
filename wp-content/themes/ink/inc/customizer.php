@@ -31,13 +31,13 @@ function stag_customize_register_sections( $wp_customize ) {
 		'priority'    => 60,
 		'panel'       => 'ink_options_panel',
 		'description' => sprintf(
-				esc_html__( 'The list of Google fonts is long! You can %s before making your choices.', 'stag' ),
-				sprintf(
-					'<a href="%1$s" target="_blank" class="external-link">%2$s</a>',
-					esc_url( 'https://fonts.google.com' ),
-					esc_html__( 'preview', 'stag' )
-				)
-			),
+			esc_html__( 'The list of Google fonts is long! You can %s before making your choices.', 'stag' ),
+			sprintf(
+				'<a href="%1$s" target="_blank" class="external-link">%2$s</a>',
+				esc_url( 'https://fonts.google.com' ),
+				esc_html__( 'preview', 'stag' )
+			)
+		),
 	) );
 
 	$wp_customize->add_section( 'post_settings', array(
@@ -171,6 +171,20 @@ function stag_get_theme_mods( $args = array() ) {
 				'transport'         => 'refresh',
 				'sanitize_callback' => 'absint',
 			),
+			'post-sidebar' => array(
+				'title'             => __( 'Enable Sidebar on Single Post', 'stag' ),
+				'type'              => 'checkbox',
+				'default'           => 0,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'absint',
+			),
+			'page-sidebar' => array(
+				'title'             => __( 'Enable Sidebar on Single Page', 'stag' ),
+				'type'              => 'checkbox',
+				'default'           => 0,
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'absint',
+			),
 			'post-grid-hover-text' => array(
 				'title'     => __( 'Post Grid Hover Text', 'stag' ),
 				'type'      => 'text',
@@ -251,6 +265,13 @@ function stag_get_theme_mods( $args = array() ) {
 				'transport'       => 'postMessage',
 				'description'     => esc_html__( 'Display a text label for restricted post when Restrict Content Pro is active.', 'stag' ),
 				'active_callback' => 'stag_is_rcp_active',
+			),
+			'sticky_text' => array(
+				'title'           => __( 'Sticky Post Label', 'stag' ),
+				'type'            => 'text',
+				'default'         => esc_html__( 'Sticky', 'stag' ),
+				'transport'       => 'postMessage',
+				'description'     => esc_html__( 'Display a text label for sticky post', 'stag' ),
 			),
 			'comments_visibility' => array(
 				'title'     => __( 'Comments Visibility', 'stag' ),
@@ -410,7 +431,8 @@ function stag_header_css() {
 		.custom-header-description,
 		#infinite-handle,
 		table th,
-		.premium-tag {
+		.premium-tag,
+		.sticky-tag {
 			font-family: "<?php echo stag_theme_mod( 'typography', 'header_font' ); ?>";
 		}
 		.post-grid {

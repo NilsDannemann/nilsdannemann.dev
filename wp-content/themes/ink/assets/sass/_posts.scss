@@ -281,7 +281,8 @@
 	@include transform(translate3d(0,0,0));
 }
 
-.premium-tag {
+.premium-tag,
+.sticky-tag {
 	display: inline-block;
     padding: 6px 18px;
     font-size: 14px;
@@ -290,6 +291,13 @@
     border: 2px solid #fff;
     font-weight: 700;
     margin-bottom: 40px;
+    margin: 0 10px 40px 10px;
+
+    @include media(max-width $one) {
+		padding: 6px 14px;
+   		font-size: 12px;
+   		margin: 0 5px 20px 5px;
+	}
 }
 
 .article-cover {
@@ -579,7 +587,7 @@ div.wp-caption {
 				border-bottom: 2px solid #fff;
 			}
 		}
-		
+
 	}
 }
 
