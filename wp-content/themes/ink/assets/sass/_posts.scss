@@ -210,8 +210,8 @@
 }
 
 .entry-footer {
-	border-top: 2px solid #333;
-	border-bottom: 2px solid #333;
+	border-top: 2px solid $color-brand-secondary;
+	border-bottom: 2px solid $color-brand-secondary;
 	margin: {
 		top: $base;
 		bottom: $base;
@@ -599,7 +599,7 @@ div.wp-caption {
 .page-links {
 	@include rem('margin', $base 0);
 	@include rem('padding-top', $base);
-	border-top: 2px solid #333;
+	border-top: 2px solid $color-brand-secondary;
 	text-align: center;
 	font-size: 16px;
 
@@ -661,7 +661,7 @@ div.wp-caption {
 .post-navigation {
 	@extend %cf;
 	@include rem(padding-top, 20px);
-	border-top: 2px solid #333;
+	border-top: 2px solid $color-brand-secondary;
 	font-weight: bold;
 	line-height: 1;
 
