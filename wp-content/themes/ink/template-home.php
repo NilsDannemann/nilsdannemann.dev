@@ -11,7 +11,7 @@
 get_header(); ?>
 
 <div class="hero">
-	Hero
+	
 </div>
 
 <main id="main" class="site-main">
