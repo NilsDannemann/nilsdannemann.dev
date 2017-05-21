@@ -8,10 +8,10 @@ Author URI: http://www.642weather.com/weather/scripts.php
 Text Domain: si-captcha
 Domain Path: /languages
 License: GPLv2 or later
-Version: 3.0.0.13
+Version: 3.0.0.17
 */
 
-$si_captcha_version = '3.0.0.13';
+$si_captcha_version = '3.0.0.17';
 
 /*  Copyright (C) 2008-2017 Mike Challis  (http://www.642weather.com/weather/contact_us.php)
 
@@ -44,6 +44,7 @@ class siCaptcha {
     public $si_captcha_version;
     public $si_captcha_add_script = false;
     private $si_captcha_add_reg = false;
+    private $si_captcha_add_jetpack = false;
     private $si_captcha_networkwide = false;
     private $si_captcha_on_comments = false;
     private $si_captcha_checkout_validated = false;
@@ -864,7 +865,7 @@ return true;
 function si_captcha_wc_checkout_post() {
     global $si_captcha_dir, $si_captcha_dir_ns, $si_captcha_opt, $si_captcha_checkout_validated;
 
-   if ($fs_recaptcha_opt['wc_checkout'] == 'true' ) {
+   if ($si_captcha_opt['wc_checkout'] == 'true' ) {
       $validate_result = $this->si_captcha_validate_code('checkout', 'unlink');
       if($validate_result != 'valid') {
                wc_add_notice( $validate_result, 'error' );
@@ -914,8 +915,11 @@ echo '</div>
 
 
 // this function checks the captcha posted with registration page
-function si_captcha_register_post(WP_Error $errors) {
+function si_captcha_register_post( $errors = '' ) {
    global $si_captcha_dir, $si_captcha_dir_ns, $si_captcha_opt, $si_captcha_checkout_validated;
+
+   if ( ! is_wp_error( $errors ) )
+          $errors = new WP_Error();
 
    if ($si_captcha_checkout_validated)
        return $errors; // skip because already validated a captcha at woocommerce checkout, checked the box "Create an account"
@@ -1047,8 +1051,11 @@ echo '</div>
 
 
 // this function checks the captcha posted with lost password page
-function si_captcha_lostpassword_post(WP_Error $errors) {
+function si_captcha_lostpassword_post($errors = '') {
   global $si_captcha_dir, $si_captcha_dir_ns, $si_captcha_opt;
+
+ if ( ! is_wp_error( $errors ) )
+        $errors = new WP_Error();
 
    $validate_result = $this->si_captcha_validate_code('reg', 'unlink');
    if($validate_result != 'valid') {
@@ -1155,6 +1162,13 @@ function si_captcha_jetpack_validate($bool) {
 
 // append field to jetpack contact form shortcode
 function si_captcha_jetpack_form($content) {
+  global $si_captcha_add_jetpack;
+
+  //if ( $si_captcha_add_jetpack )     // prevent double captcha fields jetpack
+  //        return $content;
+
+   $si_captcha_add_jetpack = true;
+
    return preg_replace_callback( '/\[contact-form(.*?)?\](.*?)?\[\/contact-form\]/si',
    array($this, 'si_captcha_jetpack_append_field_callback'),
    $content );
