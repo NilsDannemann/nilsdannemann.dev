@@ -27,7 +27,7 @@
 		.entry-meta,
 		.entry-categories,
 		.post-excerpt {
-			@include transition(all 200ms);
+			@include transition();
 		}
 	}
 
@@ -631,7 +631,7 @@ div.wp-caption {
 		text-align: center;
 		padding-top: 14px;
 		border: 2px solid #020303;
-		@include transition(all 100ms ease-in-out);
+		@include transition();
 		&:hover {
 			background-color: #020303;
 			color: white;
@@ -647,7 +647,7 @@ div.wp-caption {
 .entry-meta,
 .entry-categories {
 	a {
-		@include transition(opacity 150ms);
+		@include transition();
 		&:hover {
 			opacity: .6;
 		}
@@ -689,7 +689,7 @@ div.wp-caption {
 	}
 
 	.arrow {
-		@include transition(padding 200ms);
+		@include transition();
 		@include transform(translated3d(0,0,0));
 	}
 	.nav-previous {

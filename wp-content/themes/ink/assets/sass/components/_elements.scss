@@ -241,7 +241,7 @@ table {
 	padding: 10px;
 	text-align: center;
 	cursor: pointer;
-	@include transition(all 200ms);
+	@include transition();
 	span {
 		background: transparent;
 		color: #000;
