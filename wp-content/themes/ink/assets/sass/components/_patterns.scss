@@ -209,12 +209,12 @@ $alert-map : (
 
 .stag-tabs--stroke .stag-nav a,
 .stag-toggle--stroke .stag-toggle-title {
-	border-color: #d8d4ca;
+	border-color: $color-grey;
 	color: #5d5454;
 }
 
 .stag-tabs--stroke .stag-tab {
-	border-color: #d8d4ca;
+	border-color: $color-grey;
 }
 
 .stag-button--stroke {
