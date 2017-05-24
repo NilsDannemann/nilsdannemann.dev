@@ -140,7 +140,7 @@
 .comment-content {
 	@extend %cf;
 	line-height: 1.8;
-	@include word-break(break-word);
+	word-break: break-word;
 	@include rem('font-size', 20px);
 	p, ul, dl, table, blockquote {
 		@include rem('margin-bottom', $base*3);
@@ -277,7 +277,7 @@
 	height: 100%;
 	background-repeat: no-repeat;
 	background-position: center center;
-	@include background-size(cover);
+	background-size: cover;
 	@include transform(translate3d(0,0,0));
 }
 
@@ -363,7 +363,7 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		z-index: 2;
-		@include background-size(cover);
+		background-size: cover;
 		@include transform(translate3d(0,0,0));
 	}
 

@@ -11,21 +11,42 @@
  * Text Domain: stag
  */
 
-@import "compass";
+@import "bourbon";
 
-@import "contents";
-@import "reset";
+// Variables
 @import "preboot";
-@import "grid";
-@import "scaffolding";
-@import "elements";
-@import "patterns";
-@import "posts";
-@import "pages";
-@import "sidebar";
-@import "comments";
-@import "forms";
-@import "support";
+@import "variables";
+
+// Relay
+@import 'base/_hfc-relay-core-helpers.scss';
+@import 'base/_hfc-relay-core-transition.scss';
+@import 'base/_hfc-relay-ui-elements-arrow.scss';
+@import 'base/_hfc-relay-ui-elements-button.scss';
+@import 'base/_hfc-relay-grid-functions.scss';
+@import 'base/_hfc-relay-grid.scss';
+@import 'base/_hfc-relay-grid-column.scss';
+@import 'base/_hfc-relay-grid-container.scss';
+@import 'base/_hfc-relay-grid-queries.scss';
+
+// Base
+@import 'base/reset.scss';
+@import 'base/base.scss';
+@import 'base/typography.scss';
+
+// Components
+@import "components/grid";
+@import "components/scaffolding";
+@import "components/elements";
+@import "components/patterns";
+@import "components/posts";
+@import "components/pages";
+@import "components/sidebar";
+@import "components/comments";
+@import "components/forms";
+@import "components/support";
+@import "components/hero";
+
+
 
 // Small fix for side menu under IE9
 .site-nav-drawer-open.ie9 {

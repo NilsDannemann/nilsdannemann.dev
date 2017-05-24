@@ -74,7 +74,7 @@ body[class*="page-id"]:not(.page-template-current-php) {
 		background-repeat: no-repeat;
 		background-position: center;
 		z-index: 2;
-		@include background-size(cover);
+		background-size: cover;
 	}
 	.hentry {
 		position: relative;

@@ -80,7 +80,6 @@ samp {
 	border: $rule;
 	@include rem('padding', 1px 3px);
 	@include rem('word-spacing', -1px);
-	@include border-radius;
 }
 pre {
 	overflow: auto;
