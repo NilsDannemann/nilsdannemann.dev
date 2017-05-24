@@ -147,7 +147,7 @@ function stag_get_theme_mods( $args = array() ) {
 			'accent' => array(
 				'title'   => __( 'Accent Color', 'stag' ),
 				'type'    => 'WP_Customize_Color_Control',
-				'default' => '#53b38c',
+				'default' => '#FFEB3B',
 			),
 		),
 		'layout_options' => array(
