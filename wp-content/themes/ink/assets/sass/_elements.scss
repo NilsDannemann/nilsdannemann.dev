@@ -71,6 +71,13 @@ q {
 	&:after {
 		content: '\201D';
 	}
+
+	&:last-child {
+	  margin-bottom: 0;
+	}
+	&:empty {
+	  display: none;
+	}
 }
 tt,
 kbd,

@@ -73,12 +73,12 @@ a {
 	}
 }
 .site-title {
-	@include rem('font-size', 50px);
+	@include rem('font-size', 30px);
 	margin: 0;
 	line-height: 1;
 
 	@include media(max-width 600px) {
-		@include rem('font-size', 40px);
+		@include rem('font-size', 20px);
 		padding-right: 30px;
 	}
 }
@@ -404,6 +404,30 @@ body:not(.header-over),
 
 .site-footer {
 	padding-top: 50px;
+	position: relative;
+	background-color: $detail-black;
+	margin-top: 5rem !important;
+	padding-top: 90px !important;
+
+	&::before {
+	  content: '';
+	  background: url('assets/img/divider.png') repeat-x top left;
+	  display: block;
+	  height: 50px;
+	  width: 100%;
+	  position: absolute;
+	  top: -50px;
+	  background-size: 1280px 50px;
+	}
+
+	h1 {color: #fff;}
+	h2 {color: #fff;}
+	h3 {color: #fff; font-size: 2rem;}
+	h4 {color: #fff;}
+	h5 {color: #fff;}
+	h6 {color: #fff;}
+	p {color: #fff; font-size: 1rem;}
+	a {color: #fff !important;}
 
 	.single & {
 		@include rem('margin-top', 50px);
