@@ -11,7 +11,11 @@
  * Text Domain: stag
  */
 
-@import 'compass';
+ @import "compass/functions";
+ @import "compass/utilities";
+ @import "compass/typography";
+ @import "compass/css3";
+
 
 @import 'contents';
 @import 'reset';
