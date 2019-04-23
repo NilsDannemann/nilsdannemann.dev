@@ -2,6 +2,7 @@
 
 // Vars
 $accent: #363f48;
+$accent_new: var(--stagtools-accent, #363f48);
 
 $button-map: (
 	black: #000,
@@ -33,9 +34,9 @@ $alert-map: (
 		@content;
 	}
 	display: inline-block;
-	font-family: FontAwesome;
+	font-family: 'Font Awesome 5 Free';
 	font-style: normal;
-	font-weight: normal;
+	font-weight: 900;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

@@ -46,8 +46,8 @@ abstract class WPCOM_JSON_API_Post_Endpoint extends WPCOM_JSON_API_Endpoint {
 		'publicize_URLs' => '(array:URL) Array of Twitter and Facebook URLs published by this post.',
 		'tags'           => '(object:tag) Hash of tags (keyed by tag name) applied to the post.',
 		'categories'     => '(object:category) Hash of categories (keyed by category name) applied to the post.',
-		'attachments'	 => '(object:attachment) Hash of post attachments (keyed by attachment ID).',
-		'metadata'	     => '(array) Array of post metadata keys and values. All unprotected meta keys are available by default for read requests. Both unprotected and protected meta keys are available for authenticated requests with access. Protected meta keys can be made available with the <code>rest_api_allowed_public_metadata</code> filter.',
+		'attachments'    => '(object:attachment) Hash of post attachments (keyed by attachment ID).',
+		'metadata'       => '(array) Array of post metadata keys and values. All unprotected meta keys are available by default for read requests. Both unprotected and protected meta keys are available for authenticated requests with access. Protected meta keys can be made available with the <code>rest_api_allowed_public_metadata</code> filter.',
 		'meta'           => '(object) API result meta data',
 		'current_user_can' => '(object) List of permissions. Note, deprecated in favor of `capabilities`',
 		'capabilities'   => '(object) List of post-specific permissions for the user; publish_post, edit_post, delete_post',
@@ -262,11 +262,8 @@ abstract class WPCOM_JSON_API_Post_Endpoint extends WPCOM_JSON_API_Endpoint {
 			case 'likes_enabled' :
 				/** This filter is documented in modules/likes.php */
 				$sitewide_likes_enabled = (bool) apply_filters( 'wpl_is_enabled_sitewide', ! get_option( 'disabled_likes' ) );
-				$post_likes_switched    = (bool) get_post_meta( $post->ID, 'switch_like_status', true );
-				$post_likes_enabled = $sitewide_likes_enabled;
-				if ( $post_likes_switched ) {
-					$post_likes_enabled = ! $post_likes_enabled;
-				}
+				$post_likes_switched    = get_post_meta( $post->ID, 'switch_like_status', true );
+				$post_likes_enabled = $post_likes_switched || ( $sitewide_likes_enabled && $post_likes_switched !== '0' );
 				$response[$key] = (bool) $post_likes_enabled;
 				break;
 			case 'sharing_enabled' :
@@ -588,7 +585,7 @@ abstract class WPCOM_JSON_API_Post_Endpoint extends WPCOM_JSON_API_Endpoint {
 	 *
 	 * @param $attachment attachment row
 	 *
-	 * @return (object)
+	 * @return object
 	 */
 	function get_attachment( $attachment ) {
 		$metadata = wp_get_attachment_metadata( $attachment->ID );

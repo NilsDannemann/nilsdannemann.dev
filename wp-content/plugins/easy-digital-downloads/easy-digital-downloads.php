@@ -5,7 +5,7 @@
  * Description: The easiest way to sell digital products with WordPress.
  * Author: Easy Digital Downloads
  * Author URI: https://easydigitaldownloads.com
- * Version: 2.7.9
+ * Version: 2.9.12
  * Text Domain: easy-digital-downloads
  * Domain Path: languages
  *
@@ -25,7 +25,7 @@
  * @package EDD
  * @category Core
  * @author Pippin Williamson
- * @version 2.7.9
+ * @version 2.9.12
  */
 
 // Exit if accessed directly.
@@ -206,7 +206,7 @@ final class Easy_Digital_Downloads {
 
 		// Plugin version.
 		if ( ! defined( 'EDD_VERSION' ) ) {
-			define( 'EDD_VERSION', '2.7.9' );
+			define( 'EDD_VERSION', '2.9.12' );
 		}
 
 		// Plugin Folder Path.
@@ -250,6 +250,7 @@ final class Easy_Digital_Downloads {
 		require_once EDD_PLUGIN_DIR . 'includes/ajax-functions.php';
 		require_once EDD_PLUGIN_DIR . 'includes/api/class-edd-api.php';
 		require_once EDD_PLUGIN_DIR . 'includes/template-functions.php';
+		require_once EDD_PLUGIN_DIR . 'includes/template-actions.php';
 		require_once EDD_PLUGIN_DIR . 'includes/checkout/template.php';
 		require_once EDD_PLUGIN_DIR . 'includes/checkout/functions.php';
 		require_once EDD_PLUGIN_DIR . 'includes/cart/class-edd-cart.php';
@@ -259,6 +260,7 @@ final class Easy_Digital_Downloads {
 		require_once EDD_PLUGIN_DIR . 'includes/class-edd-db.php';
 		require_once EDD_PLUGIN_DIR . 'includes/class-edd-db-customers.php';
 		require_once EDD_PLUGIN_DIR . 'includes/class-edd-db-customer-meta.php';
+		require_once EDD_PLUGIN_DIR . 'includes/class-edd-customer-query.php';
 		require_once EDD_PLUGIN_DIR . 'includes/class-edd-customer.php';
 		require_once EDD_PLUGIN_DIR . 'includes/class-edd-discount.php';
 		require_once EDD_PLUGIN_DIR . 'includes/class-edd-download.php';
@@ -292,7 +294,6 @@ final class Easy_Digital_Downloads {
 		require_once EDD_PLUGIN_DIR . 'includes/payments/class-payment-stats.php';
 		require_once EDD_PLUGIN_DIR . 'includes/payments/class-payments-query.php';
 		require_once EDD_PLUGIN_DIR . 'includes/payments/class-edd-payment.php';
-		require_once EDD_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once EDD_PLUGIN_DIR . 'includes/download-functions.php';
 		require_once EDD_PLUGIN_DIR . 'includes/scripts.php';
 		require_once EDD_PLUGIN_DIR . 'includes/post-types.php';
@@ -310,6 +311,7 @@ final class Easy_Digital_Downloads {
 		require_once EDD_PLUGIN_DIR . 'includes/login-register.php';
 		require_once EDD_PLUGIN_DIR . 'includes/shortcodes.php';
 		require_once EDD_PLUGIN_DIR . 'includes/admin/tracking.php'; // Must be loaded on frontend to ensure cron runs
+		require_once EDD_PLUGIN_DIR . 'includes/privacy-functions.php';
 
 		if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			require_once EDD_PLUGIN_DIR . 'includes/admin/add-ons.php';
@@ -360,7 +362,6 @@ final class Easy_Digital_Downloads {
 	/**
 	 * Loads the plugin language files.
 	 *
-	 * @access public
 	 * @since 1.4
 	 * @return void
 	 */
@@ -401,7 +402,7 @@ final class Easy_Digital_Downloads {
 		}
 
 		/**
-		 * Defines the plugin language locale used in AffiliateWP.
+		 * Defines the plugin language locale used in Easy Digital Downloads.
 		 *
 		 * @var $get_locale The locale to use. Uses get_user_locale()` in WordPress 4.7 or greater,
 		 *                  otherwise uses `get_locale()`.
@@ -469,7 +470,7 @@ endif; // End if class_exists check.
  * Example: <?php $edd = EDD(); ?>
  *
  * @since 1.4
-* @return object|Easy_Digital_Downloads The one true Easy_Digital_Downloads Instance.
+ * @return object|Easy_Digital_Downloads The one true Easy_Digital_Downloads Instance.
  */
 function EDD() {
 	return Easy_Digital_Downloads::instance();

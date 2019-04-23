@@ -549,7 +549,6 @@ function edd_verify_download_link( $download_id = 0, $key = '', $email = '', $ex
  * Get Success Page URL
  *
  * @param string $query_string
- * @access      public
  * @since       1.0
  * @deprecated  2.6 Please avoid usage of this function in favor of edd_get_success_page_uri()
  * @return      string
@@ -714,4 +713,21 @@ function edd_get_sales_by_date( $day = null, $month_num = null, $year = null, $h
 	$result = $cached[ $key ];
 
 	return $result;
+}
+
+/**
+ * Set the Page Style for PayPal Purchase page
+ *
+ * @since 1.4.1
+ * @deprecated 2.8
+ * @return string
+ */
+function edd_get_paypal_page_style() {
+
+	$backtrace = debug_backtrace();
+
+	_edd_deprecated_function( __FUNCTION__, '2.8', 'edd_get_paypal_image_url', $backtrace );
+
+	$page_style = trim( edd_get_option( 'paypal_page_style', 'PayPal' ) );
+	return apply_filters( 'edd_paypal_page_style', $page_style );
 }

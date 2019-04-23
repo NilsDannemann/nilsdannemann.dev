@@ -108,6 +108,7 @@
 
 .stag-dropcap--squared {
 	background: $accent;
+	background: $accent_new;
 	color: #fff;
 }
 
@@ -116,6 +117,7 @@
 	border: 0;
 	height: 1px;
 	background: $accent;
+	background: $accent_new;
 	margin: 2em 0;
 	&--strong {
 		height: 7px;
@@ -128,6 +130,7 @@
 		content: '';
 		display: block;
 		border-bottom: 1px solid $accent;
+		border-bottom: 1px solid $accent_new;
 		position: relative;
 		top: 10px;
 	}
@@ -135,11 +138,13 @@
 	&--dashed {
 		background: none;
 		border-bottom: 1px dashed $accent;
+		border-bottom: 1px dashed $accent_new;
 	}
 
 	&--dotted {
 		background: none;
 		border-bottom: 1px dotted $accent;
+		border-bottom: 1px dotted $accent_new;
 	}
 }
 
@@ -178,11 +183,13 @@
 
 .stag-tabs--normal .stag-nav a {
 	background: $accent;
+	background: $accent_new;
 	color: #fff;
 }
 .stag-tabs--normal .stag-nav .ui-tabs-active a {
 	background: #fbfbfb;
 	color: $accent;
+	color: $accent_new;
 	outline: 0;
 }
 .stag-tabs--normal .stag-tab {
@@ -194,13 +201,16 @@
 }
 .stag-tabs--stroke .stag-nav a {
 	border: 1px solid $accent;
+	border: 1px solid $accent_new;
 	color: $accent;
+	color: $accent_new;
 }
 .stag-tabs--stroke .stag-nav .ui-tabs-active a {
 	border-bottom-color: white;
 }
 .stag-tabs--stroke .stag-tab {
 	border: 1px solid $accent;
+	border: 1px solid $accent_new;
 	margin-top: -1px;
 }
 
@@ -230,14 +240,17 @@
 
 .stag-toggle--normal .stag-toggle-title {
 	background: $accent;
+	background: $accent_new;
 	color: white;
 }
 
 .stag-toggle--stroke .stag-toggle-title {
 	border: 1px solid $accent;
+	border: 1px solid $accent_new;
 }
 .stag-toggle--stroke .stag-toggle-title:after {
 	color: $accent;
+	color: $accent_new;
 }
 
 /* Image */
@@ -378,31 +391,46 @@
 	}
 }
 
+.stag-icon--before svg {
+	margin-right: 0.7em;
+}
+.stag-icon--after svg {
+	margin-left: 0.7em;
+}
+
 // Instagram Widget
 .instagram-widget {
 	li {
-		margin-bottom: 10px;
+		display: inline-block;
+		margin: 0 5px 5px 0;
+		padding: 0 !important;
 		list-style: none;
 	}
-	&.thumbnail {
-		li {
-			display: inline-block;
-			margin: 0 5px 5px 0;
-		}
-		img {
-			max-width: 75px;
-		}
+	a {
+		text-decoration: none;
+		border: none;
 	}
+	img {
+		height: auto;
+	}
+}
+.stag-instagram-widget__item.stag-instagram-widget__item {
+	border: none;
 }
 .instagram-follow-link {
 	display: block;
 	margin-top: 10px;
 }
-.size-thumbnail {
-	img {
-		max-width: 75px;
-		height: auto;
+
+.stag-instagram-widget--size-small {
+	li {
+		max-width: 48%;
 	}
+}
+
+.stag-instagram-widget--size {
+	&-thumbnail img { width: 75px; }
+	&-small img { width: 160px; }
 }
 
 // Twitter Widget

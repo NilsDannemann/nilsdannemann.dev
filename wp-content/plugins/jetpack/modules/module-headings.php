@@ -20,7 +20,11 @@ function jetpack_get_module_i18n( $key ) {
 			'carousel' => array(
 				'name' => _x( 'Carousel', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Display images and galleries in a gorgeous, full-screen browsing experience', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Brings your photos and images to life as full-size, easily navigable galleries.', 'Jumpstart Description', 'jetpack' ),
+			),
+
+			'comment-likes' => array(
+				'name' => _x( 'Comment Likes', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Increase visitor engagement by adding a Like button to comments.', 'Module Description', 'jetpack' ),
 			),
 
 			'comments' => array(
@@ -30,8 +34,13 @@ function jetpack_get_module_i18n( $key ) {
 
 			'contact-form' => array(
 				'name' => _x( 'Contact Form', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Insert a customizable contact form anywhere on your site.', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Adds a button to your post and page editors, allowing you to build simple forms to help visitors stay in touch.', 'Jumpstart Description', 'jetpack' ),
+				'description' => _x( 'Add a customizable contact form to any post or page using the Jetpack Form Block.', 'Module Description', 'jetpack' ),
+			),
+
+			'copy-post' => array(
+				'name' => _x( 'Copy Post', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Copy an existing post\'s content into a new draft post', 'Module Description', 'jetpack' ),
+				'recommended description' => _x( 'Copy an existing post\'s content into a new draft post', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'custom-content-types' => array(
@@ -57,7 +66,6 @@ function jetpack_get_module_i18n( $key ) {
 			'gravatar-hovercards' => array(
 				'name' => _x( 'Gravatar Hovercards', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Enable pop-up business cards over commenters’ Gravatars.', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Let commenters link their profiles to their Gravatar accounts, making it easy for your visitors to learn more about your community.', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'infinite-scroll' => array(
@@ -73,6 +81,12 @@ function jetpack_get_module_i18n( $key ) {
 			'latex' => array(
 				'name' => _x( 'Beautiful Math', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Use LaTeX markup for complex equations and other geekery.', 'Module Description', 'jetpack' ),
+			),
+
+			'lazy-images' => array(
+				'name' => _x( 'Lazy Images', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Speed up your site and create a smoother viewing experience by loading images as visitors scroll down the screen, instead of all at once.', 'Module Description', 'jetpack' ),
+				'recommended description' => _x( 'Lazy-loading images improve your site\'s speed and create a smoother viewing experience. Images will load as visitors scroll down the screen, instead of all at once.', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'likes' => array(
@@ -98,12 +112,13 @@ function jetpack_get_module_i18n( $key ) {
 
 			'minileven' => array(
 				'name' => _x( 'Mobile Theme', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Optimize your site for smartphones', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Enable the Jetpack Mobile theme', 'Module Description', 'jetpack' ),
 			),
 
 			'monitor' => array(
 				'name' => _x( 'Monitor', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Receive immediate notifications if your site goes down, 24/7.', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Jetpack’s downtime monitoring will continuously watch your site, and alert you the moment that downtime is detected.', 'Module Description', 'jetpack' ),
+				'recommended description' => _x( 'Receive immediate notifications if your site goes down, 24/7.', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'notes' => array(
@@ -111,14 +126,14 @@ function jetpack_get_module_i18n( $key ) {
 				'description' => _x( 'Receive instant notifications of site comments and likes.', 'Module Description', 'jetpack' ),
 			),
 
-			'omnisearch' => array(
-				'name' => _x( 'Omnisearch', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Search your entire database from a single field in your dashboard.', 'Module Description', 'jetpack' ),
+			'photon-cdn' => array(
+				'name' => _x( 'Asset CDN', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Jetpack’s Site Accelerator loads your site faster by optimizing your images and serving your images and static files from our global network of servers.', 'Module Description', 'jetpack' ),
 			),
 
 			'photon' => array(
-				'name' => _x( 'Photon', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Speed up images and photos', 'Module Description', 'jetpack' ),
+				'name' => _x( 'Image CDN', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Mirrors and serves your images from our free and fast image CDN, improving your site’s performance with no additional load on your servers.', 'Module Description', 'jetpack' ),
 				'recommended description' => _x( 'Mirrors and serves your images from our free and fast image CDN, improving your site’s performance with no additional load on your servers.', 'Jumpstart Description', 'jetpack' ),
 			),
 
@@ -129,35 +144,37 @@ function jetpack_get_module_i18n( $key ) {
 
 			'protect' => array(
 				'name' => _x( 'Protect', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Block suspicious-looking sign in activity', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Protect yourself from brute force and distributed brute force attacks, which are the most common way for hackers to get into your site.', 'Module Description', 'jetpack' ),
 			),
 
 			'publicize' => array(
 				'name' => _x( 'Publicize', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Automated social marketing.', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Publicize makes it easy to share your site’s posts on several social media networks automatically when you publish a new post.', 'Module Description', 'jetpack' ),
+			),
+
+			'pwa' => array(
+				'name' => _x( 'Progressive Web Apps', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Speed up and improve the reliability of your site using the latest in web technology.', 'Module Description', 'jetpack' ),
 			),
 
 			'related-posts' => array(
 				'name' => _x( 'Related posts', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Increase page views by showing related content to your visitors.', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Keep visitors engaged on your blog by highlighting relevant and new content at the bottom of each published post.', 'Jumpstart Description', 'jetpack' ),
+				'description' => _x( 'Keep visitors engaged on your blog by highlighting relevant and new content at the bottom of each published post.', 'Module Description', 'jetpack' ),
 			),
 
 			'search' => array(
 				'name' => _x( 'Search', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Enhanced search, powered by Elasticsearch', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Enhanced search, powered by Elasticsearch, a powerful replacement for WordPress search.', 'Module Description', 'jetpack' ),
 			),
 
 			'seo-tools' => array(
 				'name' => _x( 'SEO Tools', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Better results on search engines and social media.', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Better results on search engines and social media.', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'sharedaddy' => array(
 				'name' => _x( 'Sharing', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Allow visitors to share your content.', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Twitter, Facebook and Google+ buttons at the bottom of each post, making it easy for visitors to share your content.', 'Jumpstart Description', 'jetpack' ),
+				'description' => _x( 'Add Twitter, Facebook and Google+ buttons at the bottom of each post, making it easy for visitors to share your content.', 'Module Description', 'jetpack' ),
 			),
 
 			'shortcodes' => array(
@@ -176,7 +193,7 @@ function jetpack_get_module_i18n( $key ) {
 			),
 
 			'sso' => array(
-				'name' => _x( 'Single Sign On', 'Module Name', 'jetpack' ),
+				'name' => _x( 'Secure Sign On', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Allow users to log into this site using WordPress.com accounts', 'Module Description', 'jetpack' ),
 				'recommended description' => _x( 'Lets you log in to all your Jetpack-enabled sites with one click using your WordPress.com account.', 'Jumpstart Description', 'jetpack' ),
 			),
@@ -189,18 +206,16 @@ function jetpack_get_module_i18n( $key ) {
 			'subscriptions' => array(
 				'name' => _x( 'Subscriptions', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Allow users to subscribe to your posts and comments and receive notifications via email', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Give visitors two easy subscription options — while commenting, or via a separate email subscription widget you can display.', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'tiled-gallery' => array(
 				'name' => _x( 'Tiled Galleries', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Display image galleries in a variety of elegant arrangements.', 'Module Description', 'jetpack' ),
-				'recommended description' => _x( 'Display image galleries in a variety of elegant arrangements.', 'Jumpstart Description', 'jetpack' ),
 			),
 
 			'vaultpress' => array(
-				'name' => _x( 'Data Backups', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Off-site backups, security scans, and automatic fixes.', 'Module Description', 'jetpack' ),
+				'name' => _x( 'Backups and Scanning', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Protect your site with daily or real-time backups and automated virus scanning and threat detection.', 'Module Description', 'jetpack' ),
 			),
 
 			'verification-tools' => array(
@@ -210,7 +225,7 @@ function jetpack_get_module_i18n( $key ) {
 
 			'videopress' => array(
 				'name' => _x( 'VideoPress', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Fast, ad-free video hosting', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Save on hosting storage and bandwidth costs by streaming fast, ad-free video from our global network.', 'Module Description', 'jetpack' ),
 			),
 
 			'widget-visibility' => array(
@@ -249,6 +264,7 @@ function jetpack_get_module_i18n_tag( $key ) {
 
 			// Modules with `Writing` tag:
 			//  - modules/after-the-deadline.php
+			//  - modules/copy-post.php
 			//  - modules/custom-content-types.php
 			//  - modules/enhanced-distribution.php
 			//  - modules/json-api.php
@@ -260,6 +276,7 @@ function jetpack_get_module_i18n_tag( $key ) {
 
 			// Modules with `Photos and Videos` tag:
 			//  - modules/carousel.php
+			//  - modules/photon-cdn.php
 			//  - modules/photon.php
 			//  - modules/shortcodes.php
 			//  - modules/tiled-gallery.php
@@ -267,6 +284,7 @@ function jetpack_get_module_i18n_tag( $key ) {
 			'Photos and Videos' =>_x( 'Photos and Videos', 'Module Tag', 'jetpack' ),
 
 			// Modules with `Social` tag:
+			//  - modules/comment-likes.php
 			//  - modules/comments.php
 			//  - modules/gravatar-hovercards.php
 			//  - modules/likes.php
@@ -283,7 +301,9 @@ function jetpack_get_module_i18n_tag( $key ) {
 			//  - modules/custom-css.php
 			//  - modules/gravatar-hovercards.php
 			//  - modules/infinite-scroll.php
+			//  - modules/lazy-images.php
 			//  - modules/minileven.php
+			//  - modules/photon-cdn.php
 			//  - modules/photon.php
 			//  - modules/seo-tools.php
 			//  - modules/shortcodes.php
@@ -294,18 +314,16 @@ function jetpack_get_module_i18n_tag( $key ) {
 
 			// Modules with `Developers` tag:
 			//  - modules/json-api.php
-			//  - modules/omnisearch.php
+			//  - modules/pwa.php
 			//  - modules/sso.php
 			'Developers' =>_x( 'Developers', 'Module Tag', 'jetpack' ),
 
-			// Modules with `Centralized Management` tag:
-			//  - modules/manage.php
-			'Centralized Management' =>_x( 'Centralized Management', 'Module Tag', 'jetpack' ),
-
 			// Modules with `Recommended` tag:
+			//  - modules/lazy-images.php
 			//  - modules/manage.php
 			//  - modules/minileven.php
 			//  - modules/monitor.php
+			//  - modules/photon-cdn.php
 			//  - modules/photon.php
 			//  - modules/protect.php
 			//  - modules/publicize.php
@@ -314,6 +332,10 @@ function jetpack_get_module_i18n_tag( $key ) {
 			//  - modules/sitemaps.php
 			//  - modules/stats.php
 			'Recommended' =>_x( 'Recommended', 'Module Tag', 'jetpack' ),
+
+			// Modules with `Centralized Management` tag:
+			//  - modules/manage.php
+			'Centralized Management' =>_x( 'Centralized Management', 'Module Tag', 'jetpack' ),
 
 			// Modules with `General` tag:
 			//  - modules/masterbar.php

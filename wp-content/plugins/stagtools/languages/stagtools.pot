@@ -1,24 +1,17 @@
-#, fuzzy
+# Copyright (C) 2018 Ram Ratan Maurya
+# This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: StagTools\n"
-"POT-Creation-Date: 2016-07-21 16:31+0530\n"
-"PO-Revision-Date: 2016-07-21 16:29+0530\n"
-"Last-Translator: Ram Ratan Maurya <ram@codestag.com>\n"
-"Language-Team: Ram Ratan Maurya <ram@codestag.com>\n"
+"Project-Id-Version: StagTools 2.2.5\n"
+"Report-Msgid-Bugs-To: https://codestag.com/support/\n"
+"POT-Creation-Date: 2018-03-16 00:08:27+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: stagtools.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Codestag\n"
+"Language-Team: Codestag\n"
+"X-Generator: grunt-wp-i18n1.0.1\n"
 
 #: assets/js/plugin-lang.php:5
 msgid "Insert Stag Shortcode"
@@ -122,31 +115,6 @@ msgstr ""
 #: includes/post-type/slides.php:39 includes/post-type/team.php:40
 #: includes/post-type/testimonials.php:39
 msgid "Date"
-msgstr ""
-
-#: includes/post-type/project.php:10
-msgctxt "post type general name"
-msgid "Projects"
-msgstr ""
-
-#: includes/post-type/project.php:11
-msgctxt "post type singular name"
-msgid "Project"
-msgstr ""
-
-#: includes/post-type/project.php:12
-msgctxt "admin menu"
-msgid "Portfolio"
-msgstr ""
-
-#: includes/post-type/project.php:13
-msgctxt "add new on admin bar"
-msgid "Project"
-msgstr ""
-
-#: includes/post-type/project.php:14
-msgctxt "Project"
-msgid "Add New"
 msgstr ""
 
 #: includes/post-type/project.php:15
@@ -341,10 +309,6 @@ msgstr ""
 msgid "Twitter Settings"
 msgstr ""
 
-#: includes/settings/settings.php:216
-msgid "Configure the twitter settings"
-msgstr ""
-
 #: includes/settings/settings.php:221
 msgid "OAuth Consumer Key"
 msgstr ""
@@ -378,44 +342,55 @@ msgid "Enter twitter OAuth Access Secret"
 msgstr ""
 
 #: includes/settings/settings.php:245
-msgid "Google Maps API key"
+msgid "Dribbble Settings"
 msgstr ""
 
 #: includes/settings/settings.php:250
-msgid "API Key"
+msgid "Access Token"
 msgstr ""
 
 #: includes/settings/settings.php:252
-#, php-format
+msgid ""
+"You can get an access token manually from <a target=\"_blank\" "
+"rel=\"nopener noreferrer\" href=\"%s\">here</a>."
+msgstr ""
+
+#: includes/settings/settings.php:259
+msgid "Google Maps API key"
+msgstr ""
+
+#: includes/settings/settings.php:264
+msgid "API Key"
+msgstr ""
+
+#: includes/settings/settings.php:266
 msgid ""
 "An API key is required for Google Maps shortcode to work. Here is how you "
 "can %s."
 msgstr ""
 
-#: includes/settings/settings.php:253
+#: includes/settings/settings.php:267
 msgid "get a key"
 msgstr ""
 
-#: includes/settings/settings.php:448
+#: includes/settings/settings.php:462
 msgid "Portfolio Slug"
 msgstr ""
 
-#: includes/settings/settings.php:449
+#: includes/settings/settings.php:463
 msgid "Enter the slug of custom post type <strong>portfolio</strong>."
 msgstr ""
 
-#: includes/settings/settings.php:455
+#: includes/settings/settings.php:469
 msgid "Skills Slug"
 msgstr ""
 
-#: includes/settings/settings.php:456
+#: includes/settings/settings.php:470
 msgid "Enter the slug of custom post taxonomy <strong>skill</strong>."
 msgstr ""
 
-#: includes/settings/settings.php:469
-#, php-format
-msgid ""
-"The callback function used for the <strong>%s</strong> setting is missing."
+#: includes/settings/settings.php:483
+msgid "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr ""
 
 #: includes/tinymce.php:117
@@ -478,19 +453,7 @@ msgstr ""
 msgid "Dotted"
 msgstr ""
 
-#: includes/widgets/lib/TwitterWP/lib/TwitterWP.php:219
-msgid "ERROR: You need to provide a user."
-msgstr ""
-
-#: includes/widgets/lib/TwitterWP/lib/TwitterWP.php:332
-msgid "ERROR: Could not retrieve bearer token."
-msgstr ""
-
-#: includes/widgets/lib/TwitterWP/lib/TwitterWP.php:702
-msgid "ERROR: Missing Twitter App credentials."
-msgstr ""
-
-#: includes/widgets/stagtools-widget.php:156
+#: includes/widgets/stagtools-widget.php:160
 msgid "All"
 msgstr ""
 
@@ -510,16 +473,11 @@ msgid "Title:"
 msgstr ""
 
 #: includes/widgets/widget-dribbble.php:23
-msgid "Dribbble Username:"
-msgstr ""
-
-#: includes/widgets/widget-dribbble.php:28
 msgid "Number of shots to show:"
 msgstr ""
 
-#: includes/widgets/widget-dribbble.php:83
-msgctxt "Dribbble username error message"
-msgid "Please check your dribbble username"
+#: includes/widgets/widget-dribbble.php:52
+msgid "Please generate an access token from <a href=\"\">StagTools settings</a>"
 msgstr ""
 
 #: includes/widgets/widget-flickr.php:12
@@ -535,7 +493,6 @@ msgid "Your Flickr User ID:"
 msgstr ""
 
 #: includes/widgets/widget-flickr.php:27
-#, php-format
 msgid "Head over to %s to find your Flickr user ID."
 msgstr ""
 
@@ -564,40 +521,63 @@ msgid "Instagram Username:"
 msgstr ""
 
 #: includes/widgets/widget-instagram.php:31
-msgid "Photo Count:"
+msgid "Photo Count (max 12):"
 msgstr ""
 
 #: includes/widgets/widget-instagram.php:39
-msgid "Photo Size"
+msgid "Photo Size:"
 msgstr ""
 
 #: includes/widgets/widget-instagram.php:41
 msgid "Thumbnail"
 msgstr ""
 
-#: includes/widgets/widget-instagram.php:42
-msgid "Low Resolution"
+#: includes/widgets/widget-instagram.php:42 shortcodes/config.php:37
+msgid "Small"
 msgstr ""
 
-#: includes/widgets/widget-instagram.php:43
-msgid "High Resolution"
+#: includes/widgets/widget-instagram.php:43 shortcodes/config.php:39
+msgid "Large"
 msgstr ""
 
-#: includes/widgets/widget-instagram.php:49
+#: includes/widgets/widget-instagram.php:44
+msgid "Original"
+msgstr ""
+
+#: includes/widgets/widget-instagram.php:50
 msgid "Cache time (in hours):"
 msgstr ""
 
-#: includes/widgets/widget-instagram.php:57
+#: includes/widgets/widget-instagram.php:58
 msgid "Include link to Instagram page?"
 msgstr ""
 
-#: includes/widgets/widget-instagram.php:62
+#: includes/widgets/widget-instagram.php:63
 #: includes/widgets/widget-twitter.php:72
 msgid "Link Text:"
 msgstr ""
 
-#: includes/widgets/widget-instagram.php:130
-msgid "Error: We were unable to fetch your instagram feed."
+#: includes/widgets/widget-instagram.php:175
+msgid "Unable to communicate with Instagram."
+msgstr ""
+
+#: includes/widgets/widget-instagram.php:179
+msgid "Instagram did not return a 200."
+msgstr ""
+
+#: includes/widgets/widget-instagram.php:187
+#: includes/widgets/widget-instagram.php:195
+#: includes/widgets/widget-instagram.php:199
+msgid "Instagram has returned invalid data."
+msgstr ""
+
+#: includes/widgets/widget-instagram.php:210
+#: includes/widgets/widget-instagram.php:232
+msgid "Instagram Image"
+msgstr ""
+
+#: includes/widgets/widget-instagram.php:263
+msgid "Instagram did not return any images."
 msgstr ""
 
 #: includes/widgets/widget-twitter.php:13
@@ -673,7 +653,6 @@ msgid "Please provide a Twitter Username."
 msgstr ""
 
 #: includes/widgets/widget-twitter.php:181
-#, php-format
 msgid "Please fill in the <a href=\"%s\">Twitter oAuth settings</a>"
 msgstr ""
 
@@ -682,56 +661,7 @@ msgid "The Twitter API is taking too long to respond. Please try again later."
 msgstr ""
 
 #: includes/widgets/widget-twitter.php:222
-#, php-format
 msgid "%s ago"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/basic-theme/exclude/file.php:3
-#: node_modules/grunt-wp-i18n/test/fixtures/plugin-include/plugin-include.php:6
-msgid "Exclude"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/plugin-include/include/file.php:2
-msgid "Include"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/add-domain.php:2
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:2
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:3
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:4
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:2
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-domains.php:3
-msgid "String"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:6
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:7
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:8
-msgctxt "a string"
-msgid "String"
-msgstr ""
-
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:9
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:10
-#: node_modules/grunt-wp-i18n/test/fixtures/text-domains/update-all-domains.php:11
-#, php-format
-msgid "1 Star"
-msgid_plural "%s Stars"
-msgstr[0] ""
-msgstr[1] ""
-
-#. translators: A single line translators comment.
-#: node_modules/grunt-wp-i18n/test/fixtures/translator-comments/translator-comments.php:7
-msgid "A"
-msgstr ""
-
-#. translators: A
-#. multiline
-#. translators
-#. comment.
-#.
-#: node_modules/grunt-wp-i18n/test/fixtures/translator-comments/translator-comments.php:15
-msgid "B"
 msgstr ""
 
 #: shortcodes/config.php:11
@@ -778,16 +708,8 @@ msgstr ""
 msgid "Select the button&lsquo;s size"
 msgstr ""
 
-#: shortcodes/config.php:37
-msgid "Small"
-msgstr ""
-
 #: shortcodes/config.php:38
 msgid "Medium"
-msgstr ""
-
-#: shortcodes/config.php:39
-msgid "Large"
 msgstr ""
 
 #: shortcodes/config.php:44
@@ -1127,7 +1049,7 @@ msgstr ""
 msgid "Choose Image Alignment"
 msgstr ""
 
-#: shortcodes/config.php:276 shortcodes/config.php:395
+#: shortcodes/config.php:276 shortcodes/config.php:406
 msgid "None"
 msgstr ""
 
@@ -1155,7 +1077,7 @@ msgstr ""
 msgid "Insert Image Shortcode"
 msgstr ""
 
-#: shortcodes/config.php:300 shortcodes/shortcode-class.php:147
+#: shortcodes/config.php:300 shortcodes/shortcode-class.php:151
 msgid "Choose Video"
 msgstr ""
 
@@ -1166,7 +1088,6 @@ msgid ""
 msgstr ""
 
 #: shortcodes/config.php:301
-#, php-format
 msgid "A list of all shortcode video services can be found on %s.<br>"
 msgstr ""
 
@@ -1202,128 +1123,143 @@ msgstr ""
 msgid "Enter the icon&lsquo;s font size in px, em or %"
 msgstr ""
 
-#: shortcodes/config.php:341
+#: shortcodes/config.php:343
+msgid "Icon Style"
+msgstr ""
+
+#: shortcodes/config.php:345
+msgid "Solid"
+msgstr ""
+
+#: shortcodes/config.php:346
+msgid "Regular"
+msgstr ""
+
+#: shortcodes/config.php:347
+msgid "Brands"
+msgstr ""
+
+#: shortcodes/config.php:352
 msgid "Insert Icon Shortcode"
 msgstr ""
 
-#: shortcodes/config.php:350
+#: shortcodes/config.php:361
 msgid "Latitude"
 msgstr ""
 
-#: shortcodes/config.php:351
+#: shortcodes/config.php:362
 msgid "Enter the place latitude coordinate. E.g.: 37.42200"
 msgstr ""
 
-#: shortcodes/config.php:356
+#: shortcodes/config.php:367
 msgid "Longitude"
 msgstr ""
 
-#: shortcodes/config.php:357
-#, php-format
+#: shortcodes/config.php:368
 msgid ""
 "Enter the place longitude coordinate. E.g.: -122.08395. You may find the "
 "coordinates <a href=\"%1$s\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: shortcodes/config.php:362
+#: shortcodes/config.php:373
 msgid "Width"
 msgstr ""
 
-#: shortcodes/config.php:363
+#: shortcodes/config.php:374
 msgid "Enter the map width."
 msgstr ""
 
-#: shortcodes/config.php:368
+#: shortcodes/config.php:379
 msgid "Height"
 msgstr ""
 
-#: shortcodes/config.php:369
+#: shortcodes/config.php:380
 msgid "Enter the map height."
 msgstr ""
 
-#: shortcodes/config.php:374
+#: shortcodes/config.php:385
 msgid "Map Type"
 msgstr ""
 
-#: shortcodes/config.php:375
+#: shortcodes/config.php:386
 msgid "Select the map type for Google Maps."
 msgstr ""
 
-#: shortcodes/config.php:377
+#: shortcodes/config.php:388
 msgid "Roadmap"
 msgstr ""
 
-#: shortcodes/config.php:378
+#: shortcodes/config.php:389
 msgid "Satellite"
 msgstr ""
 
-#: shortcodes/config.php:379
+#: shortcodes/config.php:390
 msgid "Hybrid"
 msgstr ""
 
-#: shortcodes/config.php:380
+#: shortcodes/config.php:391
 msgid "Terrain"
 msgstr ""
 
-#: shortcodes/config.php:386
+#: shortcodes/config.php:397
 msgid "Zoom Level"
 msgstr ""
 
-#: shortcodes/config.php:387
+#: shortcodes/config.php:398
 msgid ""
 "Enter the map zoom level between 0-21. Highest value zooms in and lowest "
 "zooms out."
 msgstr ""
 
-#: shortcodes/config.php:392
+#: shortcodes/config.php:403
 msgid "Map Style"
 msgstr ""
 
-#: shortcodes/config.php:393
+#: shortcodes/config.php:404
 msgid "Select from a list of predefined map styles."
 msgstr ""
 
-#: shortcodes/config.php:396
+#: shortcodes/config.php:407
 msgid "Pale Dawn"
 msgstr ""
 
-#: shortcodes/config.php:397
+#: shortcodes/config.php:408
 msgid "Subtle Grayscale"
 msgstr ""
 
-#: shortcodes/config.php:398
+#: shortcodes/config.php:409
 msgid "Bright & Bubbly"
 msgstr ""
 
-#: shortcodes/config.php:399
+#: shortcodes/config.php:410
 msgid "Greyscale"
 msgstr ""
 
-#: shortcodes/config.php:400
+#: shortcodes/config.php:411
 msgid "Mixed"
 msgstr ""
 
-#: shortcodes/config.php:405
+#: shortcodes/config.php:416
 msgid "Insert Google Map Shortcode"
 msgstr ""
 
-#: shortcodes/config.php:430
+#: shortcodes/config.php:441
 msgid "Choose Widget Area"
 msgstr ""
 
-#: shortcodes/config.php:431
+#: shortcodes/config.php:442
 msgid "Choose which sidebar area you want to display."
 msgstr ""
 
-#: shortcodes/config.php:437
+#: shortcodes/config.php:448
 msgid "Class"
 msgstr ""
 
-#: shortcodes/config.php:438
+#: shortcodes/config.php:449
 msgid "Enter Class name, if you want to use one on frontend."
 msgstr ""
 
-#: shortcodes/config.php:442
+#: shortcodes/config.php:453
 msgid "Insert a custom widget area"
 msgstr ""
 
@@ -1331,7 +1267,7 @@ msgstr ""
 msgid "Config file does not exist"
 msgstr ""
 
-#: shortcodes/shortcode-class.php:139
+#: shortcodes/shortcode-class.php:143
 msgid "Choose Image"
 msgstr ""
 
@@ -1343,152 +1279,150 @@ msgstr ""
 msgid "Title Goes Here"
 msgstr ""
 
+#: shortcodes/shortcodes.php:458
 #. translators: %s is a link, do not remove/modify it.
-#: shortcodes/shortcodes.php:456
-#, php-format
 msgid "To be able to use Google Maps, you first need to set an %s."
 msgstr ""
 
-#: shortcodes/shortcodes.php:457
+#: shortcodes/shortcodes.php:459
 msgid "API key"
 msgstr ""
 
-#: shortcodes/stag-shortcodes.php:34
+#: shortcodes/stag-shortcodes.php:35
 msgid "Upload or Choose Your Custom Video File"
 msgstr ""
 
-#: shortcodes/stag-shortcodes.php:35
+#: shortcodes/stag-shortcodes.php:36
 msgid "Upload or Choose Your Custom Image File"
 msgstr ""
 
-#: shortcodes/stag-shortcodes.php:113
+#: shortcodes/stag-shortcodes.php:118
 msgid "Insert Shortcode"
 msgstr ""
 
-#: stagtools.php:118
+#: stagtools.php:133
 msgid "Settings"
 msgstr ""
 
-#: stagtools.php:166
+#: stagtools.php:185
 msgid "StagTools Options"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: stagtools.php:166
 msgid "StagTools"
 msgstr ""
 
-#: stagtools.php:364
+#: stagtools.php:406
 msgid "For more information:"
 msgstr ""
 
-#: stagtools.php:365
-#, php-format
-msgid ""
-"Visit the <a href=\"%s\" target=\"_blank\">documentation</a> on the Github."
+#: stagtools.php:408
+#. translators: %s: Link to Github wiki.
+msgid "Visit the <a href=\"%s\" target=\"_blank\">documentation</a> on the Github."
 msgstr ""
 
-#: stagtools.php:367
-#, php-format
+#: stagtools.php:411
+#. translators: %1$s: Link to Github issues, %2$s: Link to Github repo.
 msgid ""
-"<a href=\"%s\" target=\"_blank\">Post an issue</a> on <a href=\"%s\" target="
-"\"_blank\">GitHub</a>."
+"<a href=\"%1$s\" target=\"_blank\">Post an issue</a> on <a href=\"%2$s\" "
+"target=\"_blank\">GitHub</a>."
 msgstr ""
 
-#: stagtools.php:375
+#: stagtools.php:419
 msgid "Twitter oAuth Settings"
 msgstr ""
 
-#: stagtools.php:376
+#: stagtools.php:420
 msgid ""
 "Here you can find how to add twitter oAuth keys to get Twitter widget "
 "working."
 msgstr ""
 
-#: stagtools.php:377
+#: stagtools.php:421
 msgid "Where do I find these keys?"
 msgstr ""
 
-#: stagtools.php:378
-#, php-format
+#: stagtools.php:423
+#. translators: %s: Link to Twitter Developer documentation site.
 msgid ""
 "In order to use the new Twitter widget, you must first register a Twitter "
-"app, which will provide you with the keys you see above. Start by <a href="
-"\"%s\" target=\"_blank\">signing-in</a> to the Twitter developer dashboard."
+"app, which will provide you with the keys you see above. Start by <a "
+"href=\"%s\" target=\"_blank\">signing-in</a> to the Twitter developer "
+"dashboard."
 msgstr ""
 
-#: stagtools.php:379
+#: stagtools.php:424
 msgid "Where are my widgets?"
 msgstr ""
 
-#: stagtools.php:380
-#, php-format
+#: stagtools.php:426
+#. translators: %s: Link to twitter screenshot.
 msgid ""
 "In order to use the new Twitter widget, you must first register a Twitter "
-"app, which will provide you with the keys you see above. Start by <a href="
-"\"%s\" target=\"_blank\">creating a new application</a> to the Twitter "
+"app, which will provide you with the keys you see above. Start by <a "
+"href=\"%s\" target=\"_blank\">creating a new application</a> to the Twitter "
 "developer dashboard."
 msgstr ""
 
-#: stagtools.php:381
+#: stagtools.php:427
 msgid "Can I insert shortcodes manually instead of using shortcode generator?"
 msgstr ""
 
-#: stagtools.php:382
-#, php-format
+#: stagtools.php:429
+#. translators: %s: Link to Github gist for code snippet.
 msgid ""
-"Yes; although we have a shortcode builder you can also see a list of <a href="
-"\"%s\" target=\"_blank\">all available shortcodes</a> and use it manually in "
-"any supported area."
+"Yes; although we have a shortcode builder you can also see a list of <a "
+"href=\"%s\" target=\"_blank\">all available shortcodes</a> and use it "
+"manually in any supported area."
 msgstr ""
 
-#: stagtools.php:388
+#: stagtools.php:435
 msgid "Portfolio Settings"
 msgstr ""
 
-#: stagtools.php:389
+#: stagtools.php:436
 msgid ""
-"You can use the following settigns to control the slug/taxonomies for custom "
-"post type portfolio and skills."
+"You can use the following settigns to control the slug/taxonomies for "
+"custom post type portfolio and skills."
 msgstr ""
 
-#: stagtools.php:390
+#: stagtools.php:437
 msgid ""
 "<strong>Portfolio Slug</strong> - This settings is used to set the slug of "
 "custom post type &lsquo;portfolio&rsquo;."
 msgstr ""
 
-#: stagtools.php:391
+#: stagtools.php:438
 msgid ""
 "<strong>Skills Slug</strong> - This settings is used to set the slug of "
 "custom post taxonomy &lsquo;skill&rsquo;."
 msgstr ""
 
-#: stagtools.php:397
+#: stagtools.php:444
 msgid "Using Social Icons"
 msgstr ""
 
-#: stagtools.php:398
+#: stagtools.php:445
 msgid "Using Social Icons Shortcode"
 msgstr ""
 
-#: stagtools.php:399
+#: stagtools.php:446
 msgid "To use the social icon use the following shortcode:"
 msgstr ""
 
-#: stagtools.php:400
+#: stagtools.php:447
 msgid "It would display all social icons with non-empty profile URLs."
 msgstr ""
 
-#: stagtools.php:401
+#: stagtools.php:448
 msgid "or you can pass specific ids."
 msgstr ""
 
-#: stagtools.php:402
+#: stagtools.php:449
 msgid "Using Different Styled Icons"
 msgstr ""
 
-#: stagtools.php:403
+#: stagtools.php:450
 msgid ""
 "You can use the social icons in two different styles: normal and square. "
 "Just pass the <code>style</code> argument in sidebar.<br>E.g.: "
@@ -1510,5 +1444,30 @@ msgid "Ram Ratan Maurya"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://mauryaratan.me"
+msgid "https://mauryaratan.me"
+msgstr ""
+
+#: includes/post-type/project.php:10
+msgctxt "post type general name"
+msgid "Projects"
+msgstr ""
+
+#: includes/post-type/project.php:11
+msgctxt "post type singular name"
+msgid "Project"
+msgstr ""
+
+#: includes/post-type/project.php:12
+msgctxt "admin menu"
+msgid "Portfolio"
+msgstr ""
+
+#: includes/post-type/project.php:13
+msgctxt "add new on admin bar"
+msgid "Project"
+msgstr ""
+
+#: includes/post-type/project.php:14
+msgctxt "Project"
+msgid "Add New"
 msgstr ""

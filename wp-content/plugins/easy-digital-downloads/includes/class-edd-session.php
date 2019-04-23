@@ -110,7 +110,6 @@ class EDD_Session {
 	/**
 	 * Setup the WP_Session instance
 	 *
-	 * @access public
 	 * @since 1.5
 	 * @return void
 	 */
@@ -141,7 +140,6 @@ class EDD_Session {
 	/**
 	 * Retrieve session ID
 	 *
-	 * @access public
 	 * @since 1.6
 	 * @return string Session ID
 	 */
@@ -153,14 +151,47 @@ class EDD_Session {
 	/**
 	 * Retrieve a session variable
 	 *
-	 * @access public
 	 * @since 1.5
 	 * @param string $key Session key
-	 * @return string Session variable
+	 * @return mixed Session variable
 	 */
 	public function get( $key ) {
-		$key = sanitize_key( $key );
-		return isset( $this->session[ $key ] ) ? maybe_unserialize( $this->session[ $key ] ) : false;
+
+		$key    = sanitize_key( $key );
+		$return = false;
+
+		if ( isset( $this->session[ $key ] ) && ! empty( $this->session[ $key ] ) ) {
+
+			preg_match( '/[oO]\s*:\s*\d+\s*:\s*"\s*(?!(?i)(stdClass))/', $this->session[ $key ], $matches );
+			if ( ! empty( $matches ) ) {
+				$this->set( $key, null );
+				return false;
+			}
+
+			if ( is_numeric( $this->session[ $key ] ) ) {
+				$return = $this->session[ $key ];
+			} else {
+
+				$maybe_json = json_decode( $this->session[ $key ] );
+
+				// Since json_last_error is PHP 5.3+, we have to rely on a `null` value for failing to parse JSON.
+				if ( is_null( $maybe_json ) ) {
+					$is_serialized = is_serialized( $this->session[ $key ] );
+					if ( $is_serialized ) {
+						$value = @unserialize( $this->session[ $key ] );
+						$this->set( $key, (array) $value );
+						$return = $value;
+					} else {
+						$return = $this->session[ $key ];
+					}
+				} else {
+					$return = json_decode( $this->session[ $key ], true );
+				}
+
+			}
+		}
+
+		return $return;
 	}
 
 	/**
@@ -169,17 +200,17 @@ class EDD_Session {
 	 * @since 1.5
 	 *
 	 * @param string $key Session key
-	 * @param integer $value Session variable
-	 * @return string Session variable
+	 * @param int|string|array $value Session variable
+	 * @return mixed Session variable
 	 */
 	public function set( $key, $value ) {
 
 		$key = sanitize_key( $key );
 
 		if ( is_array( $value ) ) {
-			$this->session[ $key ] = serialize( $value );
+			$this->session[ $key ] = wp_json_encode( $value );
 		} else {
-			$this->session[ $key ] = $value;
+			$this->session[ $key ] = esc_attr( $value );
 		}
 
 		if( $this->use_php_sessions ) {
@@ -195,7 +226,6 @@ class EDD_Session {
 	 *
 	 * This is for hosts and caching plugins to identify if caching should be disabled
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @param bool $set Whether to set or destroy
 	 * @return void
@@ -215,7 +245,6 @@ class EDD_Session {
 	/**
 	 * Force the cookie expiration variant time to 23 hours
 	 *
-	 * @access public
 	 * @since 2.0
 	 * @param int $exp Default expiration (1 hour)
 	 * @return int
@@ -227,7 +256,6 @@ class EDD_Session {
 	/**
 	 * Force the cookie expiration time to 24 hours
 	 *
-	 * @access public
 	 * @since 1.9
 	 * @param int $exp Default expiration (1 hour)
 	 * @return int Cookie expiration time
@@ -243,7 +271,6 @@ class EDD_Session {
 	 * Checks to see if the server supports PHP sessions
 	 * or if the EDD_USE_PHP_SESSIONS constant is defined
 	 *
-	 * @access public
 	 * @since 2.1
 	 * @author Daniel J Griffiths
 	 * @return boolean $ret True if we are using PHP sessions, false otherwise
@@ -324,6 +351,16 @@ class EDD_Session {
 			}
 
 			if( false !== strpos( $uri, 'feed=' ) ) {
+				$start_session = false;
+			}
+
+			if( is_admin() && false === strpos( $uri, 'wp-admin/admin-ajax.php' ) ) {
+				// We do not want to start sessions in the admin unless we're processing an ajax request
+				$start_session = false;
+			}
+
+			if( false !== strpos( $uri, 'wp_scrape_key' ) ) {
+				// Starting sessions while saving the file editor can break the save process, so don't start
 				$start_session = false;
 			}
 

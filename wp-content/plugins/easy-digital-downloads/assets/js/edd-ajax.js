@@ -6,14 +6,16 @@ jQuery(document).ready(function ($) {
 	$('a.edd-add-to-cart').addClass('edd-has-js');
 
 	// Send Remove from Cart requests
-	$('body').on('click.eddRemoveFromCart', '.edd-remove-from-cart', function (event) {
+	$(document.body).on('click.eddRemoveFromCart', '.edd-remove-from-cart', function (event) {
 		var $this  = $(this),
 			item   = $this.data('cart-item'),
 			action = $this.data('action'),
 			id     = $this.data('download-id'),
+			nonce  = $this.data('nonce'),
 			data   = {
 				action: action,
-				cart_item: item
+				cart_item: item,
+				nonce: nonce
 			};
 
 		 $.ajax({
@@ -46,7 +48,6 @@ jQuery(document).ready(function ($) {
 						});
 					});
 
-
 					// Check to see if the purchase form(s) for this download is present on this page
 					if( $( '[id^=edd_purchase_' + id + ']' ).length ) {
 						$( '[id^=edd_purchase_' + id + '] .edd_go_to_checkout' ).hide();
@@ -57,7 +58,7 @@ jQuery(document).ready(function ($) {
 					}
 
 					$('span.edd-cart-quantity').text( response.cart_quantity );
-					$('body').trigger('edd_quantity_updated', [ response.cart_quantity ]);
+					$(document.body).trigger('edd_quantity_updated', [ response.cart_quantity ]);
 					if ( edd_scripts.taxes_enabled ) {
 						$('.cart_item.edd_subtotal span').html( response.subtotal );
 						$('.cart_item.edd_cart_tax span').html( response.tax );
@@ -79,7 +80,7 @@ jQuery(document).ready(function ($) {
 						});
 					}
 
-					$('body').trigger('edd_cart_item_removed', [ response ]);
+					$(document.body).trigger('edd_cart_item_removed', [ response ]);
 				}
 			}
 		}).fail(function (response) {
@@ -94,7 +95,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Send Add to Cart request
-	$('body').on('click.eddAddToCart', '.edd-add-to-cart', function (e) {
+	$(document.body).on('click.eddAddToCart', '.edd-add-to-cart', function (e) {
 
 		e.preventDefault();
 
@@ -113,6 +114,7 @@ jQuery(document).ready(function ($) {
 		var download       = $this.data('download-id');
 		var variable_price = $this.data('variable-price');
 		var price_mode     = $this.data('price-mode');
+		var nonce          = $this.data('nonce');
 		var item_price_ids = [];
 		var free_items     = true;
 
@@ -170,7 +172,8 @@ jQuery(document).ready(function ($) {
 			action: action,
 			download_id: download,
 			price_ids : item_price_ids,
-			post_data: $(form).serialize()
+			post_data: $(form).serialize(),
+			nonce: nonce,
 		};
 
 		$.ajax({
@@ -230,7 +233,7 @@ jQuery(document).ready(function ($) {
 
 					$('span.edd-cart-quantity').each(function() {
 						$(this).text(response.cart_quantity);
-						$('body').trigger('edd_quantity_updated', [ response.cart_quantity ]);
+						$(document.body).trigger('edd_quantity_updated', [ response.cart_quantity ]);
 					});
 
 					// Show the "number of items in cart" message
@@ -270,7 +273,7 @@ jQuery(document).ready(function ($) {
 					// Re-enable the add to cart button
 					$this.prop('disabled', false);
 
-					$('body').trigger('edd_cart_item_added', [ response ]);
+					$(document.body).trigger('edd_cart_item_added', [ response ]);
 
 				}
 			}
@@ -289,8 +292,10 @@ jQuery(document).ready(function ($) {
 	$('#edd_checkout_form_wrap').on('click', '.edd_checkout_register_login', function () {
 		var $this = $(this),
 			data = {
-				action: $this.data('action')
+				action: $this.data('action'),
+				nonce: $this.data('nonce'),
 			};
+
 		// Show the ajax loader
 		$('.edd-cart-ajax').show();
 
@@ -318,7 +323,8 @@ jQuery(document).ready(function ($) {
 			action : 'edd_process_checkout_login',
 			edd_ajax : 1,
 			edd_user_login : $('#edd_login_fields #edd_user_login').val(),
-			edd_user_pass : $('#edd_login_fields #edd_user_pass').val()
+			edd_user_pass : $('#edd_login_fields #edd_user_pass').val(),
+			edd_login_nonce : $('#edd_login_nonce').val(),
 		};
 
 		$.post(edd_global_vars.ajaxurl, data, function(data) {
@@ -351,17 +357,37 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Auto load first payment gateway
-	if( edd_scripts.is_checkout == '1' && $('select#edd-gateway, input.edd-gateway').length ) {
-		var chosen_gateway = $("meta[name='edd-chosen-gateway']").attr('content');
+	if( edd_scripts.is_checkout == '1' ) {
+
+		var chosen_gateway = false;
+		var ajax_needed    = false;
+
+		if ( $('select#edd-gateway, input.edd-gateway').length ) {
+			chosen_gateway = $("meta[name='edd-chosen-gateway']").attr('content');
+			ajax_needed    = true;
+		}
+
 		if( ! chosen_gateway ) {
 			chosen_gateway = edd_scripts.default_gateway;
 		}
-		setTimeout( function() {
-			edd_load_gateway( chosen_gateway );
-		}, 200);
+
+		if ( ajax_needed ) {
+
+			// If we need to ajax in a gateway form, send the requests for the POST.
+			setTimeout( function() {
+				edd_load_gateway( chosen_gateway );
+			}, 200);
+
+		} else {
+
+			// The form is already on page, just trigger that the gateway is loaded so further action can be taken.
+			$('body').trigger('edd_gateway_loaded', [ chosen_gateway ]);
+
+		}
 	}
 
-	$(document).on('click', '#edd_purchase_form #edd_purchase_submit input[type=submit]', function(e) {
+	// Process checkout
+	$(document).on('click', '#edd_purchase_form #edd_purchase_submit [type=submit]', function(e) {
 
 		var eddPurchaseform = document.getElementById('edd_purchase_form');
 
@@ -389,28 +415,40 @@ jQuery(document).ready(function ($) {
 				$('.edd-loading-ajax').remove();
 				$('.edd_errors').remove();
 				$('.edd-error').hide();
-				$('#edd_purchase_submit').before(data);
+				$( edd_global_vars.checkout_error_anchor ).before(data);
 				$('#edd-purchase-button').prop( 'disabled', false );
+
+				$(document.body).trigger( 'edd_checkout_error', [ data ] );
 			}
 		});
 
 	});
 
-	$('body').on('change', '#edd_cc_address input.card_state, #edd_cc_address select, #edd_address_country', update_state_field);
+	// Update state field
+	$(document.body).on('change', '#edd_cc_address input.card_state, #edd_cc_address select, #edd_address_country', update_state_field);
 
 	function update_state_field() {
 
 		var $this = $(this);
 		var $form;
 		var is_checkout = typeof edd_global_vars !== 'undefined';
+		var field_name  = 'card_state';
+		if ( $(this).attr('id') == 'edd_address_country' ) {
+			field_name = 'edd_address_state';
+		}
 
-		if( 'card_state' != $this.attr('id') ) {
+		var state_inputs = document.getElementById(field_name );
+
+		// If the country is being changed, and there is a state field being shown...
+		if( 'card_state' != $this.attr('id') && null != state_inputs ) {
+			var nonce = $(this).data('nonce');
 
 			// If the country field has changed, we need to update the state/province field
 			var postData = {
 				action: 'edd_get_shop_states',
 				country: $this.val(),
-				field_name: 'card_state'
+				field_name: field_name,
+				nonce: nonce,
 			};
 
 			$.ajax({
@@ -430,14 +468,14 @@ jQuery(document).ready(function ($) {
 					var state_inputs = 'input[name="card_state"], select[name="card_state"], input[name="edd_address_state"], select[name="edd_address_state"]';
 
 					if( 'nostates' == $.trim(response) ) {
-						var text_field = '<input type="text" name="card_state" class="card-state edd-input required" value=""/>';
+						var text_field = '<input type="text" id=' + field_name + ' name="card_state" class="card-state edd-input required" value=""/>';
 						$form.find(state_inputs).replaceWith( text_field );
 					} else {
 						$form.find(state_inputs).replaceWith( response );
 					}
 
 					if ( is_checkout ) {
-						$('body').trigger('edd_cart_billing_address_updated', [ response ]);
+						$(document.body).trigger('edd_cart_billing_address_updated', [ response ]);
 					}
 
 				}
@@ -460,20 +498,22 @@ jQuery(document).ready(function ($) {
 	}
 
 	// If is_checkout, recalculate sales tax on postalCode change.
-	$('body').on('change', '#edd_cc_address input[name=card_zip]', function () {
+	$(document.body).on('change', '#edd_cc_address input[name=card_zip]', function () {
 		if (typeof edd_global_vars !== 'undefined') {
 			recalculate_taxes();
 		}
 	});
 });
 
+// Load a payment gateway
 function edd_load_gateway( payment_mode ) {
 
 	// Show the ajax loader
 	jQuery('.edd-cart-ajax').show();
 	jQuery('#edd_purchase_form_wrap').html('<span class="edd-loading-ajax edd-loading"></span>');
 
-	var url = edd_scripts.ajaxurl;
+	var nonce = jQuery('#edd-gateway-' + payment_mode).data(payment_mode+'-nonce');
+	var url   = edd_scripts.ajaxurl;
 
 	if ( url.indexOf( '?' ) > 0 ) {
 		url = url + '&';
@@ -483,7 +523,7 @@ function edd_load_gateway( payment_mode ) {
 
 	url = url + 'payment-mode=' + payment_mode;
 
-	jQuery.post(url, { action: 'edd_load_gateway', edd_payment_mode: payment_mode },
+	jQuery.post(url, { action: 'edd_load_gateway', edd_payment_mode: payment_mode, nonce: nonce },
 		function(response){
 			jQuery('#edd_purchase_form_wrap').html(response);
 			jQuery('.edd-no-js').hide();

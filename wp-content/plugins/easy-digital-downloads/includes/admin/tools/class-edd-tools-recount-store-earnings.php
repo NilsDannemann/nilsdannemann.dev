@@ -44,7 +44,6 @@ class EDD_Tools_Recount_Store_Earnings extends EDD_Batch_Export {
 	/**
 	 * Get the Export Data
 	 *
-	 * @access public
 	 * @since 2.5
 	 * @global object $wpdb Used to query the database using the WordPress
 	 *   Database API
@@ -184,7 +183,6 @@ class EDD_Tools_Recount_Store_Earnings extends EDD_Batch_Export {
 	/**
 	 * Perform the export
 	 *
-	 * @access public
 	 * @since 2.5
 	 * @return void
 	 */
@@ -207,7 +205,16 @@ class EDD_Tools_Recount_Store_Earnings extends EDD_Batch_Export {
 		global $wpdb;
 		$value = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = '%s'", $key ) );
 
-		return empty( $value ) ? false : maybe_unserialize( $value );
+		if ( empty( $value ) ) {
+			return false;
+		}
+
+		$maybe_json = json_decode( $value );
+		if ( ! is_null( $maybe_json ) ) {
+			$value = json_decode( $value, true );
+		}
+
+		return $value;
 	}
 
 	/**
@@ -221,7 +228,7 @@ class EDD_Tools_Recount_Store_Earnings extends EDD_Batch_Export {
 	private function store_data( $key, $value ) {
 		global $wpdb;
 
-		$value = maybe_serialize( $value );
+		$value = is_array( $value ) ? wp_json_encode( $value ) : esc_attr( $value );
 
 		$data = array(
 			'option_name'  => $key,

@@ -309,7 +309,7 @@ add_shortcode( 'purchase_collection', 'edd_purchase_collection_shortcode' );
  *
  * This shortcodes uses the WordPress Query API to get downloads with the
  * arguments specified when using the shortcode. A list of the arguments
- * can be found from the EDD Dccumentation. The shortcode will take all the
+ * can be found from the EDD Documentation. The shortcode will take all the
  * parameters and display the downloads queried in a valid HTML <div> tags.
  *
  * @since 1.0.6
@@ -336,6 +336,7 @@ function edd_downloads_query( $atts, $content = null ) {
 		'orderby'          => 'post_date',
 		'order'            => 'DESC',
 		'ids'              => '',
+		'class'            => '',
 		'pagination'       => 'true',
 	), $atts, 'downloads' );
 
@@ -364,6 +365,18 @@ function edd_downloads_query( $atts, $content = null ) {
 		case 'price':
 			$atts['orderby']   = 'meta_value';
 			$query['meta_key'] = 'edd_price';
+			$query['orderby']  = 'meta_value_num';
+		break;
+
+		case 'sales':
+			$atts['orderby']   = 'meta_value';
+			$query['meta_key'] = '_edd_download_sales';
+			$query['orderby']  = 'meta_value_num';
+		break;
+
+		case 'earnings':
+			$atts['orderby']   = 'meta_value';
+			$query['meta_key'] = '_edd_download_earnings';
 			$query['orderby']  = 'meta_value_num';
 		break;
 
@@ -574,94 +587,42 @@ function edd_downloads_query( $atts, $content = null ) {
 	$query = apply_filters( 'edd_downloads_query', $query, $atts );
 
 	$downloads = new WP_Query( $query );
+
+	do_action( 'edd_downloads_list_before', $atts );
+
+	ob_start();
+
 	if ( $downloads->have_posts() ) :
 		$i = 1;
-		$wrapper_class = 'edd_download_columns_' . $atts['columns'];
-		ob_start(); ?>
-		<div class="edd_downloads_list <?php echo apply_filters( 'edd_downloads_list_wrapper_class', $wrapper_class, $atts ); ?>">
+		$columns_class   = array( 'edd_download_columns_' . $atts['columns'] );
+		$custom_classes  = array_filter( explode( ',', $atts['class'] ) );
+		$wrapper_classes = array_unique( array_merge( $columns_class, $custom_classes ) );
+		$wrapper_classes = implode( ' ', $wrapper_classes );
+	?>
+
+		<div class="edd_downloads_list <?php echo apply_filters( 'edd_downloads_list_wrapper_class', $wrapper_classes, $atts ); ?>">
+
+			<?php do_action( 'edd_downloads_list_top', $atts, $downloads ); ?>
+
 			<?php while ( $downloads->have_posts() ) : $downloads->the_post(); ?>
-				<?php $schema = edd_add_schema_microdata() ? 'itemscope itemtype="http://schema.org/Product" ' : ''; ?>
-				<div <?php echo $schema; ?>class="<?php echo apply_filters( 'edd_download_class', 'edd_download', get_the_ID(), $atts, $i ); ?>" id="edd_download_<?php echo get_the_ID(); ?>">
-					<div class="<?php echo apply_filters( 'edd_download_inner_class', 'edd_download_inner', get_the_ID(), $atts, $i ); ?>">
-						<?php
-
-						do_action( 'edd_download_before' );
-
-						if ( 'false' != $atts['thumbnails'] ) :
-							edd_get_template_part( 'shortcode', 'content-image' );
-							do_action( 'edd_download_after_thumbnail' );
-						endif;
-
-						edd_get_template_part( 'shortcode', 'content-title' );
-						do_action( 'edd_download_after_title' );
-
-						if ( $atts['excerpt'] == 'yes' && $atts['full_content'] != 'yes' ) {
-							edd_get_template_part( 'shortcode', 'content-excerpt' );
-							do_action( 'edd_download_after_content' );
-						} else if ( $atts['full_content'] == 'yes' ) {
-							edd_get_template_part( 'shortcode', 'content-full' );
-							do_action( 'edd_download_after_content' );
-						}
-
-						if ( $atts['price'] == 'yes' ) {
-							edd_get_template_part( 'shortcode', 'content-price' );
-							do_action( 'edd_download_after_price' );
-						}
-
-						if ( $atts['buy_button'] == 'yes' )
-							edd_get_template_part( 'shortcode', 'content-cart-button' );
-
-						do_action( 'edd_download_after' );
-
-						?>
-					</div>
-				</div>
-				<?php if ( $atts['columns'] != 0 && $i % $atts['columns'] == 0 ) { ?><div style="clear:both;"></div><?php } ?>
+				<?php do_action( 'edd_download_shortcode_item', $atts, $i ); ?>
 			<?php $i++; endwhile; ?>
-
-			<div style="clear:both;"></div>
 
 			<?php wp_reset_postdata(); ?>
 
-			<?php if ( filter_var( $atts['pagination'], FILTER_VALIDATE_BOOLEAN ) ) : ?>
-
-			<?php
-				$pagination = false;
-
-				if ( is_single() ) {
-					$pagination = paginate_links( apply_filters( 'edd_download_pagination_args', array(
-						'base'    => get_permalink() . '%#%',
-						'format'  => '?paged=%#%',
-						'current' => max( 1, $query['paged'] ),
-						'total'   => $downloads->max_num_pages
-					), $atts, $downloads, $query ) );
-				} else {
-					$big = 999999;
-					$search_for   = array( $big, '#038;' );
-					$replace_with = array( '%#%', '&' );
-					$pagination = paginate_links( apply_filters( 'edd_download_pagination_args', array(
-						'base'    => str_replace( $search_for, $replace_with, get_pagenum_link( $big ) ),
-						'format'  => '?paged=%#%',
-						'current' => max( 1, $query['paged'] ),
-						'total'   => $downloads->max_num_pages
-					), $atts, $downloads, $query ) );
-				}
-			?>
-
-			<?php if ( ! empty( $pagination ) ) : ?>
-			<div id="edd_download_pagination" class="navigation">
-				<?php echo $pagination; ?>
-			</div>
-			<?php endif; ?>
-
-			<?php endif; ?>
+			<?php do_action( 'edd_downloads_list_bottom', $atts ); ?>
 
 		</div>
+
 		<?php
-		$display = ob_get_clean();
+		
 	else:
-		$display = sprintf( _x( 'No %s found', 'download post type name', 'easy-digital-downloads' ), edd_get_label_plural() );
+		printf( _x( 'No %s found', 'download post type name', 'easy-digital-downloads' ), edd_get_label_plural() );
 	endif;
+
+	do_action( 'edd_downloads_list_after', $atts, $downloads, $query );
+
+	$display = ob_get_clean();
 
 	return apply_filters( 'downloads_shortcode', $display, $atts, $atts['buy_button'], $atts['columns'], '', $downloads, $atts['excerpt'], $atts['full_content'], $atts['price'], $atts['thumbnails'], $query );
 }
@@ -924,7 +885,7 @@ function edd_process_profile_editor_updates( $data ) {
 
 	if ( $customer->id > 0 ) {
 		$update_args = array(
-			'name'  => $first_name . ' ' . $last_name,
+			'name'  => stripslashes( $first_name . ' ' . $last_name ),
 		);
 
 		$customer->update( $update_args );
@@ -970,7 +931,7 @@ function edd_process_profile_editor_remove_email() {
 
 		$user          = wp_get_current_user();
 		$user_login    = ! empty( $user->user_login ) ? $user->user_login : 'EDDBot';
-		$customer_note = __( sprintf( 'Email address %s removed by %s', $_GET['email'], $user_login ), 'easy-digital-downloads' );
+		$customer_note = sprintf( __( 'Email address %s removed by %s', 'easy-digital-downloads' ), sanitize_email( $_GET['email'] ), $user_login );
 		$customer->add_note( $customer_note );
 
 	} else {

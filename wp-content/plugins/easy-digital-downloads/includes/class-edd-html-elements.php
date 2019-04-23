@@ -24,7 +24,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of all the Products (Downloads)
 	 *
-	 * @access public
 	 * @since 1.5
 	 * @param array $args Arguments for the dropdown
 	 * @return string $output Product dropdown
@@ -42,7 +41,10 @@ class EDD_HTML_Elements {
 			'bundles'     => true,
 			'variations'  => false,
 			'placeholder' => sprintf( __( 'Choose a %s', 'easy-digital-downloads' ), edd_get_label_singular() ),
-			'data'        => array( 'search-type' => 'download' ),
+			'data'        => array(
+				'search-type'        => 'download',
+				'search-placeholder' => sprintf( __( 'Type to search all %s', 'easy-digital-downloads' ), edd_get_label_plural() )
+			),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -51,8 +53,26 @@ class EDD_HTML_Elements {
 			'post_type'      => 'download',
 			'orderby'        => 'title',
 			'order'          => 'ASC',
-			'posts_per_page' => $args['number']
+			'posts_per_page' => $args['number'],
 		);
+
+		if ( ! current_user_can( 'edit_products' ) ) {
+			$product_args['post_status'] = apply_filters( 'edd_product_dropdown_status_nopriv', array( 'publish' ) );
+		} else {
+			$product_args['post_status'] = apply_filters( 'edd_product_dropdown_status', array( 'publish', 'draft', 'private', 'future' ) );
+		}
+
+		if ( is_array( $product_args['post_status'] ) ) {
+
+			// Given the array, sanitize them.
+			$product_args['post_status'] = array_map( 'sanitize_text_field', $product_args['post_status'] );
+
+		} else {
+
+			// If we didn't get an array, fallback to 'publish'.
+			$product_args['post_status'] = array( 'publish' );
+
+		}
 
 		// Maybe disable bundles
 		if( ! $args['bundles'] ) {
@@ -66,7 +86,36 @@ class EDD_HTML_Elements {
 			);
 		}
 
-		$products   = get_posts( $product_args );
+		$product_args = apply_filters( 'edd_product_dropdown_args', $product_args );
+
+		// Since it's possible to have selected items not within the queried limit, we need to include the selected items.
+		$products     = get_posts( $product_args );
+		$existing_ids = wp_list_pluck( $products, 'ID' );
+		if ( ! empty( $args['selected'] ) ) {
+
+			$selected_items = $args['selected'];
+			if ( ! is_array( $selected_items ) ) {
+				$selected_items = array( $selected_items );
+			}
+
+			foreach ( $selected_items as $selected_item ) {
+				if ( ! in_array( $selected_item, $existing_ids ) ) {
+
+					// If the selected item has a variation, we just need the product ID.
+					$has_variation = strpos( $selected_item, '_' );
+					if ( false !== $has_variation ) {
+						$selected_item = substr( $selected_item, 0, $has_variation );
+					}
+
+					$post       = get_post( $selected_item );
+					if ( ! is_null( $post ) ) {
+						$products[] = $post;
+					}
+				}
+			}
+
+		}
+
 		$options    = array();
 		$options[0] = '';
 		if ( $products ) {
@@ -75,10 +124,9 @@ class EDD_HTML_Elements {
 				if ( $args['variations'] && edd_has_variable_prices( $product->ID ) ) {
  					$prices = edd_get_variable_prices( $product->ID );
  					foreach ( $prices as $key => $value ) {
- 						$name   = ! empty( $value['name'] )   ? $value['name']   : '';
- 						$index  = ! empty( $value['index'] )  ? $value['index']  : $key;
- 						if ( $name && $index ) {
- 							$options[ absint( $product->ID ) . '_' . $index ] = esc_html( $product->post_title . ': ' . $name );
+ 						$name = ! empty( $value['name'] )   ? $value['name']   : '';
+ 						if ( $name ) {
+ 							$options[ absint( $product->ID ) . '_' . $key ] = esc_html( $product->post_title . ': ' . $name );
  						}
  					}
  				}
@@ -99,12 +147,11 @@ class EDD_HTML_Elements {
 						$prices = edd_get_variable_prices( (int) $parsed_item['download_id'] );
 						foreach ( $prices as $key => $value ) {
 
-							$name   = isset( $value['name'] )   ? $value['name']   : '';
-							$index  = isset( $value['index'] )  ? $value['index']  : $key;
+							$name = ( isset( $value['name'] ) && ! empty( $value['name'] ) ) ? $value['name']   : '';
 
-							if ( $name && $index && (int) $parsed_item['price_id'] === (int) $index  ) {
+							if ( $name && (int) $parsed_item['price_id'] === (int) $key  ) {
 
-								$options[ absint( $product->ID ) . '_' . $index ] = esc_html( get_the_title( (int) $parsed_item['download_id'] ) . ': ' . $name );
+								$options[ absint( $product->ID ) . '_' . $key ] = esc_html( get_the_title( (int) $parsed_item['download_id'] ) . ': ' . $name );
 
 						    }
 
@@ -130,12 +177,11 @@ class EDD_HTML_Elements {
 
 					foreach ( $prices as $key => $value ) {
 
-						$name   = isset( $value['name'] )   ? $value['name']   : '';
-						$index  = isset( $value['index'] )  ? $value['index']  : $key;
+						$name = ( isset( $value['name'] ) && ! empty( $value['name'] ) ) ? $value['name']   : '';
 
-						if ( $name && $index && (int) $parsed_item['price_id'] === (int) $index  ) {
+						if ( $name && (int) $parsed_item['price_id'] === (int) $key  ) {
 
-							$options[ absint( $product->ID ) . '_' . $index ] = esc_html( get_the_title( (int) $parsed_item['download_id'] ) . ': ' . $name );
+							$options[ absint( $product->ID ) . '_' . $key ] = esc_html( get_the_title( (int) $parsed_item['download_id'] ) . ': ' . $name );
 
 						}
 
@@ -179,7 +225,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of all customers
 	 *
-	 * @access public
 	 * @since 2.2
 	 * @param array $args
 	 * @return string $output Customer dropdown
@@ -195,7 +240,10 @@ class EDD_HTML_Elements {
 			'chosen'      => true,
 			'placeholder' => __( 'Select a Customer', 'easy-digital-downloads' ),
 			'number'      => 30,
-			'data'        => array( 'search-type' => 'customer' ),
+			'data'        => array(
+				'search-type'        => 'customer',
+				'search-placeholder' => __( 'Type to search all Customers', 'easy-digital-downloads' )
+			),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -253,7 +301,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of all the Users
 	 *
-	 * @access public
 	 * @since 2.6.9
 	 * @param array $args
 	 * @return string $output User dropdown
@@ -269,7 +316,10 @@ class EDD_HTML_Elements {
 			'chosen'      => true,
 			'placeholder' => __( 'Select a User', 'easy-digital-downloads' ),
 			'number'      => 30,
-			'data'        => array( 'search-type' => 'user' ),
+			'data'        => array(
+				'search-type'        => 'user',
+				'search-placeholder' => __( 'Type to search all Users', 'easy-digital-downloads' ),
+			),
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -326,7 +376,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of all the Discounts
 	 *
-	 * @access public
 	 * @since 1.5.2
 	 * @param string $name Name attribute of the dropdown
 	 * @param int    $selected Discount to select automatically
@@ -364,7 +413,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of all the Categories
 	 *
-	 * @access public
 	 * @since 1.5.2
 	 * @param string $name Name attribute of the dropdown
 	 * @param int    $selected Category to select automatically
@@ -393,7 +441,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of years
 	 *
-	 * @access public
 	 * @since 1.5.2
 	 * @param string $name Name attribute of the dropdown
 	 * @param int    $selected Year to select automatically
@@ -427,7 +474,6 @@ class EDD_HTML_Elements {
 	/**
 	 * Renders an HTML Dropdown of months
 	 *
-	 * @access public
 	 * @since 1.5.2
 	 * @param string $name Name attribute of the dropdown
 	 * @param int    $selected Month to select automatically
@@ -752,4 +798,5 @@ class EDD_HTML_Elements {
 
 		return $output;
 	}
+
 }

@@ -22,7 +22,7 @@ if ( ! class_exists( 'Jetpack_Flickr_Widget' ) ) {
 				/** This filter is documented in modules/widgets/facebook-likebox.php */
 				apply_filters( 'jetpack_widget_name', esc_html__( 'Flickr', 'jetpack' ) ),
 				array(
-					'description' => esc_html__( 'Display your recent Flickr photos.', 'jetpack' ),
+					'description'                 => esc_html__( 'Display your recent Flickr photos.', 'jetpack' ),
 					'customize_selective_refresh' => true,
 				),
 				array()
@@ -50,9 +50,9 @@ if ( ! class_exists( 'Jetpack_Flickr_Widget' ) ) {
 		public function defaults() {
 			return array(
 				'title'             => esc_html__( 'Flickr Photos', 'jetpack' ),
-				'items'             => 3,
+				'items'             => 4,
 				'flickr_image_size' => 'thumbnail',
-				'flickr_rss_url'    => ''
+				'flickr_rss_url'    => '',
 			);
 		}
 
@@ -132,9 +132,8 @@ if ( ! class_exists( 'Jetpack_Flickr_Widget' ) ) {
 					$photos .= '<a href="' . esc_url( $photo->get_permalink(), array( 'http', 'https' ) ) . '">';
 					$photos .= '<img src="' . esc_url( $src, array( 'http', 'https' ) ) . '" ';
 					$photos .= 'alt="' . esc_attr( $photo->get_title() ) . '" ';
-					$photos .= 'border="0" ';
 					$photos .= 'title="' . esc_attr( $photo->get_title() ) . '" ';
-					$photos .= ' /></a><br /><br />';
+					$photos .= ' /></a>';
 				}
 				if ( ! empty( $photos ) && class_exists( 'Jetpack_Photon' ) && Jetpack::is_module_active( 'photon' ) ) {
 					$photos = Jetpack_Photon::filter_the_content( $photos );

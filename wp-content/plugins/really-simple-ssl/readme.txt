@@ -1,11 +1,12 @@
 === Really Simple SSL ===
-Contributors: RogierLankhorst
+Contributors: RogierLankhorst, markwolters
 Donate link: https://www.paypal.me/reallysimplessl
 Tags: SSL, https, force SSL, mixed content, insecure content, secure website, website security, TLS, security, secure socket layers, HSTS
 Requires at least: 4.2
 License: GPL2
-Tested up to: 4.9
-Stable tag: 2.5.26
+Tested up to: 5.1
+Requires PHP: 5.4
+Stable tag: 3.1.5
 
 No setup required! You only need an SSL certificate, and this plugin will do the rest.
 
@@ -20,7 +21,7 @@ To keep it lightweight, the options are kept to a minimum. The entire site will 
 
 Always backup before you go! If you do not have a sound backup policy, start having one! See [our recommendations](https://really-simple-ssl.com/knowledge-base/backing-up-your-site/).
 
-Really Simple SSL is on [GitHub](https://github.com/rlankhorst/really-simple-ssl) as well!
+Any code suggestions? We're on [GitHub](https://github.com/rlankhorst/really-simple-ssl) as well!
 
 = Love Really Simple SSL? =
 Hopefully this plugin save you some hours of work. If you want to support the continuing development of this plugin, you might consider buying the [premium](https://www.really-simple-ssl.com/pro/), which includes
@@ -78,6 +79,65 @@ If you are experiencing redirect loops on your site, try these [instructions](ht
 Yes. There is a dedicated network settings page where you can switch between network activated SSL and per page SSL. In the dedicated pro for multisite plugin, you can override all site settings for SSL on the network level, and can activate and deactivate SSL in the network menu for each site.
 
 == Changelog ==
+= 3.1.5 =
+* Fix: fixed a bug where having an open_basedir defined showed PHP warnings when using htaccess.conf
+
+= 3.1.4 =
+* Tweak: added support for Bitnami/AWS htaccess.conf file
+* Tweak: multisite blog count now only counts public sites
+* Tweak: changed rewrite rules flush time to 1-5 minutes
+* Tweak: improved multisite site count
+
+= 3.1.3 =
+* Tweak: no longer shows notices on Gutenberg edit screens
+* Tweak: updated Google Analytics with link to SSL settings page
+* Fix: multisite blog count now only counts public sites
+
+= 3.1.2 =
+* Tweak: added cool checkboxes
+* Tweak: .well-known/acme-challenge/ is excluded from .htaccess https:// redirect
+* Tweak: implemented transients for functions that use curl/wp_remote_get()
+* Tweak: improved mixed content fixer detection notifications
+* Tweak: removed review notice for multisite
+
+= 3.1.1 =
+* Fix: Multisite network wide activation/deactivation cron not saving settings because user capability not set this early in the process.
+
+= 3.1 =
+* Fix: fixed a bug in certificate detection
+* Tweak: added HTTP_X_PROTO as supported header
+* Tweak: split HTTP_X_FORWARDED_SSL into a variation which can be either '1' or 'on'
+* Tweak: improved certificate detection by stripping domains of subfolders.
+* Tweak: Multisite bulk SSL activation now chunked in 200 site blocks, to prevent time out issues on large multisite networks.
+* Tweak: a 'leave review' notice for new free users
+
+= 3.0.5 =
+* Fix: untranslatable string made translatable.
+
+= 3.0.4 =
+* Fix: removed anonymous function to maintain PHP 5.2 compatibility.
+
+= 3.0.3 =
+* Tweak: mixed content fixer will no longer fire on XML content
+* Tweak: network menu on subsites now always shows to Super Admins
+* Tweak: flush rewrite rules upon activation is delayed by one minute to reduce server load
+
+= 3.0.2 =
+* Fix: fixed an image containing uppercase characters, which can lead to the image not showing on some servers.
+* Fix: fixed an issue where the 'data-rsssl=1' marker wasn't inserted when the <body> tag was empty.
+
+= 3.0.1 =
+* Tweak: Add privacy notice
+* Tweak: Set javascript redirect to false by default
+* Fix: Hide SSL notice on multisite for all subsites, and show only for "activate_plugins" cap users
+
+= 3.0 =
+* Added a built-in certificate check in the class-certificate.php file that checks if the domain is present in the common names and/or the alternative names section.
+* The .htaccess redirect now uses $1 instead of {REQUEST_URI}.
+* Added an option to deactivate the plugin while keeping SSL in the SSL settings.
+* Added a filter for the Javascript redirect.
+* Added a sidebar with recommended plugins.
+
 = 2.5.26 =
 * Fix: multisite menu not showing when main site is not SSL.
 * Fix: the admin_url and site_url filter get an empty blog_id when checking the URL for the current blog.
@@ -455,7 +515,8 @@ Always back up before any upgrade. Especially .htaccess, wp-config.php and the p
 
 == Screenshots ==
 1. After activation, if SSL was detected, you can enable SSL.
-2. View your configuration on the settings page
+2. View your configuration on the settings page.
+3. Mixed content scan.
 
 == Frequently asked questions ==
 * Really Simple SSL maintains an extensive knowledge-base at https://www.really-simple-ssl.com.

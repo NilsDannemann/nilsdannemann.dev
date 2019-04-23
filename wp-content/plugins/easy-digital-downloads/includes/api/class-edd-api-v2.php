@@ -24,7 +24,6 @@ class EDD_API_V2 extends EDD_API_V1 {
 	/**
 	 * Process Get Products API Request
 	 *
-	 * @access public
 	 * @since 2.6
 	 * @param array $args Query arguments
 	 * @return array $customers Multidimensional array of the products
@@ -43,10 +42,34 @@ class EDD_API_V2 extends EDD_API_V1 {
 				'posts_per_page'   => $this->per_page(),
 				'suppress_filters' => true,
 				'paged'            => $this->get_paged(),
+				'order'            => $args['order'],
+				'orderby'          => $args['orderby'],
 			);
 
 			if( ! empty( $args['s'] ) ) {
 				$query_args['s'] = sanitize_text_field( $args['s'] );
+			}
+
+			switch ( $query_args['orderby'] ) {
+				case 'price':
+					$query_args['meta_key'] = 'edd_price';
+					$query_args['orderby']  = 'meta_value_num';
+					break;
+
+				case 'sales':
+					if ( user_can( $this->user_id, 'view_shop_sensitive_data' ) || current_user_can( 'view_shop_sensitive_data' ) || $this->override ) {
+						$query_args['meta_key'] = '_edd_download_sales';
+						$query_args['orderby']  = 'meta_value_num';
+					}
+					break;
+
+				case 'earnings':
+					if ( user_can( $this->user_id, 'view_shop_sensitive_data' ) || current_user_can( 'view_shop_sensitive_data' ) || $this->override ) {
+						$query_args['meta_key'] = '_edd_download_earnings';
+						$query_args['orderby']  = 'meta_value_num';
+					}
+					break;
+
 			}
 
 			if( ! empty( $args['category'] ) ) {
@@ -171,7 +194,6 @@ class EDD_API_V2 extends EDD_API_V1 {
 	/**
 	 * Process Get Customers API Request
 	 *
-	 * @access public
 	 * @since 2.6
 	 * @global object $wpdb Used to query the database using the WordPress Database API
 	 * @param array $args Array of arguments for filters customers
@@ -308,7 +330,7 @@ class EDD_API_V2 extends EDD_API_V1 {
 
 				$customers['customers'][ $customer_count ]['stats']['total_purchases'] = $customer_obj->purchase_count;
 				$customers['customers'][ $customer_count ]['stats']['total_spent']     = $customer_obj->purchase_value;
-				$customers['customers'][ $customer_count ]['stats']['total_downloads'] = edd_count_file_downloads_of_user( $customer_obj->email );
+				$customers['customers'][ $customer_count ]['stats']['total_downloads'] = edd_count_file_downloads_of_customer( $customer_obj->id );
 
 				$customer_count++;
 
@@ -332,7 +354,6 @@ class EDD_API_V2 extends EDD_API_V1 {
 	/**
 	 * Retrieves Recent Sales
 	 *
-	 * @access public
 	 * @since  2.6
 	 * @return array
 	 */

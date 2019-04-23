@@ -244,7 +244,7 @@ function edd_get_cart_item_price_name( $item = array() ) {
  * Get cart item title
  *
  * @since 2.4.3
- * @param int $item Cart item array
+ * @param array $item Cart item array
  * @return string item title
  */
 function edd_get_cart_item_name( $item = array() ) {
@@ -603,12 +603,19 @@ function edd_get_cart_token() {
 /**
  * Delete Saved Carts after one week
  *
+ * This function is only intended to be used by WordPress cron.
+ *
  * @since 1.8
  * @global $wpdb
  * @return void
  */
 function edd_delete_saved_carts() {
 	global $wpdb;
+
+	// Bail if not in WordPress cron
+	if ( ! edd_doing_cron() ) {
+		return;
+	}
 
 	$start = date( 'Y-m-d', strtotime( '-7 days' ) );
 	$carts = $wpdb->get_results(

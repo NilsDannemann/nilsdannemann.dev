@@ -387,6 +387,7 @@ function stag_icon( $atts, $content = null ) {
 		'url'        => '',
 		'size'       => '',
 		'new_window' => 'no',
+		'style'      => 'fa',
 	), $atts, 'stag_icon' );
 
 	$new_window = ( $args['new_window'] == 'no' ) ? '_self' : '_blank';
@@ -405,9 +406,9 @@ function stag_icon( $atts, $content = null ) {
 	}
 
 	if ( $args['url'] != '' ){
-		$output .= '<a class="stag-icon-link" '. $a_attrs .'><i aria-hidden="true" class="fa fa-'. esc_attr( $args['icon'] ) .'" '. $attrs .'></i></a>';
+		$output .= '<a class="stag-icon-link" '. $a_attrs .'><i aria-hidden="true" class="' . $args['style'] . ' fa-'. esc_attr( $args['icon'] ) .'" '. $attrs .'></i></a>';
 	} else {
-		$output .= '<i aria-hidden="true" class="fa fa-'. esc_attr( $args['icon'] ) .'" '. $attrs .'></i>';
+		$output .= '<i aria-hidden="true" class="' . $args['style'] . ' fa-'. esc_attr( $args['icon'] ) .'" '. $attrs .'></i>';
 	}
 
 	return $output;
@@ -451,13 +452,14 @@ function stag_map( $atts ) {
 		wp_enqueue_script( 'google-maps', add_query_arg( 'key', $api_key, 'https://maps.googleapis.com/maps/api/js' ) );
 	} else {
 		if ( current_user_can( 'edit_posts' ) ) :
-			echo '<small class="stag-alert stag-alert--red">';
+			$error_text = '<small class="stag-alert stag-alert--red">';
 
 				/* translators: %s is a link, do not remove/modify it. */
-				echo sprintf( esc_html__( 'To be able to use Google Maps, you first need to set an %s.', 'stag' ),
+				$error_text .= sprintf( esc_html__( 'To be able to use Google Maps, you first need to set an %s.', 'stag' ),
 					sprintf( '<a href="' . admin_url( 'options-general.php?page=stagtools#stagtools_settings_general[google_api_key]' ) . '">%1$s</a>', esc_html__( 'API key', 'stag' ) )
 				);
-			echo '</small>';
+			$error_text .= '</small>';
+			return $error_text;
 		endif;
 
 		return;
@@ -551,12 +553,19 @@ function stag_social( $atts ) {
 		if ( isset( $settings[$slug] ) && $settings[$slug] != '' ) {
 			$class = $slug;
 
-			if ( 'mail' == $slug ) $class = 'envelope';
+			$fa_prefix = 'fab';
+			if ( 'mail' == $slug ) {
+				$class = 'envelope';
+				$fa_prefix = 'far';
+			}
+			if ( 'rss' === $slug ) {
+				$fa_prefix = 'fas';
+			}
 
 			if ( 'skype' == $slug ) {
-				$output .= "<a href='". $settings[$slug] ."' target='_blank'><i class='fa fa-". esc_attr( $class ) ."'></i></a>";
+				$output .= "<a href='" . $settings[ $slug ] . "' target='_blank'><i class='fab fa-" . esc_attr( $class ) . "'></i></a>";
 			} else {
-				$output .= "<a href='". esc_url( $settings[$slug] ) ."' target='_blank'><i class='fa fa-". esc_attr( $class ) ."'></i></a>";
+				$output .= "<a href='" . esc_url( $settings[ $slug ] ) . "' target='_blank'><i class='$fa_prefix fa-" . esc_attr( $class ) . "'></i></a>";
 			}
 		}
 	}

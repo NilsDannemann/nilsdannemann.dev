@@ -64,6 +64,7 @@ class Jetpack_Infinite_Scroll_Extras {
 	public function action_jetpack_modules_loaded() {
 		Jetpack::enable_module_configurable( __FILE__ );
 		Jetpack::module_configuration_load( __FILE__, array( $this, 'module_configuration_load' ) );
+		add_filter( 'jetpack_module_configuration_url_infinite-scroll', array( $this, 'infinite_scroll_configuration_url' ) );
 	}
 
 	/**
@@ -75,6 +76,16 @@ class Jetpack_Infinite_Scroll_Extras {
 	public function module_configuration_load() {
 		wp_safe_redirect( admin_url( 'options-reading.php#infinite-scroll-options' ) );
 		exit;
+	}
+
+	/**
+	 * Overrides default configuration url
+	 *
+	 * @uses admin_url
+	 * @return string module settings URL
+	 */
+	public function infinite_scroll_configuration_url() {
+		return admin_url( 'options-reading.php#infinite-scroll-options' );
 	}
 
 	/**
@@ -220,7 +231,7 @@ class Jetpack_Infinite_Scroll_Extras {
 		// Fire the post_gallery action early so Carousel scripts are present.
 		if ( Jetpack::is_module_active( 'carousel' ) ) {
 			/** This filter is already documented in core/wp-includes/media.php */
-			do_action( 'post_gallery', '', '' );
+			do_action( 'post_gallery', '', '', 0 );
 		}
 
 		// Always enqueue Tiled Gallery scripts when both IS and Tiled Galleries are enabled

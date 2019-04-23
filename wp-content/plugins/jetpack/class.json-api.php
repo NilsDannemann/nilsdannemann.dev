@@ -37,7 +37,7 @@ class WPCOM_JSON_API {
 	 */
 	static function init( $method = null, $url = null, $post_body = null ) {
 		if ( !self::$self ) {
-			$class = function_exists( 'get_called_class' ) ? get_called_class() : __CLASS__;
+			$class = function_exists( 'get_called_class' ) ? get_called_class() : __CLASS__; // phpcs:ignore PHPCompatibility.PHP.NewFunctions.get_called_classFound
 			self::$self = new $class( $method, $url, $post_body );
 		}
 		return self::$self;
@@ -392,7 +392,7 @@ class WPCOM_JSON_API {
 					'value' => $content_type,
 				)
 			);
-			
+
 			foreach( $extra as $key => $value ) {
 				$headers[] = array( 'name' => $key, 'value' => $value );
 			}
@@ -437,8 +437,9 @@ class WPCOM_JSON_API {
 
 		$status_code = $error->get_error_data();
 
-		if ( is_array( $status_code ) )
+		if ( is_array( $status_code ) ) {
 			$status_code = $status_code['status_code'];
+		}
 
 		if ( !$status_code ) {
 			$status_code = 400;
@@ -447,6 +448,11 @@ class WPCOM_JSON_API {
 			'error'   => $error->get_error_code(),
 			'message' => $error->get_error_message(),
 		);
+
+		if ( $additional_data = $error->get_error_data( 'additional_data' ) ) {
+			$response['data'] = $additional_data;
+		}
+
 		return array(
 			'status_code' => $status_code,
 			'errors' => $response
@@ -496,7 +502,11 @@ class WPCOM_JSON_API {
 
 				foreach ( $response[ $key_to_filter ] as $key => $values ) {
 					if ( is_object( $values ) ) {
-						$response[ $key_to_filter ][ $key ] = (object) array_intersect_key( (array) $values, array_flip( $fields ) );
+						if ( is_object( $response[ $key_to_filter ] ) ) {
+							$response[ $key_to_filter ]->$key = (object) array_intersect_key( ( (array) $values ), array_flip( $fields ) );
+						} elseif ( is_array( $response[ $key_to_filter ] ) ) {
+							$response[ $key_to_filter ][ $key ] = (object) array_intersect_key( ( (array) $values ), array_flip( $fields ) );
+						}
 					} elseif ( is_array( $values ) ) {
 						$response[ $key_to_filter ][ $key ] = array_intersect_key( $values, array_flip( $fields ) );
 					}
@@ -604,6 +614,85 @@ class WPCOM_JSON_API {
 				? get_avatar_url( $email )
 				: get_avatar_url( $email, $avatar_size );
 		}
+	}
+
+	/**
+	 * Counts the number of comments on a site, excluding certain comment types.
+	 *
+	 * @param $post_id int Post ID.
+	 * @return array Array of counts, matching the output of https://developer.wordpress.org/reference/functions/get_comment_count/.
+	 */
+	public function wp_count_comments( $post_id ) {
+		global $wpdb;
+		if ( 0 !== $post_id ) {
+			return wp_count_comments( $post_id );
+		}
+
+		$counts = array(
+			'total_comments' => 0,
+			'all'            => 0,
+		);
+
+		/**
+		 * Exclude certain comment types from comment counts in the REST API.
+		 *
+		 * @since 6.9.0
+		 * @module json-api
+		 *
+		 * @param array Array of comment types to exclude (default: 'order_note', 'webhook_delivery', 'review', 'action_log')
+		 */
+		$exclude = apply_filters( 'jetpack_api_exclude_comment_types_count',
+			array( 'order_note', 'webhook_delivery', 'review', 'action_log' )
+		);
+
+		if ( empty( $exclude ) ) {
+			return wp_count_comments( $post_id );
+		}
+
+		array_walk( $exclude, 'esc_sql' );
+		$where = sprintf(
+			"WHERE comment_type NOT IN ( '%s' )",
+			implode( "','", $exclude )
+		);
+
+		$count = $wpdb->get_results(
+			"SELECT comment_approved, COUNT(*) AS num_comments
+				FROM $wpdb->comments
+				{$where}
+				GROUP BY comment_approved
+			"
+		);
+
+		$approved = array(
+			'0'            => 'moderated',
+			'1'            => 'approved',
+			'spam'         => 'spam',
+			'trash'        => 'trash',
+			'post-trashed' => 'post-trashed',
+		);
+
+		// https://developer.wordpress.org/reference/functions/get_comment_count/#source
+		foreach ( $count as $row ) {
+			if ( ! in_array( $row->comment_approved, array( 'post-trashed', 'trash', 'spam' ), true ) ) {
+				$counts['all']            += $row->num_comments;
+				$counts['total_comments'] += $row->num_comments;
+			} elseif ( ! in_array( $row->comment_approved, array( 'post-trashed', 'trash' ), true ) ) {
+				$counts['total_comments'] += $row->num_comments;
+			}
+			if ( isset( $approved[ $row->comment_approved ] ) ) {
+				$counts[ $approved[ $row->comment_approved ] ] = $row->num_comments;
+			}
+		}
+
+		foreach ( $approved as $key ) {
+			if ( empty( $counts[ $key ] ) ) {
+				$counts[ $key ] = 0;
+			}
+		}
+
+		$counts = (object) $counts;
+
+		return $counts;
 	}
 
 	/**

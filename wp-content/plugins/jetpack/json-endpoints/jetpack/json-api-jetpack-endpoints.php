@@ -223,199 +223,19 @@ new Jetpack_JSON_API_Themes_Delete_Endpoint( array(
 
 
 // PLUGINS
-
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-endpoint.php' );
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-get-endpoint.php' );
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-list-endpoint.php' );
-
-new Jetpack_JSON_API_Plugins_List_Endpoint( array(
-	'description'     => 'Get installed Plugins on your blog',
-	'method'          => 'GET',
-	'path'            => '/sites/%s/plugins',
-	'stat'            => 'plugins',
-	'path_labels' => array(
-		'$site' => '(int|string) The site ID, The site domain'
-	),
-	'response_format' => array(
-		'plugins' => '(array) An array of plugin objects.',
-	),
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins'
-) );
-
-new Jetpack_JSON_API_Plugins_Get_Endpoint( array(
-	'description'     => 'Get the Plugin data.',
-	'method'          => 'GET',
-	'path'            => '/sites/%s/plugins/%s/',
-	'stat'            => 'plugins:1',
-	'path_labels' => array(
-		'$site'   => '(int|string) The site ID, The site domain',
-		'$plugin'   => '(string) The plugin ID',
-	),
-	'response_format' => Jetpack_JSON_API_Plugins_Endpoint::$_response_format,
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins/hello-dolly%20hello'
-) );
-
-require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-modify-endpoint.php' );
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-new-endpoint.php' );
-// POST /sites/%s/plugins/new
-new Jetpack_JSON_API_Plugins_New_Endpoint( array(
-	'description'     => 'Install a plugin to a Jetpack site by uploading a zip file',
-	'group'           => '__do_not_document',
-	'stat'            => 'plugins:new',
-	'method'          => 'POST',
-	'path'            => '/sites/%s/plugins/new',
-	'path_labels' => array(
-		'$site'   => '(int|string) Site ID or domain',
-	),
-	'request_format' => array(
-		'zip'       => '(zip) Plugin package zip file. multipart/form-data encoded. ',
-	),
-	'response_format' => Jetpack_JSON_API_Plugins_Endpoint::$_response_format,
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins/new'
-) );
-
-new Jetpack_JSON_API_Plugins_Modify_Endpoint( array(
-	'description'     => 'Activate/Deactivate a Plugin on your Jetpack Site, or set automatic updates',
-	'method'          => 'POST',
-	'path'            => '/sites/%s/plugins/%s',
-	'stat'            => 'plugins:1:modify',
-	'path_labels' => array(
-		'$site'   => '(int|string) The site ID, The site domain',
-		'$plugin'   => '(string) The plugin ID',
-	),
-	'request_format' => array(
-		'action'       => '(string) Possible values are \'update\'',
-		'autoupdate'   => '(bool) Whether or not to automatically update the plugin',
-		'active'       => '(bool) Activate or deactivate the plugin',
-		'network_wide' => '(bool) Do action network wide (default value: false)',
-	),
-	'response_format' => Jetpack_JSON_API_Plugins_Endpoint::$_response_format,
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-		'body' => array(
-			'action' => 'update',
-		)
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins/hello-dolly%20hello'
-) );
-
-new Jetpack_JSON_API_Plugins_Modify_Endpoint( array(
-	'description'     => 'Activate/Deactivate a list of plugins on your Jetpack Site, or set automatic updates',
-	'method'          => 'POST',
-	'path'            => '/sites/%s/plugins',
-	'stat'            => 'plugins:modify',
-	'path_labels' => array(
-		'$site'   => '(int|string) The site ID, The site domain',
-	),
-	'request_format' => array(
-		'action'       => '(string) Possible values are \'update\'',
-		'autoupdate'   => '(bool) Whether or not to automatically update the plugin',
-		'active'       => '(bool) Activate or deactivate the plugin',
-		'network_wide' => '(bool) Do action network wide (default value: false)',
-		'plugins'      => '(array) A list of plugin ids to modify',
-	),
-	'response_format' => array(
-		'plugins'       => '(array:plugin) An array of plugin objects.',
-		'updated'       => '(array) A list of plugin ids that were updated. Only present if action is update.',
-		'not_updated'   => '(array) A list of plugin ids that were not updated. Only present if action is update.',
-		'log'           => '(array) Update log. Only present if action is update.',
-	),
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-		'body' => array(
-			'active'  => true,
-			'plugins' => array(
-				'jetpack/jetpack',
-				'akismet/akismet',
-			),
-		)
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins'
-) );
-
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-install-endpoint.php' );
-// POST /sites/%s/plugins/%s/install
-new Jetpack_JSON_API_Plugins_Install_Endpoint( array(
-	'description'     => 'Install a plugin to your jetpack blog',
-	'group'           => '__do_not_document',
-	'stat'            => 'plugins:1:install',
-	'method'          => 'POST',
-	'path'            => '/sites/%s/plugins/%s/install',
-	'path_labels' => array(
-		'$site'   => '(int|string) The site ID, The site domain',
-		'$plugin' => '(int|string) The plugin slug to install',
-	),
-	'response_format' => Jetpack_JSON_API_Plugins_Endpoint::$_response_format,
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins/akismet/install'
-) );
-
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-delete-endpoint.php' );
-// POST /sites/%s/plugins/%s/delete
-new Jetpack_JSON_API_Plugins_Delete_Endpoint( array(
-	'description'     => 'Delete/Uninstall a plugin from your jetpack blog',
-	'group'           => '__do_not_document',
-	'stat'            => 'plugins:1:delete',
-	'method'          => 'POST',
-	'path'            => '/sites/%s/plugins/%s/delete',
-	'path_labels' => array(
-		'$site'   => '(int|string) The site ID, The site domain',
-		'$plugin' => '(int|string) The plugin slug to delete',
-	),
-	'response_format' => Jetpack_JSON_API_Plugins_Endpoint::$_response_format,
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins/akismet%2Fakismet/delete'
-) );
+require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-modify-endpoint.php' );
 
-new Jetpack_JSON_API_Plugins_Modify_Endpoint( array(
-	'description'     => 'Update a Plugin on your Jetpack Site',
-	'method'          => 'POST',
-	'path'            => '/sites/%s/plugins/%s/update/',
-	'stat'            => 'plugins:1:update',
-	'path_labels' => array(
-		'$site'   => '(int|string) The site ID, The site domain',
-		'$plugin'   => '(string) The plugin ID',
-	),
-	'response_format' => Jetpack_JSON_API_Plugins_Endpoint::$_response_format,
-	'example_request_data' => array(
-		'headers' => array(
-			'authorization' => 'Bearer YOUR_API_TOKEN'
-		),
-	),
-	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/plugins/hello-dolly%20hello/update'
-) );
+// PLUGINS V1.2
+require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-plugins-modify-v1-2-endpoint.php' );
 
 // Jetpack Modules
-
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-modules-endpoint.php' );
-
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-modules-get-endpoint.php' );
 
 new Jetpack_JSON_API_Modules_Get_Endpoint( array(
@@ -772,7 +592,8 @@ new Jetpack_JSON_API_Sync_Object( array(
 		'object_ids'     => '(array) The IDs of the objects',
 	),
 	'response_format' => array(
-		'objects' => '(string) The encoded objects'
+		'objects' => '(string) The encoded objects',
+		'codec'   => '(string) The codec used to encode the objects, deflate-json-array or simple'
 	),
 	'example_request' => 'https://public-api.wordpress.com/rest/v1.1/sites/example.wordpress.org/sync/object?module_name=posts&object_type=post&object_ids[]=1&object_ids[]=2&object_ids[]=3'
 ) );
@@ -1135,6 +956,35 @@ new Jetpack_JSON_API_Cron_Unschedule_Endpoint( array(
 
 //	BACKUPS
 
+// GET /sites/%s/database-object/backup
+require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-get-database-object-backup-endpoint.php' );
+new Jetpack_JSON_API_Get_Database_Object_Backup_Endpoint( array(
+	'description'    => 'Fetch a backup of a database object, along with all of its metadata',
+	'group'          => '__do_not_document',
+	'method'         => 'GET',
+	'path'           => '/sites/%s/database-object/backup',
+	'stat'           => 'database-objects:1:backup',
+	'allow_jetpack_site_auth' => true,
+	'path_labels'    => array(
+		'$site' => '(int|string) The site ID, The site domain',
+	),
+	'query_parameters' => array(
+		'object_type' => '(string) Type of object to fetch from the database',
+		'object_id'   => '(int) ID of the database object to fetch',
+	),
+	'response_format' => array(
+		'object'   => '(array) Database object row',
+		'meta'     => '(array) Associative array of key/value metadata associated with the row',
+		'children' => '(array) Where appropriate, child records associated with the object. eg: Woocommerce tax rate locations',
+	),
+	'example_request_data' => array(
+		'headers' => array(
+			'authorization' => 'Bearer YOUR_API_TOKEN'
+		),
+	),
+	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/database-object/backup'
+) );
+
 // GET /sites/%s/comments/%d/backup
 require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-get-comment-backup-endpoint.php' );
 new Jetpack_JSON_API_Get_Comment_Backup_Endpoint( array(
@@ -1310,6 +1160,9 @@ new Jetpack_JSON_API_User_Create_Endpoint( array(
 	'path_labels'    => array(
 		'$site' => '(int|string) The site ID, The site domain',
 	),
+	'query_parameters' => array(
+		'invite_accepted' => '(bool=false) If the user is being created in the invite context',
+	),
 	'request_format'  => WPCOM_JSON_API_Site_User_Endpoint::$user_format,
 	'response_format' => WPCOM_JSON_API_Site_User_Endpoint::$user_format,
 	'example_request_data' => array(
@@ -1339,4 +1192,41 @@ new Jetpack_JSON_API_User_Create_Endpoint( array(
     }',
 	'example_request' => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/users/create'
 
+) );
+
+require_once( $json_jetpack_endpoints_dir . 'class.jetpack-json-api-jps-woocommerce-connect-endpoint.php' );
+
+// POST /sites/%s/jps/woo-connect
+new Jetpack_JSON_API_JPS_WooCommerce_Connect_Endpoint( array(
+	'description'    => 'Attempts to connect the WooCommerce plugin for this site to WooCommerce.com.',
+	'group'          => '__do_not_document',
+	'method'         => 'POST',
+	'path'           => '/sites/%s/jps/woo-connect',
+	'stat'           => 'jps:woo-connect',
+	'allow_jetpack_site_auth' => true,
+	'path_labels'    => array(
+		'$site' => '(int|string) The site ID, The site domain',
+	),
+	'request_format'  => array(
+		'access_token'        => '(string) The access token for WooCommerce to connect to WooCommerce.com',
+		'access_token_secret' => '(string) The access token secret for WooCommerce to connect to WooCommerce.com',
+		'user_id'             => '(int) The user\'s ID after registering for a host plan',
+		'site_id'             => '(int) The site\'s ID after registering for a host plan',
+	),
+	'response_format' => array(
+		'success' => '(bool) Setting access token and access token secret successful?',
+	),
+	'example_request_data' => array(
+		'headers' => array(
+			'authorization' => 'Bearer YOUR_API_TOKEN',
+		),
+		'body' => array(
+			'access_token'        => '123456789',
+			'access_token_secret' => 'abcdefghiklmnop',
+			'user_id'             => 1,
+			'site_id'             => 2,
+		),
+	),
+	'example_response' => '{ "success": true }',
+	'example_request'  => 'https://public-api.wordpress.com/rest/v1/sites/example.wordpress.org/jps/woo-connect'
 ) );

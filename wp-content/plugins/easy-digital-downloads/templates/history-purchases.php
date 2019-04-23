@@ -10,7 +10,7 @@ endif;
 if ( is_user_logged_in() ):
 	$payments = edd_get_users_purchases( get_current_user_id(), 20, true, 'any' );
 	if ( $payments ) :
-		do_action( 'edd_before_purchase_history' ); ?>
+		do_action( 'edd_before_purchase_history', $payments ); ?>
 		<table id="edd_user_history" class="edd-table">
 			<thead>
 				<tr class="edd_purchase_row">
@@ -45,18 +45,15 @@ if ( is_user_logged_in() ):
 				</tr>
 			<?php endforeach; ?>
 		</table>
-		<div id="edd_purchase_history_pagination" class="edd_pagination navigation">
-			<?php
-			$big = 999999;
-			echo paginate_links( array(
-				'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-				'format'  => '?paged=%#%',
-				'current' => max( 1, get_query_var( 'paged' ) ),
-				'total'   => ceil( edd_count_purchases_of_customer() / 20 ) // 20 items per page
-			) );
-			?>
-		</div>
-		<?php do_action( 'edd_after_purchase_history' ); ?>
+		<?php
+			echo edd_pagination( 
+				array(
+					'type'  => 'purchase_history',
+					'total' => ceil( edd_count_purchases_of_customer() / 20 ) // 20 items per page
+				)
+			);
+		?>
+		<?php do_action( 'edd_after_purchase_history', $payments ); ?>
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
 		<p class="edd-no-purchases"><?php _e('You have not made any purchases','easy-digital-downloads' ); ?></p>

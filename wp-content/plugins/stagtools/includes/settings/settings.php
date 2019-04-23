@@ -74,11 +74,22 @@ function stagtools_options_page() {
 					flush_rewrite_rules();
 				}
 
-				settings_fields( 'stag_options' );
-				do_settings_fields( 'stagtools_settings_' . $active_tab, 'stagtools_settings_' . $active_tab );
+				if ( 'themes' === $active_tab ) {
+					$themes_list = new StagTools_Themes();
+
+					echo $themes_list->admin_page();
+				} else {
+					settings_fields( 'stag_options' );
+					do_settings_fields( 'stagtools_settings_' . $active_tab, 'stagtools_settings_' . $active_tab );
+				}
+
 				?>
 				</table>
-				<?php submit_button(); ?>
+				<?php
+				if ( 'themes' !== $active_tab ) {
+					submit_button();
+				}
+				?>
 			</form>
 		</div><!-- #tab_container -->
 	</div><!-- .wrap -->
@@ -97,6 +108,7 @@ function stagtools_get_settings_tabs() {
 	$tabs['general']   = __( 'General', 'stag' );
 	$tabs['social']    = __( 'Social', 'stag' );
 	$tabs['portfolio'] = __( 'Portfolio', 'stag' );
+	$tabs['themes']    = __( 'Themes', 'stag' );
 
 	return apply_filters( 'stagtools_settings_tabs', $tabs );
 }
@@ -213,7 +225,7 @@ function stagtools_get_registered_settings() {
 				'twitter_settings' => array(
 					'id'   => 'twitter_settings',
 					'name' => '<strong>' . __( 'Twitter Settings', 'stag' ) . '</strong>',
-					'desc' => __( 'Configure the twitter settings', 'stag' ),
+					'desc' => '',
 					'type' => 'header',
 				),
 				'consumer_key' => array(
@@ -238,6 +250,20 @@ function stagtools_get_registered_settings() {
 					'id'   => 'access_secret',
 					'name' => __( 'OAuth Access Secret', 'stag' ),
 					'desc' => __( 'Enter twitter OAuth Access Secret', 'stag' ),
+					'type' => 'text',
+				),
+				'dribbble_header' => array(
+					'id'   => 'dribbble_header',
+					'name' => '<strong>' . __( 'Dribbble Settings', 'stag' ) . '</strong>',
+					'type' => 'header',
+				),
+				'dribbble_access_token' => array(
+					'id'   => 'dribbble_access_token',
+					'name' => __( 'Access Token', 'stag' ),
+					'desc' => sprintf(
+						__( 'You can get an access token manually from <a target="_blank" rel="nopener noreferrer" href="%s">here</a>.', 'stag' ),
+						'https://codestag.com/dribbble-authentication/'
+					),
 					'type' => 'text',
 				),
 				'google_api_header' => array(
@@ -456,14 +482,13 @@ function stagtools_get_registered_settings() {
 					'desc' => __( 'Enter the slug of custom post taxonomy <strong>skill</strong>.', 'stag' ),
 					'type' => 'text',
 					'std'  => 'skill',
-				)
+				),
 			)
-		)
+		),
 	);
 
 	return $stag_settings;
 }
-
 
 function stagtools_missing_callback( $args ) {
 	printf( __( 'The callback function used for the <strong>%s</strong> setting is missing.', 'stag' ), $args['id'] );
@@ -554,7 +579,7 @@ function stagtools_select_callback( $args ) {
  *
  * Renders the header.
  *
- * @param  array $args Arguments passed by the setting
+ * @param  array $args Arguments passed by the setting.
  * @return void
  */
 function stagtools_header_callback( $args ) {

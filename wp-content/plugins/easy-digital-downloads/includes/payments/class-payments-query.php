@@ -27,7 +27,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * The args to pass to the edd_get_payments() query
 	 *
 	 * @var array
-	 * @access public
 	 * @since 1.8
 	 */
 	public $args = array();
@@ -44,10 +43,27 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * The payments found based on the criteria set
 	 *
 	 * @var array
-	 * @access public
 	 * @since 1.8
 	 */
 	public $payments = array();
+
+	/**
+	 * Holds a boolean to determine if there is an existing $wp_query global.
+	 *
+	 * @var bool
+	 * @access private
+	 * @since 2.8
+	 */
+	private $existing_query;
+
+	/**
+	 * If an existing global $post item exists before we start our query, maintain it for later 'reset'.
+	 *
+	 * @var WP_Post|null
+	 * @access private
+	 * @since 2.8
+	 */
+	private $existing_post;
 
 	/**
 	 * Default query arguments.
@@ -55,7 +71,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * Not all of these are valid arguments that can be passed to WP_Query. The ones that are not, are modified before
 	 * the query is run to convert them to the proper syntax.
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @param array $args The array of arguments that can be passed in and used for setting up this payment query.
 	 */
@@ -80,7 +95,9 @@ class EDD_Payments_Query extends EDD_Stats {
 			'search_in_notes' => false,
 			'children'        => false,
 			'fields'          => null,
-			'download'        => null
+			'download'        => null,
+			'gateway'         => null,
+			'post__in'        => null,
 		);
 
 		// We need to store an array of the args used to instantiate the class, so that we can use it in later hooks.
@@ -92,7 +109,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Set a query variable.
 	 *
-	 * @access public
 	 * @since 1.8
 	 */
 	public function __set( $query_var, $value ) {
@@ -105,7 +121,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Unset a query variable.
 	 *
-	 * @access public
 	 * @since 1.8
 	 */
 	public function __unset( $query_var ) {
@@ -115,11 +130,14 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Nothing here at the moment.
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
 	public function init() {
+
+		// Before we start setting up queries, let's store any existing queries that might be in globals.
+		$this->existing_query = isset( $GLOBALS['wp_query'] ) && isset( $GLOBALS['wp_query']->post );
+		$this->existing_post  = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : null;
 
 	}
 
@@ -130,9 +148,8 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * query is run, or the filter on the arguments (existing mainly for backwards
 	 * compatibility).
 	 *
-	 * @access public
 	 * @since 1.8
-	 * @return object
+	 * @return EDD_Payment[]
 	 */
 	public function get_payments() {
 
@@ -146,9 +163,11 @@ class EDD_Payments_Query extends EDD_Stats {
 		$this->user();
 		$this->customer();
 		$this->search();
+		$this->gateway();
 		$this->mode();
 		$this->children();
 		$this->download();
+		$this->post__in();
 
 		do_action( 'edd_pre_get_payments', $this );
 
@@ -164,6 +183,7 @@ class EDD_Payments_Query extends EDD_Stats {
 		}
 
 		if ( $query->have_posts() ) {
+
 			while ( $query->have_posts() ) {
 				$query->the_post();
 
@@ -178,12 +198,13 @@ class EDD_Payments_Query extends EDD_Stats {
 				$this->payments[] = apply_filters( 'edd_payment', $payment, $payment_id, $this );
 			}
 
-			wp_reset_postdata();
 		}
 
 		add_action( 'edd_post_get_payments', array( $this, 'date_filter_post' ) );
 
 		do_action( 'edd_post_get_payments', $this );
+
+		$this->maybe_reset_globals();
 
 		return $this->payments;
 	}
@@ -191,9 +212,7 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * If querying a specific date, add the proper filters.
 	 *
-	 * @access public
 	 * @since 1.8
-	 * @return void
 	 */
 	public function date_filter_pre() {
 		if( ! ( $this->args['start_date'] || $this->args['end_date'] ) ) {
@@ -209,7 +228,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	 * If querying a specific date, remove filters after the query has been run
 	 * to avoid affecting future queries.
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -224,7 +242,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Post Status
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -240,7 +257,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Current Page
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -256,7 +272,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Posts Per Page
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -279,7 +294,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Current Month
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -295,7 +309,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Order by
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -314,7 +327,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Specific User
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -338,7 +350,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Specific customer id
 	 *
-	 * @access  public
 	 * @since   2.6
 	 * @return  void
 	 */
@@ -354,9 +365,39 @@ class EDD_Payments_Query extends EDD_Stats {
 	}
 
 	/**
+	 * Specific gateway
+	 *
+	 * @since   2.8
+	 * @return  void
+	 */
+	public function gateway() {
+		if ( is_null( $this->args['gateway'] ) ) {
+			return;
+		}
+
+		$this->__set( 'meta_query', array(
+			'key'   => '_edd_payment_gateway',
+			'value' => $this->args['gateway']
+		) );
+	}
+
+	/**
+	 * Specific payments
+	 *
+	 * @since   2.8.7
+	 * @return  void
+	 */
+	public function post__in() {
+		if ( is_null( $this->args['post__in'] ) ) {
+			return;
+		}
+
+		$this->__set( 'post__in', $this->args['post__in'] );
+	}
+
+	/**
 	 * Search
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -454,6 +495,19 @@ class EDD_Payments_Query extends EDD_Stats {
 				$this->__unset( 's' );
 			}
 
+			if ( edd_get_option( 'enable_sequential' ) ) {
+
+				$search_meta = array(
+					'key'     => '_edd_payment_number',
+					'value'   => $search,
+					'compare' => 'LIKE'
+				);
+
+				$this->__set( 'meta_query', $search_meta );
+				$this->__unset( 's' );
+
+			}
+
 		} elseif ( '#' == substr( $search, 0, 1 ) ) {
 
 			$search = str_replace( '#:', '', $search );
@@ -484,7 +538,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Payment Mode
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -503,7 +556,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Children
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -517,7 +569,6 @@ class EDD_Payments_Query extends EDD_Stats {
 	/**
 	 * Specific Download
 	 *
-	 * @access public
 	 * @since 1.8
 	 * @return void
 	 */
@@ -566,5 +617,23 @@ class EDD_Payments_Query extends EDD_Stats {
 
 		$this->__unset( 'download' );
 
+	}
+
+	/**
+	 * Based off the current global variables for $wp_query and $post, we may need to reset some data or just restore it.
+	 *
+	 * @since 2.8
+	 * @access private
+	 * @return void
+	 */
+	private function maybe_reset_globals() {
+		// Based off our pre-iteration, let's reset the globals.
+		if ( $this->existing_query ) {
+			wp_reset_postdata();
+		} elseif ( $this->existing_post ) {
+			$GLOBALS['post'] = $this->existing_post;
+		} else {
+			unset( $GLOBALS['post'] );
+		}
 	}
 }
