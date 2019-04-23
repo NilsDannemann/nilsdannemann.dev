@@ -68,62 +68,14 @@ function stag_comment( $comment, $args, $depth ) {
 			}
 endif;  // Ends check for stag_comment().
 
+/**
+ * Filter comment form fields.
+ *
+ * @param array $defaults Default values.
+ * @return array New values.
+ */
 function stag_comment_form_filter( $defaults ) {
-	$defaults['title_reply'] = __( 'Submit a comment', 'stag' );
-
-	$input_size = '50';
-
-	// Comment Author.
-	$comment_author = ( isset( $_POST['author'] ) ) ? wp_strip_all_tags( $_POST['author'], true ) : null;
-	$author_field = sprintf(
-		'<p class="comment-form-author"><label for="%1$s">%2$s</label><input class="text-input respond-type" type="text" name="%1$s" id="%1$s" value="%3$s" size="%4$d" aria-required="true" tabindex="%5$d" /></p>',
-		'author',
-		esc_attr_x( 'Name', 'comment field placeholder', 'stag' ),
-		esc_attr( $comment_author ),
-		$input_size,
-		1
-		);
-
-	// Comment Author Email.
-	$comment_author_email = ( isset( $_POST['email'] ) ) ? trim( $_POST['email'] ) : null;
-	$email_field = sprintf(
-		'<p class="comment-form-email"><label for="%1$s">%2$s</label><input class="text-input respond-type" type="email" name="%1$s" id="%1$s" value="%3$s" size="%4$d" aria-required="true" tabindex="%5$d" /></p>',
-		'email',
-		esc_attr_x( 'Email', 'comment field placeholder', 'stag' ),
-		esc_attr( $comment_author_email ),
-		$input_size,
-		2
-		);
-
-	// Comment Author URL.
-	$comment_author_url = ( isset( $_POST['url'] ) ) ? trim( $_POST['url'] ) : null;
-	$url_field = sprintf(
-		'<p class="comment-form-url"><label for="%1$s">%2$s</label><input class="text-input respond-type" type="url" name="%1$s" id="%1$s" value="%3$s" size="%4$d" tabindex="%5$d" /></p>',
-		'url',
-		esc_attr_x( 'Website', 'comment field placeholder', 'stag' ),
-		esc_attr( $comment_author_url ),
-		$input_size,
-		3
-		);
-
-	// Set the fields in the $defaults array.
-	$defaults['fields'] = array(
-		'author' => $author_field,
-		'email'  => $email_field,
-		'url'    => $url_field,
-		);
-
-	// Comment Form.
-	$defaults['comment_field'] = sprintf(
-		'<p class="comment-form-comment"><label for="comment">%s</label><textarea id="comment" class="blog-textarea respond-type" name="comment" cols="58" rows="10" aria-required="true" tabindex="4"></textarea></p>',
-		esc_attr_x( 'Your Comment', 'comment field placeholder', 'stag' )
-		);
-
-	// Comment form notes.
-	$defaults['comment_notes_before'] = '';
-	$defaults['comment_notes_after']  = '';
-
-	// Submit label.
+	$defaults['title_reply']  = __( 'Submit a comment', 'stag' );
 	$defaults['label_submit'] = __( 'Submit comment', 'stag' );
 
 	return $defaults;

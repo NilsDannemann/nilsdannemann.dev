@@ -39,10 +39,11 @@ class Stag_Widget extends WP_Widget {
 	function get_cached_widget( $args ) {
 		$cache = wp_cache_get( $this->widget_id, 'widget' );
 
-		if ( ! is_array( $cache ) )
+		if ( ! is_array( $cache ) ) {
 			$cache = array();
+		}
 
-		if ( isset( $cache[ $args['widget_id'] ] ) ) {
+		if ( isset( $args['widget_id'] ) && isset( $cache[ $args['widget_id'] ] ) ) {
 			echo $cache[ $args['widget_id'] ];
 			return true;
 		}

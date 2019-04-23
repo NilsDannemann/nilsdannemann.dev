@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ink\n"
-"POT-Creation-Date: 2017-03-07 21:37+0530\n"
-"PO-Revision-Date: 2017-03-07 21:37+0530\n"
+"POT-Creation-Date: 2018-08-21 23:56+0530\n"
+"PO-Revision-Date: 2018-08-21 23:56+0530\n"
 "Last-Translator: Ram Ratan Maurya <ram@codestag.com>\n"
 "Language-Team: Ram Ratan Maurya <ram@codestag.com>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -18,32 +18,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:57
+#: 404.php:60
 msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
-#: 404.php:61
+#: 404.php:64
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
 msgstr ""
 
-#. translators: %1$s: smiley
-#: 404.php:69
+#: 404.php:72
 #, php-format
 msgid "Try looking in the monthly archives. %1$s"
 msgstr ""
 
-#: _post-cover-wrap.php:78 content.php:42 inc/template-tags.php:23
-#: inc/widgets/recent-posts.php:146
+#: _post-cover-wrap.php:87 inc/template-tags.php:23
+#: inc/widgets/recent-posts.php:170 template-parts/layout/grid-content.php:46
 msgid "Edit"
 msgstr ""
 
-#: _post-cover-wrap.php:83 content.php:47
+#: _post-cover-wrap.php:92 template-parts/layout/grid-content.php:51
 msgid "In "
 msgstr ""
 
-#: _post-load.php:50
+#: _post-load.php:55
 msgid "Load More"
 msgstr ""
 
@@ -79,7 +78,7 @@ msgstr ""
 msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: comments.php:80
+#: comments.php:81
 msgid "Comments are closed."
 msgstr ""
 
@@ -145,7 +144,6 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#. translators: used between list items, there is a space after the comma
 #: content-single.php:51 content-single.php:54
 msgid ", "
 msgstr ""
@@ -165,47 +163,71 @@ msgstr ""
 msgid "Category: %1$s"
 msgstr ""
 
-#: functions.php:35
+#: functions.php:31
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:36
+#: functions.php:32
 msgid "Footer Menu"
 msgstr ""
 
-#: functions.php:94
+#: functions.php:119
 msgid "Play background video"
 msgstr ""
 
-#: functions.php:95
+#: functions.php:120
 msgid "Pause background video"
 msgstr ""
 
-#: functions.php:109
+#: functions.php:135
 msgid "Footer Widget Area 1"
 msgstr ""
 
-#: functions.php:118
+#: functions.php:146
 msgid "Footer Widget Area 2"
 msgstr ""
 
-#: functions.php:127
+#: functions.php:157
 msgid "Footer Widget Area 3"
 msgstr ""
 
-#: functions.php:137
+#: functions.php:168
 msgid "Side Drawer Widget Area"
 msgstr ""
 
-#: functions.php:143
+#: functions.php:174
 msgid "Sidebar drawer navigation widgets."
+msgstr ""
+
+#: functions.php:179
+msgid "Featured Slider Section"
+msgstr ""
+
+#: functions.php:181
+msgid "Use only &ldquo;Featured Slide Item&rdquo; widget here."
+msgstr ""
+
+#: functions.php:190
+msgid "Single Posts Sidebar"
+msgstr ""
+
+#: functions.php:192
+msgid "An optional widget area for single posts."
+msgstr ""
+
+#: functions.php:201
+msgid "Single Page Sidebar"
+msgstr ""
+
+#: functions.php:203
+msgid "An optional widget area for single pages."
 msgstr ""
 
 #: header.php:29
 msgid "Menu"
 msgstr ""
 
-#: header.php:49
+#: header.php:58
 msgid "Home"
 msgstr ""
 
@@ -307,158 +329,190 @@ msgstr ""
 msgid "Homepage Layout"
 msgstr ""
 
-#: inc/customizer.php:168
+#: inc/customizer.php:172
 msgid "Enable Post Grid Hover Effect"
 msgstr ""
 
-#: inc/customizer.php:175
-msgid "Post Grid Hover Text"
-msgstr ""
-
-#: inc/customizer.php:177
-msgid "Read Story"
-msgstr ""
-
-#: inc/customizer.php:181
-msgid "Navigation Layout"
+#: inc/customizer.php:179
+msgid "Enable Sidebar on Single Post"
 msgstr ""
 
 #: inc/customizer.php:186
-msgid "Traditional"
-msgstr ""
-
-#: inc/customizer.php:187
-msgid "Sidebar"
+msgid "Enable Sidebar on Single Page"
 msgstr ""
 
 #: inc/customizer.php:193
+msgid "Post Grid Hover Text"
+msgstr ""
+
+#: inc/customizer.php:195
+msgid "Read Story"
+msgstr ""
+
+#: inc/customizer.php:199
+msgid "Navigation Layout"
+msgstr ""
+
+#: inc/customizer.php:204
+msgid "Traditional"
+msgstr ""
+
+#: inc/customizer.php:205
+msgid "Sidebar"
+msgstr ""
+
+#: inc/customizer.php:209
+msgid "Pagination"
+msgstr ""
+
+#: inc/customizer.php:214
+msgid "Infinite"
+msgstr ""
+
+#: inc/customizer.php:215
+msgid "Standard"
+msgstr ""
+
+#: inc/customizer.php:221
 msgid "Body Font"
 msgstr ""
 
-#: inc/customizer.php:200
+#: inc/customizer.php:228
 msgid "Header Font"
 msgstr ""
 
-#: inc/customizer.php:207
+#: inc/customizer.php:235
 msgid "Character Subset"
 msgstr ""
 
-#: inc/customizer.php:218
+#: inc/customizer.php:246
 msgid "Single Posts"
 msgstr ""
 
-#: inc/customizer.php:223
+#: inc/customizer.php:251
 msgid "Hide next/previous post navigation"
 msgstr ""
 
-#: inc/customizer.php:224
+#: inc/customizer.php:252
 msgid "Show/hide Next and Previous post navigation box"
 msgstr ""
 
-#: inc/customizer.php:230
+#: inc/customizer.php:258
 msgid "Show Related Posts"
 msgstr ""
 
-#: inc/customizer.php:236
+#: inc/customizer.php:264
 msgid "Number of Related posts to show"
 msgstr ""
 
-#: inc/customizer.php:241
+#: inc/customizer.php:269
 msgid "Post Cover Scroll Text"
 msgstr ""
 
-#: inc/customizer.php:243
+#: inc/customizer.php:271
 msgid "Scroll this"
 msgstr ""
 
-#: inc/customizer.php:245
+#: inc/customizer.php:273
 msgid "Scroll button text, appears over post covers on single posts."
 msgstr ""
 
-#: inc/customizer.php:248
+#: inc/customizer.php:276
 msgid "Premium Post Text"
 msgstr ""
 
-#: inc/customizer.php:250
+#: inc/customizer.php:278
 msgid "Premium"
 msgstr ""
 
-#: inc/customizer.php:252
+#: inc/customizer.php:280
 msgid ""
 "Display a text label for restricted post when Restrict Content Pro is active."
 msgstr ""
 
-#: inc/customizer.php:256
+#: inc/customizer.php:284
+msgid "Sticky Post Label"
+msgstr ""
+
+#: inc/customizer.php:286
+msgid "Sticky"
+msgstr ""
+
+#: inc/customizer.php:288
+msgid "Display a text label for sticky post"
+msgstr ""
+
+#: inc/customizer.php:291
 msgid "Comments Visibility"
 msgstr ""
 
-#: inc/customizer.php:261
+#: inc/customizer.php:296
 msgid "Visible"
 msgstr ""
 
-#: inc/customizer.php:262
+#: inc/customizer.php:297
 msgid "Collapsed"
 msgstr ""
 
-#: inc/customizer.php:276
+#: inc/customizer.php:311
 msgid "Post Info"
 msgstr ""
 
-#: inc/customizer.php:281
+#: inc/customizer.php:316
 msgid "Show Post Category"
 msgstr ""
 
-#: inc/customizer.php:287
+#: inc/customizer.php:322
 msgid "Hide Author"
 msgstr ""
 
-#: inc/customizer.php:292
+#: inc/customizer.php:327
 msgid "Hide Reading Time"
 msgstr ""
 
-#: inc/customizer.php:297
+#: inc/customizer.php:332
 msgid "Show Post Excerpt (only at Blog pages)"
 msgstr ""
 
-#: inc/customizer.php:303
+#: inc/customizer.php:338
 msgid "Post Excerpt Length (in words)"
 msgstr ""
 
-#: inc/customizer.php:311
+#: inc/customizer.php:346
 msgid "Number of Widget Areas"
 msgstr ""
 
-#: inc/customizer.php:313
+#: inc/customizer.php:348
 msgid "Defines the number of columns shown in footer widget area."
 msgstr ""
 
-#: inc/customizer.php:323
+#: inc/customizer.php:358
 msgid "Copyright Text"
 msgstr ""
 
-#: inc/customizer.php:330
+#: inc/customizer.php:365
 msgid "Custom 404 Page"
 msgstr ""
 
-#: inc/customizer.php:593
+#: inc/customizer.php:633
 msgid "No results match"
 msgstr ""
 
-#: inc/customizer.php:594
+#: inc/customizer.php:634
 msgid "No matching fonts"
 msgstr ""
 
-#: inc/extras.php:34
+#: inc/extras.php:35
 #, php-format
 msgid "Page %s"
 msgstr ""
 
-#: inc/extras.php:208
+#: inc/extras.php:210
 msgctxt "end marker for truncated content"
 msgid "&hellip;"
 msgstr ""
 
-#: inc/extras.php:272
+#: inc/extras.php:274
 msgid ""
 "This widget area is currently disabled. Enable it in the \"Footer\" panel of "
 "the Customizer."
@@ -560,11 +614,11 @@ msgstr ""
 msgid "Hide Page Title?"
 msgstr ""
 
-#: inc/meta/post.php:128
+#: inc/meta/post.php:134
 msgid "Video Cover Settings"
 msgstr ""
 
-#: inc/meta/post.php:129
+#: inc/meta/post.php:135
 msgid ""
 "Select a video to display at the post&lsquo;s single page. If these fields "
 "are left blank, the Featured Image will show. The background settings from "
@@ -572,27 +626,27 @@ msgid ""
 "cover. (Videos are disabled for viewports smaller than 650px of width.)"
 msgstr ""
 
-#: inc/meta/post.php:135
+#: inc/meta/post.php:141
 msgid "MP4 File URL"
 msgstr ""
 
-#: inc/meta/post.php:136
+#: inc/meta/post.php:142
 msgid "Enter URL to .mp4 video file."
 msgstr ""
 
-#: inc/meta/post.php:143
+#: inc/meta/post.php:149
 msgid "Webm File URL"
 msgstr ""
 
-#: inc/meta/post.php:144
+#: inc/meta/post.php:150
 msgid "Enter URL to .webm video file."
 msgstr ""
 
-#: inc/meta/post.php:151
+#: inc/meta/post.php:157
 msgid "OGV File URL"
 msgstr ""
 
-#: inc/meta/post.php:152
+#: inc/meta/post.php:158
 msgid "Enter URL to .ogv video file."
 msgstr ""
 
@@ -608,96 +662,75 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:72
+#: inc/template-tags.php:78
 msgid "Submit a comment"
 msgstr ""
 
-#: inc/template-tags.php:81
-msgctxt "comment field placeholder"
-msgid "Name"
-msgstr ""
-
-#: inc/template-tags.php:92
-msgctxt "comment field placeholder"
-msgid "Email"
-msgstr ""
-
-#: inc/template-tags.php:103
-msgctxt "comment field placeholder"
-msgid "Website"
-msgstr ""
-
-#: inc/template-tags.php:119
-msgctxt "comment field placeholder"
-msgid "Your Comment"
-msgstr ""
-
-#: inc/template-tags.php:127
+#: inc/template-tags.php:79
 msgid "Submit comment"
 msgstr ""
 
-#: inc/template-tags.php:157
+#: inc/template-tags.php:109
 #, php-format
 msgid ""
 "<span class=\"posted-on\">%1$s</span><span class=\"reading-time\">%3$s</"
 "span><span class=\"byline\">by %2$s</span>"
 msgstr ""
 
-#: inc/template-tags.php:251
+#: inc/template-tags.php:203
 msgid "1 minute read"
 msgstr ""
 
-#. translators: %d = minute count
-#: inc/template-tags.php:262
+#: inc/template-tags.php:214
 #, php-format
 msgid "%d minute read"
 msgstr ""
 
-#: inc/template-tags.php:335 inc/template-tags.php:338
+#: inc/template-tags.php:287 inc/template-tags.php:290
 #, php-format
 msgid "All Posts Under %s"
 msgstr ""
 
-#: inc/template-tags.php:342
+#: inc/template-tags.php:294
 #, php-format
 msgid "Author: %s"
 msgstr ""
 
-#: inc/template-tags.php:346
+#: inc/template-tags.php:298
 #, php-format
 msgid "Day: %s"
 msgstr ""
 
-#: inc/template-tags.php:349
+#: inc/template-tags.php:301
 #, php-format
 msgid "Month: %s"
 msgstr ""
 
-#: inc/template-tags.php:352
+#: inc/template-tags.php:304
 #, php-format
 msgid "Year: %s"
 msgstr ""
 
-#: inc/template-tags.php:355
+#: inc/template-tags.php:307
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
-#: inc/template-tags.php:358
+#: inc/template-tags.php:310
 msgid "Archives"
 msgstr ""
 
-#: inc/template-tags.php:438
+#: inc/template-tags.php:390
 msgid "Post navigation"
 msgstr ""
 
-#: inc/template-tags.php:441
+#: inc/template-tags.php:393
 msgctxt "Previous post link"
 msgid ""
 "<span class=\"meta-nav\"><span class=\"arrow\">←</span> Previous Post</span>"
 msgstr ""
 
-#: inc/template-tags.php:442
+#: inc/template-tags.php:394
 msgctxt "Next post link"
 msgid "<span class=\"meta-nav\">Next Post <span class=\"arrow\">→</span>"
 msgstr ""
@@ -722,6 +755,140 @@ msgstr ""
 msgid "Google+"
 msgstr ""
 
+#: inc/updater/theme-updater-admin.php:260
+msgid "Error"
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:291
+#: inc/updater/theme-updater-admin.php:330
+#: inc/updater/theme-updater-admin.php:386
+msgid "An error occurred, please try again."
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:303
+#, php-format
+msgid "Your license key expired on %s."
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:309
+msgid "Your license key has been disabled."
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:313
+msgid "Invalid license."
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:318
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:322
+#, php-format
+msgid "This appears to be an invalid license key for %s."
+msgstr ""
+
+#: inc/updater/theme-updater-admin.php:326
+msgid "Your license key has reached its activation limit."
+msgstr ""
+
+#: inc/updater/theme-updater.php:29
+msgid "Theme License"
+msgstr ""
+
+#: inc/updater/theme-updater.php:31
+msgid ""
+"Enter your theme license key received upon purchase from <a target=\"_blank"
+"\" href=\"https://codestag.com/account/\">Codestag</a>.<br><br>\r\n"
+"\t\t\t\t\t\t\t\t\t\t\tIf you're coming from ThemeForest, please download <a "
+"href=\"https://envato.com/market-plugin/\" target=\"_blank\">Envato Market</"
+"a> plugin instead to receive automatic updates."
+msgstr ""
+
+#: inc/updater/theme-updater.php:34
+msgid "License Key"
+msgstr ""
+
+#: inc/updater/theme-updater.php:35
+msgid "License Action"
+msgstr ""
+
+#: inc/updater/theme-updater.php:36
+msgid "Deactivate License"
+msgstr ""
+
+#: inc/updater/theme-updater.php:37
+msgid "Activate License"
+msgstr ""
+
+#: inc/updater/theme-updater.php:38 inc/updater/theme-updater.php:51
+msgid "License status is unknown."
+msgstr ""
+
+#: inc/updater/theme-updater.php:39
+msgid "Renew?"
+msgstr ""
+
+#: inc/updater/theme-updater.php:40 rcp/register.php:72
+msgid "unlimited"
+msgstr ""
+
+#: inc/updater/theme-updater.php:41
+msgid "License key is active."
+msgstr ""
+
+#: inc/updater/theme-updater.php:42
+#, php-format
+msgid "Expires %s."
+msgstr ""
+
+#: inc/updater/theme-updater.php:43
+msgid "Lifetime License."
+msgstr ""
+
+#: inc/updater/theme-updater.php:44
+#, php-format
+msgid "You have %1$s / %2$s sites activated."
+msgstr ""
+
+#: inc/updater/theme-updater.php:45
+#, php-format
+msgid "License key expired %s."
+msgstr ""
+
+#: inc/updater/theme-updater.php:46
+msgid "License key has expired."
+msgstr ""
+
+#: inc/updater/theme-updater.php:47
+msgid "License keys do not match."
+msgstr ""
+
+#: inc/updater/theme-updater.php:48
+msgid "License is inactive."
+msgstr ""
+
+#: inc/updater/theme-updater.php:49
+msgid "License key is disabled."
+msgstr ""
+
+#: inc/updater/theme-updater.php:50
+msgid "Site is inactive."
+msgstr ""
+
+#: inc/updater/theme-updater.php:52
+msgid ""
+"Updating this theme will lose any customizations you have made. 'Cancel' to "
+"stop, 'OK' to update."
+msgstr ""
+
+#: inc/updater/theme-updater.php:53
+#, php-format
+msgid ""
+"<strong>%1$s %2$s</strong> is available. <a href=\"%3$s\" class=\"thickbox\" "
+"title=\"%4s\">Check out what's new</a> or <a href=\"%5$s\"%6$s>update now</"
+"a>."
+msgstr ""
+
 #: inc/widgets/contributors.php:14
 msgid "Print a list of all site contributors who published at least one post."
 msgstr ""
@@ -730,14 +897,120 @@ msgstr ""
 msgid "Section: Contributors"
 msgstr ""
 
-#: inc/widgets/contributors.php:20 inc/widgets/recent-posts-grid.php:20
-#: inc/widgets/recent-posts.php:20 inc/widgets/static-content.php:23
+#: inc/widgets/contributors.php:20 inc/widgets/feature-callout.php:20
+#: inc/widgets/recent-posts-grid.php:20 inc/widgets/recent-posts.php:20
+#: inc/widgets/section-featured-slides.php:20 inc/widgets/static-content.php:23
 msgid "Title:"
 msgstr ""
 
 #: inc/widgets/contributors.php:26 inc/widgets/recent-posts-grid.php:26
 #: inc/widgets/recent-posts.php:26
 msgid "Description:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:14
+msgid "Displays a feature callout."
+msgstr ""
+
+#: inc/widgets/feature-callout.php:15
+msgid "Section: Feature Callout"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:25 inc/widgets/featured-slide.php:25
+msgid "Content:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:31
+msgid "Text Align:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:33
+#: inc/widgets/section-featured-slides.php:37
+msgid "Left"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:34
+#: inc/widgets/section-featured-slides.php:39
+msgid "Right"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:35
+msgid "Center (cover only)"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:41
+msgid "Vertical Alignment:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:43
+msgid "Top"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:44
+msgid "Middle"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:45
+msgid "Bottom"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:51
+msgid "Image:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:56
+msgid "Image Style:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:58
+msgid "Cover"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:59
+msgid "Pull Out"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:65
+msgid "Use dark transparent overlay (cover only)"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:70 inc/widgets/recent-posts.php:64
+#: inc/widgets/section-featured-slides.php:25 inc/widgets/static-content.php:51
+msgid "Text Color:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:75 inc/widgets/recent-posts.php:46
+#: inc/widgets/static-content.php:33
+msgid "Background Color:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:14
+msgid "Displays a feature slide."
+msgstr ""
+
+#: inc/widgets/featured-slide.php:15
+msgid "Featured Slide Item"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:20 inc/widgets/recent-posts.php:59
+#: inc/widgets/static-content.php:46
+msgid "Background Image:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:31
+msgid "Content Box Color:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:39
+msgid "Content Box Opacity:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:44
+msgid "Button URL:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:49
+msgid "Button Text:"
 msgstr ""
 
 #: inc/widgets/recent-posts-grid.php:14
@@ -768,28 +1041,61 @@ msgstr ""
 msgid "Show Post Meta?"
 msgstr ""
 
-#: inc/widgets/recent-posts.php:46 inc/widgets/static-content.php:33
-msgid "Background Color:"
-msgstr ""
-
 #: inc/widgets/recent-posts.php:54 inc/widgets/static-content.php:41
 msgid "Background Image Opacity:"
 msgstr ""
 
-#: inc/widgets/recent-posts.php:59 inc/widgets/static-content.php:46
-msgid "Background Image:"
-msgstr ""
-
-#: inc/widgets/recent-posts.php:64 inc/widgets/static-content.php:51
-msgid "Text Color:"
-msgstr ""
-
-#: inc/widgets/recent-posts.php:69 inc/widgets/static-content.php:56
+#: inc/widgets/recent-posts.php:69 inc/widgets/section-featured-slides.php:30
+#: inc/widgets/static-content.php:56
 msgid "Link Color:"
 msgstr ""
 
-#: inc/widgets/recent-posts.php:156
+#: inc/widgets/recent-posts.php:180
 msgid "See All Posts"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:14
+msgid "Displays all contents under &ldquo;Featured Slides Sidebar&rdquo; Area."
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:15
+msgid "Section: Featured Slides"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:35
+msgid "Content Position:"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:38
+msgid "Center"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:45
+msgid "Transition Effect:"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:47
+msgid "Fade"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:48
+msgid "Slide"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:57
+msgid "Speed of the slideshow change in seconds:"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:62
+msgid "Pause slideshow when hover?"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:67
+msgid "Show slide pagination?"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:72
+msgid "Hide on mobile?"
 msgstr ""
 
 #: inc/widgets/static-content.php:17
@@ -958,10 +1264,6 @@ msgstr ""
 msgid "free"
 msgstr ""
 
-#: rcp/register.php:72
-msgid "unlimited"
-msgstr ""
-
 #: rcp/register.php:81
 msgid "You have not created any subscription levels yet"
 msgstr ""
@@ -992,14 +1294,18 @@ msgstr ""
 msgid "Retina Dark Logo"
 msgstr ""
 
-#: stag-customizer/class-stag-widget.php:194
-#: stag-customizer/class-stag-widget.php:213
-#: stag-customizer/helper-fonts.php:173
+#: stag-customizer/class-stag-widget.php:195
+#: stag-customizer/class-stag-widget.php:214
+#: stag-customizer/helper-fonts.php:175
 msgid "All"
 msgstr ""
 
-#: stag-customizer/class-stag-widget.php:271
+#: stag-customizer/class-stag-widget.php:281
 msgid "Choose Image"
+msgstr ""
+
+#: stag-customizer/class-stag-widget.php:282
+msgid "Remove"
 msgstr ""
 
 #: stag-customizer/class-tgm-plugin-activation.php:334
@@ -1010,13 +1316,11 @@ msgstr ""
 msgid "Install Plugins"
 msgstr ""
 
-#. translators: %s: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:337
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#. translators: %s: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:339
 #, php-format
 msgid "Updating Plugin: %s"
@@ -1026,7 +1330,6 @@ msgstr ""
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#. translators: 1: plugin name(s).
 #: stag-customizer/class-tgm-plugin-activation.php:343
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
@@ -1034,7 +1337,6 @@ msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: plugin name(s).
 #: stag-customizer/class-tgm-plugin-activation.php:349
 #, php-format
 msgid "This theme recommends the following plugin: %1$s."
@@ -1042,7 +1344,6 @@ msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: plugin name(s).
 #: stag-customizer/class-tgm-plugin-activation.php:355
 #, php-format
 msgid ""
@@ -1054,7 +1355,6 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: plugin name(s).
 #: stag-customizer/class-tgm-plugin-activation.php:361
 #, php-format
 msgid "There is an update available for: %1$s."
@@ -1062,7 +1362,6 @@ msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: plugin name(s).
 #: stag-customizer/class-tgm-plugin-activation.php:367
 #, php-format
 msgid "The following required plugin is currently inactive: %1$s."
@@ -1070,7 +1369,6 @@ msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: plugin name(s).
 #: stag-customizer/class-tgm-plugin-activation.php:373
 #, php-format
 msgid "The following recommended plugin is currently inactive: %1$s."
@@ -1119,13 +1417,11 @@ msgid_plural "The following plugins were activated successfully:"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:397
 #, php-format
 msgid "No action taken. Plugin %1$s was already active."
 msgstr ""
 
-#. translators: 1: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:399
 #, php-format
 msgid ""
@@ -1133,7 +1429,6 @@ msgid ""
 "Please update the plugin."
 msgstr ""
 
-#. translators: 1: dashboard link.
 #: stag-customizer/class-tgm-plugin-activation.php:401
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
@@ -1186,7 +1481,6 @@ msgctxt "plugin A *and* plugin B"
 msgid "and"
 msgstr ""
 
-#. translators: %s: version number
 #: stag-customizer/class-tgm-plugin-activation.php:2067
 #, php-format
 msgid "TGMPA v%s"
@@ -1236,14 +1530,12 @@ msgstr ""
 msgid "Update recommended"
 msgstr ""
 
-#. translators: 1: install status, 2: update status
 #: stag-customizer/class-tgm-plugin-activation.php:2427
 #, php-format
 msgctxt "Install/Update Status"
 msgid "%1$s, %2$s"
 msgstr ""
 
-#. translators: 1: number of plugins.
 #: stag-customizer/class-tgm-plugin-activation.php:2473
 #, php-format
 msgctxt "plugins"
@@ -1252,7 +1544,6 @@ msgid_plural "All <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: number of plugins.
 #: stag-customizer/class-tgm-plugin-activation.php:2477
 #, php-format
 msgid "To Install <span class=\"count\">(%s)</span>"
@@ -1260,7 +1551,6 @@ msgid_plural "To Install <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: number of plugins.
 #: stag-customizer/class-tgm-plugin-activation.php:2481
 #, php-format
 msgid "Update Available <span class=\"count\">(%s)</span>"
@@ -1268,7 +1558,6 @@ msgid_plural "Update Available <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#. translators: 1: number of plugins.
 #: stag-customizer/class-tgm-plugin-activation.php:2485
 #, php-format
 msgid "To Activate <span class=\"count\">(%s)</span>"
@@ -1317,19 +1606,16 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#. translators: %2$s: plugin name in screen reader markup
 #: stag-customizer/class-tgm-plugin-activation.php:2688
 #, php-format
 msgid "Install %2$s"
 msgstr ""
 
-#. translators: %2$s: plugin name in screen reader markup
 #: stag-customizer/class-tgm-plugin-activation.php:2693
 #, php-format
 msgid "Update %2$s"
 msgstr ""
 
-#. translators: %2$s: plugin name in screen reader markup
 #: stag-customizer/class-tgm-plugin-activation.php:2699
 #, php-format
 msgid "Activate %2$s"
@@ -1379,19 +1665,16 @@ msgstr ""
 msgid "Plugin activation failed."
 msgstr ""
 
-#. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: stag-customizer/class-tgm-plugin-activation.php:3583
 #, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#. translators: 1: plugin name, 2: error message.
 #: stag-customizer/class-tgm-plugin-activation.php:3586
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#. translators: 1: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:3588
 #, php-format
 msgid "The installation of %1$s failed."
@@ -1403,7 +1686,6 @@ msgid ""
 "while on some hosts, so please be patient."
 msgstr ""
 
-#. translators: 1: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:3594
 #, php-format
 msgid "%1$s installed and activated successfully."
@@ -1423,7 +1705,6 @@ msgstr ""
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: stag-customizer/class-tgm-plugin-activation.php:3597
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
@@ -1435,7 +1716,6 @@ msgid ""
 "hosts, so please be patient."
 msgstr ""
 
-#. translators: 1: plugin name.
 #: stag-customizer/class-tgm-plugin-activation.php:3602
 #, php-format
 msgid "%1$s installed successfully."
@@ -1445,168 +1725,147 @@ msgstr ""
 msgid "All installations have been completed."
 msgstr ""
 
-#. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: stag-customizer/class-tgm-plugin-activation.php:3605
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:174
+#: stag-customizer/helper-fonts.php:176
 msgid "Arabic"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:175
+#: stag-customizer/helper-fonts.php:177
 msgid "Bengali"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:176
+#: stag-customizer/helper-fonts.php:178
 msgid "Cyrillic"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:177
+#: stag-customizer/helper-fonts.php:179
 msgid "Cyrillic Extended"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:178
+#: stag-customizer/helper-fonts.php:180
 msgid "Devanagari"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:179
+#: stag-customizer/helper-fonts.php:181
 msgid "Greek"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:180
+#: stag-customizer/helper-fonts.php:182
 msgid "Greek Extended"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:181
+#: stag-customizer/helper-fonts.php:183
 msgid "Gujarati"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:182
+#: stag-customizer/helper-fonts.php:184
 msgid "Gurmukhi"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:183
+#: stag-customizer/helper-fonts.php:185
 msgid "Hebrew"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:184
+#: stag-customizer/helper-fonts.php:186
 msgid "Kannada"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:185
+#: stag-customizer/helper-fonts.php:187
 msgid "Khmer"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:186
+#: stag-customizer/helper-fonts.php:188
 msgid "Latin"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:187
+#: stag-customizer/helper-fonts.php:189
 msgid "Latin Extended"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:188
+#: stag-customizer/helper-fonts.php:190
 msgid "Malayalam"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:189
-msgid "Oriya"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:190
-msgid "Sinhala"
-msgstr ""
-
 #: stag-customizer/helper-fonts.php:191
-msgid "Tamil"
+msgid "Myanmar"
 msgstr ""
 
 #: stag-customizer/helper-fonts.php:192
-msgid "Telugu"
+msgid "Oriya"
 msgstr ""
 
 #: stag-customizer/helper-fonts.php:193
-msgid "Thai"
+msgid "Sinhala"
 msgstr ""
 
 #: stag-customizer/helper-fonts.php:194
+msgid "Tamil"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:195
+msgid "Telugu"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:196
+msgid "Thai"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:197
 msgid "Vietnamese"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:229
-msgid "Standard Fonts"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:234
-msgid "Serif Fonts (Google)"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:237
-msgid "Sans Serif Fonts (Google)"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:240
-msgid "Display Fonts (Google)"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:243
-msgid "Handwriting Fonts (Google)"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:246
-msgid "Monospace Fonts (Google)"
-msgstr ""
-
-#: stag-customizer/helper-fonts.php:292
+#: stag-customizer/helper-fonts.php:271
 msgctxt "font style"
 msgid "Serif"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:296
+#: stag-customizer/helper-fonts.php:275
 msgctxt "font style"
 msgid "Sans Serif"
 msgstr ""
 
-#: stag-customizer/helper-fonts.php:300
+#: stag-customizer/helper-fonts.php:279
 msgctxt "font style"
 msgid "Monospaced"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:106
+#: stag-customizer/helper-typekit.php:108
 msgid "Typekit Kit ID"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:119
+#: stag-customizer/helper-typekit.php:121
 msgid "Reset"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:119
+#: stag-customizer/helper-typekit.php:121
 msgid "Load Typekit Fonts"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:132
+#: stag-customizer/helper-typekit.php:134
 #, php-format
 msgid ""
 "For more information about Typekit integration, please see <a class="
 "\"external-link\" target=\"_blank\" href=\"%1$s\">%2$s' documentation</a>."
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:232
-#: stag-customizer/helper-typekit.php:296
+#: stag-customizer/helper-typekit.php:248
+#: stag-customizer/helper-typekit.php:312
 msgid "Typekit Fonts"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:233
+#: stag-customizer/helper-typekit.php:249
 msgid "Please enter your Typekit Kit ID"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:234
+#: stag-customizer/helper-typekit.php:250
 msgid "Typekit fonts could not be found. Please try again"
 msgstr ""
 
-#: stag-customizer/helper-typekit.php:235
+#: stag-customizer/helper-typekit.php:251
 msgid "Typekit fonts added, select them from dropdown above."
 msgstr ""
 
@@ -1631,7 +1890,7 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: stag-customizer/stag-admin-metabox.php:259
-#: stag-customizer/stag-admin-metabox.php:261
+#: stag-customizer/stag-admin-metabox.php:258
+#: stag-customizer/stag-admin-metabox.php:260
 msgid "Edit Gallery"
 msgstr ""

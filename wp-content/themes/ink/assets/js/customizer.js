@@ -52,14 +52,6 @@
 		} );
 	} );
 
-	// Site layout option
-	wp.customize( 'layout', function( value ) {
-		value.bind( function( to ) {
-			$('body').attr('data-layout', to);
-			$(window).trigger('resize');
-		} );
-	} );
-
 	// Toggle Author title visibility
 	wp.customize( 'hide_author_title', function( value ) {
 		value.bind( function( to ) {

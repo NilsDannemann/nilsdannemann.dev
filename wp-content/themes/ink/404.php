@@ -8,10 +8,13 @@
 get_header();
 
 $error_page_id = stag_theme_mod( '404_page', '404_custom_page' );
+$subtitle      = get_post_meta( $post->ID, '_subtitle', true );
 
-if ( false !== $error_page_id ) :
+if ( false !== (bool) $error_page_id ) :
 	$background_filter  = stag_get_post_meta( 'settings', $error_page_id, 'post-background-filter' );
-	if ( ! $background_filter ) $background_filter = 'none';
+	if ( ! $background_filter ) {
+		$background_filter = 'none';
+	}
 
 	$post = get_post( $error_page_id );
 
@@ -26,18 +29,18 @@ if ( false !== $error_page_id ) :
 			<article id="post-<?php echo esc_attr( $post->ID ); ?>" class="<?php echo esc_attr( $post_class ); ?>">
 
 				<header class="entry-header">
-					<h1 class="entry-title"><?php echo $post->post_title; ?></h1>
+					<h1 class="entry-title"><?php echo $post->post_title; // WPCS: XSS ok. ?></h1>
 
-					<?php if ( '' !== ( $subtitle = get_post_meta( $post->ID, '_subtitle', true ) ) ) : ?>
-					<span class="entry-subtitle custom custom-2"><?php echo $subtitle; ?></span>
+					<?php if ( '' !== $subtitle ) : ?>
+					<span class="entry-subtitle custom custom-2"><?php echo $subtitle; // WPCS: XSS ok. ?></span>
 					<?php endif; ?>
 				</header><!-- .entry-header -->
 
 				<div class="entry-content">
 					<?php
 					remove_filter( 'the_content', 'sharing_display',19 );
-				    remove_filter( 'the_excerpt', 'sharing_display',19 );
-					echo apply_filters( 'the_content', $post->post_content );
+					remove_filter( 'the_excerpt', 'sharing_display',19 );
+					echo apply_filters( 'the_content', $post->post_content ); // WPCS: XSS ok.
 					?>
 				</div><!-- .entry-content -->
 
@@ -54,11 +57,11 @@ if ( false !== $error_page_id ) :
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'stag' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'stag' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'stag' ) ?></p>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'stag' ); ?></p>
 
 					<?php get_search_form(); ?>
 
@@ -77,6 +80,8 @@ if ( false !== $error_page_id ) :
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php endif;
+<?php
+
+endif;
 
 get_footer();

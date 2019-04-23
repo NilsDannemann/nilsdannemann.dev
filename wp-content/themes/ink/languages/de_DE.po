@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ink\n"
-"POT-Creation-Date: 2014-08-28 14:52+0530\n"
-"PO-Revision-Date: 2014-08-28 14:52+0530\n"
+"POT-Creation-Date: 2017-06-29 07:16+0530\n"
+"PO-Revision-Date: 2017-06-29 07:20+0530\n"
 "Last-Translator: Ram Ratan Maurya <ram@codestag.com>\n"
 "Language-Team: Ram Ratan Maurya <ram@codestag.com>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:15
+#: 404.php:59
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "Huch! Die Seite konnte nicht gefunden werden.\t"
 
-#: 404.php:19
+#: 404.php:63
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
@@ -31,57 +31,29 @@ msgstr ""
 "unten oder die Suche probieren?"
 
 #. translators: %1$s: smiley
-#: 404.php:27
+#: 404.php:71
 #, php-format
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "Zum Monatsarchiv %1$s"
 
-#: _post-cover-wrap.php:64 content-page.php:24 content-single.php:69
-#: content.php:27 inc/template-tags.php:23 inc/widgets/recent-posts.php:120
+#: _post-cover-wrap.php:87 inc/template-tags.php:23
+#: inc/widgets/recent-posts.php:170 template-parts/layout/grid-content.php:44
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: _post-cover-wrap.php:69 content.php:32
+#: _post-cover-wrap.php:92 template-parts/layout/grid-content.php:49
 msgid "In "
 msgstr "In"
 
-#: _post-load.php:48
+#: _post-load.php:50
 msgid "Load More"
 msgstr "Mehr"
 
-#: _post-share.php:12
-#, php-format
-msgctxt "1: Article title 2: Site Name 3: Site URL"
-msgid "%1$s on %2$s - %3$s"
-msgstr "%1$s auf %2$s - %3$s"
-
-#: _post-share.php:17
-msgid "Share on"
-msgstr "Teilen"
-
-#: _post-share.php:20 inc/theme-functions.php:11
-msgid "Twitter"
-msgstr "Twitter"
-
-#: _post-share.php:21 inc/theme-functions.php:15
-msgid "Facebook"
-msgstr "Facebook"
-
-#: author.php:39
+#: author.php:46
 msgid "Website"
 msgstr "Website"
 
-#: author.php:84
-#, php-format
-msgctxt "1: Author Name 2: Site title"
-msgid "%1$s on %2$s - %3$s"
-msgstr "%1$s auf  %2$s - %3$s"
-
-#: author.php:85
-msgid "Share this profile on Twitter"
-msgstr "Dieses Profil auf Twitter teilen"
-
-#: comments.php:29
+#: comments.php:30
 #, php-format
 msgctxt "comments title"
 msgid "%1$s Comment"
@@ -89,23 +61,27 @@ msgid_plural "%1$s Comments"
 msgstr[0] "%1$s Kommentar"
 msgstr[1] "%1$s Kommentar"
 
-#: comments.php:35
-msgid "Submit a Comment"
-msgstr "Kommentar schreiben"
+#: comments.php:38
+msgid "Show"
+msgstr "Anzeigen"
 
-#: comments.php:41 comments.php:61
+#: comments.php:39
+msgid "Hide"
+msgstr "Verbergen"
+
+#: comments.php:47 comments.php:68
 msgid "Comment navigation"
 msgstr "Kommentarnavigation"
 
-#: comments.php:42 comments.php:62
+#: comments.php:48 comments.php:69
 msgid "&larr; Older Comments"
 msgstr "&larr; Ältere Kommentare"
 
-#: comments.php:43 comments.php:63
+#: comments.php:49 comments.php:70
 msgid "Newer Comments &rarr;"
 msgstr "Neuere Kommentare &rarr;"
 
-#: comments.php:73
+#: comments.php:81
 msgid "Comments are closed."
 msgstr "Kommentare sind geschlossen."
 
@@ -125,35 +101,35 @@ msgstr "Du hast keine korrekte E-Mail-Adresse eingegeben."
 msgid "Please enter a message."
 msgstr "Bitte gib eine Nachricht ein."
 
-#: contact.php:83
+#: contact.php:85
 msgid "Thanks, your email was sent successfully."
 msgstr "Danke, deine E-Mail wurde versandt."
 
-#: contact.php:89
+#: contact.php:91
 msgid "Send a Message"
 msgstr "Sende eine Nachricht"
 
-#: contact.php:94
+#: contact.php:95
 msgid "Name"
 msgstr "Name"
 
-#: contact.php:102 rcp/register-single.php:31 rcp/register.php:29
+#: contact.php:103 rcp/register-single.php:33 rcp/register.php:33
 msgid "Email"
 msgstr "E-Mail"
 
-#: contact.php:113
+#: contact.php:114
 msgid "Your Message"
 msgstr "Deine Nachricht"
 
-#: contact.php:120
+#: contact.php:124
 msgid "Send Message"
 msgstr "Nachricht senden"
 
-#: content-none.php:14
+#: content-none.php:15
 msgid "Nothing Found"
 msgstr "Nichts gefunden"
 
-#: content-none.php:20
+#: content-none.php:21
 #, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
@@ -161,7 +137,7 @@ msgstr ""
 "Bereit, deinen ersten Post zu veröffentlichen? <a href=\"%1$s\">Starte hier</"
 "a>."
 
-#: content-none.php:24
+#: content-none.php:25
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with "
 "different keywords."
@@ -169,185 +145,376 @@ msgstr ""
 "Entschuldigung, zu dieser Suchanfrage konnte nichts gefunden werden. Bitte "
 "versuche es mit einem anderen Begriff."
 
-#: content-none.php:29
+#: content-none.php:30
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr "Leider konnten wir nicht finden, wonach du gesucht hast."
 
-#: content-page.php:19
-msgid "Pages:"
-msgstr "Seiten:"
-
-#: content-single.php:23
-msgid "<h5>Pages</h5>"
-msgstr "<h5>Seiten</h5>"
-
 #. translators: used between list items, there is a space after the comma
-#: content-single.php:39 content-single.php:42
+#: content-single.php:51 content-single.php:54
 msgid ", "
 msgstr ","
 
-#: content-single.php:49
+#: content-single.php:61
 #, php-format
 msgid "Tags: %2$s"
 msgstr "Tags: %2$s"
 
-#: content-single.php:55
+#: content-single.php:66
 #, php-format
 msgid "Tags: %2$s / Category: %1$s"
 msgstr "Tags: %2$s / Kategorie: %1$s"
 
-#: content-single.php:57
+#: content-single.php:68
 #, php-format
 msgid "Category: %1$s"
 msgstr "Kategorie: %1$s"
 
-#: functions.php:39
+#: functions.php:30
 msgid "Primary Menu"
 msgstr "Hauptmenü"
 
-#: functions.php:40
+#: functions.php:31
 msgid "Footer Menu"
 msgstr "Footer Menü"
 
-#: functions.php:73
-msgid "Footer Widget Area"
-msgstr "Footer Widget Bereich"
+#: functions.php:94
+msgid "Play background video"
+msgstr "Hintergrund-Video abspielen"
 
-#: functions.php:79
-msgid "Sitewide footer widgets."
-msgstr "Seitenweite Footer Widgets"
+#: functions.php:95
+msgid "Pause background video"
+msgstr "Hintergrund-Video pausieren"
 
-#: functions.php:83
+#: functions.php:109
+msgid "Footer Widget Area 1"
+msgstr "Footer-Widget-Bereich 1"
+
+#: functions.php:118
+msgid "Footer Widget Area 2"
+msgstr "Footer-Widget-Bereich 2"
+
+#: functions.php:127
+msgid "Footer Widget Area 3"
+msgstr "Footer-Widget-Bereich 3"
+
+#: functions.php:136
 msgid "Side Drawer Widget Area"
 msgstr "Seitenbereich Widgets"
 
-#: functions.php:89
+#: functions.php:142
 msgid "Sidebar drawer navigation widgets."
 msgstr "Seitenbereich Navigations-Widgets"
 
-#: header.php:39
+#: functions.php:145
+msgid "Featured Slider Section"
+msgstr ""
+
+#: functions.php:147
+msgid "Use only &ldquo;Featured Slide Item&rdquo; widget here."
+msgstr ""
+
+#: functions.php:154
+msgid "Single Posts Sidebar"
+msgstr "Einzelne Beiträge Sidebar"
+
+#: functions.php:156
+msgid "An optional widget area for single posts."
+msgstr ""
+
+#: functions.php:163
+msgid "Single Page Sidebar"
+msgstr "Einseitige Seitenleiste"
+
+#: functions.php:165
+msgid "An optional widget area for single pages."
+msgstr ""
+
+#: header.php:29
 msgid "Menu"
 msgstr "Menü"
 
-#: header.php:59
+#: header.php:49
 msgid "Home"
 msgstr "Start"
 
 #: inc/customizer.php:11
+#, fuzzy
+msgid "Theme Options"
+msgstr "Theme Optionen"
+
+#: inc/customizer.php:12
+msgid "Configure your theme settings"
+msgstr ""
+
+#: inc/customizer.php:17
 msgctxt "Theme customizer section title"
 msgid "General Settings"
 msgstr "Allgemeine Einstellungen"
 
-#: inc/customizer.php:13
-msgid "Upload site logo, favicon, and Google Analytics tracking code."
-msgstr "Logo, Favicon und Google Analytics Code hochladen."
+#: inc/customizer.php:20
+msgid "Upload site logo, and Google Analytics tracking code."
+msgstr ""
 
-#: inc/customizer.php:17
+#: inc/customizer.php:24
 msgctxt "Theme customizer section title"
 msgid "Styling Options"
 msgstr "Styling Optionen"
 
-#: inc/customizer.php:22
+#: inc/customizer.php:30
 msgctxt "Theme customizer section title"
 msgid "Typography Options"
 msgstr "Typographie Optionen"
 
-#: inc/customizer.php:27
+#: inc/customizer.php:34
+#, php-format
+msgid ""
+"The list of Google fonts is long! You can %s before making your choices."
+msgstr ""
+
+#: inc/customizer.php:38
+#, fuzzy
+msgid "preview"
+msgstr "Vorschau"
+
+#: inc/customizer.php:44
 msgctxt "Theme customizer section title"
 msgid "Post Settings"
 msgstr "Beitragseinstellungen"
 
-#: inc/customizer.php:32
+#: inc/customizer.php:50
 msgctxt "Theme customizer section title"
 msgid "Footer"
 msgstr "Footer"
 
-#: inc/customizer.php:37
+#: inc/customizer.php:56
 msgctxt "Theme customizer section title"
 msgid "404 Error Page"
 msgstr "404 Fehlerseite"
 
-#: inc/customizer.php:39
+#: inc/customizer.php:59
 msgid "Select a custom 404 page."
 msgstr "Wähle eine 404 Fehlerseite aus"
 
-#: inc/customizer.php:61
-msgid "Favicon"
-msgstr "Favicon"
+#: inc/customizer.php:82
+#, fuzzy
+msgid "Hide Tagline"
+msgstr "Tagline ausblenden"
 
-#: inc/customizer.php:67
-msgid "Contact Form Email Address"
-msgstr "E-Mail-Adresse des Kontaktformulars"
+#: inc/customizer.php:91
+msgid "Header Image Text"
+msgstr ""
 
-#: inc/customizer.php:73
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics Tracking Code"
+#: inc/customizer.php:99
+msgid "Header Image Description"
+msgstr ""
 
-#: inc/customizer.php:81 inc/meta/post.php:15 inc/meta/post.php:61
+#: inc/customizer.php:106 inc/customizer.php:143 inc/meta/post.php:15
+#: inc/meta/post.php:61
 msgid "Background Color"
 msgstr "Hintergrundfarbe"
 
-#: inc/customizer.php:86
+#: inc/customizer.php:113
+msgid "Header Image Opacity"
+msgstr ""
+
+#: inc/customizer.php:128
+msgid "Contact Form Email Address"
+msgstr "E-Mail-Adresse des Kontaktformulars"
+
+#: inc/customizer.php:134
+msgid "Google Analytics Tracking Code"
+msgstr "Google Analytics Tracking Code"
+
+#: inc/customizer.php:136
+msgid ""
+"Paste the full Google Analytics code snippet here without <script> tags."
+msgstr ""
+
+#: inc/customizer.php:148
 msgid "Accent Color"
 msgstr "Akzentfarbe"
 
-#: inc/customizer.php:93
+#: inc/customizer.php:155
 msgid "Homepage Layout"
 msgstr "Layout der Startseite"
 
-#: inc/customizer.php:104
-msgid "Custom CSS"
-msgstr "Individueller CSS-Code"
+#: inc/customizer.php:172
+msgid "Enable Post Grid Hover Effect"
+msgstr ""
 
-#: inc/customizer.php:112
+#: inc/customizer.php:179
+msgid "Enable Sidebar on Single Post"
+msgstr ""
+
+#: inc/customizer.php:186
+msgid "Enable Sidebar on Single Page"
+msgstr ""
+
+#: inc/customizer.php:193
+msgid "Post Grid Hover Text"
+msgstr ""
+
+#: inc/customizer.php:195
+msgid "Read Story"
+msgstr ""
+
+#: inc/customizer.php:199
+#, fuzzy
+msgid "Navigation Layout"
+msgstr "Layout der Navigation"
+
+#: inc/customizer.php:204
+#, fuzzy
+msgid "Traditional"
+msgstr "Traditionell"
+
+#: inc/customizer.php:205
+#, fuzzy
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: inc/customizer.php:211
 msgid "Body Font"
 msgstr "Body Schriftart"
 
-#: inc/customizer.php:119
+#: inc/customizer.php:218
 msgid "Header Font"
 msgstr "Header Schriftart"
 
-#: inc/customizer.php:126
+#: inc/customizer.php:225
 msgid "Character Subset"
 msgstr "Schriftart"
 
-#: inc/customizer.php:134
-msgid "Disable Sharing Buttons"
-msgstr "Sharing Buttons deaktivieren"
+#: inc/customizer.php:236
+#, fuzzy
+msgid "Single Posts"
+msgstr "Einzelne Beiträge"
 
-#: inc/customizer.php:140
-msgid "Include Post Category at Post Cover&rsquo;s meta"
-msgstr "Beitragskategorie in der Meta-Beschreibung einbinden"
+#: inc/customizer.php:241
+msgid "Hide next/previous post navigation"
+msgstr ""
 
-#: inc/customizer.php:146
-msgid "Hide Author Title under Posts"
-msgstr "Name des Autors unter Beiträgen verbergen"
+#: inc/customizer.php:242
+msgid "Show/hide Next and Previous post navigation box"
+msgstr ""
 
-#: inc/customizer.php:151
-msgid "Show Related Posts on Single Posts"
-msgstr "Ähnliche Beiträge unter Beitrag anzeigen"
+#: inc/customizer.php:248
+#, fuzzy
+msgid "Show Related Posts"
+msgstr "Ähnliche Beiträge anzeigen"
 
-#: inc/customizer.php:156
+#: inc/customizer.php:254
 msgid "Number of Related posts to show"
 msgstr "Anzahl der ähnlichen Beiträge"
 
-#: inc/customizer.php:161
-msgid "Show Post Excerpt on Archive pages"
-msgstr "Beitragsauszug auf Archivseiten zeigen"
+#: inc/customizer.php:259
+msgid "Post Cover Scroll Text"
+msgstr ""
 
-#: inc/customizer.php:167
+#: inc/customizer.php:261
+msgid "Scroll this"
+msgstr ""
+
+#: inc/customizer.php:263
+msgid "Scroll button text, appears over post covers on single posts."
+msgstr ""
+
+#: inc/customizer.php:266
+msgid "Premium Post Text"
+msgstr ""
+
+#: inc/customizer.php:268
+#, fuzzy
+msgid "Premium"
+msgstr "Premium"
+
+#: inc/customizer.php:270
+msgid ""
+"Display a text label for restricted post when Restrict Content Pro is active."
+msgstr ""
+
+#: inc/customizer.php:274
+#, fuzzy
+msgid "Sticky Post Label"
+msgstr "Angeheftet-Label"
+
+#: inc/customizer.php:276
+#, fuzzy
+msgid "Sticky"
+msgstr "Fixiert"
+
+#: inc/customizer.php:278
+msgid "Display a text label for sticky post"
+msgstr ""
+
+#: inc/customizer.php:281
+msgid "Comments Visibility"
+msgstr ""
+
+#: inc/customizer.php:286
+#, fuzzy
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: inc/customizer.php:287
+#, fuzzy
+msgid "Collapsed"
+msgstr "eingeklappt"
+
+#: inc/customizer.php:301
+#, fuzzy
+msgid "Post Info"
+msgstr "Beitrags-Info"
+
+#: inc/customizer.php:306
+#, fuzzy
+msgid "Show Post Category"
+msgstr "Beitrag Kategorie anzeigen"
+
+#: inc/customizer.php:312
+#, fuzzy
+msgid "Hide Author"
+msgstr "Autor ausblenden"
+
+#: inc/customizer.php:317
+msgid "Hide Reading Time"
+msgstr ""
+
+#: inc/customizer.php:322
+msgid "Show Post Excerpt (only at Blog pages)"
+msgstr ""
+
+#: inc/customizer.php:328
 msgid "Post Excerpt Length (in words)"
 msgstr "Auszugslänge anzeigen (in Wortzahl)"
 
-#: inc/customizer.php:175
+#: inc/customizer.php:336
+#, fuzzy
+msgid "Number of Widget Areas"
+msgstr "Anzahl der Widget-Bereiche"
+
+#: inc/customizer.php:338
+msgid "Defines the number of columns shown in footer widget area."
+msgstr ""
+
+#: inc/customizer.php:348
 msgid "Copyright Text"
 msgstr "Copyright Text"
 
-#: inc/customizer.php:182
+#: inc/customizer.php:355
 msgid "Custom 404 Page"
 msgstr "Individuelle 404-Seite"
+
+#: inc/customizer.php:622
+#, fuzzy
+msgid "No results match"
+msgstr "Kein passendes Ergebnisse"
+
+#: inc/customizer.php:623
+msgid "No matching fonts"
+msgstr ""
 
 #: inc/extras.php:34
 #, php-format
@@ -358,6 +525,12 @@ msgstr "Seite %s"
 msgctxt "end marker for truncated content"
 msgid "&hellip;"
 msgstr "&hellip;"
+
+#: inc/extras.php:272
+msgid ""
+"This widget area is currently disabled. Enable it in the \"Footer\" panel of "
+"the Customizer."
+msgstr ""
 
 #: inc/meta/post.php:8 inc/meta/post.php:54
 msgid "Background Settings"
@@ -375,13 +548,13 @@ msgstr ""
 msgid "Choose background color for this post."
 msgstr "Hintergrundfarbe für den Beitrag auswählen"
 
-#: inc/meta/post.php:22
-msgid "Cover Opacity"
-msgstr "Deckkraft"
+#: inc/meta/post.php:22 inc/meta/post.php:68
+msgid "Featured Image Opacity"
+msgstr "Deckkraft des Aufmacherbilds"
 
 #: inc/meta/post.php:23
-msgid "Choose the opacity for the post&lsquo;s cover."
-msgstr "Deckkraft für das Titelbild auswählen"
+msgid "Choose featured image opacity for this post."
+msgstr ""
 
 #: inc/meta/post.php:31 inc/meta/post.php:77
 msgid "Cover Filter"
@@ -435,57 +608,37 @@ msgstr ""
 msgid "Choose background color for this page."
 msgstr "Hintergrundfarbe für die Seite auswählen"
 
-#: inc/meta/post.php:68
-msgid "Featured Image Opacity"
-msgstr "Deckkraft des Aufmacherbilds"
-
 #: inc/meta/post.php:69
 msgid "Choose featured image opacity for this page."
 msgstr "Deckkraft des Aufmacherbilds für diese Seite auswählen"
 
-#: inc/meta/post.php:94
-msgid "Text Color"
-msgstr "Textfarbe"
-
-#: inc/meta/post.php:95
-msgid "Choose text color for this page."
-msgstr "Textfarbe für diese Seite auswählen"
-
-#: inc/meta/post.php:101
-msgid "Link Color"
-msgstr "Linkfarbe"
-
-#: inc/meta/post.php:102
-msgid "Choose link color for this page."
-msgstr "Linkfarbe für diese Seite auswählen"
-
-#: inc/meta/post.php:114
+#: inc/meta/post.php:100
 msgid "Sidebar Settings"
 msgstr "Sidebar Einstellungen"
 
-#: inc/meta/post.php:115
+#: inc/meta/post.php:101
 msgid "Select a sidebar here to display its widgets after the page content."
 msgstr ""
 "Wähle hier eine Sidebar aus, deren Widgets nach dem Seiteninhalt angezeigt "
 "werden"
 
-#: inc/meta/post.php:121
+#: inc/meta/post.php:107
 msgid "Choose Sidebar"
 msgstr "Sidebar auswählen"
 
-#: inc/meta/post.php:126
+#: inc/meta/post.php:112
 msgid "No Sidebar"
 msgstr "Keine Sidebar"
 
-#: inc/meta/post.php:129
+#: inc/meta/post.php:115
 msgid "Hide Page Title?"
 msgstr "Seitentitel verbergen?"
 
-#: inc/meta/post.php:142
+#: inc/meta/post.php:128
 msgid "Video Cover Settings"
 msgstr "Video Cover Einstellungen"
 
-#: inc/meta/post.php:143
+#: inc/meta/post.php:129
 msgid ""
 "Select a video to display at the post&lsquo;s single page. If these fields "
 "are left blank, the Featured Image will show. The background settings from "
@@ -498,27 +651,27 @@ msgstr ""
 "auch für das Video Cover. (Videos werden nicht auf Displays angezeigt, die "
 "schmaler als 650 Pixel sind.)"
 
-#: inc/meta/post.php:149
+#: inc/meta/post.php:135
 msgid "MP4 File URL"
 msgstr "MP4 Datei URL"
 
-#: inc/meta/post.php:150
+#: inc/meta/post.php:136
 msgid "Enter URL to .mp4 video file."
 msgstr "Gib eine URL für die .mp4 Videodatei an."
 
-#: inc/meta/post.php:157
+#: inc/meta/post.php:143
 msgid "Webm File URL"
 msgstr "Webm Datei URL"
 
-#: inc/meta/post.php:158
+#: inc/meta/post.php:144
 msgid "Enter URL to .webm video file."
 msgstr "Gib eine URL für die ..webm Videodatei an."
 
-#: inc/meta/post.php:165
+#: inc/meta/post.php:151
 msgid "OGV File URL"
 msgstr "OGV Datei URL"
 
-#: inc/meta/post.php:166
+#: inc/meta/post.php:152
 msgid "Enter URL to .ogv video file."
 msgstr "Gib eine URL für die .ogv Videodatei an."
 
@@ -526,43 +679,43 @@ msgstr "Gib eine URL für die .ogv Videodatei an."
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: inc/template-tags.php:38
+#: inc/template-tags.php:42
 msgid " ago"
 msgstr " vorher"
 
-#: inc/template-tags.php:53
+#: inc/template-tags.php:57
 msgid "Your comment is awaiting moderation."
 msgstr "Dein Kommentar wartet auf Freigabe."
 
-#: inc/template-tags.php:68
+#: inc/template-tags.php:72
 msgid "Submit a comment"
 msgstr "Schreibe einen Kommentar"
 
-#: inc/template-tags.php:77
+#: inc/template-tags.php:81
 msgctxt "comment field placeholder"
 msgid "Name"
 msgstr "Name"
 
-#: inc/template-tags.php:88
+#: inc/template-tags.php:92
 msgctxt "comment field placeholder"
 msgid "Email"
 msgstr "E-Mail"
 
-#: inc/template-tags.php:99
+#: inc/template-tags.php:103
 msgctxt "comment field placeholder"
 msgid "Website"
 msgstr "Webseite"
 
-#: inc/template-tags.php:115
+#: inc/template-tags.php:119
 msgctxt "comment field placeholder"
 msgid "Your Comment"
 msgstr "Dein Kommentar"
 
-#: inc/template-tags.php:123
+#: inc/template-tags.php:127
 msgid "Submit comment"
 msgstr "Kommentar abschicken"
 
-#: inc/template-tags.php:153
+#: inc/template-tags.php:157
 #, php-format
 msgid ""
 "<span class=\"posted-on\">%1$s</span><span class=\"reading-time\">%3$s</"
@@ -571,59 +724,83 @@ msgstr ""
 "<span class=\"posted-on\">%1$s</span><span class=\"reading-time\">%3$s</"
 "span><span class=\"byline\">by %2$s</span>"
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:251
 msgid "1 minute read"
 msgstr "1 Minute Lesezeit"
 
 #. translators: %d = minute count
-#: inc/template-tags.php:258
+#: inc/template-tags.php:262
 #, php-format
 msgid "%d minute read"
 msgstr "%d Minuten Lesezeit"
 
-#: inc/template-tags.php:328 inc/template-tags.php:331
+#: inc/template-tags.php:335 inc/template-tags.php:338
 #, php-format
 msgid "All Posts Under %s"
 msgstr "Alle Beiträge unter %s"
 
-#: inc/template-tags.php:335
+#: inc/template-tags.php:342
 #, php-format
 msgid "Author: %s"
 msgstr "Autor: %s"
 
-#: inc/template-tags.php:339
+#: inc/template-tags.php:346
 #, php-format
 msgid "Day: %s"
 msgstr "Tag: %s"
 
-#: inc/template-tags.php:342
+#: inc/template-tags.php:349
 #, php-format
 msgid "Month: %s"
 msgstr "Monat: %s"
 
-#: inc/template-tags.php:345
+#: inc/template-tags.php:352
 #, php-format
 msgid "Year: %s"
 msgstr "Jahr: %s"
 
-#: inc/template-tags.php:348
+#: inc/template-tags.php:355
 #, php-format
 msgid "Search Results for: %s"
 msgstr "Suchergebnisse für: %s"
 
-#: inc/template-tags.php:351
+#: inc/template-tags.php:358
 msgid "Archives"
 msgstr "Archiv"
 
-#: inc/theme-functions.php:19
+#: inc/template-tags.php:438
+#, fuzzy
+msgid "Post navigation"
+msgstr "Nach der Navigation"
+
+#: inc/template-tags.php:441
+msgctxt "Previous post link"
+msgid ""
+"<span class=\"meta-nav\"><span class=\"arrow\">←</span> Previous Post</span>"
+msgstr ""
+
+#: inc/template-tags.php:442
+msgctxt "Next post link"
+msgid "<span class=\"meta-nav\">Next Post <span class=\"arrow\">→</span>"
+msgstr ""
+
+#: inc/theme-functions.php:10
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/theme-functions.php:14
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/theme-functions.php:18
 msgid "Instagram"
 msgstr "Instagram"
 
-#: inc/theme-functions.php:23
+#: inc/theme-functions.php:22
 msgid "foursquare"
 msgstr "viereckig"
 
-#: inc/theme-functions.php:27
+#: inc/theme-functions.php:26
 msgid "Google+"
 msgstr "Google+"
 
@@ -637,14 +814,134 @@ msgstr ""
 msgid "Section: Contributors"
 msgstr "Bereich: Autoren"
 
-#: inc/widgets/contributors.php:20 inc/widgets/recent-posts-grid.php:20
-#: inc/widgets/recent-posts.php:20 inc/widgets/static-content.php:23
+#: inc/widgets/contributors.php:20 inc/widgets/feature-callout.php:20
+#: inc/widgets/recent-posts-grid.php:20 inc/widgets/recent-posts.php:20
+#: inc/widgets/section-featured-slides.php:20 inc/widgets/static-content.php:23
 msgid "Title:"
 msgstr "Titel:"
 
-#: inc/widgets/contributors.php:26
+#: inc/widgets/contributors.php:26 inc/widgets/recent-posts-grid.php:26
+#: inc/widgets/recent-posts.php:26
 msgid "Description:"
 msgstr "Beschreibung:"
+
+#: inc/widgets/feature-callout.php:14
+msgid "Displays a feature callout."
+msgstr ""
+
+#: inc/widgets/feature-callout.php:15
+msgid "Section: Feature Callout"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:25 inc/widgets/featured-slide.php:25
+#, fuzzy
+msgid "Content:"
+msgstr "Inhalt:"
+
+#: inc/widgets/feature-callout.php:31
+msgid "Text Align:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:33
+#: inc/widgets/section-featured-slides.php:37
+#, fuzzy
+msgid "Left"
+msgstr "Links"
+
+#: inc/widgets/feature-callout.php:34
+#: inc/widgets/section-featured-slides.php:39
+#, fuzzy
+msgid "Right"
+msgstr "Rechts"
+
+#: inc/widgets/feature-callout.php:35
+#, fuzzy
+msgid "Center (cover only)"
+msgstr "Center (cover only)"
+
+#: inc/widgets/feature-callout.php:41
+msgid "Vertical Alignment:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:43
+#, fuzzy
+msgid "Top"
+msgstr "Top"
+
+#: inc/widgets/feature-callout.php:44
+#, fuzzy
+msgid "Middle"
+msgstr "Middle"
+
+#: inc/widgets/feature-callout.php:45
+#, fuzzy
+msgid "Bottom"
+msgstr "Unten"
+
+#: inc/widgets/feature-callout.php:51
+#, fuzzy
+msgid "Image:"
+msgstr "Bild:"
+
+#: inc/widgets/feature-callout.php:56
+msgid "Image Style:"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:58
+#, fuzzy
+msgid "Cover"
+msgstr "Abdeckung"
+
+#: inc/widgets/feature-callout.php:59
+#, fuzzy
+msgid "Pull Out"
+msgstr "Pull Out"
+
+#: inc/widgets/feature-callout.php:65
+msgid "Use dark transparent overlay (cover only)"
+msgstr ""
+
+#: inc/widgets/feature-callout.php:70 inc/widgets/recent-posts.php:64
+#: inc/widgets/section-featured-slides.php:25 inc/widgets/static-content.php:51
+msgid "Text Color:"
+msgstr "Textfarbe:"
+
+#: inc/widgets/feature-callout.php:75 inc/widgets/recent-posts.php:46
+#: inc/widgets/static-content.php:33
+msgid "Background Color:"
+msgstr "Hintergrund Farbe:"
+
+#: inc/widgets/featured-slide.php:14
+msgid "Displays a feature slide."
+msgstr ""
+
+#: inc/widgets/featured-slide.php:15
+msgid "Featured Slide Item"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:20 inc/widgets/recent-posts.php:59
+#: inc/widgets/static-content.php:46
+#, fuzzy
+msgid "Background Image:"
+msgstr "Hintergrundbild:"
+
+#: inc/widgets/featured-slide.php:31
+msgid "Content Box Color:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:39
+msgid "Content Box Opacity:"
+msgstr ""
+
+#: inc/widgets/featured-slide.php:44
+#, fuzzy
+msgid "Button URL:"
+msgstr "Button-URL:"
+
+#: inc/widgets/featured-slide.php:49
+#, fuzzy
+msgid "Button Text:"
+msgstr "Button-Text:"
 
 #: inc/widgets/recent-posts-grid.php:14
 msgid "Displays recent posts from Blog in grid style."
@@ -654,11 +951,11 @@ msgstr "Zeigt aktuelle Beiträge des Blogs im Raster-Stil an."
 msgid "Section: Recent Posts (Grid)"
 msgstr "Bereich: Aktuelle Beiträge (Raster)"
 
-#: inc/widgets/recent-posts-grid.php:25 inc/widgets/recent-posts.php:25
+#: inc/widgets/recent-posts-grid.php:31 inc/widgets/recent-posts.php:31
 msgid "Number of posts to show:"
 msgstr "Anzahl der anzuzeigenden Beiträge:"
 
-#: inc/widgets/recent-posts-grid.php:30
+#: inc/widgets/recent-posts-grid.php:36 inc/widgets/recent-posts.php:41
 msgid "Post Category:"
 msgstr "Kategorie: %1$s"
 
@@ -670,33 +967,69 @@ msgstr "Zeige aktuelle Beiträge des Blogs an."
 msgid "Section: Recent Posts"
 msgstr "Bereich: Aktuelle Beiträge"
 
-#: inc/widgets/recent-posts.php:30
-msgid "Display Post Date?"
-msgstr "Veröffentlichungsdatum anzeigen?"
+#: inc/widgets/recent-posts.php:36
+msgid "Show Post Meta?"
+msgstr ""
 
-#: inc/widgets/recent-posts.php:35 inc/widgets/static-content.php:33
-msgid "Background Color:"
-msgstr "Hintergrund Farbe:"
+#: inc/widgets/recent-posts.php:54 inc/widgets/static-content.php:41
+msgid "Background Image Opacity:"
+msgstr ""
 
-#: inc/widgets/recent-posts.php:43 inc/widgets/static-content.php:41
-msgid "Background Opacity:"
-msgstr "Hintergrund Deckkraft: "
-
-#: inc/widgets/recent-posts.php:48 inc/widgets/static-content.php:46
-msgid "Background Image URL:"
-msgstr "Hintergrundbild URL"
-
-#: inc/widgets/recent-posts.php:53 inc/widgets/static-content.php:51
-msgid "Text Color:"
-msgstr "Textfarbe:"
-
-#: inc/widgets/recent-posts.php:58 inc/widgets/static-content.php:56
+#: inc/widgets/recent-posts.php:69 inc/widgets/section-featured-slides.php:30
+#: inc/widgets/static-content.php:56
 msgid "Link Color:"
 msgstr "Linkfarbe:"
 
-#: inc/widgets/recent-posts.php:127
+#: inc/widgets/recent-posts.php:180
 msgid "See All Posts"
 msgstr "Alle Einträge anzeigen"
+
+#: inc/widgets/section-featured-slides.php:14
+msgid "Displays all contents under &ldquo;Featured Slides Sidebar&rdquo; Area."
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:15
+msgid "Section: Featured Slides"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:35
+msgid "Content Position:"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:38
+#, fuzzy
+msgid "Center"
+msgstr "Zentriert"
+
+#: inc/widgets/section-featured-slides.php:45
+msgid "Transition Effect:"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:47
+#, fuzzy
+msgid "Fade"
+msgstr "Überblenden"
+
+#: inc/widgets/section-featured-slides.php:48
+#, fuzzy
+msgid "Slide"
+msgstr "Slide"
+
+#: inc/widgets/section-featured-slides.php:57
+msgid "Speed of the slideshow change in seconds:"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:62
+msgid "Pause slideshow when hover?"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:67
+msgid "Show slide pagination?"
+msgstr ""
+
+#: inc/widgets/section-featured-slides.php:72
+msgid "Hide on mobile?"
+msgstr ""
 
 #: inc/widgets/static-content.php:17
 msgid "Displays content from a specific page."
@@ -718,7 +1051,7 @@ msgstr "Mehr"
 msgid "Password changed successfully"
 msgstr "Passwort erfolgreich geändert"
 
-#: rcp/change-password.php:14 rcp/profile-editor.php:54
+#: rcp/change-password.php:14 rcp/profile-editor.php:58
 msgid "New Password"
 msgstr "Neues Passwort"
 
@@ -730,135 +1063,148 @@ msgstr "Passwort bestätigen"
 msgid "Change Password"
 msgstr "Passwort ändern"
 
-#: rcp/init.php:79
+#: rcp/init.php:189
 msgid "Subscribe"
 msgstr "Abonnieren"
 
-#: rcp/init.php:84
+#: rcp/init.php:193
 msgid "Login"
 msgstr "Login"
 
-#: rcp/init.php:105
+#: rcp/init.php:214
 msgid "Don&rsquo;t have an account? Subscribe here!"
 msgstr "Kein Account? Hier anmelden!"
 
-#: rcp/login.php:10 rcp/register-single.php:27 rcp/register.php:25
+#: rcp/login.php:13 rcp/register-single.php:29 rcp/register.php:29
 msgid "Username"
 msgstr "Username"
 
-#: rcp/login.php:15 rcp/register-single.php:43 rcp/register.php:41
+#: rcp/login.php:18 rcp/register-single.php:45 rcp/register.php:45
 msgid "Password"
 msgstr "Passwort"
 
-#: rcp/login.php:16
+#: rcp/login.php:19
 msgid "I have forgotten"
 msgstr "Vergessen"
 
-#: rcp/login.php:25
+#: rcp/login.php:33
 msgid "Remember"
 msgstr "Erinnern"
 
-#: rcp/login.php:30
+#: rcp/login.php:43
 msgid "You&rsquo;re already logged in!"
 msgstr "Du bist bereits angemeldet!"
 
-#: rcp/login.php:30
+#: rcp/login.php:43
 msgid "Logout"
 msgstr "Abmelden"
 
-#: rcp/profile-editor.php:14
+#: rcp/profile-editor.php:16
 msgid "Success"
 msgstr "Erfolg"
 
-#: rcp/profile-editor.php:14
+#: rcp/profile-editor.php:16
 msgid "Your profile has been updated."
 msgstr "Dein Profil wurde aktualisiert."
 
-#: rcp/profile-editor.php:21
+#: rcp/profile-editor.php:24
 msgid "Change your Name"
 msgstr "Deinen Namen ändern"
 
-#: rcp/profile-editor.php:24 rcp/register-single.php:35 rcp/register.php:33
+#: rcp/profile-editor.php:26 rcp/register-single.php:37 rcp/register.php:37
 msgid "First Name"
 msgstr "Vorname"
 
-#: rcp/profile-editor.php:28 rcp/register-single.php:39 rcp/register.php:37
+#: rcp/profile-editor.php:30 rcp/register-single.php:41 rcp/register.php:41
 msgid "Last Name"
 msgstr "Nachname"
 
-#: rcp/profile-editor.php:44
+#: rcp/profile-editor.php:34
 msgid "Display Name"
 msgstr "Anzeigename"
 
-#: rcp/profile-editor.php:48
+#: rcp/profile-editor.php:50
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: rcp/profile-editor.php:51
+#: rcp/profile-editor.php:56
 msgid "Change your Password"
 msgstr "Passwort ändern"
 
-#: rcp/profile-editor.php:58
+#: rcp/profile-editor.php:62
 msgid "Re-enter Password"
 msgstr "Passwort erneut eingeben"
 
-#: rcp/profile-editor.php:60
+#: rcp/profile-editor.php:65
 msgid "Please note after changing your password, you must log back in."
 msgstr "Nach dem ändern des Passworts bitte erneut anmelden."
 
-#: rcp/profile-editor.php:65
+#: rcp/profile-editor.php:71
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: rcp/profile-editor.php:71
+#: rcp/profile-editor.php:77
 msgid "You need to login to edit your profile."
 msgstr "Bitte einloggen um dein Profil zu bearbeiten."
 
-#: rcp/register-single.php:5 rcp/register.php:5
+#: rcp/register-single.php:7 rcp/register.php:5
 msgid "Register New Account"
 msgstr "Neuen Account anlegen"
 
-#: rcp/register-single.php:9 rcp/register.php:9
+#: rcp/register-single.php:11 rcp/register.php:9
 msgid "Upgrade Your Subscription"
 msgstr "Abonnement upgraden"
 
-#: rcp/register-single.php:47 rcp/register.php:45
+#: rcp/register-single.php:49 rcp/register.php:49
 msgid "Password Again"
 msgstr "Passwort erneut eingeben"
 
-#: rcp/register-single.php:60 rcp/register.php:78
+#: rcp/register-single.php:62 rcp/register.php:89
 msgid "Discount Code"
 msgstr "Rabattcode"
 
-#: rcp/register-single.php:61 rcp/register.php:79
+#: rcp/register-single.php:63 rcp/register.php:90
 msgid "Valid"
 msgstr "Gültig"
 
-#: rcp/register-single.php:62 rcp/register.php:80
+#: rcp/register-single.php:64 rcp/register.php:91
 msgid "Invalid"
 msgstr "Ungültig"
 
-#: rcp/register-single.php:82 rcp/register.php:100
+#: rcp/register-single.php:67 rcp/register.php:94
+#, fuzzy
+msgid "Apply"
+msgstr "Anwenden"
+
+#: rcp/register-single.php:87 rcp/register.php:107
 msgid "Choose Your Payment Method"
 msgstr "Bezahlmethode auswählen"
 
-#: rcp/register-single.php:105 rcp/register.php:114
+#: rcp/register-single.php:113 rcp/register.php:126
 msgid "Register"
 msgstr "Registrieren"
 
-#: rcp/register.php:56
+#: rcp/register.php:21
+#, fuzzy, php-format
+msgid ""
+"<a href=\"%s\">Log in</a> if you wish to renew an existing subscription."
+msgstr ""
+"<a href=„%s“>Melden Sie sich an,</a> wenn Sie eine bestehende Mitgliedschaft "
+"verlängern möchten."
+
+#: rcp/register.php:64
 msgid "Choose your subscription level"
 msgstr "Art des Abonnements auswählen"
 
-#: rcp/register.php:62
+#: rcp/register.php:71
 msgid "free"
 msgstr "kostenlos"
 
-#: rcp/register.php:63
+#: rcp/register.php:72
 msgid "unlimited"
 msgstr "unlimitiert"
 
-#: rcp/register.php:70
+#: rcp/register.php:81
 msgid "You have not created any subscription levels yet"
 msgstr "Du hast noch keine Abonnements angelegt"
 
@@ -877,94 +1223,77 @@ msgid "Regular Logo"
 msgstr "Logo"
 
 #: stag-customizer/class-stag-logo.php:70
+msgid "Regular Dark Logo"
+msgstr ""
+
+#: stag-customizer/class-stag-logo.php:94
 msgid "Retina Logo"
 msgstr "Logo für Retina-Displays"
 
-#: stag-customizer/class-stag-widget.php:190
-#: stag-customizer/helper-fonts.php:173
+#: stag-customizer/class-stag-logo.php:118
+#, fuzzy
+msgid "Retina Dark Logo"
+msgstr "Logo für Retina-Displays Dunkel"
+
+#: stag-customizer/class-stag-widget.php:194
+#: stag-customizer/class-stag-widget.php:213
+#: stag-customizer/helper-fonts.php:175
 msgid "All"
 msgstr "Alle"
 
-#: stag-customizer/class-tgm-plugin-activation.php:196
+#: stag-customizer/class-stag-widget.php:280
+#, fuzzy
+msgid "Choose Image"
+msgstr "Bild wählen"
+
+#: stag-customizer/class-stag-widget.php:281
+#, fuzzy
+msgid "Remove"
+msgstr "Entfernen"
+
+#: stag-customizer/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
 msgstr "Nötige Plugins installieren"
 
-#: stag-customizer/class-tgm-plugin-activation.php:197
+#: stag-customizer/class-tgm-plugin-activation.php:335
 msgid "Install Plugins"
 msgstr "Plugins installieren"
 
-#: stag-customizer/class-tgm-plugin-activation.php:198
+#. translators: %s: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:337
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr "Installiere Plugin: %s"
 
-#: stag-customizer/class-tgm-plugin-activation.php:199
-msgid "Something went wrong."
-msgstr "Etwas ist falsch gelaufen."
+#. translators: %s: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:339
+#, fuzzy, php-format
+msgid "Updating Plugin: %s"
+msgstr "Updating Plugin: %s"
 
-#: stag-customizer/class-tgm-plugin-activation.php:200
+#: stag-customizer/class-tgm-plugin-activation.php:340
+#, fuzzy
+msgid "Something went wrong with the plugin API."
+msgstr "Irgendwas ist mit der Plugin API schiefgelaufen."
+
+#. translators: 1: plugin name(s).
+#: stag-customizer/class-tgm-plugin-activation.php:343
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] "Dieses Theme benötigt das folgende Plugin: %1$s."
 msgstr[1] "Dieses Theme benötigt die folgenden Plugins: %1$s."
 
-#: stag-customizer/class-tgm-plugin-activation.php:201
+#. translators: 1: plugin name(s).
+#: stag-customizer/class-tgm-plugin-activation.php:349
 #, php-format
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] "Dieses Theme empfiehlt das folgende Plugin: %1$s."
 msgstr[1] "Dieses Theme empfiehlt die folgenden Plugins: %1$s."
 
-#: stag-customizer/class-tgm-plugin-activation.php:202
-#, php-format
-msgid ""
-"Sorry, but you do not have the correct permissions to install the %s plugin. "
-"Contact the administrator of this site for help on getting the plugin "
-"installed."
-msgid_plural ""
-"Sorry, but you do not have the correct permissions to install the %s "
-"plugins. Contact the administrator of this site for help on getting the "
-"plugins installed."
-msgstr[0] ""
-"Du hast leider nicht die ausreichenden Berechtigungen, um das Plugin %s zu "
-"installieren. Bitte kontaktiere den Administrator. "
-msgstr[1] ""
-"Du hast leider nicht die ausreichenden Berechtigungen, um die Plugins %s zu "
-"installieren. Bitte kontaktiere den Administrator. "
-
-#: stag-customizer/class-tgm-plugin-activation.php:203
-#, php-format
-msgid "The following required plugin is currently inactive: %1$s."
-msgid_plural "The following required plugins are currently inactive: %1$s."
-msgstr[0] "Das folgende notwendige Plugin ist deaktiviert: %1$s."
-msgstr[1] "Die folgenden notwendigen Plugins sind deaktiviert: %1$s."
-
-#: stag-customizer/class-tgm-plugin-activation.php:204
-#, php-format
-msgid "The following recommended plugin is currently inactive: %1$s."
-msgid_plural "The following recommended plugins are currently inactive: %1$s."
-msgstr[0] "Das folgende notwendige Plugin ist inaktiv: %1$s."
-msgstr[1] "Die folgenden notwendigen Plugins sind inaktiv: %1$s."
-
-#: stag-customizer/class-tgm-plugin-activation.php:205
-#, php-format
-msgid ""
-"Sorry, but you do not have the correct permissions to activate the %s "
-"plugin. Contact the administrator of this site for help on getting the "
-"plugin activated."
-msgid_plural ""
-"Sorry, but you do not have the correct permissions to activate the %s "
-"plugins. Contact the administrator of this site for help on getting the "
-"plugins activated."
-msgstr[0] ""
-"Du hast leider nicht die ausreichenden Berechtigungen, um das Plugin %s zu "
-"aktivieren. Bitte kontaktiere den Administrator. "
-msgstr[1] ""
-"Du hast leider nicht die ausreichenden Berechtigungen, um die Plugins %s zu "
-"aktivieren. Bitte kontaktiere den Administrator. "
-
-#: stag-customizer/class-tgm-plugin-activation.php:206
+#. translators: 1: plugin name(s).
+#: stag-customizer/class-tgm-plugin-activation.php:355
 #, php-format
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
@@ -979,172 +1308,388 @@ msgstr[1] ""
 "Die Plugins %1$s müssen in der aktuellsten Version installiert sein um mit "
 "diesem Theme kompatibel zu sein. "
 
-#: stag-customizer/class-tgm-plugin-activation.php:207
+#. translators: 1: plugin name(s).
+#: stag-customizer/class-tgm-plugin-activation.php:361
 #, php-format
-msgid ""
-"Sorry, but you do not have the correct permissions to update the %s plugin. "
-"Contact the administrator of this site for help on getting the plugin "
-"updated."
-msgid_plural ""
-"Sorry, but you do not have the correct permissions to update the %s plugins. "
-"Contact the administrator of this site for help on getting the plugins "
-"updated."
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] ""
-"Du hast leider nicht die ausreichenden Berechtigungen, um das Plugin %s zu "
-"aktualisieren. Bitte kontaktiere den Administrator. "
 msgstr[1] ""
-"Du hast leider nicht die ausreichenden Berechtigungen, um die Plugins %s zu "
-"aktualisieren. Bitte kontaktiere den Administrator. "
 
-#: stag-customizer/class-tgm-plugin-activation.php:208
+#. translators: 1: plugin name(s).
+#: stag-customizer/class-tgm-plugin-activation.php:367
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "Das folgende notwendige Plugin ist deaktiviert: %1$s."
+msgstr[1] "Die folgenden notwendigen Plugins sind deaktiviert: %1$s."
+
+#. translators: 1: plugin name(s).
+#: stag-customizer/class-tgm-plugin-activation.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "Das folgende notwendige Plugin ist inaktiv: %1$s."
+msgstr[1] "Die folgenden notwendigen Plugins sind inaktiv: %1$s."
+
+#: stag-customizer/class-tgm-plugin-activation.php:378
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] "Beginne mit der Installation des Plugins"
 msgstr[1] "Beginne mit der Installation der Plugins"
 
-#: stag-customizer/class-tgm-plugin-activation.php:209
+#: stag-customizer/class-tgm-plugin-activation.php:383
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: stag-customizer/class-tgm-plugin-activation.php:388
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
 msgstr[0] "Beginne mit der Aktivierung des Plugins"
 msgstr[1] "Beginne mit der Aktivierung der Plugins"
 
-#: stag-customizer/class-tgm-plugin-activation.php:210
+#: stag-customizer/class-tgm-plugin-activation.php:392
 msgid "Return to Required Plugins Installer"
 msgstr "Zurück zum Plugin Installierer"
 
-#: stag-customizer/class-tgm-plugin-activation.php:211
-msgid "Return to the dashboard"
+#: stag-customizer/class-tgm-plugin-activation.php:393
+#: stag-customizer/class-tgm-plugin-activation.php:912
+#: stag-customizer/class-tgm-plugin-activation.php:2618
+#: stag-customizer/class-tgm-plugin-activation.php:3665
+msgid "Return to the Dashboard"
 msgstr "Zurück zum Dashboard"
 
-#: stag-customizer/class-tgm-plugin-activation.php:212
-#: stag-customizer/class-tgm-plugin-activation.php:1951
+#: stag-customizer/class-tgm-plugin-activation.php:394
+#: stag-customizer/class-tgm-plugin-activation.php:3244
 msgid "Plugin activated successfully."
 msgstr "Plugin erfolgreich aktiviert."
 
-#: stag-customizer/class-tgm-plugin-activation.php:213
-#: stag-customizer/class-tgm-plugin-activation.php:1638
+#: stag-customizer/class-tgm-plugin-activation.php:395
+#: stag-customizer/class-tgm-plugin-activation.php:3037
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
 msgstr[0] "Das folgende Plugin wurde erfolgreich aktiviert: "
 msgstr[1] "Die folgenden Plugins wurden erfolgreich aktiviert: "
 
-#: stag-customizer/class-tgm-plugin-activation.php:214
+#. translators: 1: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:397
+#, fuzzy, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Nicht verändert. Plugin %1$s ist bereits aktiv."
+
+#. translators: 1: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:399
+#, fuzzy, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"Plugin nicht aktiv. Eine neuere Version von %s wird benötigt für dieses "
+"Theme. Bitte aktualisiere das Plugin."
+
+#. translators: 1: dashboard link.
+#: stag-customizer/class-tgm-plugin-activation.php:401
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr "Alle Plugins erfolgreich installiert und aktualisiert. %1$s"
 
-#: stag-customizer/class-tgm-plugin-activation.php:215
+#: stag-customizer/class-tgm-plugin-activation.php:402
 msgid "Dismiss this notice"
 msgstr "Missachte diesen Hinweis"
 
-#: stag-customizer/class-tgm-plugin-activation.php:544
-#: stag-customizer/class-tgm-plugin-activation.php:2168
-msgid "Return to the Dashboard"
-msgstr "Zurück zum Dashboard"
+#: stag-customizer/class-tgm-plugin-activation.php:403
+#, fuzzy
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"Hier sind eine oder mehrere benötigte oder empfohlene Plugins zum "
+"installieren, aktualisieren oder aktivieren."
 
-#: stag-customizer/class-tgm-plugin-activation.php:1174
-msgid "Private Repository"
-msgstr "Privates Repository"
+#: stag-customizer/class-tgm-plugin-activation.php:404
+#, fuzzy
+msgid "Please contact the administrator of this site for help."
+msgstr "Bitte kontaktiere den Administrator der Seite für Hilfe."
 
-#: stag-customizer/class-tgm-plugin-activation.php:1177
-msgid "Pre-Packaged"
-msgstr "Vorgefertigt"
+#: stag-customizer/class-tgm-plugin-activation.php:607
+#, fuzzy
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+"Dieses Plugin benötigt eine Aktualisierung um Kompatibel mit diesem Theme zu "
+"werden."
 
-#: stag-customizer/class-tgm-plugin-activation.php:1182
-msgid "WordPress Repository"
-msgstr "WordPress Repository"
+#: stag-customizer/class-tgm-plugin-activation.php:608
+#, fuzzy
+msgid "Update Required"
+msgstr "Required"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1185
+#: stag-customizer/class-tgm-plugin-activation.php:1019
+#, fuzzy
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+
+#: stag-customizer/class-tgm-plugin-activation.php:1019
+#: stag-customizer/class-tgm-plugin-activation.php:1022
+#, fuzzy
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+"Bitte kontaktiere den Pluginanbieter und frage ihn ob er das Plugin nach den "
+"WordPress Richtlinien packen kann."
+
+#: stag-customizer/class-tgm-plugin-activation.php:1022
+#, fuzzy
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+
+#: stag-customizer/class-tgm-plugin-activation.php:1206
+#: stag-customizer/class-tgm-plugin-activation.php:3033
+#, fuzzy
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr "und"
+
+#. translators: %s: version number
+#: stag-customizer/class-tgm-plugin-activation.php:2067
+#, fuzzy, php-format
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2358
 msgid "Required"
 msgstr "Erforderlich"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1185
+#: stag-customizer/class-tgm-plugin-activation.php:2361
 msgid "Recommended"
 msgstr "Empfohlen"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1188
+#: stag-customizer/class-tgm-plugin-activation.php:2377
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2380
+#, fuzzy
+msgid "External Source"
+msgstr "Source:"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2383
+msgid "Pre-Packaged"
+msgstr "Vorgefertigt"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2400
 msgid "Not Installed"
 msgstr "Nicht installiert"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1190
+#: stag-customizer/class-tgm-plugin-activation.php:2404
 msgid "Installed But Not Activated"
 msgstr "Installiert aber nicht aktiviert"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1290
-#: stag-customizer/class-tgm-plugin-activation.php:1398
-msgid "Install"
-msgstr "Installieren"
+#: stag-customizer/class-tgm-plugin-activation.php:2406
+#, fuzzy
+msgid "Active"
+msgstr "Aktiv"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1312
-#: stag-customizer/class-tgm-plugin-activation.php:1399
-msgid "Activate"
-msgstr "Aktivieren"
+#: stag-customizer/class-tgm-plugin-activation.php:2412
+#, fuzzy
+msgid "Required Update not Available"
+msgstr "Update Rank"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1361
+#: stag-customizer/class-tgm-plugin-activation.php:2415
+#, fuzzy
+msgid "Requires Update"
+msgstr "Hinweis: Dieses Feature erfordert den FB API Schlüssel in <a href=\""
+
+#: stag-customizer/class-tgm-plugin-activation.php:2418
+#, fuzzy
+msgid "Update recommended"
+msgstr "Kategorie aktualisieren"
+
+#. translators: 1: install status, 2: update status
+#: stag-customizer/class-tgm-plugin-activation.php:2427
+#, fuzzy, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#. translators: 1: number of plugins.
+#: stag-customizer/class-tgm-plugin-activation.php:2473
 #, php-format
-msgid ""
-"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
-"Dashboard\">Return to the Dashboard</a>"
-msgstr ""
-"Keine Plugins zu installieren oder aktivieren. <a href=\"%1$s\" title="
-"\"Zurück zum Dashboard\">Zurück zum Dashboard</a>"
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
 
-#: stag-customizer/class-tgm-plugin-activation.php:1377
+#. translators: 1: number of plugins.
+#: stag-customizer/class-tgm-plugin-activation.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: stag-customizer/class-tgm-plugin-activation.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: stag-customizer/class-tgm-plugin-activation.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: stag-customizer/class-tgm-plugin-activation.php:2567
+#, fuzzy
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "Unknown"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2575
+#, fuzzy
+msgid "Installed version:"
+msgstr "Installierte Version:"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2583
+#, fuzzy
+msgid "Minimum required version:"
+msgstr "Minimum Amount"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2595
+#, fuzzy
+msgid "Available version:"
+msgstr "No Banners Available!"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2618
+#, fuzzy
+msgid "No plugins to install, update or activate."
+msgstr "Keine Plugins zum installieren, aktualisieren oder aktivieren."
+
+#: stag-customizer/class-tgm-plugin-activation.php:2632
 msgid "Plugin"
 msgstr "Plugin"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1378
+#: stag-customizer/class-tgm-plugin-activation.php:2633
 msgid "Source"
 msgstr "Quelle"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1379
+#: stag-customizer/class-tgm-plugin-activation.php:2634
 msgid "Type"
 msgstr "Typ"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1380
+#: stag-customizer/class-tgm-plugin-activation.php:2638
+#, fuzzy
+msgid "Version"
+msgstr "A valid purchase code Activate the Full Version of"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2639
 msgid "Status"
 msgstr "Status"
 
-#: stag-customizer/class-tgm-plugin-activation.php:1508
+#. translators: %2$s: plugin name in screen reader markup
+#: stag-customizer/class-tgm-plugin-activation.php:2688
+#, fuzzy, php-format
+msgid "Install %2$s"
+msgstr "Installiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: stag-customizer/class-tgm-plugin-activation.php:2693
+#, fuzzy, php-format
+msgid "Update %2$s"
+msgstr "Update %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: stag-customizer/class-tgm-plugin-activation.php:2699
+#, fuzzy, php-format
+msgid "Activate %2$s"
+msgstr "Aktiviere %2$s"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2769
+#, fuzzy
+msgid "Upgrade message from the plugin author:"
+msgstr "Aufwertungsnachricht vom Pluginschreiber:"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2802
+msgid "Install"
+msgstr "Installieren"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2808
+#, fuzzy
+msgid "Update"
+msgstr "Admin - Affiliate update profile"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2811
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: stag-customizer/class-tgm-plugin-activation.php:2842
+#, fuzzy
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "Keine Plugins zum installieren ausgewählt. Nichts verändert."
+
+#: stag-customizer/class-tgm-plugin-activation.php:2844
+#, fuzzy
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "Keine Plugins zum aktivieren ausgewählt. Nichts verändert."
+
+#: stag-customizer/class-tgm-plugin-activation.php:2885
 msgid "No plugins are available to be installed at this time."
 msgstr "Keine Plugins vorhanden, die installiert werden können."
 
-#: stag-customizer/class-tgm-plugin-activation.php:1616
+#: stag-customizer/class-tgm-plugin-activation.php:2887
+#, fuzzy
+msgid "No plugins are available to be updated at this time."
+msgstr "Keine Plugins zum aktualisieren verfügbar."
+
+#: stag-customizer/class-tgm-plugin-activation.php:2993
+#, fuzzy
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "Keine Plugins ausgewählt um aktiviert zu werden. Nicht verändert."
+
+#: stag-customizer/class-tgm-plugin-activation.php:3019
 msgid "No plugins are available to be activated at this time."
 msgstr "Keine Plugins vorhanden, die aktiviert werden können."
 
-#: stag-customizer/class-tgm-plugin-activation.php:1934
-msgid "Install package not available."
-msgstr "Installationspaket nicht vorhanden"
-
-#: stag-customizer/class-tgm-plugin-activation.php:1935
-#, php-format
-msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
-msgstr ""
-"Herunterladen des Installationspaket von <span class=\"code\">%s</"
-"span>&#8230;"
-
-#: stag-customizer/class-tgm-plugin-activation.php:1936
-msgid "Unpacking the package&#8230;"
-msgstr "Entpacken von&#8230;"
-
-#: stag-customizer/class-tgm-plugin-activation.php:1937
-msgid "Installing the plugin&#8230;"
-msgstr "Installieren des Plugins&#8230;"
-
-#: stag-customizer/class-tgm-plugin-activation.php:1938
-msgid "Plugin install failed."
-msgstr "Installation des Plugins fehlgeschlagen."
-
-#: stag-customizer/class-tgm-plugin-activation.php:1939
-msgid "Plugin installed successfully."
-msgstr "Plugin erfolgreich installiert."
-
-#: stag-customizer/class-tgm-plugin-activation.php:1950
+#: stag-customizer/class-tgm-plugin-activation.php:3243
 msgid "Plugin activation failed."
 msgstr "Aktivierung des Plugins fehlgeschlagen."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2064
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: stag-customizer/class-tgm-plugin-activation.php:3583
+#, fuzzy, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Aktualisiere Plugin %1$s (%2$d/%3$d)"
+
+#. translators: 1: plugin name, 2: error message.
+#: stag-customizer/class-tgm-plugin-activation.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+"Es gab einen Fehler bei der Installation von %1$s: <strong>%2$s</strong>."
+
+#. translators: 1: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "Die Installation von %1$s ist fehlgeschlagen."
+
+#: stag-customizer/class-tgm-plugin-activation.php:3592
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
@@ -1152,31 +1697,33 @@ msgstr ""
 "Die Installation und Aktivierung hat begonnen. Dies kann eine Weile dauern, "
 "bitte hab etwas Geduld."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2065
+#. translators: 1: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:3594
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr "%1$s erfolgreich installiert und aktiviert."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2065
-#: stag-customizer/class-tgm-plugin-activation.php:2074
+#: stag-customizer/class-tgm-plugin-activation.php:3594
+#: stag-customizer/class-tgm-plugin-activation.php:3602
 msgid "Show Details"
 msgstr "Details anzeigen"
 
-#: stag-customizer/class-tgm-plugin-activation.php:2065
-#: stag-customizer/class-tgm-plugin-activation.php:2074
+#: stag-customizer/class-tgm-plugin-activation.php:3594
+#: stag-customizer/class-tgm-plugin-activation.php:3602
 msgid "Hide Details"
 msgstr "Details verbergen"
 
-#: stag-customizer/class-tgm-plugin-activation.php:2066
+#: stag-customizer/class-tgm-plugin-activation.php:3595
 msgid "All installations and activations have been completed."
 msgstr "Alle Installationen und Aktivierungen abgeschlossen."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2067
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: stag-customizer/class-tgm-plugin-activation.php:3597
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr "Installiere und aktiviere Plugin %1$s (%2$d/%3$d)"
 
-#: stag-customizer/class-tgm-plugin-activation.php:2071
+#: stag-customizer/class-tgm-plugin-activation.php:3600
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
@@ -1184,86 +1731,153 @@ msgstr ""
 "Die Installation hat begonnen. Dies kann eine Weile dauern, bitte hab etwas "
 "Geduld."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2072
-#, php-format
-msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
-msgstr ""
-"Es gab einen Fehler bei der Installation von %1$s: <strong>%2$s</strong>."
-
-#: stag-customizer/class-tgm-plugin-activation.php:2073
-#, php-format
-msgid "The installation of %1$s failed."
-msgstr "Die Installation von %1$s ist fehlgeschlagen."
-
-#: stag-customizer/class-tgm-plugin-activation.php:2074
+#. translators: 1: plugin name.
+#: stag-customizer/class-tgm-plugin-activation.php:3602
 #, php-format
 msgid "%1$s installed successfully."
 msgstr "%1$s erfolgreich installiert."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2075
+#: stag-customizer/class-tgm-plugin-activation.php:3603
 msgid "All installations have been completed."
 msgstr "Alle Installationen abgeschlossen."
 
-#: stag-customizer/class-tgm-plugin-activation.php:2076
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: stag-customizer/class-tgm-plugin-activation.php:3605
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
 
-#: stag-customizer/helper-fonts.php:174
+#: stag-customizer/helper-fonts.php:176
+#, fuzzy
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: stag-customizer/helper-fonts.php:177
+#, fuzzy
+msgid "Bengali"
+msgstr "Bengalisch"
+
+#: stag-customizer/helper-fonts.php:178
 msgid "Cyrillic"
 msgstr "Kyrillisch"
 
-#: stag-customizer/helper-fonts.php:175
+#: stag-customizer/helper-fonts.php:179
 msgid "Cyrillic Extended"
 msgstr "Kyrillisch erweitert"
 
-#: stag-customizer/helper-fonts.php:176
+#: stag-customizer/helper-fonts.php:180
 msgid "Devanagari"
 msgstr "Devanagari"
 
-#: stag-customizer/helper-fonts.php:177
+#: stag-customizer/helper-fonts.php:181
 msgid "Greek"
 msgstr "Griechisch"
 
-#: stag-customizer/helper-fonts.php:178
+#: stag-customizer/helper-fonts.php:182
 msgid "Greek Extended"
 msgstr "Griechisch erweitert"
 
-#: stag-customizer/helper-fonts.php:179
+#: stag-customizer/helper-fonts.php:183
+#, fuzzy
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: stag-customizer/helper-fonts.php:184
+#, fuzzy
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: stag-customizer/helper-fonts.php:185
+#, fuzzy
+msgid "Hebrew"
+msgstr "Hebrew"
+
+#: stag-customizer/helper-fonts.php:186
+#, fuzzy
+msgid "Kannada"
+msgstr "Kanada"
+
+#: stag-customizer/helper-fonts.php:187
 msgid "Khmer"
 msgstr "Khmer"
 
-#: stag-customizer/helper-fonts.php:180
+#: stag-customizer/helper-fonts.php:188
 msgid "Latin"
 msgstr "Latein"
 
-#: stag-customizer/helper-fonts.php:181
+#: stag-customizer/helper-fonts.php:189
 msgid "Latin Extended"
 msgstr "Latein erweitert"
 
-#: stag-customizer/helper-fonts.php:182
+#: stag-customizer/helper-fonts.php:190
+#, fuzzy
+msgid "Malayalam"
+msgstr "Malaysisch"
+
+#: stag-customizer/helper-fonts.php:191
+#, fuzzy
+msgid "Oriya"
+msgstr "Oriya"
+
+#: stag-customizer/helper-fonts.php:192
+#, fuzzy
+msgid "Sinhala"
+msgstr "Singhalesisch"
+
+#: stag-customizer/helper-fonts.php:193
+#, fuzzy
+msgid "Tamil"
+msgstr "Tamilisch"
+
+#: stag-customizer/helper-fonts.php:194
+#, fuzzy
+msgid "Telugu"
+msgstr "Teluguisisch"
+
+#: stag-customizer/helper-fonts.php:195
+#, fuzzy
+msgid "Thai"
+msgstr "Thailändisch"
+
+#: stag-customizer/helper-fonts.php:196
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: stag-customizer/helper-fonts.php:217
+#: stag-customizer/helper-fonts.php:231
 msgid "Standard Fonts"
 msgstr "Standard Schriftarten"
 
-#: stag-customizer/helper-fonts.php:219
-msgid "Google Fonts"
-msgstr "Google Schriftarten"
+#: stag-customizer/helper-fonts.php:236
+msgid "Serif Fonts (Google)"
+msgstr ""
 
-#: stag-customizer/helper-fonts.php:257
+#: stag-customizer/helper-fonts.php:239
+msgid "Sans Serif Fonts (Google)"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:242
+msgid "Display Fonts (Google)"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:245
+msgid "Handwriting Fonts (Google)"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:248
+msgid "Monospace Fonts (Google)"
+msgstr ""
+
+#: stag-customizer/helper-fonts.php:294
 msgctxt "font style"
 msgid "Serif"
 msgstr "Serif"
 
-#: stag-customizer/helper-fonts.php:261
+#: stag-customizer/helper-fonts.php:298
 msgctxt "font style"
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
-#: stag-customizer/helper-fonts.php:265
+#: stag-customizer/helper-fonts.php:302
 msgctxt "font style"
 msgid "Monospaced"
 msgstr "Monospaced"
@@ -1283,11 +1897,9 @@ msgstr "Typekit Schriftarten laden"
 #: stag-customizer/helper-typekit.php:132
 #, php-format
 msgid ""
-"For more information about Typekit integration, please see <a target=\"_blank"
-"\" href=\"%1$s\">%2$s' documentation</a>."
+"For more information about Typekit integration, please see <a class="
+"\"external-link\" target=\"_blank\" href=\"%1$s\">%2$s' documentation</a>."
 msgstr ""
-"Weitere Informationen bezüglich der Typekit Integration in der <a target="
-"\"_blank\" href=\"%1$s\">%2$s' Dokumentation</a>."
 
 #: stag-customizer/helper-typekit.php:232
 #: stag-customizer/helper-typekit.php:296
@@ -1307,31 +1919,203 @@ msgstr ""
 msgid "Typekit fonts added, select them from dropdown above."
 msgstr "Typekit Schriftarten hinzugefügt und im Dropdown-Menü oben auswählbar."
 
-#: stag-customizer/stag-admin-metabox.php:93
+#: stag-customizer/stag-admin-metabox.php:96
 msgid "Insert"
 msgstr "Einfügen"
 
-#: stag-customizer/stag-admin-metabox.php:133
+#: stag-customizer/stag-admin-metabox.php:136
 msgid "Create Featured Gallery"
 msgstr "Featured Gallery erstellen"
 
-#: stag-customizer/stag-admin-metabox.php:140
-#: stag-customizer/stag-admin-metabox.php:148
+#: stag-customizer/stag-admin-metabox.php:143
+#: stag-customizer/stag-admin-metabox.php:151
 msgid "Edit Featured Gallery"
 msgstr "Featured Gallery bearbeiten"
 
-#: stag-customizer/stag-admin-metabox.php:184
+#: stag-customizer/stag-admin-metabox.php:187
 msgid "Save Featured Gallery"
 msgstr "Featured Gallery speichern"
 
-#: stag-customizer/stag-admin-metabox.php:193
+#: stag-customizer/stag-admin-metabox.php:196
 msgid "Saving..."
 msgstr "Speichern..."
 
-#: stag-customizer/stag-admin-metabox.php:256
-#: stag-customizer/stag-admin-metabox.php:258
+#: stag-customizer/stag-admin-metabox.php:259
+#: stag-customizer/stag-admin-metabox.php:261
 msgid "Edit Gallery"
 msgstr "Galerie bearbeiten"
+
+#~ msgctxt "1: Article title 2: Site Name 3: Site URL"
+#~ msgid "%1$s on %2$s - %3$s"
+#~ msgstr "%1$s auf %2$s - %3$s"
+
+#~ msgid "Share on"
+#~ msgstr "Teilen"
+
+#~ msgctxt "1: Author Name 2: Site title"
+#~ msgid "%1$s on %2$s - %3$s"
+#~ msgstr "%1$s auf  %2$s - %3$s"
+
+#~ msgid "Share this profile on Twitter"
+#~ msgstr "Dieses Profil auf Twitter teilen"
+
+#~ msgid "Submit a Comment"
+#~ msgstr "Kommentar schreiben"
+
+#~ msgid "Pages:"
+#~ msgstr "Seiten:"
+
+#~ msgid "<h5>Pages</h5>"
+#~ msgstr "<h5>Seiten</h5>"
+
+#~ msgid "Footer Widget Area"
+#~ msgstr "Footer Widget Bereich"
+
+#~ msgid "Sitewide footer widgets."
+#~ msgstr "Seitenweite Footer Widgets"
+
+#~ msgid "Upload site logo, favicon, and Google Analytics tracking code."
+#~ msgstr "Logo, Favicon und Google Analytics Code hochladen."
+
+#~ msgid "Favicon"
+#~ msgstr "Favicon"
+
+#~ msgid "Custom CSS"
+#~ msgstr "Individueller CSS-Code"
+
+#~ msgid "Disable Sharing Buttons"
+#~ msgstr "Sharing Buttons deaktivieren"
+
+#~ msgid "Include Post Category at Post Cover&rsquo;s meta"
+#~ msgstr "Beitragskategorie in der Meta-Beschreibung einbinden"
+
+#~ msgid "Hide Author Title under Posts"
+#~ msgstr "Name des Autors unter Beiträgen verbergen"
+
+#~ msgid "Show Related Posts on Single Posts"
+#~ msgstr "Ähnliche Beiträge unter Beitrag anzeigen"
+
+#~ msgid "Show Post Excerpt on Archive pages"
+#~ msgstr "Beitragsauszug auf Archivseiten zeigen"
+
+#~ msgid "Cover Opacity"
+#~ msgstr "Deckkraft"
+
+#~ msgid "Choose the opacity for the post&lsquo;s cover."
+#~ msgstr "Deckkraft für das Titelbild auswählen"
+
+#~ msgid "Text Color"
+#~ msgstr "Textfarbe"
+
+#~ msgid "Choose text color for this page."
+#~ msgstr "Textfarbe für diese Seite auswählen"
+
+#~ msgid "Link Color"
+#~ msgstr "Linkfarbe"
+
+#~ msgid "Choose link color for this page."
+#~ msgstr "Linkfarbe für diese Seite auswählen"
+
+#~ msgid "Display Post Date?"
+#~ msgstr "Veröffentlichungsdatum anzeigen?"
+
+#~ msgid "Background Opacity:"
+#~ msgstr "Hintergrund Deckkraft: "
+
+#~ msgid "Background Image URL:"
+#~ msgstr "Hintergrundbild URL"
+
+#~ msgid "Something went wrong."
+#~ msgstr "Etwas ist falsch gelaufen."
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to install the %s "
+#~ "plugin. Contact the administrator of this site for help on getting the "
+#~ "plugin installed."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to install the %s "
+#~ "plugins. Contact the administrator of this site for help on getting the "
+#~ "plugins installed."
+#~ msgstr[0] ""
+#~ "Du hast leider nicht die ausreichenden Berechtigungen, um das Plugin %s "
+#~ "zu installieren. Bitte kontaktiere den Administrator. "
+#~ msgstr[1] ""
+#~ "Du hast leider nicht die ausreichenden Berechtigungen, um die Plugins %s "
+#~ "zu installieren. Bitte kontaktiere den Administrator. "
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to activate the %s "
+#~ "plugin. Contact the administrator of this site for help on getting the "
+#~ "plugin activated."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to activate the %s "
+#~ "plugins. Contact the administrator of this site for help on getting the "
+#~ "plugins activated."
+#~ msgstr[0] ""
+#~ "Du hast leider nicht die ausreichenden Berechtigungen, um das Plugin %s "
+#~ "zu aktivieren. Bitte kontaktiere den Administrator. "
+#~ msgstr[1] ""
+#~ "Du hast leider nicht die ausreichenden Berechtigungen, um die Plugins %s "
+#~ "zu aktivieren. Bitte kontaktiere den Administrator. "
+
+#~ msgid ""
+#~ "Sorry, but you do not have the correct permissions to update the %s "
+#~ "plugin. Contact the administrator of this site for help on getting the "
+#~ "plugin updated."
+#~ msgid_plural ""
+#~ "Sorry, but you do not have the correct permissions to update the %s "
+#~ "plugins. Contact the administrator of this site for help on getting the "
+#~ "plugins updated."
+#~ msgstr[0] ""
+#~ "Du hast leider nicht die ausreichenden Berechtigungen, um das Plugin %s "
+#~ "zu aktualisieren. Bitte kontaktiere den Administrator. "
+#~ msgstr[1] ""
+#~ "Du hast leider nicht die ausreichenden Berechtigungen, um die Plugins %s "
+#~ "zu aktualisieren. Bitte kontaktiere den Administrator. "
+
+#~ msgid "Return to the dashboard"
+#~ msgstr "Zurück zum Dashboard"
+
+#~ msgid "Private Repository"
+#~ msgstr "Privates Repository"
+
+#~ msgid ""
+#~ "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+#~ "Dashboard\">Return to the Dashboard</a>"
+#~ msgstr ""
+#~ "Keine Plugins zu installieren oder aktivieren. <a href=\"%1$s\" title="
+#~ "\"Zurück zum Dashboard\">Zurück zum Dashboard</a>"
+
+#~ msgid "Install package not available."
+#~ msgstr "Installationspaket nicht vorhanden"
+
+#~ msgid ""
+#~ "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+#~ msgstr ""
+#~ "Herunterladen des Installationspaket von <span class=\"code\">%s</"
+#~ "span>&#8230;"
+
+#~ msgid "Unpacking the package&#8230;"
+#~ msgstr "Entpacken von&#8230;"
+
+#~ msgid "Installing the plugin&#8230;"
+#~ msgstr "Installieren des Plugins&#8230;"
+
+#~ msgid "Plugin install failed."
+#~ msgstr "Installation des Plugins fehlgeschlagen."
+
+#~ msgid "Plugin installed successfully."
+#~ msgstr "Plugin erfolgreich installiert."
+
+#~ msgid "Google Fonts"
+#~ msgstr "Google Schriftarten"
+
+#~ msgid ""
+#~ "For more information about Typekit integration, please see <a target="
+#~ "\"_blank\" href=\"%1$s\">%2$s' documentation</a>."
+#~ msgstr ""
+#~ "Weitere Informationen bezüglich der Typekit Integration in der <a target="
+#~ "\"_blank\" href=\"%1$s\">%2$s' Dokumentation</a>."
 
 #~ msgid "Search for:"
 #~ msgstr "Suche nach:"

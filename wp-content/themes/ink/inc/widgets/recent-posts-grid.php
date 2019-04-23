@@ -72,7 +72,7 @@ class Stag_Widget_Recent_Posts_Grid extends Stag_Widget {
 		if ( $title ) echo $before_title . $title . $after_title;
 
 		echo '<div class="entry-content">';
-			echo apply_filters( 'the_content', $description );
+			echo wp_kses( $description, ink_allowed_html() );
 		echo '</div>';
 
 		foreach ( $posts as $post ) : setup_postdata( $post );

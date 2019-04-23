@@ -1,5 +1,7 @@
 <?php
 /**
+ * Stag Customizer framework.
+ *
  * @package Stag_Customizer
  * @author Ram Ratan Maurya (Codestag)
  */
@@ -11,6 +13,8 @@
  */
 final class Stag_Customizer {
 	/**
+	 * Class instance.
+	 *
 	 * @var Stag_Customizer The single instance of Stag_Customizer class.
 	 */
 	protected static $_instance = null;
@@ -50,7 +54,6 @@ final class Stag_Customizer {
 		add_filter( 'widget_text', 'shortcode_unautop' );
 		add_filter( 'widget_text', 'do_shortcode' );
 
-		add_action( 'wp_head', array( $this, 'add_version_meta' ) );
 		add_filter( 'body_class', array( $this, 'body_classes' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
@@ -105,11 +108,6 @@ final class Stag_Customizer {
 		}
 	}
 
-	public function add_version_meta() {
-		echo '<meta name="generator" content="' . STAG_THEME_NAME . ' ' . STAG_THEME_VERSION . '">' . "\n";
-		echo '<meta name="generator" content="StagCustomizer ' . STAG_CUSTOMIZER_VERSION . '">' . "\n";
-	}
-
 	/**
 	 * Add browser body class.
 	 *
@@ -121,36 +119,11 @@ final class Stag_Customizer {
 	 * @return array Modified body class array.
 	 */
 	public function body_classes( $classes ) {
-		global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
+		global $is_iphone;
 
-		if ( $is_lynx ) $classes[] = 'lynx';
-		elseif ( $is_gecko ) $classes[] = 'gecko';
-		elseif ( $is_opera ) $classes[] = 'opera';
-		elseif ( $is_NS4 ) $classes[] = 'ns4';
-		elseif ( $is_safari ) $classes[] = 'safari';
-		elseif ( $is_chrome ) $classes[] = 'chrome';
-		elseif ( $is_IE ) {
-			$browser = $_SERVER['HTTP_USER_AGENT'];
-			$browser = substr( "$browser", 25, 8 );
-			if ( 'MSIE 7.0' === $browser ) {
-				$classes[] = 'ie7';
-				$classes[] = 'ie';
-			} elseif ( 'MSIE 6.0' === $browser ) {
-				$classes[] = 'ie6';
-				$classes[] = 'ie';
-			} elseif ( 'MSIE 8.0' === $browser ) {
-				$classes[] = 'ie8';
-				$classes[] = 'ie';
-			} elseif ( 'MSIE 9.0' === $browser ) {
-				$classes[] = 'ie9';
-				$classes[] = 'ie';
-			} else {
-				$classes[] = 'ie';
-			}
+		if ( $is_iphone ) {
+			$classes[] = 'iphone';
 		}
-		else $classes[] = 'unknown';
-
-		if ( $is_iphone ) $classes[] = 'iphone';
 
 		$classes[] = 'no-touch';
 
@@ -232,35 +205,41 @@ final class Stag_Customizer {
 
 		foreach ( $mods as $section => $settings ) {
 			foreach ( $settings as $key => $setting ) {
-				$wp_customize->add_setting( $key, array(
-					'default' => stag_theme_mod( $section, $key, true ),
-				) );
+				$wp_customize->add_setting(
+					 $key, array(
+						 'default' => stag_theme_mod( $section, $key, true ),
+					 )
+					);
 
 				$type = $setting['type'];
 
-				if ( in_array( $type, array( 'text', 'checkbox', 'radio', 'select', 'dropdown-pages', 'url', 'textarea', 'range' ) ) ) {
-					$wp_customize->add_control( $key, array(
-						'label'       => $setting['title'],
-						'section'     => $section,
-						'settings'    => $key,
-						'type'        => $type,
-						'choices'     => isset( $setting['choices'] ) ? $setting['choices'] : null,
-						'priority'    => isset( $setting['priority'] ) ? $setting['priority'] : null,
-						'description' => isset( $setting['description'] ) ? $setting['description'] : null,
-						'input_attrs' => isset( $setting['input_attrs'] ) ? $setting['input_attrs'] : null,
-						'allow_addition' => isset( $setting['allow_addition'] ) ? $setting['allow_addition'] : null,
-						'active_callback' => isset( $setting['active_callback'] ) ? $setting['active_callback'] : null,
-					) );
+				if ( in_array( $type, array( 'text', 'checkbox', 'radio', 'select', 'dropdown-pages', 'url', 'textarea', 'range' ), true ) ) {
+					$wp_customize->add_control(
+						 $key, array(
+							 'label'       => $setting['title'],
+							 'section'     => $section,
+							 'settings'    => $key,
+							 'type'        => $type,
+							 'choices'     => isset( $setting['choices'] ) ? $setting['choices'] : null,
+							 'priority'    => isset( $setting['priority'] ) ? $setting['priority'] : null,
+							 'description' => isset( $setting['description'] ) ? $setting['description'] : null,
+							 'input_attrs' => isset( $setting['input_attrs'] ) ? $setting['input_attrs'] : null,
+							 'allow_addition' => isset( $setting['allow_addition'] ) ? $setting['allow_addition'] : null,
+							 'active_callback' => isset( $setting['active_callback'] ) ? $setting['active_callback'] : null,
+						 )
+						);
 				} else {
-					$wp_customize->add_control( new $type( $wp_customize, $key, array(
-						'label'       => $setting['title'],
-						'section'     => $section,
-						'settings'    => $key,
-						'choices'     => isset( $setting['choices'] ) ? $setting['choices'] : null,
-						'priority'    => isset( $setting['priority'] ) ? $setting['priority'] : null,
-						'type'        => isset( $setting['option'] ) ? $setting['option'] : null,
-						'description' => isset( $setting['description'] ) ? $setting['description'] : null,
-					) ) );
+					$wp_customize->add_control(
+						 new $type( $wp_customize, $key, array(
+							 'label'       => $setting['title'],
+							 'section'     => $section,
+							 'settings'    => $key,
+							 'choices'     => isset( $setting['choices'] ) ? $setting['choices'] : null,
+							 'priority'    => isset( $setting['priority'] ) ? $setting['priority'] : null,
+							 'type'        => isset( $setting['option'] ) ? $setting['option'] : null,
+							 'description' => isset( $setting['description'] ) ? $setting['description'] : null,
+						 ) )
+						);
 				}
 			}
 		}
@@ -280,8 +259,16 @@ final class Stag_Customizer {
 	 * @return void
 	 */
 	function customize_register_transport( $wp_customize ) {
-		$built_in = array( 'blogname' => '', 'blogdescription' => '', 'header_textcolor' => '' );
-		$stag     = stag_get_theme_mods( array( 'keys_only' => true ) );
+		$built_in = array(
+			'blogname' => '',
+			'blogdescription' => '',
+			'header_textcolor' => '',
+		);
+		$stag     = stag_get_theme_mods(
+			 array(
+				 'keys_only' => true,
+			 )
+			);
 
 		$transport = array_merge( $built_in, $stag );
 
@@ -293,6 +280,11 @@ final class Stag_Customizer {
 		}
 	}
 
+	/**
+	 * Customizer UI CSS.
+	 *
+	 * @return void
+	 */
 	function customizer_ui_css() {
 		?>
 		<style type="text/css">
@@ -325,6 +317,11 @@ final class Stag_Customizer {
 	}
 }
 
+/**
+ * Initiate the class instance.
+ *
+ * @return object
+ */
 function SC() {
 	return Stag_Customizer::instance();
 }
@@ -373,8 +370,18 @@ function stag_customize_textarea_control( $wp_customize ) {
 	 * Textarea Control
 	 */
 	class Stag_Customize_Textarea_Control extends WP_Customize_Control {
+		/**
+		 * Control type.
+		 *
+		 * @var string
+		 */
 		public $type = 'textarea';
 
+		/**
+		 * Render customizer content.
+		 *
+		 * @return void
+		 */
 		public function render_content() {
 		?>
 		<label>
@@ -405,34 +412,47 @@ function stag_customize_slider_control( $wp_customize ) {
 	 * Slider Control
 	 */
 	class Stag_Customize_Slider_Control extends WP_Customize_Control {
+		/**
+		 * Control type.
+		 *
+		 * @var string
+		 */
 		public $type = 'slider';
 
+		/**
+		 * Enqueue admin scripts.
+		 */
 		public function enqueue() {
 			wp_enqueue_script( 'jquery-ui-core' );
 			wp_enqueue_script( 'jquery-ui-slider' );
 		}
 
+		/**
+		 * Render customizer content.
+		 *
+		 * @return void
+		 */
 		public function render_content() {
 			?>
 			<label>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<input style="width: 13%; margin-right: 3%; float: left; text-align: center;" type="text" id="input_<?php echo $this->id; ?>" value="<?php echo $this->value(); ?>" <?php $this->link(); ?>/>
+				<input style="width: 13%; margin-right: 3%; float: left; text-align: center;" type="text" id="input_<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>/>
 			</label>
 
-			<div style="width: 82%; float: left;" id="slider_<?php echo $this->id; ?>" class="stag_slider"></div>
+			<div style="width: 82%; float: left;" id="slider_<?php echo esc_attr( $this->id ); ?>" class="stag_slider"></div>
 
 			<script>
 			jQuery(document).ready(function($) {
-			    $( "#slider_<?php echo $this->id; ?>" ).slider({
-			        value: <?php echo $this->value(); ?>,
-			        min: <?php echo $this->choices['min']; ?>,
-			        max: <?php echo $this->choices['max']; ?>,
-			        step: <?php echo $this->choices['step']; ?>,
-			        slide: function( event, ui ) {
-			            $( "#input_<?php echo $this->id; ?>" ).val(ui.value).keyup();
-			        }
-			    });
-			    $( "#input_<?php echo $this->id; ?>" ).val( $( "#slider_<?php echo $this->id; ?>" ).slider( "value" ) );
+				$( "#slider_<?php echo esc_js( $this->id ); ?>" ).slider({
+					value: <?php echo esc_js( $this->value() ); ?>,
+					min: <?php echo esc_js( $this->choices['min'] ); ?>,
+					max: <?php echo esc_js( $this->choices['max'] ); ?>,
+					step: <?php echo esc_js( $this->choices['step'] ); ?>,
+					slide: function( event, ui ) {
+						$( "#input_<?php echo esc_js( $this->id ); ?>" ).val(ui.value).keyup();
+					}
+				});
+				$( "#input_<?php echo esc_js( $this->id ); ?>" ).val( $( "#slider_<?php echo esc_js( $this->id ); ?>" ).slider( "value" ) );
 			});
 			</script>
 		<?php
@@ -443,128 +463,130 @@ add_action( 'customize_register', 'stag_customize_slider_control', 1, 1 );
 
 
 if ( ! function_exists( 'stag_get_post_meta' ) ) :
-/**
- * Get a specific value from one of the two post meta arrays.
- *
- * Posts in Ink store meta data in two different arrays. The "cache" array
- * is for data that is generated during a page load that can be stored and
- * retrieved later for better performance. The "settings" array is for user-
- * specified data pertaining to the post.
- *
- * @since 1.0.
- *
- * @param  string $type    Which meta array. Either 'cache' or 'settings'.
- * @param  int    $post_id The post id.
- * @param  string $key     The array key to target.
- * @return mixed|bool      The stored value, or false if it doesn't exist.
- */
-function stag_get_post_meta( $type, $post_id, $key ) {
-	$post_meta = get_post_meta( $post_id, '_stag-post-' . $type, true );
+	/**
+	 * Get a specific value from one of the two post meta arrays.
+	 *
+	 * Posts in Ink store meta data in two different arrays. The "cache" array
+	 * is for data that is generated during a page load that can be stored and
+	 * retrieved later for better performance. The "settings" array is for user-
+	 * specified data pertaining to the post.
+	 *
+	 * @since 1.0.
+	 *
+	 * @param  string $type    Which meta array. Either 'cache' or 'settings'.
+	 * @param  int    $post_id The post id.
+	 * @param  string $key     The array key to target.
+	 * @return mixed|bool      The stored value, or false if it doesn't exist.
+	 */
+	function stag_get_post_meta( $type, $post_id, $key ) {
+		$post_meta = get_post_meta( $post_id, '_stag-post-' . $type, true );
 
-	if ( isset( $post_meta[ $key ] ) ) {
-		return $post_meta[ $key ];
-	} else {
-		return false;
+		if ( isset( $post_meta[ $key ] ) ) {
+			return $post_meta[ $key ];
+		} else {
+			return false;
+		}
 	}
-}
 endif;
 
 if ( ! function_exists( 'stag_update_post_meta' ) ) :
-/**
- * Update or remove an item from one of the two post meta arrays.
- *
- * Posts in Ink store meta data in two different arrays. The "cache" array
- * is for data that is generated during a page load that can be stored and
- * retrieved later for better performance. The "settings" array is for user-
- * specified data pertaining to the post.
- *
- * @since 1.0.
- *
- * @param string $type    Which meta array. Either 'cache' or 'settings'.
- * @param int    $post_id The post id.
- * @param string $key     The array key to target.
- * @param mixed  $value   The value to set.
- */
-function stag_update_post_meta( $type, $post_id, $key, $value ) {
-	if ( ! in_array( $type, array( 'cache', 'settings' ) ) ) {
-		return;
+	/**
+	 * Update or remove an item from one of the two post meta arrays.
+	 *
+	 * Posts in Ink store meta data in two different arrays. The "cache" array
+	 * is for data that is generated during a page load that can be stored and
+	 * retrieved later for better performance. The "settings" array is for user-
+	 * specified data pertaining to the post.
+	 *
+	 * @since 1.0.
+	 *
+	 * @param string $type    Which meta array. Either 'cache' or 'settings'.
+	 * @param int    $post_id The post id.
+	 * @param string $key     The array key to target.
+	 * @param mixed  $value   The value to set.
+	 */
+	function stag_update_post_meta( $type, $post_id, $key, $value ) {
+		if ( ! in_array( $type, array( 'cache', 'settings' ), true ) ) {
+			return;
+		}
+
+		$post_meta = get_post_meta( $post_id, '_stag-post-' . $type, true );
+		if ( ! is_array( $post_meta ) ) {
+			$post_meta = array();
+		}
+
+		// If value is null, remove the array item.
+		if ( null === $value && isset( $post_meta[ $key ] ) ) {
+			unset( $post_meta[ $key ] );
+		} else { // Otherwise set/add the array item.
+			$post_meta[ $key ] = $value;
+		}
+
+		update_post_meta( $post_id, '_stag-post-' . $type, $post_meta );
 	}
-
-	$post_meta = get_post_meta( $post_id, '_stag-post-' . $type, true );
-	if ( ! is_array( $post_meta ) ) $post_meta = array();
-
-	// If value is null, remove the array item.
-	if ( null === $value && isset( $post_meta[ $key ] ) ) {
-		unset( $post_meta[ $key ] );
-	} else { // Otherwise set/add the array item.
-		$post_meta[ $key ] = $value;
-	}
-
-	update_post_meta( $post_id, '_stag-post-' . $type, $post_meta );
-}
 endif;
 
 if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Stag_Customize_Misc_Control' ) ) :
-/**
- * Class Stag_Customize_Misc_Control
- *
- * Control for adding arbitrary HTML to a Customizer section.
- *
- * @since 1.1.0.
- */
-class Stag_Customize_Misc_Control extends WP_Customize_Control {
 	/**
-	 * The current setting name.
+	 * Class Stag_Customize_Misc_Control
 	 *
-	 * @since 1.0.0.
+	 * Control for adding arbitrary HTML to a Customizer section.
 	 *
-	 * @var   string    The current setting name.
+	 * @since 1.1.0.
 	 */
-	public $settings = 'blogname';
+	class Stag_Customize_Misc_Control extends WP_Customize_Control {
+		/**
+		 * The current setting name.
+		 *
+		 * @since 1.0.0.
+		 *
+		 * @var   string    The current setting name.
+		 */
+		public $settings = 'blogname';
 
-	/**
-	 * The current setting description.
-	 *
-	 * @since 1.0.0.
-	 *
-	 * @var   string    The current setting description.
-	 */
-	public $description = '';
+		/**
+		 * The current setting description.
+		 *
+		 * @since 1.0.0.
+		 *
+		 * @var   string    The current setting description.
+		 */
+		public $description = '';
 
-	/**
-	 * The current setting group.
-	 *
-	 * @since 1.0.0.
-	 *
-	 * @var   string    The current setting group.
-	 */
-	public $group = '';
+		/**
+		 * The current setting group.
+		 *
+		 * @since 1.0.0.
+		 *
+		 * @var   string    The current setting group.
+		 */
+		public $group = '';
 
-	/**
-	 * Render the description and title for the section.
-	 *
-	 * Prints arbitrary HTML to a customizer section. This provides useful hints for how to properly set some custom
-	 * options for optimal performance for the option.
-	 *
-	 * @since  1.0.0.
-	 *
-	 * @return void
-	 */
-	public function render_content() {
-		switch ( $this->type ) {
-			default:
-			case 'text' :
-				echo '<p class="description">' . stag_allowed_tags( $this->description ) . '</p>';
-				break;
+		/**
+		 * Render the description and title for the section.
+		 *
+		 * Prints arbitrary HTML to a customizer section. This provides useful hints for how to properly set some custom
+		 * options for optimal performance for the option.
+		 *
+		 * @since  1.0.0.
+		 *
+		 * @return void
+		 */
+		public function render_content() {
+			switch ( $this->type ) {
+				default:
+				case 'text':
+					echo '<p class="description">' . stag_allowed_tags( $this->description ) . '</p>'; // WPCS: XSS ok.
+					break;
 
-			case 'heading':
-				echo '<span class="customize-control-title">' . stag_allowed_tags( $this->description ) . '</span>';
-				break;
+				case 'heading':
+					echo '<span class="customize-control-title">' . stag_allowed_tags( $this->description ) . '</span>'; // WPCS: XSS ok.
+					break;
 
-			case 'line' :
-				echo '<hr />';
-				break;
+				case 'line':
+					echo '<hr />';
+					break;
+			}
 		}
 	}
-}
 endif;

@@ -121,7 +121,13 @@ function stag_metabox_post(){
 		),
 	);
 
-	stag_add_meta_box( $meta_box );
+	global $post;
+
+	if ( ! empty( $post ) ) {
+		if ( 'widgetized.php' === get_post_meta( $post->ID, '_wp_page_template', true ) ) {
+			stag_add_meta_box( $meta_box );
+		}
+	}
 
 	$meta_box = array(
 		'id'          => 'stag-metabox-video',

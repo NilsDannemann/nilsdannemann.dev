@@ -134,16 +134,47 @@ class Stag_Logo {
 	 * @return int|bool ID of the attachment or 0 on failure.
 	 */
 	function get_attachment_id_from_url( $url ) {
-		global $wpdb;
-		if ( preg_match( '#\.[a-zA-Z0-9]+$#', $url ) ) {
-			$id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_type = 'attachment' " . "AND guid = %s", $url ) );
+		$attachment_id = 0;
 
-			if ( ! empty( $id ) ) {
-				return (int) $id;
+		$dir = wp_upload_dir();
+
+		if ( false !== strpos( $url, $dir['baseurl'] . '/' ) ) { // Is URL in uploads directory?
+
+			$file = basename( $url );
+
+			$query_args = array(
+				'post_type'   => 'attachment',
+				'post_status' => 'inherit',
+				'fields'      => 'ids',
+				'meta_query'  => array(
+					array(
+						'value'   => $file,
+						'compare' => 'LIKE',
+						'key'     => '_wp_attachment_metadata',
+					),
+				)
+			);
+
+			$query = new WP_Query( $query_args );
+
+			if ( $query->have_posts() ) {
+
+				foreach ( $query->posts as $post_id ) {
+
+					$meta = wp_get_attachment_metadata( $post_id );
+
+					$original_file       = basename( $meta['file'] );
+					$cropped_image_files = wp_list_pluck( $meta['sizes'], 'file' );
+
+					if ( $original_file === $file || in_array( $file, $cropped_image_files ) ) {
+						$attachment_id = $post_id;
+						break;
+					}
+				}
 			}
 		}
 
-		return 0;
+		return $attachment_id;
 	}
 
 	/**

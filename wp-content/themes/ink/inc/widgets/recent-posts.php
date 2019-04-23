@@ -91,7 +91,7 @@ class Stag_Widget_Recent_Posts extends Stag_Widget {
 		extract( $args );
 
 		$title       = apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base );
-		$description = $instance['description'];
+		$description = isset( $instance['description'] ) ? $instance['description'] : '';
 		$count       = $instance['count'];
 		$post_date   = $instance['post_date'];
 		$category    = $instance['category'];
@@ -121,9 +121,33 @@ class Stag_Widget_Recent_Posts extends Stag_Widget {
 		echo $before_widget;
 		?>
 
-		<section class="inner-section">
-			<span class="hentry" data-bg-color="<?php echo esc_attr( $bg_color ); ?>" data-bg-image="<?php echo esc_url( $bg_image ); ?>" data-bg-opacity="<?php echo esc_attr( $bg_opacity ); ?>" data-text-color="<?php echo esc_attr( $text_color ); ?>" data-link-color="<?php echo esc_attr( $link_color ); ?>"></span>
+		<style type="text/css">
+			#<?php echo $widget_id; ?> {
+				background-color: <?php echo $bg_color; ?>;
+				color: <?php echo $text_color; ?>;
+			}
+			#<?php echo $widget_id; ?> .static-content-cover {
+				background-image: url(<?php echo esc_url( $bg_image ); ?>);
+				opacity: <?php echo $bg_opacity/100; ?>;
+			}
+			#<?php echo $widget_id; ?> a:not(.button) {
+				color: <?php echo $link_color; ?>;
+				border-color: <?php echo $link_color; ?>;;
+			}
 
+			#<?php echo $widget_id; ?> h1,
+			#<?php echo $widget_id; ?> h2,
+			#<?php echo $widget_id; ?> h3,
+			#<?php echo $widget_id; ?> h4,
+			#<?php echo $widget_id; ?> h5,
+			#<?php echo $widget_id; ?> h6 {
+				color: <?php echo $text_color; ?>;
+			}
+
+		</style>
+		<div class="static-content-cover"></div>
+
+		<section class="inner-section">
 			<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 
 			<div class="entry-content">

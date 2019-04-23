@@ -28,7 +28,13 @@ get_header(); ?>
 					 * If you want to overload this in a child theme then include a file
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
-					get_template_part( 'content', get_post_format() );
+					$layout = stag_theme_mod( 'layout_options', 'layout' );
+
+					if ( in_array( $layout, array( 'seven', 'eight', 'nine' ), true ) ) {
+						get_template_part( 'template-parts/layout/layout', $layout );
+					} else {
+						get_template_part( 'content', get_post_format() );
+					}
 				?>
 
 			<?php endwhile; ?>

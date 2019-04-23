@@ -20,13 +20,15 @@ get_header(); ?>
 		<div class="page-content-wrapper">
 
 			<div class="content-area">
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php
+				while ( have_posts() ) :
+				the_post();
 
-					<?php get_template_part( 'content', 'page' ); ?>
+					get_template_part( 'content', 'page' );
 
-					<?php get_template_part( '_post', 'comments' ); ?>
+					get_template_part( '_post', 'comments' );
 
-				<?php endwhile; // end of the loop. ?>
+				endwhile; // end of the loop. ?>
 			</div>
 
 			<?php get_sidebar( 'page' ); ?>
@@ -35,4 +37,5 @@ get_header(); ?>
 
 	</main><!-- #main -->
 
-<?php get_footer();
+<?php
+get_footer();

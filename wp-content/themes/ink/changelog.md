@@ -1,5 +1,86 @@
 ### Ink Changelog
 
+# 2.2.14 - Dec 27, 2018
+* Compatible with WordPress v5.0+
+
+# 2.2.13 - Aug 22, 2018
+* Ensure Typekit ID is not blank before enqueuing
+* Compatibility with Gutenberg v3.6.2
+* Update Google fonts library
+* Recommend Gutenberg and Stag Blocks plugin through TGMPA
+
+# 2.2.12 - Aug 06, 2018
+* Restore '.alignone' class styles
+
+# 2.2.11 - Aug 03, 2018
+* Compatibility with Gutenberg v3.4
+
+# 2.2.10 - Apr 27, 2018
+* Fix: Full width images, restore to previous method
+* Fix: Warning within Recent Post widget when description is not set
+
+# 2.2.9 - Apr 25, 2018
+* Fix: Full width images not rendering for '.alignnone' class
+
+# 2.2.8 - Apr 11, 2018
+* NEW: Added support for Gutenberg
+* NEW: Choose pagination style between Infinite/Standard under Customizer > Styling Options > Pagination.
+* IMPROVE: Gutenberg wide images (disabled when using single post/page sidebar)
+* IMPROVE: Drop JS loading of Typekit fonts, in favor of CSS method introduced recently
+* IMPROVE: Updated Google fonts library
+
+# 2.2.7 - Feb 24, 2018
+* Fix form tabindex for RCP login form
+* Fix divider and comment hide button icon
+* Replace the_content filter in favor wp_kses for widget
+* Fix Video cover z-index value in Safari. Props @tschach (ThemeForest)
+* Ensure content_width is set early
+
+# 2.2.6 - Dec 21, 2017
+* Fix compatibility issue with StagTools 2.2.3
+
+# 2.2.5 - Dec 20, 2017
+* Fix footer sub menu styling
+* Fix <hr> styling
+* Ensure compatibility with FontAwesome 5/ StagTools
+
+# 2.2.4 - Nov 10, 2017
+* Fix tabindex on comment form fields
+* Added compatibility with iPhone X
+* Tweak full width images, now uses maximum resolution for images regardless of Jetpack Photon settings
+* Compatible with WordPress 4.9
+* Update Google fonts library
+
+# 2.2.3 - Oct 12, 2017
+* Allow basic HTML usage in featured image captions on single pages
+* Fixed an issue with post cover not visible in Safari
+* Updated Google Fonts library
+* Update FitVids.js to v1.2.0
+* Updated language files
+
+# 2.2.2 - Aug 08, 2017
+* Fixed issue with custom header content restriction by RCP
+* Add new font subset and improved font loading time in Customizer
+* Hide nav icon when sidebar has no widgets
+* Adjust Site title font size on small screens
+* Updated Google fonts library
+* Fix some WordPress Coding Standards errors
+
+# 2.2.1 - Jun 29, 2017
+* Fixed Search results page not showing new layouts correctly
+* Update Google fonts library
+* Update translation files, more German strings
+
+# 2.2.0 - Jun 23, 2017
+* NEW: Added 3 new blog layouts
+* Remove JS approach for custom CSS in Static Content Widget
+* Improved class for custom logos
+* Use smaller images for post covers on mobile
+* Fixed 404 error not working correct when no custom page is set
+* Hide navigation toggle and side drawer when it has no widgets
+* Updated translation files
+* Updated Google fonts library
+
 # 2.1.6 - Mar 23, 2017
 * Added optional sidebars for Single Posts and Single Pages
 * Added Sticky post label under Appearance > Customize > Theme Options > Post Settings > Sticky Post Label

@@ -1191,8 +1191,8 @@ hr:not(.stag-divider),
 }
 hr:not(.stag-divider)::before,
 .stag-divider--plain::before {
-  content: "\f097";
-  font-family: "FontAwesome";
+  content: "\f02e";
+  font-family: "Font Awesome 5 Free";
   position: absolute;
   top: 50%;
   width: 70px;
@@ -4289,7 +4289,7 @@ li + #respond {
 .toggle-comments:after {
   content: "\f106";
   margin-right: 5px;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal 900 normal 14px/1 "Font Awesome 5 Free";
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;

@@ -91,11 +91,36 @@ class Stag_Widget_Static_Content extends Stag_Widget {
 		// Allow site-wide customization of the 'Read more' link text.
 		$read_more = apply_filters( 'stag_read_more_text', __( 'Read more', 'stag' ) );
 		?>
+		<style type="text/css">
+			#<?php echo $widget_id; ?> {
+				background-color: <?php echo $bg_color; ?>;
+				color: <?php echo $text_color; ?>;
+			}
+			#<?php echo $widget_id; ?> .static-content-cover {
+				background-image: url(<?php echo esc_url( $bg_image ); ?>);
+				opacity: <?php echo $bg_opacity/100; ?>;
+			}
+			#<?php echo $widget_id; ?> a:not(.button) {
+				color: <?php echo $link_color; ?>;
+				border-color: <?php echo $link_color; ?>;;
+			}
+
+			#<?php echo $widget_id; ?> h1,
+			#<?php echo $widget_id; ?> h2,
+			#<?php echo $widget_id; ?> h3,
+			#<?php echo $widget_id; ?> h4,
+			#<?php echo $widget_id; ?> h5,
+			#<?php echo $widget_id; ?> h6 {
+				color: <?php echo $text_color; ?>;
+			}
+
+		</style>
+		<div class="static-content-cover"></div>
 		<section class="inner-section">
 
 			<?php if ( $post->have_posts() ) : ?>
 				<?php while ( $post->have_posts() ) : $post->the_post(); ?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> data-bg-color="<?php echo esc_attr( $bg_color ); ?>" data-bg-image="<?php echo esc_url( $bg_image ); ?>" data-bg-opacity="<?php echo esc_attr( $bg_opacity ); ?>" data-text-color="<?php echo esc_attr( $text_color ); ?>" data-link-color="<?php echo esc_attr( $link_color ); ?>">
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<?php if ( $title ) echo $before_title . $title . $after_title; ?>
 
 						<div class="entry-content">

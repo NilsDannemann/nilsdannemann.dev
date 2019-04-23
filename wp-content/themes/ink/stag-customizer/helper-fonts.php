@@ -1,5 +1,7 @@
 <?php
 /**
+ * Helpers functions for Google Fonts.
+ *
  * @package Stag_Customizer
  *
  * @since  1.0.1.
@@ -23,7 +25,7 @@ function stag_get_font_stack( $font ) {
 	// Standard font.
 	if ( isset( $all_fonts[ $font ]['stack'] ) && ! empty( $all_fonts[ $font ]['stack'] ) ) {
 		$stack = $all_fonts[ $font ]['stack'];
-	} elseif ( in_array( $font, stag_all_font_choices() ) ) {
+	} elseif ( in_array( $font, stag_all_font_choices(), true ) ) {
 		$stack = '"' . $font . '","Helvetica Neue",Helvetica,Arial,sans-serif';
 	} else {
 		$stack = '"Helvetica Neue",Helvetica,Arial,sans-serif';
@@ -53,7 +55,7 @@ function stag_get_google_font_uri() {
 	$allowed_fonts = stag_get_google_fonts();
 	$family        = array();
 
-	// Validate each font and convert to URL format
+	// Validate each font and convert to URL format.
 	foreach ( $fonts as $font ) {
 		$font = trim( $font );
 
@@ -122,19 +124,19 @@ function stag_choose_google_font_variants( $font, $variants = array() ) {
 	}
 
 	// If a "regular" variant is not found, get the first variant.
-	if ( ! in_array( 'regular', $variants ) ) {
+	if ( ! in_array( 'regular', $variants, true ) ) {
 		$chosen_variants[] = $variants[0];
 	} else {
 		$chosen_variants[] = 'regular';
 	}
 
 	// Only add "italic" if it exists.
-	if ( in_array( 'italic', $variants ) ) {
+	if ( in_array( 'italic', $variants, true ) ) {
 		$chosen_variants[] = 'italic';
 	}
 
 	// Only add "700" if it exists.
-	if ( in_array( '700', $variants ) ) {
+	if ( in_array( '700', $variants, true ) ) {
 		$chosen_variants[] = '700';
 	}
 
@@ -186,6 +188,7 @@ function stag_get_google_font_subsets() {
 		'latin'        => __( 'Latin', 'stag' ),
 		'latin-ext'    => __( 'Latin Extended', 'stag' ),
 		'malayalam'    => __( 'Malayalam', 'stag' ),
+		'myanmar'      => __( 'Myanmar', 'stag' ),
 		'oriya'        => __( 'Oriya', 'stag' ),
 		'sinhala'      => __( 'Sinhala', 'stag' ),
 		'tamil'        => __( 'Tamil', 'stag' ),
@@ -202,8 +205,8 @@ if ( ! function_exists( 'stag_sanitize_font_choice' ) ) :
  *
  * @since  1.0.0.
  *
- * @param  string $value    The font choice.
- * @return string 			The sanitized font choice.
+ * @param  string $value The font choice.
+ * @return string The sanitized font choice.
  */
 function stag_sanitize_font_choice( $value ) {
 	if ( is_int( $value ) ) {
@@ -226,34 +229,10 @@ if ( ! function_exists( 'stag_get_all_fonts' ) ) :
  * @return array    All available fonts.
  */
 function stag_get_all_fonts() {
-	$heading1            = array( 1 => array( 'label' => sprintf( '&mdash; %s &mdash;', __( 'Standard Fonts', 'stag' ) ) ) );
-	$standard_fonts      = stag_get_standard_fonts();
+	$standard_fonts = stag_get_standard_fonts();
+	$google_fonts   = stag_get_google_fonts();
 
-	$google_fonts        = stag_get_google_fonts();
-
-	$serif_heading       = array( 2 => array( 'label' => sprintf( '&mdash; %s &mdash;', __( 'Serif Fonts (Google)', 'stag' ) ) ) );
-	$serif_fonts         = wp_list_filter( $google_fonts, array( 'category' => 'serif' ) );
-
-	$sans_serif_heading  = array( 3 => array( 'label' => sprintf( '&mdash; %s &mdash;', __( 'Sans Serif Fonts (Google)', 'stag' ) ) ) );
-	$sans_serif_fonts    = wp_list_filter( $google_fonts, array( 'category' => 'sans-serif' ) );
-
-	$display_heading     = array( 4 => array( 'label' => sprintf( '&mdash; %s &mdash;', __( 'Display Fonts (Google)', 'stag' ) ) ) );
-	$display_fonts       = wp_list_filter( $google_fonts, array( 'category' => 'display' ) );
-
-	$handwriting_heading = array( 4 => array( 'label' => sprintf( '&mdash; %s &mdash;', __( 'Handwriting Fonts (Google)', 'stag' ) ) ) );
-	$handwriting_fonts   = wp_list_filter( $google_fonts, array( 'category' => 'handwriting' ) );
-
-	$monospace_heading   = array( 4 => array( 'label' => sprintf( '&mdash; %s &mdash;', __( 'Monospace Fonts (Google)', 'stag' ) ) ) );
-	$monospace_fonts     = wp_list_filter( $google_fonts, array( 'category' => 'monospace' ) );
-
-	return apply_filters( 'stag_all_fonts', array_merge(
-		$heading1, $standard_fonts,
-		$serif_heading, $serif_fonts,
-		$sans_serif_heading, $sans_serif_fonts,
-		$display_heading, $display_fonts,
-		$handwriting_heading, $handwriting_fonts,
-		$monospace_heading, $monospace_fonts
-	) );
+	return apply_filters( 'stag_all_fonts', array_merge( $standard_fonts, $google_fonts ) );
 }
 endif;
 

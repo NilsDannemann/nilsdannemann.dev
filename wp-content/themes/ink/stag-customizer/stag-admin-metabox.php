@@ -1,9 +1,9 @@
 <?php
 /**
- * Add a custom meta box
+ * Add a custom meta box.
  *
- * @param array $meta_box Meta box input data
- * @return void
+ * @param array $meta_box Meta box input data.
+ * @return mixed
  */
 function stag_add_meta_box( $meta_box ) {
 	if ( ! is_array( $meta_box ) ) return false;
@@ -212,7 +212,6 @@ function stag_create_meta_box( $post, $meta_box ) {
 											dataType: 'html'
 										}).done( function( data ) {
 											$('.stag-gallery-thumbs').html( data );
-											console.log(data);
 										});
 									}
 								}

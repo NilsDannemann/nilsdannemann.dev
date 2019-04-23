@@ -92,7 +92,7 @@ function stag_body_classes( $classes ) {
 		$header_over = true;
 	}
 
-	if ( is_404() && false !== stag_theme_mod( '404_page', '404_custom_page' ) ) {
+	if ( is_404() && false !== (bool) stag_theme_mod( '404_page', '404_custom_page' ) ) {
 		$header_over = true;
 	}
 
@@ -125,6 +125,19 @@ function stag_body_classes( $classes ) {
 		$classes[] = 'hover-overlay';
 	}
 
+	/**
+	 * Hide side drawer when there are no widgets.
+	 *
+	 * @since 2.2.0
+	 */
+	if ( ! is_active_sidebar( 'sidebar-drawer' ) && ! has_nav_menu( 'primary' ) && 'traditional' !== $nav_layout ) {
+		$classes[] = 'hide-drawer';
+	}
+
+	if ( 'traditional' === $nav_layout && ! is_active_sidebar( 'sidebar-drawer' ) ) {
+		$classes[] = 'hide-partial-drawer';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'stag_body_classes' );
@@ -142,7 +155,15 @@ function stag_post_classes( $classes ) {
 	$post_id = get_the_ID();
 
 	if ( ! is_single() && ! is_page() && ! is_404() ) {
-		$classes[] = 'post-grid';
+		$layout = stag_theme_mod( 'layout_options', 'layout' );
+
+		if ( 'seven' === $layout && ! is_author() ) {
+			$classes[] = 'Grid';
+		} elseif ( in_array( $layout, array( 'eight', 'nine' ), true )  && ! is_author() ) {
+			$classes[] = 'grid-post';
+		} else {
+			$classes[] = 'post-grid';
+		}
 	}
 
 	if ( true === apply_filters( 'stag_showing_related_posts', false ) ) {
@@ -177,9 +198,10 @@ function stag_post_background_css( $post_id = null, $sel1 = '.article-cover--', 
 	}
 
 	$thumb_id = get_post_thumbnail_id( $post_id );
+	$image_size = ( wp_is_mobile() ) ? 'ink-post-cover' : 'full';
 
 	if ( '' !== $thumb_id ) {
-		$thumb_url        = wp_get_attachment_image_src( $thumb_id, 'full', true );
+		$thumb_url        = wp_get_attachment_image_src( $thumb_id, $image_size, true );
 		$background_image = $thumb_url[0];
 	} else {
 		$background_image = '';
@@ -352,7 +374,13 @@ function stag_inifinite_scroll() {
 
 	if ( $query->have_posts() ) :
 		while ( $query->have_posts() ) : $query->the_post();
-			get_template_part( 'content', get_post_format() );
+			$layout = stag_theme_mod( 'layout_options', 'layout' );
+
+			if ( in_array( $layout, array( 'seven', 'eight', 'nine' ), true ) ) {
+				get_template_part( 'template-parts/layout/layout', $layout );
+			} else {
+				get_template_part( 'content', get_post_format() );
+			}
 		endwhile;
 	endif;
 
@@ -399,4 +427,55 @@ function ink_is_search_has_results() {
 	$result = ( 0 !== $wp_query->found_posts ) ? true : false;
 
 	return $result;
+}
+
+/**
+ * Return the WordPress array of allowed tags, with a few things added.
+ *
+ * @since 2.2.3
+ *
+ * @return mixed|void
+ */
+function ink_allowed_html() {
+	$expandedtags = wp_kses_allowed_html();
+
+	// Span.
+	$expandedtags['span'] = array();
+
+	// H1 - H6.
+	$expandedtags['h1'] = array();
+	$expandedtags['h2'] = array();
+	$expandedtags['h3'] = array();
+	$expandedtags['h4'] = array();
+	$expandedtags['h5'] = array();
+	$expandedtags['h6'] = array();
+
+	// Enable id, class, and style attributes for each tag.
+	foreach ( $expandedtags as $tag => $attributes ) {
+		$expandedtags[ $tag ]['id']    = true;
+		$expandedtags[ $tag ]['class'] = true;
+		$expandedtags[ $tag ]['style'] = true;
+	}
+
+	// br (doesn't need attributes).
+	$expandedtags['br'] = array();
+
+	// img.
+	$expandedtags['img'] = array(
+		'src'    => true,
+		'height' => true,
+		'width'  => true,
+		'alt'    => true,
+		'title'  => true,
+	);
+
+	/**
+	 * Customize the tags and attributes that are allows during text sanitization.
+	 *
+	 * @since 2.2.3
+	 *
+	 * @param array     $expandedtags    The list of allowed tags and attributes.
+	 * @param string    $string          The text string being sanitized.
+	 */
+	return apply_filters( 'ink_allowed_html', $expandedtags );
 }

@@ -1,276 +1,239 @@
 {
-"AAInfo": "This is a CodeKit 3 project config file. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. Doing so will cause CodeKit to crash and\/or corrupt your project. I know it looks like JSON, but it is *not*. Many numbers in this file are 64-bit long long bitFlags, which JSON does not support. These numbers *cannot* be treated as discrete values and if you attempt to parse this file as standard JSON with any public JSON parser, these values will be corrupted. This file is not backwards-compatible with CodeKit 1 or 2. For more information, see https:\/\/codekitapp.com\/",
+"AAInfo": "This is a CodeKit 3 project config file. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. Doing so will cause CodeKit to crash and/or corrupt your project. I know it looks like JSON, but it is *not*. Many numbers in this file are 64-bit long long bitFlags, which JSON does not support. These numbers *cannot* be treated as discrete values and if you attempt to parse this file as standard JSON with any public JSON parser, these values will be corrupted. This file is not backwards-compatible with CodeKit 1 or 2. For more information, see https://codekitapp.com/",
 "buildSteps": [
 	{
 		"name": "Process All Remaining Files and Folders",
 		"stepType": 1,
-		"uuidString": "42E7FCDF-7B37-4E3B-AB14-F0D136AF5044"
+		"uuidString": "9B045E43-B8D1-4B85-8810-FE564AC98975"
 		}
 	],
-"creatorBuild": "25704",
+"creatorBuild": "28905",
 "files": {
-	"\/.gitignore": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/.gitignore",
-		"oF": 0
-		},
-	"\/404.php": {
+	"/.gitignore": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/404.php",
+		"oAP": "/.gitignore",
 		"oF": 0
 		},
-	"\/_post-background.php": {
+	"/404.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/_post-background.php",
+		"oAP": "/404.php",
 		"oF": 0
 		},
-	"\/_post-comments.php": {
+	"/_post-background.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "/_post-background.php",
+		"oF": 0
+		},
+	"/_post-comments.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "/_post-comments.php",
+		"oF": 0
+		},
+	"/_post-cover-wrap.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "/_post-cover-wrap.php",
+		"oF": 0
+		},
+	"/_post-load.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "/_post-load.php",
+		"oF": 0
+		},
+	"/_post-share.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "/_post-share.php",
+		"oF": 0
+		},
+	"/archive.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/_post-comments.php",
+		"oAP": "/archive.php",
 		"oF": 0
 		},
-	"\/_post-cover-wrap.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/_post-cover-wrap.php",
-		"oF": 0
-		},
-	"\/_post-load.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/_post-load.php",
-		"oF": 0
-		},
-	"\/_post-share.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/_post-share.php",
-		"oF": 0
-		},
-	"\/archive.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/archive.php",
-		"oF": 0
-		},
-	"\/assets\/css\/font-awesome.css": {
-		"aP": 0,
+	"/assets/css/block-editor-style.css": {
+		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/assets\/css\/font-awesome-min.css",
+		"oA": 1,
+		"oAP": "/assets/css/block-editor-style.min.css",
 		"oF": 0,
-		"oS": 0
+		"oS": 3
 		},
-	"\/assets\/css\/font-awesome.min.css": {
-		"aP": 0,
+	"/assets/css/fontawesome-all.min.css": {
+		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/assets\/css\/font-awesome.min-min.css",
+		"oA": 1,
+		"oAP": "/assets/css/fontawesome-all.min.min.css",
 		"oF": 0,
-		"oS": 0
+		"oS": 3
 		},
-	"\/assets\/fonts\/fontawesome-webfont.eot": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/fontawesome-webfont.eot",
-		"oF": 0
-		},
-	"\/assets\/fonts\/fontawesome-webfont.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/fontawesome-webfont.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
-		},
-	"\/assets\/fonts\/fontawesome-webfont.ttf": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/fontawesome-webfont.ttf",
-		"oF": 0
-		},
-	"\/assets\/fonts\/fontawesome-webfont.woff": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/fontawesome-webfont.woff",
-		"oF": 0
-		},
-	"\/assets\/fonts\/fontawesome-webfont.woff2": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/fontawesome-webfont.woff2",
-		"oF": 0
-		},
-	"\/assets\/fonts\/FontAwesome.otf": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/FontAwesome.otf",
-		"oF": 0
-		},
-	"\/assets\/img\/down.png": {
+	"/assets/img/down.png": {
 		"ft": 32768,
 		"iS": 199,
-		"l": 1,
 		"oA": 0,
-		"oAP": "\/assets\/img\/down.png",
+		"oAP": "/assets/img/down.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
-	"\/assets\/img\/favicon.ico": {
+	"/assets/img/favicon.ico": {
+		"cB": 0,
 		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/img\/favicon.ico",
+		"oA": 0,
+		"oAP": "/assets/img/favicon.ico",
 		"oF": 0
 		},
-	"\/assets\/img\/layout-normal.svg": {
+	"/assets/img/layout-normal.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "\/assets\/img\/layout-normal.svg",
+		"oAP": "/assets/img/layout-normal.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"\/assets\/img\/layout-selected.svg": {
+	"/assets/img/layout-selected.svg": {
 		"ft": 2097152,
 		"miP": 0,
 		"oA": 2,
-		"oAP": "\/assets\/img\/layout-selected.svg",
+		"oAP": "/assets/img/layout-selected.svg",
 		"oF": 0,
 		"opt": 0,
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"\/assets\/js\/customizer-ui.js": {
+	"/assets/js/customizer-ui.js": {
 		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/customizer-ui.min.js",
-		"oF": 1,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/js\/customizer-visibility.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/customizer-visibility.min.js",
+		"oAP": "/assets/js/customizer-ui.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/js\/customizer.js": {
+	"/assets/js/customizer-visibility.js": {
 		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/customizer.min.js",
-		"oF": 1,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/js\/jquery.custom.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/jquery.custom.min.js",
+		"oAP": "/assets/js/customizer-visibility.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/js\/jquery.custom.min.js": {
+	"/assets/js/customizer.js": {
 		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/jquery.custom.min.min.js",
+		"oAP": "/assets/js/customizer.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/js\/jquery.flexslider.js": {
+	"/assets/js/jquery.custom.js": {
 		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/jquery.flexslider.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/js\/lib\/fitvids\/jquery.fitvids.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/lib\/fitvids\/jquery.fitvids.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/js\/lib\/fitvids\/jquery.fitvids.min.js": {
-		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/lib\/fitvids\/jquery.fitvids.min.min.js",
+		"oAP": "/assets/js/jquery.custom.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/js\/lib\/spin\/jquery.spin.js": {
+	"/assets/js/jquery.custom.min.js": {
 		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/lib\/spin\/jquery.spin.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/js\/lib\/spin\/jquery.spin.min.js": {
-		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/lib\/spin\/jquery.spin.min.min.js",
+		"oAP": "/assets/js/jquery.custom.min.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/js\/lib\/spin\/spin.js": {
+	"/assets/js/jquery.flexslider.js": {
 		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/lib\/spin\/spin.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/assets\/js\/lib\/spin\/spin.min.js": {
-		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/lib\/spin\/spin.min.min.js",
+		"oAP": "/assets/js/jquery.flexslider.min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/js\/plugins.js": {
+	"/assets/js/lib/spin/jquery.spin.js": {
 		"ft": 64,
-		"mi": 1,
+		"ma": 0,
+		"mi": 0,
 		"oA": 1,
-		"oAP": "\/assets\/js\/plugins.min.js",
-		"oF": 1,
+		"oAP": "/assets/js/lib/spin/jquery.spin.min.js",
+		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},
-	"\/assets\/sass\/_comments.scss": {
+	"/assets/js/lib/spin/jquery.spin.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/assets/js/lib/spin/jquery.spin.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/assets/js/lib/spin/spin.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/assets/js/lib/spin/spin.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/assets/js/lib/spin/spin.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/assets/js/lib/spin/spin.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/assets/js/plugins.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/assets/js/plugins.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/assets/sass/_comments.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -278,12 +241,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_comments.css",
+		"oAP": "/assets/css/_comments.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_contents.scss": {
+	"/assets/sass/_contents.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -291,12 +254,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_contents.css",
+		"oAP": "/assets/css/_contents.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_elements.scss": {
+	"/assets/sass/_elements.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -304,12 +267,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_elements.css",
+		"oAP": "/assets/css/_elements.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_forms.scss": {
+	"/assets/sass/_forms.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -317,12 +280,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_forms.css",
+		"oAP": "/assets/css/_forms.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_grid.scss": {
+	"/assets/sass/_grid.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -330,12 +293,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_grid.css",
+		"oAP": "/assets/css/_grid.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_pages.scss": {
+	"/assets/sass/_pages.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -343,12 +306,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_pages.css",
+		"oAP": "/assets/css/_pages.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_patterns.scss": {
+	"/assets/sass/_patterns.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -356,12 +319,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_patterns.css",
+		"oAP": "/assets/css/_patterns.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_posts.scss": {
+	"/assets/sass/_posts.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -369,12 +332,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_posts.css",
+		"oAP": "/assets/css/_posts.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_preboot.scss": {
+	"/assets/sass/_preboot.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -382,12 +345,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_preboot.css",
+		"oAP": "/assets/css/_preboot.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_reset.scss": {
+	"/assets/sass/_reset.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -395,12 +358,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_reset.css",
+		"oAP": "/assets/css/_reset.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_scaffolding.scss": {
+	"/assets/sass/_scaffolding.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -408,12 +371,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_scaffolding.css",
+		"oAP": "/assets/css/_scaffolding.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_sidebar.scss": {
+	"/assets/sass/_sidebar.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -421,12 +384,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_sidebar.css",
+		"oAP": "/assets/css/_sidebar.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/_support.scss": {
+	"/assets/sass/_support.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -434,12 +397,12 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/css\/_support.css",
+		"oAP": "/assets/css/_support.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/assets\/sass\/style.scss": {
+	"/assets/sass/style.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 5,
@@ -447,27 +410,142 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/assets\/css\/style.css",
+		"oAP": "/assets/css/style.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
 		},
-	"\/author.php": {
+	"/assets/webfonts/fa-brands-400.eot": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/author.php",
+		"oAP": "/assets/webfonts/fa-brands-400.eot",
 		"oF": 0
 		},
-	"\/changelog.md": {
+	"/assets/webfonts/fa-brands-400.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/assets/webfonts/fa-brands-400.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/assets/webfonts/fa-brands-400.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-brands-400.ttf",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-brands-400.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-brands-400.woff",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-brands-400.woff2": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-brands-400.woff2",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-regular-400.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-regular-400.eot",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-regular-400.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/assets/webfonts/fa-regular-400.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/assets/webfonts/fa-regular-400.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-regular-400.ttf",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-regular-400.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-regular-400.woff",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-regular-400.woff2": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-regular-400.woff2",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-solid-900.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-solid-900.eot",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-solid-900.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/assets/webfonts/fa-solid-900.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/assets/webfonts/fa-solid-900.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-solid-900.ttf",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-solid-900.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-solid-900.woff",
+		"oF": 0
+		},
+	"/assets/webfonts/fa-solid-900.woff2": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/assets/webfonts/fa-solid-900.woff2",
+		"oF": 0
+		},
+	"/author.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/author.php",
+		"oF": 0
+		},
+	"/changelog.md": {
+		"cB": 0,
 		"cS": 0,
 		"eF": 0,
 		"eL": 1,
-		"eLB": 0,
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
 		"oA": 1,
-		"oAP": "\/changelog.html",
+		"oAP": "/changelog.html",
 		"oF": 1,
 		"oFM": 0,
 		"oS": 0,
@@ -476,489 +554,612 @@
 		"rFN": 0,
 		"uCM": 0
 		},
-	"\/changelog.txt": {
+	"/changelog.txt": {
+		"cB": 0,
 		"ft": 8192,
+		"oA": 0,
+		"oAP": "/changelog.txt",
+		"oF": 0
+		},
+	"/comments.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/comments.php",
+		"oF": 0
+		},
+	"/config.rb": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/config.rb",
+		"oF": 0
+		},
+	"/contact.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/contact.php",
+		"oF": 0
+		},
+	"/content-404.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/content-404.php",
+		"oF": 0
+		},
+	"/content-none.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/content-none.php",
+		"oF": 0
+		},
+	"/content-page.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/content-page.php",
+		"oF": 0
+		},
+	"/content-single.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/content-single.php",
+		"oF": 0
+		},
+	"/content.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/content.php",
+		"oF": 0
+		},
+	"/current.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/current.php",
+		"oF": 0
+		},
+	"/footer.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/footer.php",
+		"oF": 0
+		},
+	"/functions.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/functions.php",
+		"oF": 0
+		},
+	"/header.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/header.php",
+		"oF": 0
+		},
+	"/inc/customizer.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/customizer.php",
+		"oF": 0
+		},
+	"/inc/extras.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/extras.php",
+		"oF": 0
+		},
+	"/inc/init.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/init.php",
+		"oF": 0
+		},
+	"/inc/meta/post.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/meta/post.php",
+		"oF": 0
+		},
+	"/inc/template-tags.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/template-tags.php",
+		"oF": 0
+		},
+	"/inc/theme-functions.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/theme-functions.php",
+		"oF": 0
+		},
+	"/inc/updater/theme-updater-admin.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/updater/theme-updater-admin.php",
+		"oF": 0
+		},
+	"/inc/updater/theme-updater-class.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/updater/theme-updater-class.php",
+		"oF": 0
+		},
+	"/inc/updater/theme-updater.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/updater/theme-updater.php",
+		"oF": 0
+		},
+	"/inc/widgets/contributors.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/contributors.php",
+		"oF": 0
+		},
+	"/inc/widgets/feature-callout.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/feature-callout.php",
+		"oF": 0
+		},
+	"/inc/widgets/featured-slide.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/featured-slide.php",
+		"oF": 0
+		},
+	"/inc/widgets/recent-posts-grid.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/recent-posts-grid.php",
+		"oF": 0
+		},
+	"/inc/widgets/recent-posts.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/recent-posts.php",
+		"oF": 0
+		},
+	"/inc/widgets/section-featured-slides.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/section-featured-slides.php",
+		"oF": 0
+		},
+	"/inc/widgets/static-content.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/inc/widgets/static-content.php",
+		"oF": 0
+		},
+	"/index.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/index.php",
+		"oF": 0
+		},
+	"/languages/de_DE.mo": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/languages/de_DE.mo",
+		"oF": 0
+		},
+	"/languages/de_DE.po": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/languages/de_DE.po",
+		"oF": 0
+		},
+	"/languages/default.mo": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/languages/default.mo",
+		"oF": 0
+		},
+	"/languages/default.po": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/languages/default.po",
+		"oF": 0
+		},
+	"/node_modules": {
+		"ft": 65536,
 		"oA": 2,
-		"oAP": "\/changelog.txt",
+		"oAP": "/build/node_modules",
 		"oF": 0
 		},
-	"\/comments.php": {
+	"/page.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/comments.php",
+		"oAP": "/page.php",
 		"oF": 0
 		},
-	"\/config.rb": {
-		"ft": 131072,
-		"oA": 0,
-		"oAP": "\/config.rb",
-		"oF": 0
-		},
-	"\/contact.php": {
+	"/partials/archive-inner-layout.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/contact.php",
+		"oAP": "/partials/archive-inner-layout.php",
 		"oF": 0
 		},
-	"\/content-404.php": {
+	"/partials/archive-outer-layout.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/content-404.php",
+		"oAP": "/partials/archive-outer-layout.php",
 		"oF": 0
 		},
-	"\/content-none.php": {
+	"/partials/custom-header.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/content-none.php",
+		"oAP": "/partials/custom-header.php",
 		"oF": 0
 		},
-	"\/content-page.php": {
+	"/rcp/change-password.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/content-page.php",
+		"oAP": "/rcp/change-password.php",
 		"oF": 0
 		},
-	"\/content-single.php": {
+	"/rcp/init.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/content-single.php",
+		"oAP": "/rcp/init.php",
 		"oF": 0
 		},
-	"\/content.php": {
+	"/rcp/login.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/content.php",
+		"oAP": "/rcp/login.php",
 		"oF": 0
 		},
-	"\/current.php": {
+	"/rcp/profile-editor.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/current.php",
+		"oAP": "/rcp/profile-editor.php",
 		"oF": 0
 		},
-	"\/footer.php": {
+	"/rcp/register-single.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/footer.php",
+		"oAP": "/rcp/register-single.php",
 		"oF": 0
 		},
-	"\/functions.php": {
+	"/rcp/register.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/functions.php",
+		"oAP": "/rcp/register.php",
 		"oF": 0
 		},
-	"\/header.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/header.php",
-		"oF": 0
-		},
-	"\/inc\/customizer.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/customizer.php",
-		"oF": 0
-		},
-	"\/inc\/extras.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/extras.php",
-		"oF": 0
-		},
-	"\/inc\/init.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/init.php",
-		"oF": 0
-		},
-	"\/inc\/meta\/post.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/meta\/post.php",
-		"oF": 0
-		},
-	"\/inc\/template-tags.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/template-tags.php",
-		"oF": 0
-		},
-	"\/inc\/theme-functions.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/theme-functions.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/contributors.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/widgets\/contributors.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/feature-callout.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/inc\/widgets\/feature-callout.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/featured-slide.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/inc\/widgets\/featured-slide.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/recent-posts-grid.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/widgets\/recent-posts-grid.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/recent-posts.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/widgets\/recent-posts.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/section-featured-slides.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/inc\/widgets\/section-featured-slides.php",
-		"oF": 0
-		},
-	"\/inc\/widgets\/static-content.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/inc\/widgets\/static-content.php",
-		"oF": 0
-		},
-	"\/index.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/index.php",
-		"oF": 0
-		},
-	"\/languages\/de_DE.mo": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/languages\/de_DE.mo",
-		"oF": 0
-		},
-	"\/languages\/de_DE.po": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/languages\/de_DE.po",
-		"oF": 0
-		},
-	"\/languages\/default.mo": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/languages\/default.mo",
-		"oF": 0
-		},
-	"\/languages\/default.po": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/languages\/default.po",
-		"oF": 0
-		},
-	"\/page.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/page.php",
-		"oF": 0
-		},
-	"\/partials\/archive-inner-layout.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/partials\/archive-inner-layout.php",
-		"oF": 0
-		},
-	"\/partials\/archive-outer-layout.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/partials\/archive-outer-layout.php",
-		"oF": 0
-		},
-	"\/partials\/custom-header.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/partials\/custom-header.php",
-		"oF": 0
-		},
-	"\/rcp\/change-password.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/rcp\/change-password.php",
-		"oF": 0
-		},
-	"\/rcp\/init.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/rcp\/init.php",
-		"oF": 0
-		},
-	"\/rcp\/login.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/rcp\/login.php",
-		"oF": 0
-		},
-	"\/rcp\/profile-editor.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/rcp\/profile-editor.php",
-		"oF": 0
-		},
-	"\/rcp\/register-single.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/rcp\/register-single.php",
-		"oF": 0
-		},
-	"\/rcp\/register.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/rcp\/register.php",
-		"oF": 0
-		},
-	"\/screenshot.png": {
+	"/screenshot.png": {
 		"ft": 32768,
-		"iS": 185583,
-		"l": 1,
+		"iS": 92880,
 		"oA": 0,
-		"oAP": "\/screenshot.png",
+		"oAP": "/screenshot.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
-	"\/search.php": {
+	"/search.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/search.php",
+		"oAP": "/search.php",
 		"oF": 0
 		},
-	"\/searchform.php": {
+	"/searchform.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/searchform.php",
+		"oAP": "/searchform.php",
 		"oF": 0
 		},
-	"\/sidebar-footer-1.php": {
+	"/sidebar-footer-1.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/sidebar-footer-1.php",
+		"oAP": "/sidebar-footer-1.php",
 		"oF": 0
 		},
-	"\/sidebar-footer-2.php": {
+	"/sidebar-footer-2.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/sidebar-footer-2.php",
+		"oAP": "/sidebar-footer-2.php",
 		"oF": 0
 		},
-	"\/sidebar-footer-3.php": {
+	"/sidebar-footer-3.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/sidebar-footer-3.php",
+		"oAP": "/sidebar-footer-3.php",
 		"oF": 0
 		},
-	"\/sidebar-page.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/sidebar-page.php",
-		"oF": 0
-		},
-	"\/sidebar-post.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/sidebar-post.php",
-		"oF": 0
-		},
-	"\/sidebar.php": {
+	"/sidebar-page.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/sidebar.php",
+		"oAP": "/sidebar-page.php",
 		"oF": 0
 		},
-	"\/single.php": {
+	"/sidebar-post.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/single.php",
+		"oAP": "/sidebar-post.php",
 		"oF": 0
 		},
-	"\/stag-customizer\/changelog.txt": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/stag-customizer\/changelog.txt",
-		"oF": 0
-		},
-	"\/stag-customizer\/class-stag-logo.php": {
+	"/sidebar.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/stag-customizer\/class-stag-logo.php",
+		"oAP": "/sidebar.php",
 		"oF": 0
 		},
-	"\/stag-customizer\/class-stag-widget.php": {
+	"/single.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/stag-customizer\/class-stag-widget.php",
+		"oAP": "/single.php",
 		"oF": 0
 		},
-	"\/stag-customizer\/class-tgm-plugin-activation.php": {
+	"/stag-customizer/changelog.txt": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/stag-customizer\/class-tgm-plugin-activation.php",
+		"oAP": "/stag-customizer/changelog.txt",
 		"oF": 0
 		},
-	"\/stag-customizer\/css\/stag-admin-metabox.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/css\/stag-admin-metabox-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/stag-customizer\/google-fonts.php": {
+	"/stag-customizer/class-stag-logo.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/stag-customizer\/google-fonts.php",
+		"oAP": "/stag-customizer/class-stag-logo.php",
 		"oF": 0
 		},
-	"\/stag-customizer\/helper-fonts.php": {
+	"/stag-customizer/class-stag-widget.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/stag-customizer\/helper-fonts.php",
+		"oAP": "/stag-customizer/class-stag-widget.php",
 		"oF": 0
 		},
-	"\/stag-customizer\/helper-typekit.php": {
+	"/stag-customizer/class-tgm-plugin-activation.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/stag-customizer\/helper-typekit.php",
+		"oAP": "/stag-customizer/class-tgm-plugin-activation.php",
 		"oF": 0
 		},
-	"\/stag-customizer\/js\/app-image-widget-admin.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/js\/app-image-widget-admin.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/stag-customizer\/js\/customizer-sections.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/js\/customizer-sections.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/stag-customizer\/js\/customizer-typekit.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/js\/customizer-typekit.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/stag-customizer\/libs\/chosen\/chosen-sprite.png": {
-		"ft": 32768,
-		"iS": 538,
-		"l": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/libs\/chosen\/chosen-sprite.png",
-		"oF": 0,
-		"opt": 0,
-		"q": 100
-		},
-	"\/stag-customizer\/libs\/chosen\/chosen-sprite@2x.png": {
-		"ft": 32768,
-		"iS": 738,
-		"l": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/libs\/chosen\/chosen-sprite@2x.png",
-		"oF": 0,
-		"opt": 0,
-		"q": 100
-		},
-	"\/stag-customizer\/libs\/chosen\/chosen.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/stag-customizer\/libs\/chosen\/chosen-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/stag-customizer\/libs\/chosen\/chosen.jquery.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/libs\/chosen\/chosen.jquery.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/stag-customizer\/libs\/chosen\/chosen.jquery.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/libs\/chosen\/chosen.jquery.min.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/stag-customizer\/libs\/chosen\/chosen.min.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/stag-customizer\/libs\/chosen\/chosen.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/stag-customizer\/stag-admin-metabox.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/stag-admin-metabox.php",
-		"oF": 0
-		},
-	"\/stag-customizer\/stag-customizer.php": {
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/stag-customizer\/stag-customizer.php",
-		"oF": 0
-		},
-	"\/style-rtl.css": {
-		"aP": 0,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 2,
-		"oAP": "\/style-rtl-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/style.css": {
-		"aP": 0,
+	"/stag-customizer/css/stag-admin-metabox.css": {
+		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/style-min.css",
-		"oF": 1,
-		"oS": 0
+		"oAP": "/stag-customizer/css/stag-admin-metabox.min.css",
+		"oF": 0,
+		"oS": 3
 		},
-	"\/widgetized.php": {
+	"/stag-customizer/google-fonts.php": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/widgetized.php",
+		"oAP": "/stag-customizer/google-fonts.php",
+		"oF": 0
+		},
+	"/stag-customizer/helper-fonts.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/stag-customizer/helper-fonts.php",
+		"oF": 0
+		},
+	"/stag-customizer/helper-typekit.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/stag-customizer/helper-typekit.php",
+		"oF": 0
+		},
+	"/stag-customizer/js/app-image-widget-admin.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/js/app-image-widget-admin.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/stag-customizer/js/customizer-sections.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/js/customizer-sections.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/stag-customizer/js/customizer-typekit.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/js/customizer-typekit.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/stag-customizer/libs/chosen/chosen-sprite.png": {
+		"ft": 32768,
+		"iS": 538,
+		"oA": 0,
+		"oAP": "/stag-customizer/libs/chosen/chosen-sprite.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/stag-customizer/libs/chosen/chosen-sprite@2x.png": {
+		"ft": 32768,
+		"iS": 738,
+		"oA": 0,
+		"oAP": "/stag-customizer/libs/chosen/chosen-sprite@2x.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/stag-customizer/libs/chosen/chosen.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/libs/chosen/chosen.min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/stag-customizer/libs/chosen/chosen.jquery.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/libs/chosen/chosen.jquery.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/stag-customizer/libs/chosen/chosen.jquery.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/libs/chosen/chosen.jquery.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/stag-customizer/libs/chosen/chosen.min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/stag-customizer/libs/chosen/chosen.min.min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/stag-customizer/stag-admin-metabox.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/stag-customizer/stag-admin-metabox.php",
+		"oF": 0
+		},
+	"/stag-customizer/stag-customizer.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/stag-customizer/stag-customizer.php",
+		"oF": 0
+		},
+	"/style-rtl.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/style-rtl.min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/style.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/style.min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/template-parts/layout/grid-content.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/template-parts/layout/grid-content.php",
+		"oF": 0
+		},
+	"/template-parts/layout/layout-eight.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/template-parts/layout/layout-eight.php",
+		"oF": 0
+		},
+	"/template-parts/layout/layout-nine.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/template-parts/layout/layout-nine.php",
+		"oF": 0
+		},
+	"/template-parts/layout/layout-seven.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/template-parts/layout/layout-seven.php",
+		"oF": 0
+		},
+	"/widgetized.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/widgetized.php",
 		"oF": 0
 		}
 	},
@@ -967,150 +1168,105 @@
 "manualImportLinks": {
 	},
 "projectAttributes": {
-	"creationDate": 505828836,
+	"creationDate": 541155388,
 	"displayValue": "ink",
 	"displayValueWasSetByUser": 1,
-	"iconImageName": "\/screenshot.png"
+	"iconImageName": "meme-greg",
+	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
 	"alwaysUseExternalServer": 1,
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
-	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
+	"autoprefixerEnableIEGrid": 0,
+	"babel7PresetType": 1,
+	"babelAllowRCFiles": 0,
 	"babelAuxiliaryCommentAfter": "",
 	"babelAuxiliaryCommentBefore": "",
-	"babelConfigFileHandlingType": 0,
+	"babelConfigType": 0,
 	"babelCustomPluginsList": "",
 	"babelCustomPresetsList": "",
 	"babelInsertModuleIDs": 0,
 	"babelModuleID": "",
 	"babelNoComments": 0,
 	"babelPlugins": {
+		"arrow-functions": {
+			"active": 0
+			},
 		"async-generator-functions": {
 			"active": 0
 			},
 		"async-to-generator": {
 			"active": 0
 			},
-		"async-to-module-method": {
+		"block-scoped-functions": {
+			"active": 0
+			},
+		"block-scoping": {
 			"active": 0
 			},
 		"class-properties": {
 			"active": 0
 			},
+		"classes": {
+			"active": 0
+			},
+		"computed-properties": {
+			"active": 0
+			},
 		"decorators": {
 			"active": 0
 			},
-		"decorators-legacy": {
+		"destructuring": {
 			"active": 0
 			},
 		"do-expressions": {
 			"active": 0
 			},
-		"es2015-arrow-functions": {
+		"dotall-regex": {
 			"active": 0
 			},
-		"es2015-block-scoped-functions": {
-			"active": 0
-			},
-		"es2015-block-scoping": {
-			"active": 0
-			},
-		"es2015-classes": {
-			"active": 0
-			},
-		"es2015-computed-properties": {
-			"active": 0
-			},
-		"es2015-constants": {
-			"active": 0
-			},
-		"es2015-destructuring": {
-			"active": 0
-			},
-		"es2015-duplicate-keys": {
-			"active": 0
-			},
-		"es2015-for-of": {
-			"active": 0
-			},
-		"es2015-function-name": {
-			"active": 0
-			},
-		"es2015-literals": {
-			"active": 0
-			},
-		"es2015-modules-amd": {
-			"active": 0
-			},
-		"es2015-modules-commonjs": {
-			"active": 0
-			},
-		"es2015-modules-systemjs": {
-			"active": 0
-			},
-		"es2015-modules-umd": {
-			"active": 0
-			},
-		"es2015-object-super": {
-			"active": 0
-			},
-		"es2015-parameters": {
-			"active": 0
-			},
-		"es2015-shorthand-properties": {
-			"active": 0
-			},
-		"es2015-spread": {
-			"active": 0
-			},
-		"es2015-sticky-regex": {
-			"active": 0
-			},
-		"es2015-template-literals": {
-			"active": 0
-			},
-		"es2015-typeof-symbol": {
-			"active": 0
-			},
-		"es2015-unicode-regex": {
-			"active": 0
-			},
-		"es3-member-expression-literals": {
-			"active": 0
-			},
-		"es3-property-literals": {
-			"active": 0
-			},
-		"es5-property-mutators": {
-			"active": 0
-			},
-		"eval": {
+		"duplicate-keys": {
 			"active": 0
 			},
 		"exponentiation-operator": {
 			"active": 0
 			},
-		"export-extensions": {
+		"export-default-from": {
+			"active": 0
+			},
+		"export-namespace-from": {
 			"active": 0
 			},
 		"external-helpers": {
 			"active": 0
 			},
-		"flow-comments": {
+		"flow-strip-types": {
 			"active": 0
 			},
-		"flow-strip-types": {
+		"for-of": {
 			"active": 0
 			},
 		"function-bind": {
 			"active": 0
 			},
-		"inline-environment-variables": {
+		"function-name": {
+			"active": 0
+			},
+		"function-sent": {
+			"active": 0
+			},
+		"instanceof": {
 			"active": 0
 			},
 		"jscript": {
+			"active": 0
+			},
+		"literals": {
+			"active": 0
+			},
+		"logical-assignment-operators": {
 			"active": 0
 			},
 		"member-expression-literals": {
@@ -1122,7 +1278,28 @@
 		"minify-booleans": {
 			"active": 0
 			},
+		"modules-amd": {
+			"active": 0
+			},
+		"modules-commonjs": {
+			"active": 0
+			},
+		"modules-systemjs": {
+			"active": 0
+			},
+		"modules-umd": {
+			"active": 0
+			},
+		"new-target": {
+			"active": 0
+			},
 		"node-env-inline": {
+			"active": 0
+			},
+		"nullish-coalescing-operator": {
+			"active": 0
+			},
+		"numeric-separator": {
 			"active": 0
 			},
 		"object-assign": {
@@ -1134,7 +1311,25 @@
 		"object-set-prototype-of-to-assign": {
 			"active": 0
 			},
+		"object-super": {
+			"active": 0
+			},
+		"optional-catch-binding": {
+			"active": 0
+			},
+		"optional-chaining": {
+			"active": 0
+			},
+		"parameters": {
+			"active": 0
+			},
+		"pipeline-operator": {
+			"active": 0
+			},
 		"property-literals": {
+			"active": 0
+			},
+		"property-mutators": {
 			"active": 0
 			},
 		"proto-to-assign": {
@@ -1170,53 +1365,46 @@
 		"remove-debugger": {
 			"active": 0
 			},
+		"reserved-words": {
+			"active": 0
+			},
 		"runtime": {
+			"active": 0
+			},
+		"shorthand-properties": {
 			"active": 0
 			},
 		"simplify-comparison-operators": {
 			"active": 0
 			},
+		"spread": {
+			"active": 0
+			},
+		"sticky-regex": {
+			"active": 0
+			},
 		"strict-mode": {
 			"active": 0
 			},
-		"syntax-async-generators": {
+		"template-literals": {
 			"active": 0
 			},
-		"syntax-class-properties": {
+		"throw-expressions": {
 			"active": 0
 			},
-		"syntax-decorators": {
-			"active": 0
-			},
-		"syntax-do-expressions": {
-			"active": 0
-			},
-		"syntax-export-extensions": {
-			"active": 0
-			},
-		"syntax-flow": {
-			"active": 0
-			},
-		"syntax-function-bind": {
-			"active": 0
-			},
-		"syntax-function-sent": {
-			"active": 0
-			},
-		"syntax-jsx": {
-			"active": 0
-			},
-		"syntax-object-rest-spread": {
-			"active": 0
-			},
-		"undeclared-variables-check": {
+		"typeof-symbol": {
 			"active": 0
 			},
 		"undefined-to-void": {
 			"active": 0
+			},
+		"unicode-property-regex": {
+			"active": 0
+			},
+		"unicode-regex": {
+			"active": 0
 			}
 		},
-	"babelPresetType": 193,
 	"babelRetainLines": 0,
 	"bowerAbbreviatedPath": "bower_components",
 	"bowerAutoCreateInfoFile": 1,
@@ -1225,6 +1413,7 @@
 	"bowerSaveDevDependencies": 0,
 	"bowerUseExactVersion": 0,
 	"browserRefreshDelay": 0,
+	"browserslistString": ">0.2%, last 2 versions, Firefox ESR, not dead",
 	"buildFolderActive": 0,
 	"buildFolderName": "build",
 	"cleanBuild": 1,
@@ -1374,13 +1563,21 @@
 			"active": 0,
 			"optionString": "{'setWithoutGet': true, 'getWithoutSet': false}"
 			},
+		"array-bracket-newline": {
+			"active": 0,
+			"optionString": "{'multiline': true, 'minItems': null}"
+			},
 		"array-bracket-spacing": {
 			"active": 0,
 			"optionString": "'never', {'singleValue': false, 'objectsInArrays': false, 'arraysInArrays': false}"
 			},
 		"array-callback-return": {
 			"active": 0,
-			"optionString": ""
+			"optionString": "{'allowImplicit': false}"
+			},
+		"array-element-newline": {
+			"active": 0,
+			"optionString": "'always'"
 			},
 		"arrow-body-style": {
 			"active": 0,
@@ -1478,6 +1675,10 @@
 			"active": 0,
 			"optionString": "'always', {'null': 'always'}"
 			},
+		"for-direction": {
+			"active": 0,
+			"optionString": ""
+			},
 		"func-call-spacing": {
 			"active": 0,
 			"optionString": "'never'"
@@ -1494,9 +1695,17 @@
 			"active": 0,
 			"optionString": "'expression'"
 			},
+		"function-paren-newline": {
+			"active": 0,
+			"optionString": "'multiline'"
+			},
 		"generator-star-spacing": {
 			"active": 0,
 			"optionString": "{'before': true, 'after': false}"
+			},
+		"getter-return": {
+			"active": 0,
+			"optionString": "{'allowImplicit': false}"
 			},
 		"global-require": {
 			"active": 0,
@@ -1522,9 +1731,13 @@
 			"active": 0,
 			"optionString": "'^[a-z]+([A-Z][a-z]+)*$', {'properties': false, 'onlyDeclarations': true}"
 			},
+		"implicit-arrow-linebreak": {
+			"active": 0,
+			"optionString": "'beside'"
+			},
 		"indent": {
 			"active": 0,
-			"optionString": "4, {'SwitchCase': 0, 'VariableDeclarator': 1, 'outerIIFEBody': 1, }"
+			"optionString": "4, {'SwitchCase': 0, 'VariableDeclarator': 1, 'outerIIFEBody': 1 }"
 			},
 		"init-declarations": {
 			"active": 0,
@@ -1554,9 +1767,13 @@
 			"active": 0,
 			"optionString": "{'beforeBlockComment': true}"
 			},
-		"lines-around-directive": {
+		"lines-between-class-members": {
 			"active": 0,
-			"optionString": "{'before': 'always', 'after': 'always'}"
+			"optionString": "'always', {exceptAfterSingleLine: false}"
+			},
+		"max-classes-per-file": {
+			"active": 0,
+			"optionString": "1"
 			},
 		"max-depth": {
 			"active": 0,
@@ -1569,6 +1786,10 @@
 		"max-lines": {
 			"active": 0,
 			"optionString": "{'max': 300, 'skipBlankLines': true, 'skipComments': true}"
+			},
+		"max-lines-per-function": {
+			"active": 0,
+			"optionString": "{'max': 50, 'skipBlankLines': true, 'skipComments': true, 'IIFEs': false}"
 			},
 		"max-nested-callbacks": {
 			"active": 0,
@@ -1586,6 +1807,10 @@
 			"active": 0,
 			"optionString": "{'max': 1}"
 			},
+		"multiline-comment-style": {
+			"active": 0,
+			"optionString": "'starred-block'"
+			},
 		"multiline-ternary": {
 			"active": 0,
 			"optionString": "'always'"
@@ -1595,14 +1820,6 @@
 			"optionString": "{'newIsCap': true, 'capIsNew': true, 'newIsCapExceptions': [], 'capIsNewExceptions': ['Array', 'Boolean', 'Date', 'Error', 'Function', 'Number', 'Object', 'RegExp', 'String', 'Symbol'], 'properties': true}"
 			},
 		"new-parens": {
-			"active": 0,
-			"optionString": ""
-			},
-		"newline-after-var": {
-			"active": 0,
-			"optionString": "'always'"
-			},
-		"newline-before-return": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -1618,6 +1835,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-async-promise-executor": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-await-in-loop": {
 			"active": 0,
 			"optionString": ""
@@ -1626,16 +1847,16 @@
 			"active": 0,
 			"optionString": "{'allow': ['~'], 'int32Hint': true}"
 			},
+		"no-buffer-constructor": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-caller": {
 			"active": 0,
 			"optionString": ""
 			},
 		"no-case-declarations": {
 			"active": 1,
-			"optionString": ""
-			},
-		"no-catch-shadow": {
-			"active": 0,
 			"optionString": ""
 			},
 		"no-class-assign": {
@@ -1751,8 +1972,8 @@
 			"optionString": ""
 			},
 		"no-extra-parens": {
-			"active": 1,
-			"optionString": "'all', {'conditionalAssign': false, 'returnAssign': false, 'nestedBinaryExpressions': false}"
+			"active": 0,
+			"optionString": "'all', {'conditionalAssign': false, 'returnAssign': false, 'nestedBinaryExpressions': false, 'ignoreJSX': 'none', 'enforceForArrowConditionals': false}"
 			},
 		"no-extra-semi": {
 			"active": 1,
@@ -1771,7 +1992,7 @@
 			"optionString": ""
 			},
 		"no-global-assign": {
-			"active": 0,
+			"active": 1,
 			"optionString": "{'exceptions': []}"
 			},
 		"no-implicit-coercion": {
@@ -1834,9 +2055,13 @@
 			"active": 0,
 			"optionString": "{'ignore': [], 'ignoreArrayIndexes': true, 'enforceConst': false, 'detectObjects': false}"
 			},
+		"no-misleading-character-class": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-mixed-operators": {
 			"active": 0,
-			"optionString": "{'groups': [['+', '-', '*', '\/', '%', '**'], ['&', '|', '^', '~', '<<', '>>', '>>>'], ['==', '!=', '===', '!==', '>', '>=', '<', '<='], ['&&', '||'], ['in', 'instanceof']], 'allowSamePrecedence': true}"
+			"optionString": "{'groups': [['+', '-', '*', '/', '%', '**'], ['&', '|', '^', '~', '<<', '>>', '>>>'], ['==', '!=', '===', '!==', '>', '>=', '<', '<='], ['&&', '||'], ['in', 'instanceof']], 'allowSamePrecedence': true}"
 			},
 		"no-mixed-requires": {
 			"active": 0,
@@ -1930,6 +2155,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-prototype-builtins": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-redeclare": {
 			"active": 1,
 			"optionString": "{'builtinGlobals': false}"
@@ -1975,7 +2204,7 @@
 			"optionString": "{'props': false}"
 			},
 		"no-self-compare": {
-			"active": 1,
+			"active": 0,
 			"optionString": ""
 			},
 		"no-sequences": {
@@ -1996,14 +2225,14 @@
 			},
 		"no-sync": {
 			"active": 0,
-			"optionString": ""
+			"optionString": "{'allowAtRootLevel': false}"
 			},
 		"no-tabs": {
 			"active": 0,
 			"optionString": ""
 			},
 		"no-template-curly-in-string": {
-			"active": 1,
+			"active": 0,
 			"optionString": ""
 			},
 		"no-ternary": {
@@ -2020,7 +2249,7 @@
 			},
 		"no-trailing-spaces": {
 			"active": 0,
-			"optionString": "{'skipBlankLines': false}"
+			"optionString": "{'skipBlankLines': false, 'ignoreComments': false}"
 			},
 		"no-undef": {
 			"active": 1,
@@ -2036,7 +2265,7 @@
 			},
 		"no-underscore-dangle": {
 			"active": 0,
-			"optionString": "{'allow': [], 'allowAfterThis': false, 'allowAfterSuper': false}"
+			"optionString": "{'allow': [], 'allowAfterThis': false, 'allowAfterSuper': false, 'enforceInMethodNames': false}"
 			},
 		"no-unexpected-multiline": {
 			"active": 1,
@@ -2059,12 +2288,12 @@
 			"optionString": ""
 			},
 		"no-unsafe-negation": {
-			"active": 0,
+			"active": 1,
 			"optionString": ""
 			},
 		"no-unused-expressions": {
 			"active": 0,
-			"optionString": "{'allowShortCircuit': false, 'allowTernary': false}"
+			"optionString": "{'allowShortCircuit': false, 'allowTernary': false, 'allowTaggedTemplates': false}"
 			},
 		"no-unused-labels": {
 			"active": 1,
@@ -2072,18 +2301,18 @@
 			},
 		"no-unused-vars": {
 			"active": 1,
-			"optionString": "{'vars': 'all', 'args': 'after-used', 'caughtErrors': 'none'}"
+			"optionString": "{'vars': 'all', 'args': 'after-used', 'caughtErrors': 'none', 'ignoreRestSiblings': false}"
 			},
 		"no-use-before-define": {
 			"active": 0,
-			"optionString": "{'functions': true, 'classes': true}"
+			"optionString": "{'functions': true, 'classes': true, 'variables': true}"
 			},
 		"no-useless-call": {
 			"active": 0,
 			"optionString": ""
 			},
 		"no-useless-computed-key": {
-			"active": 1,
+			"active": 0,
 			"optionString": ""
 			},
 		"no-useless-concat": {
@@ -2166,6 +2395,10 @@
 			"active": 0,
 			"optionString": "{'blocks': 'always', 'switches': 'always', 'classes': 'always'}"
 			},
+		"padding-line-between-statements": {
+			"active": 0,
+			"optionString": "{blankLine: 'always', prev:'*', next:'return'}"
+			},
 		"prefer-arrow-callback": {
 			"active": 0,
 			"optionString": ""
@@ -2179,6 +2412,10 @@
 			"optionString": "{'array': true, 'object': true}, {'enforceForRenamedProperties': false}"
 			},
 		"prefer-numeric-literals": {
+			"active": 0,
+			"optionString": ""
+			},
+		"prefer-object-spread": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -2210,6 +2447,10 @@
 			"active": 0,
 			"optionString": "'always'"
 			},
+		"require-atomic-updates": {
+			"active": 0,
+			"optionString": ""
+			},
 		"require-await": {
 			"active": 0,
 			"optionString": ""
@@ -2218,8 +2459,12 @@
 			"active": 0,
 			"optionString": "{'require': {'FunctionDeclaration': true, 'MethodDefinition': false, 'ClassDeclaration': false, 'ArrowFunctionExpression': false}}"
 			},
-		"require-yield": {
+		"require-unicode-regexp": {
 			"active": 0,
+			"optionString": ""
+			},
+		"require-yield": {
+			"active": 1,
 			"optionString": ""
 			},
 		"rest-spread-spacing": {
@@ -2233,6 +2478,10 @@
 		"semi-spacing": {
 			"active": 0,
 			"optionString": "{'before': false, 'after': true}"
+			},
+		"semi-style": {
+			"active": 0,
+			"optionString": "'last'"
 			},
 		"sort-imports": {
 			"active": 0,
@@ -2268,11 +2517,15 @@
 			},
 		"spaced-comment": {
 			"active": 0,
-			"optionString": "'always', {'line': {'markers': ['\/'], 'exceptions': ['-', '+']}, 'block': {'markers': ['!'], 'exceptions': ['*'], 'balanced': false}}"
+			"optionString": "'always', {'line': {'markers': ['/'], 'exceptions': ['-', '+']}, 'block': {'markers': ['!'], 'exceptions': ['*'], 'balanced': false}}"
 			},
 		"strict": {
 			"active": 0,
 			"optionString": "'safe'"
+			},
+		"switch-colon-spacing": {
+			"active": 0,
+			"optionString": "{'after': true, 'before': false}"
 			},
 		"symbol-description": {
 			"active": 0,
@@ -2324,7 +2577,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http:\/\/localhost\/demo\/",
+	"externalServerAddress": "http://localhost/",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",
@@ -2686,18 +2939,19 @@
 		"createSourceMap": 0,
 		"minifyOutput": 1,
 		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 1,
+		"transpilerStyle": 1
 		},
 	"languageDefaultsCSS": {
-		"autoOutputAction": 2,
-		"autoOutputPathFilenamePattern": "*-min.css",
+		"autoOutputAction": 1,
+		"autoOutputPathFilenamePattern": "*.min.css",
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
 		"createSourceMap": 0,
 		"outputStyle": 3,
-		"shouldRunAutoprefixer": 0,
+		"shouldRunAutoprefixer": 1,
 		"shouldRunBless": 0
 		},
 	"languageDefaultsGIF": {
@@ -2718,7 +2972,7 @@
 		"escapeHTMLCharacters": 0,
 		"noEscapeInAttributes": 0,
 		"outputFormat": 2,
-		"outputStyle": 0,
+		"shouldRunCacheBuster": 0,
 		"useCDATA": 0,
 		"useDoubleQuotes": 0,
 		"useUnixNewlines": 0
@@ -2730,17 +2984,18 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {
-		"autoOutputAction": 0,
+		"autoOutputAction": 1,
 		"autoOutputPathFilenamePattern": "*.min.js",
-		"autoOutputPathRelativePath": "\/min",
+		"autoOutputPathRelativePath": "/min",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
 		"createSourceMap": 0,
-		"minifyOutput": 1,
+		"minifyOutput": 0,
 		"syntaxCheckerStyle": 0,
 		"transpilerStyle": 0
 		},
@@ -2754,39 +3009,32 @@
 		"orderOutput": 0,
 		"outputStyle": 1
 		},
-	"languageDefaultsJSX": {
-		"autoOutputAction": 0,
-		"autoOutputPathFilenamePattern": "*.js",
-		"autoOutputPathRelativePath": "",
-		"autoOutputPathReplace1": "jsx",
-		"autoOutputPathReplace2": "js",
-		"autoOutputPathStyle": 0
-		},
 	"languageDefaultsKIT": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.html",
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsLESS": {
 		"allowInsecureImports": 0,
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.css",
-		"autoOutputPathRelativePath": "..\/css",
+		"autoOutputPathRelativePath": "../css",
 		"autoOutputPathReplace1": "less",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 2,
 		"createSourceMap": 0,
-		"disableJavascript": 0,
+		"enableJavascript": 0,
 		"ieCompatibility": 1,
+		"mathStyle": 0,
 		"outputStyle": 0,
-		"relativeURLS": 0,
+		"rewriteURLStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"strictImports": 0,
-		"strictMath": 0,
 		"strictUnits": 0
 		},
 	"languageDefaultsMARKDOWN": {
@@ -2800,22 +3048,23 @@
 		"enableFootnotes": 0,
 		"enableLabels": 1,
 		"enableSmartQuotes": 1,
-		"escapeLineBreaks": 0,
 		"maskEmailAddresses": 1,
 		"outputFormat": 0,
 		"outputStyle": 0,
 		"parseMetadata": 1,
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
+		"shouldRunCacheBuster": 0,
 		"useCompatibilityMode": 0
 		},
 	"languageDefaultsOTHER": {
-		"autoOutputAction": 2,
+		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.*",
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsPNG": {
 		"autoOutputAction": 0,
@@ -2824,7 +3073,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"enableLossy": 1,
+		"optimizerType": 1,
 		"quality": 100
 		},
 	"languageDefaultsPUG": {
@@ -2835,12 +3084,13 @@
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
 		"compileDebug": 1,
-		"outputStyle": 0
+		"outputStyle": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsSASS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.css",
-		"autoOutputPathRelativePath": "..\/css",
+		"autoOutputPathRelativePath": "../css",
 		"autoOutputPathReplace1": "sass",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 2,
@@ -2863,12 +3113,13 @@
 		"logicless": 0,
 		"outputFormat": 0,
 		"outputStyle": 1,
-		"railsCompatible": 0
+		"railsCompatible": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsSTYLUS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.css",
-		"autoOutputPathRelativePath": "..\/css",
+		"autoOutputPathRelativePath": "../css",
 		"autoOutputPathReplace1": "stylus",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 2,
@@ -2892,34 +3143,70 @@
 	"languageDefaultsTS": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.js",
-		"autoOutputPathRelativePath": "\/js",
+		"autoOutputPathRelativePath": "/js",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 2,
 		"createDeclarationFile": 0,
 		"createSourceMap": 0,
-		"jsxMode": 0,
 		"minifyOutput": 0,
 		"moduleResolutionType": 0,
 		"moduleType": 0,
-		"noImplicitAny": 0,
-		"preserveConstEnums": 0,
 		"removeComments": 0,
-		"suppressImplicitAnyIndexErrors": 0,
 		"targetECMAVersion": 0
 		},
 	"languageDefaultsUserDefined": [
 		],
-	"previewPathAddition": "ink",
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules",
+	"overrideExternalServerCSS": 0,
+	"previewPathAddition": "/demo/ink",
+	"skippedFoldersString": "log, _logs, logs, _cache, cache, .idea, /storage/framework/sessions, node_modules",
 	"sourceFolderName": "source",
+	"susyVersion": 3,
+	"tsAllowSyntheticDefaultImports": 0,
+	"tsAllowUnreachableCode": 0,
+	"tsAllowUnusedLabels": 0,
+	"tsAlwaysStrict": 0,
+	"tsDownlevelIteration": 0,
+	"tsEmitBOM": 0,
+	"tsEmitDecoratorMetadata": 0,
+	"tsESModuleInterop": 0,
+	"tsForceConsistentCasingInFileNames": 0,
+	"tsImportHelpers": 0,
+	"tsIsolatedModules": 0,
+	"tsJSXFactory": "React.createElement",
+	"tsKeyofStringsOnly": 0,
+	"tsNoEmitHelpers": 0,
+	"tsNoFallthroughCasesInSwitch": 0,
+	"tsNoImplicitAny": 0,
+	"tsNoImplicitReturns": 0,
+	"tsNoImplicitThis": 0,
+	"tsNoImplicitUseStrict": 0,
+	"tsNoLib": 0,
+	"tsNoResolve": 0,
+	"tsNoStrictGenericChecks": 0,
+	"tsNoUnusedLocals": 0,
+	"tsNoUnusedParameters": 0,
+	"tsPreserveConstEnums": 0,
+	"tsPreserveSymlinks": 0,
+	"tsResolveJsonModule": 0,
+	"tsSkipLibCheck": 0,
+	"tsStrictFunctionTypes": 0,
+	"tsStrictNullChecks": 0,
+	"tsStrictPropertyInitialization": 0,
+	"tsStripInternal": 0,
+	"tsSuppressExcessPropertyErrors": 0,
+	"tsSuppressImplicitAnyIndexErrors": 0,
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
-		"ascii-only": {
+		"arguments": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"ascii_only": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"bare-returns": {
+		"bare_returns": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -2927,11 +3214,11 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"bracketize": {
+		"braces": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"cascade": {
+		"collapse_vars": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -2955,6 +3242,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"directives": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"drop_console": {
 			"active": 0,
 			"flagValue": -1
@@ -2971,7 +3262,15 @@
 			"active": 1,
 			"flagValue": -1
 			},
+		"expression": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"hoist_funs": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"hoist_props": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -2979,20 +3278,32 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"if_return": {
+		"html5_comments": {
 			"active": 1,
 			"flagValue": -1
 			},
-		"indent-level": {
+		"ie8": {
 			"active": 0,
-			"flagValue": 4
+			"flagValue": -1
+			},
+		"if_return": {
+			"active": 1,
+			"flagValue": -1
 			},
 		"indent-start": {
 			"active": 0,
 			"flagValue": 0
 			},
-		"inline-script": {
+		"indent_level": {
 			"active": 0,
+			"flagValue": 4
+			},
+		"inline": {
+			"active": 1,
+			"flagValue": 3
+			},
+		"inline_script": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"join_vars": {
@@ -3007,6 +3318,14 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"keep_infinity": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"keep_quoted_props": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"loops": {
 			"active": 1,
 			"flagValue": -1
@@ -3015,12 +3334,20 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"max-line-len": {
+		"max_line_len": {
 			"active": 1,
 			"flagValue": 32000
 			},
 		"negate_iife": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"passes": {
+			"active": 1,
+			"flagValue": 1
+			},
+		"preserve_line": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"properties": {
@@ -3031,12 +3358,20 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"quote-keys": {
+		"quote_keys": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"screw-ie8": {
-			"active": 0,
+		"quote_style": {
+			"active": 1,
+			"flagValue": 0
+			},
+		"reduce_funcs": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"reduce_vars": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"semicolons": {
@@ -3047,23 +3382,51 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"sort": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"space-colon": {
+		"shebang": {
 			"active": 1,
 			"flagValue": -1
 			},
-		"support-ie8": {
-			"active": 0,
+		"side_effects": {
+			"active": 1,
+			"flagValue": -1
+			},
+		"switches": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"toplevel": {
 			"active": 0,
 			"flagValue": -1
 			},
+		"typeofs": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"unsafe": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_comps": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_Function": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_math": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_proto": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_regexp": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_undefined": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -3075,9 +3438,17 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"webkit": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"width": {
 			"active": 1,
 			"flagValue": 80
+			},
+		"wrap_iife": {
+			"active": 0,
+			"flagValue": -1
 			}
 		},
 	"uglifyReservedNamesString": "$",

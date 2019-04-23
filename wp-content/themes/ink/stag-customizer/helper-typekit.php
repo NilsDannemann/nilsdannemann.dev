@@ -1,5 +1,7 @@
 <?php
 /**
+ * Typekit font loader class.
+ *
  * @package Stag_Customizer
  */
 if ( ! class_exists( 'Stag_Typekit_Customizer' ) ) :
@@ -61,7 +63,7 @@ class Stag_Typekit_Customizer {
 		add_action( 'customize_register', array( $this, 'customize_register' ), 20 );
 
 		// Add scripts and styles.
-		add_action( 'wp_head', array( $this, 'print_typekit' ), 0 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_typekit_styles' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customize_controls_enqueue_scripts' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'customize_controls_print_styles' ) );
 
@@ -140,7 +142,7 @@ class Stag_Typekit_Customizer {
 	 * Maybe enqueue Typekit styles.
 	 *
 	 * @since  1.0.0.
-	 *
+	 * @deprecated 2.2.8.
 	 * @return void
 	 */
 	public function print_typekit() {
@@ -151,6 +153,20 @@ class Stag_Typekit_Customizer {
 			<script type="text/javascript" src="//use.typekit.net/<?php echo $this->sanitize_typekit_id( $id ); ?>.js"></script>
 			<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 		<?php endif;
+	}
+
+	/**
+	 * Enqueue Typekit styles.
+	 *
+	 * @since 2.2.8.
+	 * @return void
+	 */
+	public function add_typekit_styles() {
+		$id = $this->sanitize_typekit_id( $this->get_typekit_id() );
+
+		if ( ! empty( $id ) ) {
+			wp_enqueue_style( 'typekit', "https://use.typekit.net/${id}.css", '', '20180821' );
+		}
 	}
 
 	/**

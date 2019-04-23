@@ -1,0 +1,712 @@
+/*---------------------------------------------------------
+ 2. Scaffolding (_scaffolding.scss)
+-------------------------------------------------------- */
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 93.75%; //15px
+
+	@include box-sizing(border-box);
+
+	@include media(600px) {
+		font-size: 100%;
+	}
+
+	// @include media(max-width 599px) {
+	// 	font-size: 90%;
+	// }
+}
+
+*{
+	&,
+	&:before,
+	&:after {
+		@include box-sizing(inherit);
+	}
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #333;
+	line-height: 1.55;
+	background-color: $bg-light;
+	text-rendering: optimizeLegibility;
+}
+a {
+	color: #111;
+	text-decoration: none;
+	border-bottom: 2px solid #53B38C;
+	&:hover {
+		color: $detail-black;
+	}
+}
+.inside {
+	@extend %inside;
+}
+
+/*---------------------------------------------------------
+ Header (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 21; //on top of content
+	overflow: hidden;
+	color: #fff;
+	padding: 30px;
+	a {
+		color: inherit;
+		border: 0;
+	}
+
+	.header-normal &,
+	.search-no-results & {
+		position: relative;
+		color: #333;
+		.archive-header {
+			color: white;
+		}
+	}
+}
+.site-title {
+	@include rem('font-size', 50px);
+	margin: 0;
+	line-height: 1;
+
+	@include media(max-width 600px) {
+		@include rem('font-size', 40px);
+		padding-right: 30px;
+	}
+}
+
+.site-title,
+.custom-logo {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.site-description {
+	color: white;
+	margin-top: 10px;
+
+	.header-normal & {
+		color: #333;
+	}
+
+	@include media(max-width $grid-breakpoint) {
+		display: none;
+	}
+}
+
+.site-branding {
+	display: inline-block;
+	vertical-align: top;
+	padding: 13px 0;
+}
+
+.site-navigation-toggle {
+	// @extend %vertical-align;
+	position: absolute;
+	right: 30px;
+	line-height: 1;
+	@include rem('font-size', 30px);
+	margin-top: -5px;
+	top: 40px;
+}
+
+.traditional-navigation {
+	@include media(max-width $two) {
+		.traditional-nav {
+			display: none;
+		}
+	}
+
+	.site-header {
+		padding: 15px 30px;
+		position: relative;
+		color: #000;
+		overflow: visible;
+		min-height: 110px;
+	}
+
+	.site-description {
+		color: inherit;
+	}
+}
+
+.traditional-nav {
+	position: absolute;
+	right: 80px;
+	top: 40px;
+	font-weight: bold;
+	@include rem(font-size, 19px);
+
+	.admin-bar & {
+		top: 40px;
+	}
+
+	ul ul li:hover > ul {
+		right: 100%;
+		top: 0;
+	}
+
+	ul {
+		list-style: none;
+
+		ul {
+			background: #000;
+			float: right;
+			position: absolute;
+			z-index: 99999;
+			top: 2em;
+			left: -999em;
+			text-align: left;
+
+			a {
+				color: #fff;
+				margin: 0;
+				display: block;
+				width: 200px;
+			}
+
+			li {
+				position: relative;
+				display: block;
+				padding: 10px 15px;
+				margin: 0;
+			}
+		}
+
+		li {
+			&.menu-item-has-children {
+				padding-bottom: 10px;
+			}
+			&:hover {
+				> ul {
+					left: auto;
+					right: 0;
+				}
+			}
+		}
+	}
+	li {
+		position: relative;
+		display: inline-block;
+		margin-left: 45px;
+	}
+}
+
+.header-over {
+	.site-header { pointer-events: none; }
+	.site-branding, .site-navigation-toggle { pointer-events: all; }
+}
+
+
+/*---------------------------------------------------------
+ Navigation (_scaffolding.scss)
+-------------------------------------------------------- */
+.navigation {
+	list-style: none;
+}
+
+.main-navigation {
+	@include media($two) {
+		.traditional-navigation & {
+			display: none;
+		}
+	}
+
+	margin-bottom: 50px;
+}
+
+.site-nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	outline: 0;
+	background-color: #f9f9f9;
+	max-width: $menu-width;
+	-webkit-overflow-scrolling: touch;
+	display: none;
+
+	.site-nav-transition & {
+		display: block;
+	}
+
+	&--scrollable-container {
+		opacity: 0;
+		overflow: auto;
+		@include rem('padding', 30px);
+		width: $menu-width;
+		-webkit-overflow-scrolling: touch;
+		height: 100%;
+		position: relative;
+		.site-nav-transition & {
+			opacity: 1;
+		}
+	}
+
+	&__section {
+		position: relative;
+		@include rem('padding', 30px 0);
+		&:last-of-type {
+			border: none;
+			padding-bottom: 0;
+		}
+
+		&:first-of-type {
+			padding-top: 10px;
+
+			.admin-bar & {
+				padding-top: 0;
+			}
+		}
+	}
+
+	a {
+		border: 0;
+	}
+
+	.widgettitle {
+		@include rem('margin-bottom', 24px);
+	}
+
+	.close-nav {
+		position: absolute;
+		top: 25px;
+		right: 30px;
+		font-size: 30px;
+		cursor: pointer;
+		z-index: 50;
+		padding-top: 10px;
+
+		.admin-bar & {
+			padding-top: 0;
+		}
+	}
+
+	.admin-bar & {
+		padding-top: 40px;
+		@include media(max-width 780px) {
+			padding-top: 56px;
+	    }
+	}
+}
+
+.site-nav-overlay {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 600;
+	cursor: e-resize;
+}
+
+.site-nav-drawer-open .site-nav-overlay,
+.site-nav:focus ~ .site-nav-overlay {
+	display: block;
+	right: $menu-width;
+	z-index: 900;
+}
+
+#page {
+	.site-nav-transition & {
+		left: 0;
+		top: 0;
+		position: fixed;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+		z-index: 800;
+	}
+	.site-nav-drawer-open & {
+		@include transform(translate(-$menu-width,0,0));
+		@include transform(translate3d(-$menu-width,0,0));
+	}
+	.admin-bar.site-nav-transition & {
+		top: auto;
+	}
+}
+
+.hide-drawer {
+	.site-nav,
+	.site-navigation-toggle {
+		display: none;
+	}
+}
+
+@include media(min-width 800px) {
+	.hide-partial-drawer {
+		.site-navigation-toggle {
+			display: none;
+		}
+	}
+}
+
+/*---------------------------------------------------------
+ Content Area (_scaffolding.scss)
+-------------------------------------------------------- */
+.site-main {
+	@extend %cf;
+	display: block;
+}
+
+/*---------------------------------------------------------
+ Select (_scaffolding.scss)
+-------------------------------------------------------- */
+::-moz-selection {
+	background-color: $bg-lightgray;
+	color: $detail-black;
+	text-shadow: none; //reset
+}
+::-webkit-selection {
+	background-color: $bg-lightgray;
+	color: $detail-black;
+	text-shadow: none; //reset
+}
+::selection {
+	background-color: $bg-lightgray;
+	color: $detail-black;
+	text-shadow: none; //reset
+}
+img::selection {
+	background-color: transparent;
+}
+img::-moz-selection {
+	background-color: transparent;
+}
+
+/*---------------------------------------------------------
+ Footer (_scaffolding.scss)
+-------------------------------------------------------- */
+body:not(.header-over),
+.page-template-default {
+	.site-footer {
+		@include rem('margin-top', 50px);
+	}
+}
+
+.page-template-widgetized-php {
+	.site-footer {
+		margin-top: 0 !important;
+	}
+	.footer-widgets-container {
+		border: none;
+	}
+}
+
+.site-footer {
+	padding-top: 50px;
+
+	.single & {
+		@include rem('margin-top', 50px);
+		border-top: 2px solid #000;
+	}
+}
+
+.stag-custom-widget-area + .site-footer {
+	border-top: 2px solid #000;
+	padding-top: 50px;
+}
+
+.footer-widgets-container {
+	border-top: 2px solid #000;
+	@include rem('padding-bottom', 50px);
+	.widget {
+		@include rem('margin-top', 50px);
+	}
+	.widgettitle {
+		@include rem('margin-bottom', 50px);
+	}
+	.entry-subtitle {
+		display: none;
+	}
+}
+.copyright {
+	border-top: 2px solid #000;
+	@include rem('padding', 30px 0);
+	@include rem('font-size', 13px);
+}
+
+.site {
+	overflow: hidden;
+	z-index: 100;
+	// @include transition(transform 200ms cubic-bezier(0.2,0.3,0.25,0.9));
+	@include transition(transform 250ms cubic-bezier(.694,.0482,.335,1));
+}
+
+.footer-menu {
+	list-style: none;
+	@include media($grid-breakpoint) {
+		text-align: right;
+	}
+	@include media(max-width $grid-breakpoint - 1) {
+		margin-top: 15px;
+	}
+	li {
+		display: inline-block;
+		&:first-child {
+			.divider {
+				display: none;
+			}
+		}
+	}
+
+	a {
+		color: #333;
+		@include transition(color 150ms ease-in);
+	}
+
+	.divider {
+		display: inline-block;
+		margin: 0 7px 0 4px;
+	}
+}
+
+/*---------------------------------------------------------
+ Blog Layouts (_scaffolding.scss)
+-------------------------------------------------------- */
+
+.post-grid {
+	height: 450px;
+	position: relative;
+	border-bottom: 2px solid;
+
+	[data-layout="1-2-1-2"] & {
+		@include media($grid-breakpoint) {
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+			float: left;
+		}
+		&:nth-of-type(3n+1) {
+			width: 100%;
+			@include media($grid-breakpoint) {
+				height: 700px;
+				.entry-title {
+					@include rem('font-size', 75px);
+					@include rem('margin-bottom', 20px);
+					line-height: 1.2;
+				}
+				.entry-subtitle {
+					@include rem('font-size', 27px);
+					margin: 20px auto;
+					&::after {
+						top: 30px;
+					}
+				}
+			}
+		}
+
+		@include media(min-width $grid-breakpoint) {
+			&:nth-of-type(3n+2) {
+				border-right: 1px solid;
+			}
+			&:nth-of-type(3n+3) {
+				border-left: 1px solid;
+			}
+		}
+
+		.entry-subtitle {
+			@include rem('font-size', 20px);
+			margin: 20px auto;
+			&::after {
+				top: 20px;
+			}
+		}
+	} // 1-2-1-2
+
+	[data-layout="2-2-2-2"] & {
+		@include media($grid-breakpoint) {
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+			float: left;
+		}
+
+		@include media(min-width $grid-breakpoint) {
+			&:nth-of-type(odd) {
+				border-right: 1px solid;
+			}
+			&:nth-of-type(even) {
+				border-left: 1px solid;
+			}
+		}
+		.entry-subtitle {
+			@include rem('font-size', 20px);
+			margin: 20px auto;
+			&::after {
+				top: 20px;
+			}
+		}
+	} // 2-2-2-2
+
+	[data-layout="3-3-3-3"] & {
+		@include media($two) {
+			display: inline-block;
+			vertical-align: top;
+			width: percentage(1/3);
+			float: left;
+			border-right: 2px solid;
+		}
+
+		@include media(min-width $two) {
+			&:nth-of-type(3n+3) {
+				border-right: none;
+			}
+		}
+
+		.entry-subtitle {
+			@include rem('font-size', 20px);
+			margin: 20px auto;
+			&::after {
+				top: 20px;
+			}
+		}
+	}
+
+	[data-layout="3-7-7-3"] & {
+		@include media($two) {
+			display: inline-block;
+			vertical-align: top;
+			width: percentage(1/3);
+			float: left;
+
+			&:not(:nth-of-type(4n + 1)):not(:nth-of-type(4n + 4)) {
+				width: percentage(2/3);
+			}
+			&:nth-of-type(odd) {
+				border-right: 2px solid;
+			}
+		}
+		.entry-subtitle {
+			@include rem('font-size', 20px);
+			margin: 20px auto;
+			&::after {
+				top: 20px;
+			}
+		}
+	}
+
+	[data-layout="1-1-1-1"] & {
+		@include media($grid-breakpoint) {
+			height: 700px;
+			.entry-title {
+				@include rem('font-size', 75px);
+				margin-bottom: 20px;
+				line-height: 1.2;
+			}
+		}
+		@include media(max-width $grid-breakpoint) {
+			.entry-subtitle {
+				margin: 20px auto;
+				&::after {
+					top: 20px;
+				}
+			}
+		}
+		.entry-subtitle {
+			margin: 20px auto;
+			&::after {
+				top: 20px;
+			}
+		}
+	} // 1-1-1-1
+
+	[data-layout="1-2-2-2"] & {
+		@include media($grid-breakpoint) {
+			display: inline-block;
+			vertical-align: top;
+			width: 50%;
+			float: left;
+		}
+		&:first-of-type {
+			width: 100%;
+			border-left: none !important;
+			@include media($grid-breakpoint) {
+				height: 700px;
+				.entry-title {
+					@include rem('font-size', 75px);
+					@include rem('margin-bottom', 20px);
+					line-height: 1.2;
+				}
+			}
+			.entry-subtitle {
+				@include rem('font-size', 20px);
+				margin: 20px auto;
+				&::after {
+					top: 30px;
+				}
+				@include media($grid-breakpoint) {
+					@include rem('font-size', 27px);
+				}
+			}
+		}
+		@include media(min-width $grid-breakpoint) {
+			&:nth-of-type(odd) {
+				border-left: 1px solid;
+			}
+			&:nth-of-type(even) {
+				border-right: 1px solid;
+			}
+		}
+		.entry-subtitle {
+			@include rem('font-size', 20px);
+			margin: 20px auto;
+			&::after {
+				top: 20px;
+			}
+		}
+
+	} // 1-2-2-2
+
+	@include media(max-width $one) {
+		.entry-title {
+			line-height: 30px;
+			margin-bottom: 15px;
+		}
+		.entry-meta {
+			line-height: 20px;
+		}
+		.entry-subtitle {
+			@include rem('font-size', 20px);
+			margin: 20px auto;
+		}
+	}
+}
+
+span.entry-subtitle.entry-subtitle {
+	display: block;
+	font-weight: normal;
+	max-width: 500px;
+	@include rem(font-size, 27px);
+	margin: 30px auto 30px;
+	letter-spacing: 1px;
+	line-height: 1.25;
+
+	@include media(max-width $one) {
+		@include rem('font-size', 20px);
+	}
+}
+
+.alignnone {
+	max-width: 100%;
+	position: relative;
+	.wp-caption-text {
+		position: absolute;
+		background: #fff;
+		background: rgba(#fff, .85);
+		font-size: .9em;
+		top: 30px;
+		left: 30px;
+		color: #000;
+		@include rem(padding, 15px 15px);
+	}
+}

@@ -147,14 +147,15 @@ function stag_get_theme_mods( $args = array() ) {
 			'accent' => array(
 				'title'   => __( 'Accent Color', 'stag' ),
 				'type'    => 'WP_Customize_Color_Control',
-				'default' => '#FFEB3B',
+				'default' => '#53b38c',
 			),
 		),
 		'layout_options' => array(
 			'layout' => array(
-				'title'   => __( 'Homepage Layout', 'stag' ),
-				'type'    => 'Stag_Customizer_Layout_Control',
-				'default' => '1-2-1-2',
+				'title'     => __( 'Homepage Layout', 'stag' ),
+				'type'      => 'Stag_Customizer_Layout_Control',
+				'default'   => '1-2-1-2',
+				'transport' => 'refresh',
 				'choices' => array(
 					'1-2-1-2' => '1-2-1-2',
 					'1-1-1-1' => '1-1-1-1',
@@ -162,6 +163,9 @@ function stag_get_theme_mods( $args = array() ) {
 					'2-2-2-2' => '2-2-2-2',
 					'3-3-3-3' => '3-3-3-3',
 					'3-7-7-3' => '3-7-7-3',
+					'seven'   => 'seven',
+					'eight'   => 'eight',
+					'nine'    => 'nine',
 				),
 			),
 			'hover-effect' => array(
@@ -199,6 +203,16 @@ function stag_get_theme_mods( $args = array() ) {
 				'choices' 	=> array(
 					'traditional' => __( 'Traditional', 'stag' ),
 					'sidebar'     => __( 'Sidebar', 'stag' ),
+				),
+			),
+			'pagination' => array(
+				'title'     => __( 'Pagination', 'stag' ),
+				'type'      => 'radio',
+				'default'   => 'infinite',
+				'transport' => 'refresh',
+				'choices' 	=> array(
+					'infinite' => __( 'Infinite', 'stag' ),
+					'standard' => __( 'Standard', 'stag' ),
 				),
 			),
 		),
@@ -430,6 +444,7 @@ function stag_header_css() {
 		span.entry-subtitle.entry-subtitle,
 		.custom-header-description,
 		#infinite-handle,
+		.pagination,
 		table th,
 		.premium-tag,
 		.sticky-tag {
@@ -514,12 +529,15 @@ function stag_customizer_layout_css() {
 			font: 0/0 a;
 		}
 
-		.customizer-control-row:nth-child(1) label { background-position: -10px -12px; }
-		.customizer-control-row:nth-child(2) label { background-position: -98px -12px; }
-		.customizer-control-row:nth-child(3) label { background-position: -188px -12px; }
-		.customizer-control-row:nth-child(4) label { background-position: -10px -86px; }
-		.customizer-control-row:nth-child(5) label { background-position: -98px -86px; }
-		.customizer-control-row:nth-child(6) label { background-position: -188px -86px; }
+		.customizer-control-row:nth-child(1) label { background-position: 0px -1px; }
+		.customizer-control-row:nth-child(2) label { background-position: -90px -1px; }
+		.customizer-control-row:nth-child(3) label { background-position: -179px -1px; }
+		.customizer-control-row:nth-child(4) label { background-position: -1px -75px; }
+		.customizer-control-row:nth-child(5) label { background-position: -90px -75px; }
+		.customizer-control-row:nth-child(6) label { background-position: -179px -75px; }
+		.customizer-control-row:nth-child(7) label { background-position: -1px -148px; }
+		.customizer-control-row:nth-child(8) label { background-position: -90px -147px; }
+		.customizer-control-row:nth-child(9) label { background-position: -179px -147px; }
 
 		.customizer-control-row input {
 			position: absolute;
@@ -546,13 +564,13 @@ function stag_customizer_layout_css() {
 		#stag-loading {
 			background: #333;
 			padding: 10px 0;
-			/*border-radius: 5px;*/
 			color: white;
 			width: 40px;
 			position: absolute;
 			top: 30px;
 			right: 30px;
 			text-align: center;
+			z-index: 1;
 		}
 
 		#stag-loading i {

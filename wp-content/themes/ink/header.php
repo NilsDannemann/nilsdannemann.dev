@@ -12,8 +12,8 @@
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-<link rel="profile" href="http://gmpg.org/xfn/11">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover">
+<link rel="profile" href="//gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
@@ -22,12 +22,21 @@
 
 <nav class="site-nav" role="complementary">
 	<div class="site-nav--scrollable-container">
-		<i class="fa fa-times close-nav"></i>
+		<i class="fas fa-times close-nav"></i>
 
 		<?php if ( has_nav_menu( 'primary' ) ) : ?>
 		<nav id="site-navigation" class="navigation main-navigation site-nav__section" role="navigation">
 			<h4 class="widgettitle"><?php _e( 'Menu', 'stag' ); ?></h4>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'primary-menu', 'container' => false, 'fallback_cb' => false ) ); ?>
+			<?php
+			wp_nav_menu(
+				 array(
+					 'theme_location' => 'primary',
+					 'menu_class'     => 'primary-menu',
+					 'container'      => false,
+					 'fallback_cb'    => false,
+				 )
+				);
+?>
 		</nav><!-- #site-navigation -->
 		<?php endif; ?>
 
@@ -57,17 +66,27 @@
 			<?php $nav_layout = stag_theme_mod( 'layout_options', 'nav-layout' ); ?>
 			<?php if ( has_nav_menu( 'primary' ) && 'traditional' === $nav_layout ) : ?>
 			<nav id="site-navigation" class="navigation traditional-nav" role="navigation">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'primary-menu', 'container' => false, 'fallback_cb' => false ) ); ?>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'menu_class'     => 'primary-menu',
+						'container'      => false,
+						'fallback_cb'    => false,
+					)
+				);
+				?>
 			</nav><!-- #site-navigation -->
 			<?php endif; ?>
 
-			<a href="#" id="site-navigation-toggle" class="site-navigation-toggle"><i class="fa fa-navicon"></i></a>
+			<a href="#" id="site-navigation-toggle" class="site-navigation-toggle"><i class="fas fa-bars"></i></a>
 
-			<?php ink_maybe_show_archive_title( 'inner' ) ?>
+			<?php ink_maybe_show_archive_title( 'inner' ); ?>
 
 		</header><!-- #masthead -->
 
-		<?php // Show header image on homepage.
+		<?php
+		// Show header image on homepage.
 		if ( is_front_page() ) :
 			get_template_part( 'partials/custom', 'header' );
 		endif;

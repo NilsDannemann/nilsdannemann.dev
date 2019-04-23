@@ -1,7 +1,8 @@
 <?php
 /**
- * @package Ink
+ * Archive page title layout.
  *
+ * @package Ink
  * @since 2.0.0.
  */
 

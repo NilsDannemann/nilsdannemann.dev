@@ -38,12 +38,12 @@ get_header(); ?>
 
 							if ( count( $social_profiles ) ) {
 								foreach ( $social_profiles as $slug => $url ) {
-									echo '<li class="' . esc_attr( $slug ) . '"><a href="' . esc_url( $url ) . '" title="' . esc_attr( ucfirst( $slug ) ) . '"><i class="fa ' . $default_fields[ $slug ]['class'] . '"></i></a></li>';
+									echo '<li class="' . esc_attr( $slug ) . '"><a href="' . esc_url( $url ) . '" title="' . esc_attr( ucfirst( $slug ) ) . '"><i class="fab ' . $default_fields[ $slug ]['class'] . '"></i></a></li>';
 								}
 							}
 
 							if ( '' !== $author_url = get_the_author_meta( 'user_url' ) ) {
-								echo '<li class="website"><a href="' . esc_url( $author_url ) . '" title="' . esc_attr__( 'Website', 'stag' ) . '"><i class="fa fa-globe"></i></a></li>';
+								echo '<li class="website"><a href="' . esc_url( $author_url ) . '" title="' . esc_attr__( 'Website', 'stag' ) . '"><i class="fas fa-globe"></i></a></li>';
 							}
 							?>
 						</div>

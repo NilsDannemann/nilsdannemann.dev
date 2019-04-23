@@ -7,9 +7,9 @@ if ( ! function_exists( 'stag_get_google_fonts' ) ) :
 /**
  * Return an array of all available Google Fonts.
  *
- * Updated: 2017-03-07T17:06:56+01:00.
+ * Updated: 2018-08-21T18:22:18+00:00.
  *
- * Total 818 Fonts.
+ * Total 884 Fonts.
  *
  * @since  2.0.0.
  *
@@ -25,8 +25,8 @@ function stag_get_google_fonts() {
 		'ABeeZee' => array(
 			'label' => 'ABeeZee',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -46,16 +46,16 @@ function stag_get_google_fonts() {
 		'Abhaya Libre' => array(
 			'label' => 'Abhaya Libre',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
-				'sinhala',
 				'latin',
 				'latin-ext',
+				'sinhala',
 			),
 			'category' => 'serif',
 		),
@@ -116,10 +116,10 @@ function stag_get_google_fonts() {
 				'100',
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'greek',
@@ -174,44 +174,62 @@ function stag_get_google_fonts() {
 		'Alef' => array(
 			'label' => 'Alef',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 			),
 			'category' => 'sans-serif',
 		),
 		'Alegreya' => array(
 			'label' => 'Alegreya',
 			'variants' => array(
-				'regular',
-				'italic',
+				'500',
+				'500italic',
 				'700',
 				'700italic',
+				'800',
+				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
 		'Alegreya SC' => array(
 			'label' => 'Alegreya SC',
 			'variants' => array(
-				'regular',
-				'italic',
+				'500',
+				'500italic',
 				'700',
 				'700italic',
+				'800',
+				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -222,8 +240,6 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'700',
@@ -232,11 +248,17 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -247,8 +269,6 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'700',
@@ -257,11 +277,17 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -282,9 +308,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -323,8 +349,8 @@ function stag_get_google_fonts() {
 		'Allan' => array(
 			'label' => 'Allan',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -366,10 +392,10 @@ function stag_get_google_fonts() {
 		'Almendra' => array(
 			'label' => 'Almendra',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -412,10 +438,10 @@ function stag_get_google_fonts() {
 		'Amaranth' => array(
 			'label' => 'Amaranth',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -425,29 +451,17 @@ function stag_get_google_fonts() {
 		'Amatic SC' => array(
 			'label' => 'Amatic SC',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
-				'latin',
+				'cyrillic',
 				'hebrew',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
-		),
-		'Amatica SC' => array(
-			'label' => 'Amatica SC',
-			'variants' => array(
-				'regular',
-				'700',
-			),
-			'subsets' => array(
-				'latin',
-				'hebrew',
-				'latin-ext',
-			),
-			'category' => 'display',
 		),
 		'Amethysta' => array(
 			'label' => 'Amethysta',
@@ -462,9 +476,9 @@ function stag_get_google_fonts() {
 		'Amiko' => array(
 			'label' => 'Amiko',
 			'variants' => array(
-				'regular',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -476,22 +490,23 @@ function stag_get_google_fonts() {
 		'Amiri' => array(
 			'label' => 'Amiri',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'serif',
 		),
 		'Amita' => array(
 			'label' => 'Amita',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -530,9 +545,9 @@ function stag_get_google_fonts() {
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -559,10 +574,10 @@ function stag_get_google_fonts() {
 		'Anonymous Pro' => array(
 			'label' => 'Anonymous Pro',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -608,17 +623,17 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
 		'Arapey' => array(
 			'label' => 'Arapey',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -657,6 +672,25 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Archivo' => array(
+			'label' => 'Archivo',
+			'variants' => array(
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
 		'Archivo Black' => array(
 			'label' => 'Archivo Black',
 			'variants' => array(
@@ -671,10 +705,14 @@ function stag_get_google_fonts() {
 		'Archivo Narrow' => array(
 			'label' => 'Archivo Narrow',
 			'variants' => array(
-				'regular',
-				'italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -685,8 +723,8 @@ function stag_get_google_fonts() {
 		'Aref Ruqaa' => array(
 			'label' => 'Aref Ruqaa',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -700,37 +738,37 @@ function stag_get_google_fonts() {
 				'100',
 				'200',
 				'300',
-				'regular',
 				'500',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
 				'tamil',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
 		'Arimo' => array(
 			'label' => 'Arimo',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
-				'hebrew',
+				'greek',
 				'greek-ext',
+				'hebrew',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -759,17 +797,17 @@ function stag_get_google_fonts() {
 		'Arsenal' => array(
 			'label' => 'Arsenal',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -786,10 +824,10 @@ function stag_get_google_fonts() {
 		'Arvo' => array(
 			'label' => 'Arvo',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -799,8 +837,8 @@ function stag_get_google_fonts() {
 		'Arya' => array(
 			'label' => 'Arya',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -812,17 +850,38 @@ function stag_get_google_fonts() {
 		'Asap' => array(
 			'label' => 'Asap',
 			'variants' => array(
-				'regular',
-				'italic',
 				'500',
 				'500italic',
+				'600',
+				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Asap Condensed' => array(
+			'label' => 'Asap Condensed',
+			'variants' => array(
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -853,22 +912,22 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 			),
 			'category' => 'sans-serif',
 		),
 		'Astloch' => array(
 			'label' => 'Astloch',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -878,8 +937,8 @@ function stag_get_google_fonts() {
 		'Asul' => array(
 			'label' => 'Asul',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -891,16 +950,16 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -908,10 +967,10 @@ function stag_get_google_fonts() {
 			'label' => 'Atma',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'bengali',
@@ -1000,10 +1059,10 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1015,10 +1074,10 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1030,10 +1089,10 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1069,9 +1128,9 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'devanagari',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1082,9 +1141,22 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'gujarati',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'display',
+		),
+		'Baloo Bhaijaan' => array(
+			'label' => 'Baloo Bhaijaan',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'arabic',
+				'latin',
+				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1094,10 +1166,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
-				'oriya',
 				'latin-ext',
+				'oriya',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1107,10 +1179,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
-				'malayalam',
 				'latin-ext',
+				'malayalam',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1121,9 +1193,9 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'bengali',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1133,10 +1205,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
-				'latin',
 				'gurmukhi',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1147,9 +1219,22 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'kannada',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'display',
+		),
+		'Baloo Tammudu' => array(
+			'label' => 'Baloo Tammudu',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'telugu',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1159,10 +1244,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
 				'tamil',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1182,11 +1267,95 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
+				'latin',
+				'latin-ext',
 				'vietnamese',
+			),
+			'category' => 'display',
+		),
+		'Barlow' => array(
+			'label' => 'Barlow',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
 				'latin',
 				'latin-ext',
 			),
-			'category' => 'display',
+			'category' => 'sans-serif',
+		),
+		'Barlow Condensed' => array(
+			'label' => 'Barlow Condensed',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
+		'Barlow Semi Condensed' => array(
+			'label' => 'Barlow Semi Condensed',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
 		),
 		'Barrio' => array(
 			'label' => 'Barrio',
@@ -1213,8 +1382,8 @@ function stag_get_google_fonts() {
 		'Battambang' => array(
 			'label' => 'Battambang',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'khmer',
@@ -1251,6 +1420,18 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'serif',
 		),
+		'Bellefair' => array(
+			'label' => 'Bellefair',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'hebrew',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
+		),
 		'Belleza' => array(
 			'label' => 'Belleza',
 			'variants' => array(
@@ -1266,8 +1447,8 @@ function stag_get_google_fonts() {
 			'label' => 'BenchNine',
 			'variants' => array(
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1302,9 +1483,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1356,9 +1537,9 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1371,9 +1552,9 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1386,11 +1567,11 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -1402,15 +1583,37 @@ function stag_get_google_fonts() {
 		'Bitter' => array(
 			'label' => 'Bitter',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
 				'latin-ext',
 			),
 			'category' => 'serif',
+		),
+		'Black And White Picture' => array(
+			'label' => 'Black And White Picture',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
+		'Black Han Sans' => array(
+			'label' => 'Black Han Sans',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
 		),
 		'Black Ops One' => array(
 			'label' => 'Black Ops One',
@@ -1530,8 +1733,8 @@ function stag_get_google_fonts() {
 		'Buenard' => array(
 			'label' => 'Buenard',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1545,9 +1748,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1557,9 +1760,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1569,9 +1772,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1581,9 +1784,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1593,9 +1796,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -1624,42 +1827,42 @@ function stag_get_google_fonts() {
 		'Cabin' => array(
 			'label' => 'Cabin',
 			'variants' => array(
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
 		'Cabin Condensed' => array(
 			'label' => 'Cabin Condensed',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
 		'Cabin Sketch' => array(
 			'label' => 'Cabin Sketch',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1691,10 +1894,10 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'600',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -1716,10 +1919,10 @@ function stag_get_google_fonts() {
 		'Cambay' => array(
 			'label' => 'Cambay',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -1751,10 +1954,10 @@ function stag_get_google_fonts() {
 		'Cantarell' => array(
 			'label' => 'Cantarell',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1797,14 +2000,14 @@ function stag_get_google_fonts() {
 		'Cardo' => array(
 			'label' => 'Cardo',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'greek',
-				'latin',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'serif',
@@ -1855,12 +2058,12 @@ function stag_get_google_fonts() {
 				'100',
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1872,15 +2075,15 @@ function stag_get_google_fonts() {
 		'Caudex' => array(
 			'label' => 'Caudex',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'greek',
-				'latin',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'serif',
@@ -1888,10 +2091,11 @@ function stag_get_google_fonts() {
 		'Caveat' => array(
 			'label' => 'Caveat',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
+				'cyrillic',
 				'latin',
 				'latin-ext',
 			),
@@ -1934,11 +2138,11 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -1950,8 +2154,8 @@ function stag_get_google_fonts() {
 		'Changa One' => array(
 			'label' => 'Changa One',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1974,9 +2178,9 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'100',
 				'300',
-				'regular',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -1987,8 +2191,8 @@ function stag_get_google_fonts() {
 		'Chau Philomene One' => array(
 			'label' => 'Chau Philomene One',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2041,8 +2245,8 @@ function stag_get_google_fonts() {
 		'Cherry Swash' => array(
 			'label' => 'Cherry Swash',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2076,12 +2280,12 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2095,31 +2299,32 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
 		'Cinzel' => array(
 			'label' => 'Cinzel',
 			'variants' => array(
-				'regular',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'serif',
 		),
 		'Cinzel Decorative' => array(
 			'label' => 'Cinzel Decorative',
 			'variants' => array(
-				'regular',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2140,8 +2345,8 @@ function stag_get_google_fonts() {
 		'Coda' => array(
 			'label' => 'Coda',
 			'variants' => array(
-				'regular',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2178,10 +2383,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
 				'tamil',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -2200,16 +2405,16 @@ function stag_get_google_fonts() {
 			'label' => 'Comfortaa',
 			'variants' => array(
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
+				'greek',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -2248,8 +2453,8 @@ function stag_get_google_fonts() {
 		'Content' => array(
 			'label' => 'Content',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'khmer',
@@ -2299,8 +2504,8 @@ function stag_get_google_fonts() {
 		'Corben' => array(
 			'label' => 'Corben',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2313,21 +2518,21 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2336,21 +2541,21 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2359,21 +2564,21 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2381,17 +2586,17 @@ function stag_get_google_fonts() {
 			'label' => 'Cormorant SC',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2399,17 +2604,17 @@ function stag_get_google_fonts() {
 			'label' => 'Cormorant Unicase',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2417,15 +2622,15 @@ function stag_get_google_fonts() {
 			'label' => 'Cormorant Upright',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2443,28 +2648,28 @@ function stag_get_google_fonts() {
 		'Cousine' => array(
 			'label' => 'Cousine',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
-				'hebrew',
+				'greek',
 				'greek-ext',
+				'hebrew',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'monospace',
 		),
 		'Coustard' => array(
 			'label' => 'Coustard',
 			'variants' => array(
-				'regular',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2504,8 +2709,8 @@ function stag_get_google_fonts() {
 		'Crete Round' => array(
 			'label' => 'Crete Round',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2516,12 +2721,12 @@ function stag_get_google_fonts() {
 		'Crimson Text' => array(
 			'label' => 'Crimson Text',
 			'variants' => array(
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2552,19 +2757,30 @@ function stag_get_google_fonts() {
 		'Cuprum' => array(
 			'label' => 'Cuprum',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
+		),
+		'Cute Font' => array(
+			'label' => 'Cute Font',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'display',
 		),
 		'Cutive' => array(
 			'label' => 'Cutive',
@@ -2601,13 +2817,13 @@ function stag_get_google_fonts() {
 		'Dancing Script' => array(
 			'label' => 'Dancing Script',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
@@ -2624,15 +2840,15 @@ function stag_get_google_fonts() {
 		'David Libre' => array(
 			'label' => 'David Libre',
 			'variants' => array(
-				'regular',
 				'500',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2691,8 +2907,8 @@ function stag_get_google_fonts() {
 		'Delius Unicase' => array(
 			'label' => 'Delius Unicase',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2749,10 +2965,10 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
@@ -2779,11 +2995,33 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Do Hyeon' => array(
+			'label' => 'Do Hyeon',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
+		'Dokdo' => array(
+			'label' => 'Dokdo',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'handwriting',
+		),
 		'Domine' => array(
 			'label' => 'Domine',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2828,11 +3066,11 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2850,40 +3088,6 @@ function stag_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'handwriting',
-		),
-		'Droid Sans' => array(
-			'label' => 'Droid Sans',
-			'variants' => array(
-				'regular',
-				'700',
-			),
-			'subsets' => array(
-				'latin',
-			),
-			'category' => 'sans-serif',
-		),
-		'Droid Sans Mono' => array(
-			'label' => 'Droid Sans Mono',
-			'variants' => array(
-				'regular',
-			),
-			'subsets' => array(
-				'latin',
-			),
-			'category' => 'monospace',
-		),
-		'Droid Serif' => array(
-			'label' => 'Droid Serif',
-			'variants' => array(
-				'regular',
-				'italic',
-				'700',
-				'700italic',
-			),
-			'subsets' => array(
-				'latin',
-			),
-			'category' => 'serif',
 		),
 		'Duru Sans' => array(
 			'label' => 'Duru Sans',
@@ -2910,14 +3114,25 @@ function stag_get_google_fonts() {
 		'EB Garamond' => array(
 			'label' => 'EB Garamond',
 			'variants' => array(
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'italic',
 				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -2929,6 +3144,17 @@ function stag_get_google_fonts() {
 			'subsets' => array(
 				'latin',
 				'latin-ext',
+			),
+			'category' => 'handwriting',
+		),
+		'East Sea Dokdo' => array(
+			'label' => 'East Sea Dokdo',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
 			),
 			'category' => 'handwriting',
 		),
@@ -2946,10 +3172,10 @@ function stag_get_google_fonts() {
 		'Economica' => array(
 			'label' => 'Economica',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -2960,11 +3186,11 @@ function stag_get_google_fonts() {
 		'Eczar' => array(
 			'label' => 'Eczar',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -2973,31 +3199,13 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'serif',
 		),
-		'Ek Mukta' => array(
-			'label' => 'Ek Mukta',
-			'variants' => array(
-				'200',
-				'300',
-				'regular',
-				'500',
-				'600',
-				'700',
-				'800',
-			),
-			'subsets' => array(
-				'devanagari',
-				'latin',
-				'latin-ext',
-			),
-			'category' => 'sans-serif',
-		),
 		'El Messiri' => array(
 			'label' => 'El Messiri',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -3019,8 +3227,8 @@ function stag_get_google_fonts() {
 		'Elsie' => array(
 			'label' => 'Elsie',
 			'variants' => array(
-				'regular',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3031,8 +3239,8 @@ function stag_get_google_fonts() {
 		'Elsie Swash Caps' => array(
 			'label' => 'Elsie Swash Caps',
 			'variants' => array(
-				'regular',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3062,6 +3270,106 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Encode Sans' => array(
+			'label' => 'Encode Sans',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Encode Sans Condensed' => array(
+			'label' => 'Encode Sans Condensed',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Encode Sans Expanded' => array(
+			'label' => 'Encode Sans Expanded',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Encode Sans Semi Condensed' => array(
+			'label' => 'Encode Sans Semi Condensed',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Encode Sans Semi Expanded' => array(
+			'label' => 'Encode Sans Semi Expanded',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
 		'Engagement' => array(
 			'label' => 'Engagement',
 			'variants' => array(
@@ -3086,8 +3394,8 @@ function stag_get_google_fonts() {
 		'Enriqueta' => array(
 			'label' => 'Enriqueta',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3148,8 +3456,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -3160,10 +3466,13 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -3176,8 +3485,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -3188,6 +3495,8 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -3199,14 +3508,14 @@ function stag_get_google_fonts() {
 		'Expletus Sans' => array(
 			'label' => 'Expletus Sans',
 			'variants' => array(
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3216,8 +3525,8 @@ function stag_get_google_fonts() {
 		'Fanwood Text' => array(
 			'label' => 'Fanwood Text',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3231,9 +3540,9 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'gujarati',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -3285,6 +3594,25 @@ function stag_get_google_fonts() {
 			'subsets' => array(
 				'latin',
 				'latin-ext',
+			),
+			'category' => 'serif',
+		),
+		'Faustina' => array(
+			'label' => 'Faustina',
+			'variants' => array(
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -3343,16 +3671,16 @@ function stag_get_google_fonts() {
 		'Fira Mono' => array(
 			'label' => 'Fira Mono',
 			'variants' => array(
-				'regular',
 				'500',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'monospace',
@@ -3366,8 +3694,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -3378,15 +3704,17 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -3399,8 +3727,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -3411,15 +3737,17 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -3432,8 +3760,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -3444,15 +3770,17 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -3501,8 +3829,8 @@ function stag_get_google_fonts() {
 		'Fondamento' => array(
 			'label' => 'Fondamento',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3539,9 +3867,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -3549,17 +3877,17 @@ function stag_get_google_fonts() {
 			'label' => 'Frank Ruhl Libre',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
 			),
-			'category' => 'sans-serif',
+			'category' => 'serif',
 		),
 		'Freckle Face' => array(
 			'label' => 'Freckle Face',
@@ -3657,10 +3985,10 @@ function stag_get_google_fonts() {
 		'GFS Neohellenic' => array(
 			'label' => 'GFS Neohellenic',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'greek',
@@ -3678,6 +4006,19 @@ function stag_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'serif',
+		),
+		'Gaegu' => array(
+			'label' => 'Gaegu',
+			'variants' => array(
+				'300',
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'handwriting',
 		),
 		'Gafata' => array(
 			'label' => 'Gafata',
@@ -3722,13 +4063,24 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Gamja Flower' => array(
+			'label' => 'Gamja Flower',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'handwriting',
+		),
 		'Gentium Basic' => array(
 			'label' => 'Gentium Basic',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3739,10 +4091,10 @@ function stag_get_google_fonts() {
 		'Gentium Book Basic' => array(
 			'label' => 'Gentium Book Basic',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3753,8 +4105,8 @@ function stag_get_google_fonts() {
 		'Geo' => array(
 			'label' => 'Geo',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -3837,8 +4189,8 @@ function stag_get_google_fonts() {
 		'Glegoo' => array(
 			'label' => 'Glegoo',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -3880,13 +4232,32 @@ function stag_get_google_fonts() {
 		'Gorditas' => array(
 			'label' => 'Gorditas',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
 			),
 			'category' => 'display',
+		),
+		'Gothic A1' => array(
+			'label' => 'Gothic A1',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
 		),
 		'Goudy Bookletter 1911' => array(
 			'label' => 'Goudy Bookletter 1911',
@@ -3965,15 +4336,26 @@ function stag_get_google_fonts() {
 		'Gudea' => array(
 			'label' => 'Gudea',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
+		),
+		'Gugi' => array(
+			'label' => 'Gugi',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'display',
 		),
 		'Gurajada' => array(
 			'label' => 'Gurajada',
@@ -4001,10 +4383,10 @@ function stag_get_google_fonts() {
 			'label' => 'Halant',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4059,8 +4441,8 @@ function stag_get_google_fonts() {
 		'Hanuman' => array(
 			'label' => 'Hanuman',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'khmer',
@@ -4105,15 +4487,15 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'100',
 				'300',
-				'regular',
 				'500',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 			),
 			'category' => 'sans-serif',
 		),
@@ -4138,14 +4520,25 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Hi Melody' => array(
+			'label' => 'Hi Melody',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'handwriting',
+		),
 		'Hind' => array(
 			'label' => 'Hind',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4158,10 +4551,10 @@ function stag_get_google_fonts() {
 			'label' => 'Hind Guntur',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4174,10 +4567,10 @@ function stag_get_google_fonts() {
 			'label' => 'Hind Madurai',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4190,10 +4583,10 @@ function stag_get_google_fonts() {
 			'label' => 'Hind Siliguri',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'bengali',
@@ -4206,10 +4599,10 @@ function stag_get_google_fonts() {
 			'label' => 'Hind Vadodara',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'gujarati',
@@ -4248,11 +4641,117 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'IBM Plex Mono' => array(
+			'label' => 'IBM Plex Mono',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'monospace',
+		),
+		'IBM Plex Sans' => array(
+			'label' => 'IBM Plex Sans',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'IBM Plex Sans Condensed' => array(
+			'label' => 'IBM Plex Sans Condensed',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'IBM Plex Serif' => array(
+			'label' => 'IBM Plex Serif',
+			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'serif',
+		),
 		'IM Fell DW Pica' => array(
 			'label' => 'IM Fell DW Pica',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4272,8 +4771,8 @@ function stag_get_google_fonts() {
 		'IM Fell Double Pica' => array(
 			'label' => 'IM Fell Double Pica',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4293,8 +4792,8 @@ function stag_get_google_fonts() {
 		'IM Fell English' => array(
 			'label' => 'IM Fell English',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4314,8 +4813,8 @@ function stag_get_google_fonts() {
 		'IM Fell French Canon' => array(
 			'label' => 'IM Fell French Canon',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4335,8 +4834,8 @@ function stag_get_google_fonts() {
 		'IM Fell Great Primer' => array(
 			'label' => 'IM Fell Great Primer',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4387,13 +4886,13 @@ function stag_get_google_fonts() {
 		'Inconsolata' => array(
 			'label' => 'Inconsolata',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'monospace',
 		),
@@ -4421,8 +4920,8 @@ function stag_get_google_fonts() {
 		'Inika' => array(
 			'label' => 'Inika',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4434,12 +4933,12 @@ function stag_get_google_fonts() {
 			'label' => 'Inknut Antiqua',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4461,10 +4960,10 @@ function stag_get_google_fonts() {
 		'Istok Web' => array(
 			'label' => 'Istok Web',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -4501,10 +5000,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
@@ -4531,8 +5030,8 @@ function stag_get_google_fonts() {
 		'Jaldi' => array(
 			'label' => 'Jaldi',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4593,16 +5092,17 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -4613,12 +5113,12 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4636,17 +5136,28 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Jua' => array(
+			'label' => 'Jua',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
 		'Judson' => array(
 			'label' => 'Judson',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -4685,16 +5196,19 @@ function stag_get_google_fonts() {
 			'label' => 'Jura',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
+				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -4722,8 +5236,8 @@ function stag_get_google_fonts() {
 		'Kadwa' => array(
 			'label' => 'Kadwa',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4735,8 +5249,8 @@ function stag_get_google_fonts() {
 			'label' => 'Kalam',
 			'variants' => array(
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4748,8 +5262,8 @@ function stag_get_google_fonts() {
 		'Kameron' => array(
 			'label' => 'Kameron',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4765,8 +5279,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -4777,12 +5289,14 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -4790,8 +5304,8 @@ function stag_get_google_fonts() {
 			'label' => 'Kantumruy',
 			'variants' => array(
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'khmer',
@@ -4801,10 +5315,10 @@ function stag_get_google_fonts() {
 		'Karla' => array(
 			'label' => 'Karla',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -4816,10 +5330,10 @@ function stag_get_google_fonts() {
 			'label' => 'Karma',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4921,10 +5435,10 @@ function stag_get_google_fonts() {
 			'label' => 'Khand',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4947,10 +5461,10 @@ function stag_get_google_fonts() {
 			'label' => 'Khula',
 			'variants' => array(
 				'300',
-				'regular',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -4958,6 +5472,17 @@ function stag_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
+		),
+		'Kirang Haerang' => array(
+			'label' => 'Kirang Haerang',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'display',
 		),
 		'Kite One' => array(
 			'label' => 'Kite One',
@@ -4979,6 +5504,30 @@ function stag_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'display',
+		),
+		'Kosugi' => array(
+			'label' => 'Kosugi',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'japanese',
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
+		'Kosugi Maru' => array(
+			'label' => 'Kosugi Maru',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'japanese',
+				'latin',
+			),
+			'category' => 'sans-serif',
 		),
 		'Kotta One' => array(
 			'label' => 'Kotta One',
@@ -5015,8 +5564,8 @@ function stag_get_google_fonts() {
 			'label' => 'Kreon',
 			'variants' => array(
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5074,9 +5623,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'devanagari',
 				'cyrillic',
 				'cyrillic-ext',
+				'devanagari',
 				'latin',
 				'latin-ext',
 			),
@@ -5096,10 +5645,10 @@ function stag_get_google_fonts() {
 			'label' => 'Laila',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -5126,9 +5675,9 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'arabic',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -5161,12 +5710,12 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5209,9 +5758,9 @@ function stag_get_google_fonts() {
 		'Lekton' => array(
 			'label' => 'Lekton',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5233,24 +5782,84 @@ function stag_get_google_fonts() {
 			'label' => 'Lemonada',
 			'variants' => array(
 				'300',
-				'regular',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'display',
+		),
+		'Libre Barcode 128' => array(
+			'label' => 'Libre Barcode 128',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+			),
+			'category' => 'display',
+		),
+		'Libre Barcode 128 Text' => array(
+			'label' => 'Libre Barcode 128 Text',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+			),
+			'category' => 'display',
+		),
+		'Libre Barcode 39' => array(
+			'label' => 'Libre Barcode 39',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+			),
+			'category' => 'display',
+		),
+		'Libre Barcode 39 Extended' => array(
+			'label' => 'Libre Barcode 39 Extended',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+			),
+			'category' => 'display',
+		),
+		'Libre Barcode 39 Extended Text' => array(
+			'label' => 'Libre Barcode 39 Extended Text',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+			),
+			'category' => 'display',
+		),
+		'Libre Barcode 39 Text' => array(
+			'label' => 'Libre Barcode 39 Text',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
 			),
 			'category' => 'display',
 		),
 		'Libre Baskerville' => array(
 			'label' => 'Libre Baskerville',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5267,8 +5876,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -5279,6 +5886,8 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5289,8 +5898,8 @@ function stag_get_google_fonts() {
 		'Life Savers' => array(
 			'label' => 'Life Savers',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5334,8 +5943,8 @@ function stag_get_google_fonts() {
 		'Linden Hill' => array(
 			'label' => 'Linden Hill',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5349,19 +5958,20 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'cyrillic',
-				'vietnamese',
+				'cyrillic-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
 		'Lobster Two' => array(
 			'label' => 'Lobster Two',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5401,6 +6011,9 @@ function stag_get_google_fonts() {
 		'Londrina Solid' => array(
 			'label' => 'Londrina Solid',
 			'variants' => array(
+				'100',
+				'300',
+				'900',
 				'regular',
 			),
 			'subsets' => array(
@@ -5411,17 +6024,17 @@ function stag_get_google_fonts() {
 		'Lora' => array(
 			'label' => 'Lora',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -5469,8 +6082,8 @@ function stag_get_google_fonts() {
 		'Lusitana' => array(
 			'label' => 'Lusitana',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5486,6 +6099,54 @@ function stag_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'serif',
+		),
+		'M PLUS 1p' => array(
+			'label' => 'M PLUS 1p',
+			'variants' => array(
+				'100',
+				'300',
+				'500',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
+				'hebrew',
+				'japanese',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'M PLUS Rounded 1c' => array(
+			'label' => 'M PLUS Rounded 1c',
+			'variants' => array(
+				'100',
+				'300',
+				'500',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
+				'hebrew',
+				'japanese',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
 		),
 		'Macondo' => array(
 			'label' => 'Macondo',
@@ -5510,10 +6171,13 @@ function stag_get_google_fonts() {
 		'Mada' => array(
 			'label' => 'Mada',
 			'variants' => array(
+				'200',
 				'300',
-				'regular',
 				'500',
+				'600',
+				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -5524,8 +6188,8 @@ function stag_get_google_fonts() {
 		'Magra' => array(
 			'label' => 'Magra',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5548,16 +6212,16 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -5592,6 +6256,25 @@ function stag_get_google_fonts() {
 				'telugu',
 			),
 			'category' => 'sans-serif',
+		),
+		'Manuale' => array(
+			'label' => 'Manuale',
+			'variants' => array(
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'serif',
 		),
 		'Marcellus' => array(
 			'label' => 'Marcellus',
@@ -5638,6 +6321,22 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Markazi Text' => array(
+			'label' => 'Markazi Text',
+			'variants' => array(
+				'500',
+				'600',
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'arabic',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'serif',
+		),
 		'Marko One' => array(
 			'label' => 'Marko One',
 			'variants' => array(
@@ -5665,11 +6364,11 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -5683,11 +6382,11 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -5699,10 +6398,10 @@ function stag_get_google_fonts() {
 		'Marvel' => array(
 			'label' => 'Marvel',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5712,8 +6411,8 @@ function stag_get_google_fonts() {
 		'Mate' => array(
 			'label' => 'Mate',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5733,15 +6432,15 @@ function stag_get_google_fonts() {
 		'Maven Pro' => array(
 			'label' => 'Maven Pro',
 			'variants' => array(
-				'regular',
 				'500',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -5822,8 +6521,8 @@ function stag_get_google_fonts() {
 		'Merienda' => array(
 			'label' => 'Merienda',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5846,18 +6545,19 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -5866,12 +6566,12 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'800',
 				'800italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -5962,6 +6662,19 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Mina' => array(
+			'label' => 'Mina',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'bengali',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Miniver' => array(
 			'label' => 'Miniver',
 			'variants' => array(
@@ -5975,12 +6688,12 @@ function stag_get_google_fonts() {
 		'Miriam Libre' => array(
 			'label' => 'Miriam Libre',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
@@ -5988,10 +6701,10 @@ function stag_get_google_fonts() {
 		'Mirza' => array(
 			'label' => 'Mirza',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -6016,16 +6729,16 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6089,8 +6802,8 @@ function stag_get_google_fonts() {
 		'Monda' => array(
 			'label' => 'Monda',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6158,8 +6871,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -6170,11 +6881,15 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
+				'cyrillic',
+				'cyrillic-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6187,8 +6902,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -6199,19 +6912,23 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
+				'cyrillic',
+				'cyrillic-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
 		'Montserrat Subrayada' => array(
 			'label' => 'Montserrat Subrayada',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6241,8 +6958,8 @@ function stag_get_google_fonts() {
 		'Mountains of Christmas' => array(
 			'label' => 'Mountains of Christmas',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6315,16 +7032,70 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Mukta' => array(
+			'label' => 'Mukta',
+			'variants' => array(
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'devanagari',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
+		'Mukta Mahee' => array(
+			'label' => 'Mukta Mahee',
+			'variants' => array(
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'gurmukhi',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
+		'Mukta Malar' => array(
+			'label' => 'Mukta Malar',
+			'variants' => array(
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'tamil',
+			),
+			'category' => 'sans-serif',
+		),
 		'Mukta Vaani' => array(
 			'label' => 'Mukta Vaani',
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'gujarati',
@@ -6340,8 +7111,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
@@ -6350,11 +7119,13 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6380,6 +7151,66 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Nanum Brush Script' => array(
+			'label' => 'Nanum Brush Script',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'handwriting',
+		),
+		'Nanum Gothic' => array(
+			'label' => 'Nanum Gothic',
+			'variants' => array(
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
+		'Nanum Gothic Coding' => array(
+			'label' => 'Nanum Gothic Coding',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'monospace',
+		),
+		'Nanum Myeongjo' => array(
+			'label' => 'Nanum Myeongjo',
+			'variants' => array(
+				'700',
+				'800',
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'serif',
+		),
+		'Nanum Pen Script' => array(
+			'label' => 'Nanum Pen Script',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'handwriting',
+		),
 		'Neucha' => array(
 			'label' => 'Neucha',
 			'variants' => array(
@@ -6396,10 +7227,10 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
-				'italic',
 				'700',
 				'800',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6421,8 +7252,8 @@ function stag_get_google_fonts() {
 		'News Cycle' => array(
 			'label' => 'News Cycle',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6454,21 +7285,24 @@ function stag_get_google_fonts() {
 		'Nobile' => array(
 			'label' => 'Nobile',
 			'variants' => array(
-				'regular',
-				'italic',
+				'500',
+				'500italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
 			),
 			'category' => 'sans-serif',
 		),
 		'Nokora' => array(
 			'label' => 'Nokora',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'khmer',
@@ -6510,54 +7344,54 @@ function stag_get_google_fonts() {
 		'Noticia Text' => array(
 			'label' => 'Noticia Text',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
 		'Noto Sans' => array(
 			'label' => 'Noto Sans',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'devanagari',
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'devanagari',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
 		'Noto Serif' => array(
 			'label' => 'Noto Serif',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -6659,8 +7493,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
@@ -6669,11 +7501,13 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6684,8 +7518,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
@@ -6694,11 +7526,13 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6725,16 +7559,16 @@ function stag_get_google_fonts() {
 		'Old Standard TT' => array(
 			'label' => 'Old Standard TT',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -6752,8 +7586,8 @@ function stag_get_google_fonts() {
 		'Oleo Script' => array(
 			'label' => 'Oleo Script',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6764,8 +7598,8 @@ function stag_get_google_fonts() {
 		'Oleo Script Swash Caps' => array(
 			'label' => 'Oleo Script Swash Caps',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6778,23 +7612,23 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
 				'800',
 				'800italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6807,12 +7641,12 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6832,10 +7666,10 @@ function stag_get_google_fonts() {
 		'Orbitron' => array(
 			'label' => 'Orbitron',
 			'variants' => array(
-				'regular',
 				'500',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6845,8 +7679,8 @@ function stag_get_google_fonts() {
 		'Oregano' => array(
 			'label' => 'Oregano',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6880,16 +7714,16 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -6906,12 +7740,12 @@ function stag_get_google_fonts() {
 		'Overlock' => array(
 			'label' => 'Overlock',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6939,8 +7773,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
@@ -6949,6 +7781,8 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6960,9 +7794,9 @@ function stag_get_google_fonts() {
 			'label' => 'Overpass Mono',
 			'variants' => array(
 				'300',
-				'regular',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -6984,8 +7818,8 @@ function stag_get_google_fonts() {
 			'label' => 'Oxygen',
 			'variants' => array(
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7020,10 +7854,10 @@ function stag_get_google_fonts() {
 		'PT Sans' => array(
 			'label' => 'PT Sans',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -7036,8 +7870,8 @@ function stag_get_google_fonts() {
 		'PT Sans Caption' => array(
 			'label' => 'PT Sans Caption',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -7050,8 +7884,8 @@ function stag_get_google_fonts() {
 		'PT Sans Narrow' => array(
 			'label' => 'PT Sans Narrow',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -7064,10 +7898,10 @@ function stag_get_google_fonts() {
 		'PT Serif' => array(
 			'label' => 'PT Serif',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -7080,8 +7914,8 @@ function stag_get_google_fonts() {
 		'PT Serif Caption' => array(
 			'label' => 'PT Serif Caption',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -7097,21 +7931,22 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
+				'cyrillic',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
 		'Padauk' => array(
 			'label' => 'Padauk',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'myanmar',
 				'latin',
+				'myanmar',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7121,10 +7956,10 @@ function stag_get_google_fonts() {
 				'100',
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -7136,10 +7971,10 @@ function stag_get_google_fonts() {
 		'Palanquin Dark' => array(
 			'label' => 'Palanquin Dark',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -7156,9 +7991,9 @@ function stag_get_google_fonts() {
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
@@ -7197,9 +8032,9 @@ function stag_get_google_fonts() {
 		'Passion One' => array(
 			'label' => 'Passion One',
 			'variants' => array(
-				'regular',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7224,9 +8059,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
@@ -7236,9 +8071,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
@@ -7248,11 +8083,11 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'thai',
 				'cyrillic',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7285,6 +8120,8 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'latin',
+				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7344,16 +8181,16 @@ function stag_get_google_fonts() {
 		'Philosopher' => array(
 			'label' => 'Philosopher',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7403,15 +8240,16 @@ function stag_get_google_fonts() {
 		'Play' => array(
 			'label' => 'Play',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
+				'greek',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7429,52 +8267,54 @@ function stag_get_google_fonts() {
 		'Playfair Display' => array(
 			'label' => 'Playfair Display',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
 		'Playfair Display SC' => array(
 			'label' => 'Playfair Display SC',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
 		'Podkova' => array(
 			'label' => 'Podkova',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -7503,8 +8343,8 @@ function stag_get_google_fonts() {
 		'Poly' => array(
 			'label' => 'Poly',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7532,14 +8372,38 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Poor Story' => array(
+			'label' => 'Poor Story',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'display',
+		),
 		'Poppins' => array(
 			'label' => 'Poppins',
 			'variants' => array(
+				'100',
+				'100italic',
+				'200',
+				'200italic',
 				'300',
-				'regular',
+				'300italic',
 				'500',
+				'500italic',
 				'600',
+				'600italic',
 				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -7571,8 +8435,8 @@ function stag_get_google_fonts() {
 		'Pragati Narrow' => array(
 			'label' => 'Pragati Narrow',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -7589,8 +8453,8 @@ function stag_get_google_fonts() {
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -7611,8 +8475,8 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
+				'greek',
 				'latin',
 				'latin-ext',
 			),
@@ -7623,16 +8487,16 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -7666,8 +8530,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -7678,12 +8540,14 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7702,8 +8566,6 @@ function stag_get_google_fonts() {
 		'Proza Libre' => array(
 			'label' => 'Proza Libre',
 			'variants' => array(
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -7712,6 +8574,8 @@ function stag_get_google_fonts() {
 				'700italic',
 				'800',
 				'800italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7722,10 +8586,10 @@ function stag_get_google_fonts() {
 		'Puritan' => array(
 			'label' => 'Puritan',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7757,10 +8621,10 @@ function stag_get_google_fonts() {
 		'Quantico' => array(
 			'label' => 'Quantico',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7770,8 +8634,8 @@ function stag_get_google_fonts() {
 		'Quattrocento' => array(
 			'label' => 'Quattrocento',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7782,10 +8646,10 @@ function stag_get_google_fonts() {
 		'Quattrocento Sans' => array(
 			'label' => 'Quattrocento Sans',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7807,14 +8671,14 @@ function stag_get_google_fonts() {
 			'label' => 'Quicksand',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7854,8 +8718,8 @@ function stag_get_google_fonts() {
 		'Radley' => array(
 			'label' => 'Radley',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7867,10 +8731,10 @@ function stag_get_google_fonts() {
 			'label' => 'Rajdhani',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -7900,8 +8764,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -7912,6 +8774,8 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -7955,10 +8819,10 @@ function stag_get_google_fonts() {
 		'Rambla' => array(
 			'label' => 'Rambla',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8001,8 +8865,8 @@ function stag_get_google_fonts() {
 		'Ranga' => array(
 			'label' => 'Ranga',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -8015,10 +8879,10 @@ function stag_get_google_fonts() {
 			'label' => 'Rasa',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'gujarati',
@@ -8153,23 +9017,23 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -8178,19 +9042,19 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -8201,21 +9065,21 @@ function stag_get_google_fonts() {
 				'100italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'monospace',
 		),
@@ -8224,17 +9088,17 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'100',
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -8264,17 +9128,17 @@ function stag_get_google_fonts() {
 				'100',
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -8292,8 +9156,8 @@ function stag_get_google_fonts() {
 		'Ropa Sans' => array(
 			'label' => 'Ropa Sans',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8304,10 +9168,10 @@ function stag_get_google_fonts() {
 		'Rosario' => array(
 			'label' => 'Rosario',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8317,8 +9181,8 @@ function stag_get_google_fonts() {
 		'Rosarivo' => array(
 			'label' => 'Rosarivo',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8353,19 +9217,19 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
@@ -8385,9 +9249,9 @@ function stag_get_google_fonts() {
 		'Ruda' => array(
 			'label' => 'Ruda',
 			'variants' => array(
-				'regular',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8398,8 +9262,8 @@ function stag_get_google_fonts() {
 		'Rufina' => array(
 			'label' => 'Rufina',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8500,8 +9364,8 @@ function stag_get_google_fonts() {
 		'Sahitya' => array(
 			'label' => 'Sahitya',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -8520,6 +9384,86 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'display',
 		),
+		'Saira' => array(
+			'label' => 'Saira',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Saira Condensed' => array(
+			'label' => 'Saira Condensed',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Saira Extra Condensed' => array(
+			'label' => 'Saira Extra Condensed',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Saira Semi Condensed' => array(
+			'label' => 'Saira Semi Condensed',
+			'variants' => array(
+				'100',
+				'200',
+				'300',
+				'500',
+				'600',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
 		'Salsa' => array(
 			'label' => 'Salsa',
 			'variants' => array(
@@ -8533,8 +9477,8 @@ function stag_get_google_fonts() {
 		'Sanchez' => array(
 			'label' => 'Sanchez',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8556,14 +9500,14 @@ function stag_get_google_fonts() {
 		'Sansita' => array(
 			'label' => 'Sansita',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
 				'800',
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8574,8 +9518,8 @@ function stag_get_google_fonts() {
 		'Sarala' => array(
 			'label' => 'Sarala',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -8598,12 +9542,12 @@ function stag_get_google_fonts() {
 		'Sarpanch' => array(
 			'label' => 'Sarpanch',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -8622,13 +9566,39 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Sawarabi Gothic' => array(
+			'label' => 'Sawarabi Gothic',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'japanese',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'sans-serif',
+		),
+		'Sawarabi Mincho' => array(
+			'label' => 'Sawarabi Mincho',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'japanese',
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'sans-serif',
+		),
 		'Scada' => array(
 			'label' => 'Scada',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
@@ -8641,8 +9611,8 @@ function stag_get_google_fonts() {
 		'Scheherazade' => array(
 			'label' => 'Scheherazade',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'arabic',
@@ -8688,11 +9658,35 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
+		),
+		'Sedgwick Ave' => array(
+			'label' => 'Sedgwick Ave',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'handwriting',
+		),
+		'Sedgwick Ave Display' => array(
+			'label' => 'Sedgwick Ave Display',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'handwriting',
 		),
 		'Sevillana' => array(
 			'label' => 'Sevillana',
@@ -8751,10 +9745,10 @@ function stag_get_google_fonts() {
 		'Share' => array(
 			'label' => 'Share',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8831,9 +9825,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -8841,9 +9835,9 @@ function stag_get_google_fonts() {
 			'label' => 'Signika',
 			'variants' => array(
 				'300',
-				'regular',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8855,9 +9849,9 @@ function stag_get_google_fonts() {
 			'label' => 'Signika Negative',
 			'variants' => array(
 				'300',
-				'regular',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8868,10 +9862,10 @@ function stag_get_google_fonts() {
 		'Simonetta' => array(
 			'label' => 'Simonetta',
 			'variants' => array(
-				'regular',
-				'italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8882,8 +9876,8 @@ function stag_get_google_fonts() {
 		'Sintony' => array(
 			'label' => 'Sintony',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8914,8 +9908,8 @@ function stag_get_google_fonts() {
 		'Skranji' => array(
 			'label' => 'Skranji',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -8978,8 +9972,8 @@ function stag_get_google_fonts() {
 		'Sniglet' => array(
 			'label' => 'Sniglet',
 			'variants' => array(
-				'regular',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9028,6 +10022,17 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Song Myung' => array(
+			'label' => 'Song Myung',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'serif',
+		),
 		'Sonsie One' => array(
 			'label' => 'Sonsie One',
 			'variants' => array(
@@ -9042,8 +10047,8 @@ function stag_get_google_fonts() {
 		'Sorts Mill Goudy' => array(
 			'label' => 'Sorts Mill Goudy',
 			'variants' => array(
-				'regular',
 				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9056,11 +10061,11 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9075,28 +10080,32 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
+				'greek-ext',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
 		'Source Serif Pro' => array(
 			'label' => 'Source Serif Pro',
 			'variants' => array(
-				'regular',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9107,15 +10116,15 @@ function stag_get_google_fonts() {
 		'Space Mono' => array(
 			'label' => 'Space Mono',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'monospace',
 		),
@@ -9128,6 +10137,58 @@ function stag_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'display',
+		),
+		'Spectral' => array(
+			'label' => 'Spectral',
+			'variants' => array(
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'serif',
+		),
+		'Spectral SC' => array(
+			'label' => 'Spectral SC',
+			'variants' => array(
+				'200',
+				'200italic',
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'800',
+				'800italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'serif',
 		),
 		'Spicy Rice' => array(
 			'label' => 'Spicy Rice',
@@ -9187,10 +10248,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'handwriting',
 		),
@@ -9220,8 +10281,8 @@ function stag_get_google_fonts() {
 		'Stardos Stencil' => array(
 			'label' => 'Stardos Stencil',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9272,6 +10333,17 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'sans-serif',
 		),
+		'Stylish' => array(
+			'label' => 'Stylish',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
 		'Sue Ellen Francisco' => array(
 			'label' => 'Sue Ellen Francisco',
 			'variants' => array(
@@ -9288,8 +10360,8 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'serif',
@@ -9297,8 +10369,8 @@ function stag_get_google_fonts() {
 		'Sumana' => array(
 			'label' => 'Sumana',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -9306,6 +10378,19 @@ function stag_get_google_fonts() {
 				'latin-ext',
 			),
 			'category' => 'serif',
+		),
+		'Sunflower' => array(
+			'label' => 'Sunflower',
+			'variants' => array(
+				'300',
+				'500',
+				'700',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'sans-serif',
 		),
 		'Sunshiney' => array(
 			'label' => 'Sunshiney',
@@ -9330,8 +10415,8 @@ function stag_get_google_fonts() {
 		'Sura' => array(
 			'label' => 'Sura',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -9385,10 +10470,27 @@ function stag_get_google_fonts() {
 		'Syncopate' => array(
 			'label' => 'Syncopate',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
+				'latin',
+			),
+			'category' => 'sans-serif',
+		),
+		'Tajawal' => array(
+			'label' => 'Tajawal',
+			'variants' => array(
+				'200',
+				'300',
+				'500',
+				'700',
+				'800',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'arabic',
 				'latin',
 			),
 			'category' => 'sans-serif',
@@ -9396,8 +10498,8 @@ function stag_get_google_fonts() {
 		'Tangerine' => array(
 			'label' => 'Tangerine',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9434,8 +10536,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -9446,12 +10546,14 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -9459,10 +10561,10 @@ function stag_get_google_fonts() {
 			'label' => 'Teko',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -9529,9 +10631,9 @@ function stag_get_google_fonts() {
 		'Tienne' => array(
 			'label' => 'Tienne',
 			'variants' => array(
-				'regular',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9541,11 +10643,11 @@ function stag_get_google_fonts() {
 		'Tillana' => array(
 			'label' => 'Tillana',
 			'variants' => array(
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -9568,20 +10670,20 @@ function stag_get_google_fonts() {
 		'Tinos' => array(
 			'label' => 'Tinos',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'vietnamese',
-				'latin',
-				'hebrew',
+				'greek',
 				'greek-ext',
+				'hebrew',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -9603,13 +10705,13 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'600',
 				'600italic',
 				'700',
 				'700italic',
 				'900',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9636,8 +10738,6 @@ function stag_get_google_fonts() {
 				'200italic',
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'600',
@@ -9648,12 +10748,14 @@ function stag_get_google_fonts() {
 				'800italic',
 				'900',
 				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
-				'thai',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'thai',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -9671,9 +10773,9 @@ function stag_get_google_fonts() {
 		'Trochut' => array(
 			'label' => 'Trochut',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9706,19 +10808,19 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'300',
 				'300italic',
-				'regular',
-				'italic',
 				'500',
 				'500italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
@@ -9730,10 +10832,10 @@ function stag_get_google_fonts() {
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'sans-serif',
@@ -9741,17 +10843,17 @@ function stag_get_google_fonts() {
 		'Ubuntu Mono' => array(
 			'label' => 'Ubuntu Mono',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'greek',
 				'cyrillic-ext',
-				'latin',
+				'greek',
 				'greek-ext',
+				'latin',
 				'latin-ext',
 			),
 			'category' => 'monospace',
@@ -9822,8 +10924,8 @@ function stag_get_google_fonts() {
 		'Unkempt' => array(
 			'label' => 'Unkempt',
 			'variants' => array(
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9843,10 +10945,10 @@ function stag_get_google_fonts() {
 		'Unna' => array(
 			'label' => 'Unna',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9860,9 +10962,9 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'monospace',
 		),
@@ -9894,10 +10996,10 @@ function stag_get_google_fonts() {
 				'regular',
 			),
 			'subsets' => array(
-				'vietnamese',
-				'latin',
 				'hebrew',
+				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -9914,10 +11016,10 @@ function stag_get_google_fonts() {
 		'Vesper Libre' => array(
 			'label' => 'Vesper Libre',
 			'variants' => array(
-				'regular',
 				'500',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -9971,10 +11073,10 @@ function stag_get_google_fonts() {
 		'Volkhov' => array(
 			'label' => 'Volkhov',
 			'variants' => array(
-				'regular',
-				'italic',
 				'700',
 				'700italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -9984,13 +11086,39 @@ function stag_get_google_fonts() {
 		'Vollkorn' => array(
 			'label' => 'Vollkorn',
 			'variants' => array(
-				'regular',
-				'italic',
+				'600',
+				'600italic',
 				'700',
 				'700italic',
+				'900',
+				'900italic',
+				'italic',
+				'regular',
 			),
 			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'greek',
 				'latin',
+				'latin-ext',
+				'vietnamese',
+			),
+			'category' => 'serif',
+		),
+		'Vollkorn SC' => array(
+			'label' => 'Vollkorn SC',
+			'variants' => array(
+				'600',
+				'700',
+				'900',
+				'regular',
+			),
+			'subsets' => array(
+				'cyrillic',
+				'cyrillic-ext',
+				'latin',
+				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'serif',
 		),
@@ -10083,12 +11211,12 @@ function stag_get_google_fonts() {
 				'100',
 				'200',
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
 				'800',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -10101,14 +11229,14 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'200',
 				'300',
-				'regular',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'cyrillic',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'sans-serif',
 		),
@@ -10117,10 +11245,10 @@ function stag_get_google_fonts() {
 			'variants' => array(
 				'100',
 				'300',
-				'regular',
 				'500',
 				'700',
 				'900',
+				'regular',
 			),
 			'subsets' => array(
 				'devanagari',
@@ -10151,6 +11279,17 @@ function stag_get_google_fonts() {
 			),
 			'category' => 'handwriting',
 		),
+		'Yeon Sung' => array(
+			'label' => 'Yeon Sung',
+			'variants' => array(
+				'regular',
+			),
+			'subsets' => array(
+				'korean',
+				'latin',
+			),
+			'category' => 'display',
+		),
 		'Yeseva One' => array(
 			'label' => 'Yeseva One',
 			'variants' => array(
@@ -10159,9 +11298,9 @@ function stag_get_google_fonts() {
 			'subsets' => array(
 				'cyrillic',
 				'cyrillic-ext',
-				'vietnamese',
 				'latin',
 				'latin-ext',
+				'vietnamese',
 			),
 			'category' => 'display',
 		),
@@ -10179,10 +11318,10 @@ function stag_get_google_fonts() {
 			'label' => 'Yrsa',
 			'variants' => array(
 				'300',
-				'regular',
 				'500',
 				'600',
 				'700',
+				'regular',
 			),
 			'subsets' => array(
 				'latin',
@@ -10199,6 +11338,38 @@ function stag_get_google_fonts() {
 				'latin',
 			),
 			'category' => 'handwriting',
+		),
+		'Zilla Slab' => array(
+			'label' => 'Zilla Slab',
+			'variants' => array(
+				'300',
+				'300italic',
+				'500',
+				'500italic',
+				'600',
+				'600italic',
+				'700',
+				'700italic',
+				'italic',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'serif',
+		),
+		'Zilla Slab Highlight' => array(
+			'label' => 'Zilla Slab Highlight',
+			'variants' => array(
+				'700',
+				'regular',
+			),
+			'subsets' => array(
+				'latin',
+				'latin-ext',
+			),
+			'category' => 'display',
 		),
 ) );
 }

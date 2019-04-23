@@ -1,0 +1,490 @@
+/*---------------------------------------------------------
+ 6. Pages (_pages.scss)
+-------------------------------------------------------- */
+.page-header {
+	@extend %site-width;
+	text-align: center;
+	&__content {
+		@include rem(padding-top, 80px);
+		@include rem(padding-bottom, 65px);
+		@include media( max-width $grid-breakpoint - 1) {
+			@include rem(padding, 60px 0);
+		}
+	}
+}
+
+.hide-page-title .site-main .entry-header {
+	display: none;
+}
+
+body[class*="page-id"]:not(.page-template-current-php) {
+	.entry-header {
+		@extend %inside;
+		@include rem('margin-bottom', 70px);
+		color: #fff;
+		text-align: center;
+	}
+	.entry-title {
+		line-height: 1.3;
+		@include rem('font-size', 65px);
+		@include media( max-width 480px ) {
+			@include rem('font-size', 30px);
+			line-height: 1;
+		}
+	}
+}
+
+.site-main .page {
+
+	.entry-meta {
+		@include rem('margin-top', 30px);
+		text-align: center;
+	}
+}
+
+.page-template-widgetized .page {
+	@include rem('padding', 90px 0);
+}
+
+.page-template-widgetized .entry-content p:last-of-type {
+	margin-bottom: 0;
+}
+
+.header-over[class*="page-id-"].page-template-widgetized .hentry {
+	@include rem('padding-top', 200px);
+}
+
+.search .page {
+	padding: 0;
+	.entry-meta {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.page-cover {
+	position: relative;
+	border-bottom: 2px solid #fff;
+
+	&__background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		background-repeat: no-repeat;
+		background-position: center;
+		z-index: 2;
+		@include background-size(cover);
+	}
+	.hentry {
+		position: relative;
+		z-index: 3;
+	}
+}
+
+
+/*---------------------------------------------------------
+ Author Page (_pages.scss)
+-------------------------------------------------------- */
+.current-author {
+	&__name {
+		line-height: 1.1;
+		@include rem(margin-bottom, 30px);
+		@include media($grid-breakpoint) {
+			@include rem(font-size, 65px);
+		}
+	}
+	&__description {
+		line-height: 1.6;
+		@include rem(font-size, 20px);
+		@include media( max-width $grid-breakpoint - 1) {
+			@include rem(font-size, 18px);
+		}
+	}
+	&__social-profiles {
+		list-style: none;
+		@include rem(font-size, 50px);
+		@include rem(margin-top, 50px);
+
+		@include media(max-width 480px) {
+			@include rem(font-size, 30px);
+		}
+
+		li {
+			display: inline-block;
+			@include rem(margin, 0 20px);
+			@include media(max-width 480px) {
+				@include rem(margin, 0 15px);
+			}
+		}
+		a {
+			color: inherit;
+			@include transition(color 200ms);
+			&:hover {
+				color: #a3a3a3;
+			}
+			border: 0;
+		}
+	}
+}
+
+.byline {
+	.hide-author & {
+		display: none;
+	}
+}
+
+.author {
+	.block-button {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+/*---------------------------------------------------------
+ Widgetized Page Template (_pages.scss)
+-------------------------------------------------------- */
+.page-template-widgetized-php {
+	&.header-over {
+		.stag_widget_intro {
+			@include rem('padding-top', 250px);
+		}
+	}
+}
+
+/*---------------------------------------------------------
+ 404 Error Page (_pages.scss)
+-------------------------------------------------------- */
+.error-404 {
+	.page-header {
+		@include rem('margin-bottom', 20px);
+	}
+
+	.page-content {
+		.widget {
+			@include rem('margin-top', 40px);
+		}
+	}
+
+	.search-form {
+		@include rem('margin-top', 49.9px);
+	}
+	.search-field {
+		width: 100%;
+	}
+	.search-submit {
+		display: none;
+	}
+}
+
+.traditional-navigation {
+	.archive-header-wrapper {
+		margin: 40px 0;
+		text-align: center;
+	}
+	.archive-header {
+		position: static;
+		top: initial;
+		right: 0;
+		padding: 0;
+		@include transform(none);
+		background: none;
+		color: #000;
+	}
+	.archive-header__title {
+		color: inherit;
+		position: relative;
+		> span {
+			display: inline-block;
+			padding: 0 20px;
+			background: #fff;
+			color: #000;
+		}
+
+		&:before {
+			position: absolute;
+			    z-index: -1;
+			    top: 50%;
+			    right: 0;
+			    left: 0;
+			    display: block;
+			    width: 100%;
+			    height: 2px;
+			    content: "";
+			    @include transform(translateY(-50%));
+			    background: #000;
+		}
+	}
+}
+
+.archive-header {
+	background: #000;
+	position: absolute;
+	right: 70px;
+	top: 33px;
+	padding: 10px;
+	line-height: 1;
+
+	&__title {
+		@include rem('font-size', 20px);
+	}
+
+	@include media(max-width 800px) {
+		display: none;
+	}
+
+	.term {
+		color: inherit;
+	}
+}
+
+.ink-contact-form {
+	@extend %site-width;
+	@include rem('margin-top', 80px);
+	@include rem('margin-bottom', 80px);
+
+	&__title {
+		@include rem('margin-bottom', 50px);
+		@include rem('margin-top', 40px);
+		color: #2C2C2C;
+	}
+
+	form {
+		background: #f6f6f6;
+		padding: 35px 35px 0 35px;
+	}
+
+	.unit {
+		@include rem('margin-bottom', 40px);
+	}
+
+	textarea,
+	input[type="text"],
+	input[type="email"] {
+		width: 100%;
+	}
+
+	.contact-form-button {
+		display: block;
+	}
+
+	.error {
+		color: #D15858;
+		display: block;
+		margin-top: 5px;
+	}
+
+	.buttons {
+		margin-left: -35px;
+		background: #ffffff;
+		margin-right: -35px;
+		padding: 40px 0;
+	}
+
+	.stag-alert {
+		background: none;
+		border: 2px solid $accent;
+		font-size: 20px;
+		line-height: 1.8;
+		color: $accent;
+	}
+}
+
+.no-results {
+	text-align: center;
+	margin-bottom: 50px;
+	.search-field {
+		display: block;
+		width: 100%;
+		@include rem('padding-right', 50px);
+	}
+	.page-header {
+		margin-bottom: 30px;
+	}
+	.search-form {
+		@include rem('margin-top', 30px);
+	}
+}
+
+.author {
+	.block-button {
+		@include rem(margin-top, 50px);
+	}
+}
+
+.error-post {
+	padding-top: 200px;
+	padding-bottom: 150px;
+	text-align: center;
+	color: #fff;
+
+	.entry-title {
+		@include rem(margin-bottom, 70px);
+		@include rem(font-size, 65px);
+		line-height: 1.3;
+	}
+}
+
+.error404 .page-cover {
+	margin-bottom: 50px;
+}
+
+.custom-header {
+	position: relative;
+	text-align: center;
+	color: #fff;
+	background-color: #000;
+	background-position: center;
+	background-size: cover;
+	text-shadow: 1px 1px 3px rgba(black, .3);
+	border-bottom: 2px solid #fff;
+
+	z-index: 1;
+	overflow: hidden;
+
+	a {
+		color: currentColor !important;
+	}
+
+	.sharedaddy {
+		display: none;
+	}
+
+	.custom-header-title {
+		@include rem(font-size, 75px);
+		line-height: 1.25;
+		@include media(max-width 480px) {
+			font-size: 40px;
+		}
+	}
+
+	.custom-header-description {
+		@include rem(font-size, 27px);
+		line-height: 1.25;
+
+		@include media(max-width $one) {
+			font-size: 20px;
+		}
+
+		p {
+			margin-top: 20px;
+		}
+	}
+
+	.custom-header-title + .custom-header-description {
+		margin-top: 30px;
+	}
+
+	.inner-header-content {
+		max-width: 740px;
+		margin: 0 auto;
+		padding: 250px 20px;
+		position: relative;
+		z-index: 2;
+	}
+}
+.custom-header-content {
+	width: 100%;
+}
+
+.custom-header-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	opacity: .8;
+	z-index: 1;
+}
+
+.page {
+	.entry-content p:last-child {
+		margin-bottom: 0;
+	}
+	.site-footer {
+		border-top: 2px solid #000;
+		padding-top: 50px;
+	}
+}
+
+.single,
+.page {
+
+	.single-sidebar-on {
+		&.site-main,
+		& + .site-footer .inside {
+			max-width: 1210px;
+			margin: 0 auto;
+			padding-right: 30px;
+			padding-left: 30px;
+
+			@include media(max-width 970px) {
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+		}
+
+		.content-area {
+			float: left;
+			width: 74%;
+			max-width: 800px;
+
+			@include media(max-width 970px) {
+				float: none;
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+
+		.widget-area {
+			float: left;
+			max-width: 270px;
+			width: 24%;
+			font-size: 15px;
+			line-height: 1.7;
+
+			@include media(min-width 800px) {
+				margin-left: 2%;
+			}
+
+			@include media(min-width 1170px) {
+				margin-left: 5%;
+			}
+
+			@include media(max-width 970px) {
+				float: none;
+				max-width: 100%;
+				width: 100%;
+			}
+
+			.widget-title {
+				font-size: 18px;
+				margin-bottom: 30px;
+			}
+
+			.textwidget,
+			.widget_categories a,
+			.widget_archive a,
+			.widget_pages a,
+			.widget_meta a,
+			.widget_recent_comments a,
+			.widget_nav_menu a,
+			.main-navigation a {
+				font-size: 17px;
+				line-height: 1.8;
+			}
+		}
+
+		.entry-content img.size-full.alignnone {
+		    width: 125%;
+		    max-width: 125%;
+		    margin-left: -25%;
+
+		    @include media(max-width 970px) {
+			    margin-left: -10%;
+			}
+		}
+
+	}
+}

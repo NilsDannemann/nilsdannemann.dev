@@ -1,5 +1,7 @@
 <?php
 /**
+ * The sidebar containing the Footer Widget Area 1.
+ *
  * @package Stag
  */
 

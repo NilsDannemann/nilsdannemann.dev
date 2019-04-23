@@ -31,6 +31,7 @@ function stag_wp_title( $title, $sep ) {
 
 		// Add a page number if necessary.
 		if ( $paged >= 2 || $page >= 2 ) {
+			/* translators: %s: page count */
 			$title .= " $sep " . sprintf( __( 'Page %s', 'stag' ), max( $paged, $page ) );
 		}
 	}
@@ -151,7 +152,8 @@ if ( ! function_exists( 'stag_maybe_hash_hex_color' ) ) :
  * @return string Sanitized value.
  */
 function stag_maybe_hash_hex_color( $color ) {
-	if ( $unhashed = stag_sanitize_hex_color_no_hash( $color ) )
+	$unhashed = stag_sanitize_hex_color_no_hash( $color );
+	if ( $unhashed )
 		return '#' . $unhashed;
 
 	return $color;
@@ -258,8 +260,8 @@ if ( ! function_exists( 'ink_sidebar_description' ) ) :
  *
  * @since 2.0.0.
  *
- * @param 	string $sidebar_id 	The sidebar id to look description for.
- * @return 	string 				The description
+ * @param string $sidebar_id The sidebar id to look description for.
+ * @return string The description
  */
 function ink_sidebar_description( $sidebar_id ) {
 	$description = '';

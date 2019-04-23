@@ -11,14 +11,14 @@
 			<div class="grid-section">
 				<p class="unit one-of-two">
 					<label for="rcp_user_Login"><?php _e( 'Username', 'rcp' ); ?></label>
-					<input name="rcp_user_login" id="rcp_user_login" class="required" type="text"/>
+					<input name="rcp_user_login" id="rcp_user_login" class="required" type="text" tabindex="1" />
 				</p>
 				<p class="unit one-of-two">
 					<label for="rcp_user_pass">
 						<?php _e( 'Password', 'rcp' ); ?>
 						<span class="rcp_lost_password"><a href="<?php echo esc_url( add_query_arg( 'rcp_action', 'lostpassword') ); ?>"><?php _e( 'I have forgotten', 'stag' ); ?></a></span>
 					</label>
-					<input name="rcp_user_pass" id="rcp_user_pass" class="required" type="password"/>
+					<input name="rcp_user_pass" id="rcp_user_pass" class="required" type="password" tabindex="2" />
 				</p>
 			</div>
 
@@ -28,8 +28,8 @@
 				<input type="hidden" name="rcp_action" value="login"/>
 				<input type="hidden" name="rcp_redirect" value="<?php echo esc_url( $rcp_login_form_args['redirect'] ); ?>"/>
 				<input type="hidden" name="rcp_login_nonce" value="<?php echo wp_create_nonce( 'rcp-login-nonce' ); ?>"/>
-				<input id="rcp_login_submit" type="submit" value="Login"/>
-				<input type="checkbox" name="rcp_user_remember" id="rcp_user_remember" value="1"/>
+				<input id="rcp_login_submit" type="submit" value="Login" tabindex="4" />
+				<input type="checkbox" name="rcp_user_remember" id="rcp_user_remember" value="1" tabindex="3" />
 				<label for="rcp_user_remember"><?php _e( 'Remember', 'rcp' ); ?></label>
 			</p>
 

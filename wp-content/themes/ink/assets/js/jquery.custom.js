@@ -1,10 +1,13 @@
-(function (window, $) {
+/* global postSettings */
+/* eslint-disable func-style, vars-on-top */
+( function( window, $ ) {
 	'use strict';
 
 	// Cache document for fast access.
 	var document = window.document;
 
-	var Stag = function () {
+	var Stag = function() {
+
 		/**
 		 * Hold reusable elements.
 		 *
@@ -13,6 +16,7 @@
 		var cache = {};
 
 		function init() {
+
 			// Cache the reusable elements
 			cacheElements();
 
@@ -26,27 +30,27 @@
 		 * @return void
 		 */
 		function cacheElements() {
-			cache.$window       = $(window);
-			cache.$document     = $(document);
+			cache.$window       = $( window );
+			cache.$document     = $( document );
 
 			// Test for iPod and Safari
 			cache.isiPod        = isiPod();
 			cache.isSafari      = isSafari();
 
-			cache.$navToggle    = $('#site-navigation-toggle');
+			cache.$navToggle    = $( '#site-navigation-toggle' );
 
-			cache.$body         = $('body');
-			cache.$isHomepage   = cache.$body.hasClass('home');
-			cache.$isSingle     = cache.$body.hasClass('single');
-			cache.$isWidgetized = cache.$body.hasClass('page-template-widgetized-php');
-			cache.$entryContent = cache.$body.find('.entry-content');
-			cache.$fullImages   = cache.$entryContent.find('.alignnone');
+			cache.$body         = $( 'body' );
+			cache.$isHomepage   = cache.$body.hasClass( 'home' );
+			cache.$isSingle     = cache.$body.hasClass( 'single' );
+			cache.$isWidgetized = cache.$body.hasClass( 'page-template-widgetized-php' );
+			cache.$entryContent = cache.$body.find( '.entry-content' );
+			cache.$fullImages   = cache.$entryContent.find( '.full-width' );
 			cache.$windowWidth  = cache.$window.width();
 
 			cache.$others       = [];
 			cache.$page         = 1;
 
-			cache.windowHeight  = (true === cache.isiPod && true === cache.isSafari) ? window.screen.availHeight : cache.$window.height();
+			cache.windowHeight  = ( true === cache.isiPod && true === cache.isSafari ) ? window.screen.availHeight : cache.$window.height();
 		}
 
 		/**
@@ -55,55 +59,55 @@
 		 * @return void
 		 */
 		function bindEvents() {
+
 			// Enable the mobile menu
-			cache.$document.on('ready', function() {
+			cache.$document.on( 'ready', function() {
 				setupRetinaCookie();
 				setupMenu();
-				staticContentBackground();
 				resetHeights();
-				setupFitVids();
+
 				setupFullWidthImages();
 				RCPStyles();
 				removeNoTouchClass();
 				runSliderSection();
 			});
 
-			cache.$window.on('resize', function() {
+			cache.$window.on( 'resize', function() {
 				setupFullWidthImages();
 			});
 
-			var lazyResize = debounce(resetHeights, 200, false);
-			cache.$window.resize(lazyResize);
+			var lazyResize = debounce( resetHeights, 200, false );
+			cache.$window.resize( lazyResize );
 
-			$('#scroll-comment-form').on('click', function(e){
+			$( '#scroll-comment-form' ).on( 'click', function( e ) {
 				e.preventDefault();
-				$('html,body').animate({
-					scrollTop: $('#respond').offset().top
-		        }, 200);
+				$( 'html,body' ).animate({
+					scrollTop: $( '#respond' ).offset().top
+				}, 200 );
 			});
 
-			$('#load-more-posts').on('click', function(e){
+			$( '#load-more-posts' ).on( 'click', function( e ) {
 				e.preventDefault();
-				var data = $(this);
-				infinitePosts(data);
+				var data = $( this );
+				infinitePosts( data );
 			});
 
-			$('#toggle-comment-form').on('click', function(e){
+			$( '#toggle-comment-form' ).on( 'click', function( e ) {
 				e.preventDefault();
-				var $this = $(this),
+				var $this = $( this ),
 					openClass = 'is-visible is-collapsed';
 
-				$( '.comments-wrap' ).fadeToggle( 'fast', function(){
-					$this.toggleClass(openClass);
-				} );
+				$( '.comments-wrap' ).fadeToggle( 'fast', function() {
+					$this.toggleClass( openClass );
+				});
 			});
 
-			$('#scroll-to-content').on('click', function(e){
+			$( '#scroll-to-content' ).on( 'click', function( e ) {
 				e.preventDefault();
 
-				$('html,body').animate({
-					scrollTop: $('#main').offset().top-80
-		        }, 500, 'linear');
+				$( 'html,body' ).animate({
+					scrollTop: $( '#main' ).offset().top - 80
+				}, 500, 'linear' );
 			});
 		}
 
@@ -112,69 +116,61 @@
 		 *
 		 * @return void
 		 */
-		function setupMenu(e) {
-			cache.$navToggle.on('click', function(e){
+		function setupMenu( e ) {
+			cache.$navToggle.on( 'click', function( e ) {
 				e.preventDefault();
 				var openClass = 'site-nav-transition site-nav-drawer-open';
-				cache.$body.toggleClass(openClass);
+				cache.$body.toggleClass( openClass );
 			});
 
-			$('.site-nav-overlay, .site-nav .close-nav').on('click', function(e){
+			cache.$body.on( 'click', '.site-nav-overlay, .close-nav', function( e ) {
 				e.preventDefault();
 				var openClass = 'site-nav-transition site-nav-drawer-open';
-				cache.$body.toggleClass(openClass);
+				cache.$body.toggleClass( openClass );
 			});
 		}
 
 		function resetHeights() {
 			setDivHeight( '.article-cover:not(.page-cover)', cache.$others );
-		}
 
-		function setupFitVids() {
-			// FitVids is only loaded on the pages and single post pages. Check for it before doing anything.
-			if (!$.fn.fitVids) {
-				return;
+			if ( 800 > cache.$window.width() ) {
+				$( '.Grid-background, .grid-cover' ).css( 'height', cache.$window.width() / 1.7 );
 			}
-
-			// Get the selectors
-			var selectors;
-			if ('object' === typeof StagFitvidsCustomSelectors) {
-				selectors = StagFitvidsCustomSelectors.customSelector;
-			}
-
-			$('.entry-content').fitVids({ customSelector: selectors });
-
-			// Fix padding issue with Blip.tv issues; note that this *must* happen after Fitvids runs
-			// The selector finds the Blip.tv iFrame then grabs the .fluid-width-video-wrapper div sibling
-			$('.fluid-width-video-wrapper:nth-child(2)', '.video-container').css({ 'paddingTop': 0 });
 		}
 
 		function setupFullWidthImages() {
 			var $singleSidebarOn = false;
 
-			if ( cache.$body.find('.single-sidebar-on').length > 0 ) {
+			if ( 0 < cache.$body.find( '.single-sidebar-on' ).length ) {
 				$singleSidebarOn = true;
 			}
 
-			cache.$fullImages.each(function(){
-				var _this = $(this);
+			cache.$fullImages.each( function() {
+				var _this = $( this );
 
-				if ( $singleSidebarOn === false ) {
-					if( _this.hasClass('wp-caption') ) {
-						_this.css( { 'margin-left': ( ( cache.$entryContent.width() / 2 ) - ( cache.$window.width() / 2 ) ), 'max-width': 'none' });
-						_this.add(_this.find('img')).css( 'width', cache.$window.width());
-					}else{
-						_this.css( { 'margin-left': ( ( cache.$entryContent.width() / 2 ) - ( cache.$window.width() / 2 ) ), 'max-width': 'none', 'width': cache.$window.width() });
+				/**
+				 * Remove attribute 'srcset' in so full width images can take the maximum width available.
+				 *
+				 * @since 2.2.4
+				 */
+				_this.removeAttr( 'srcset' );
+
+				if ( false === $singleSidebarOn ) {
+					if ( _this.hasClass( 'wp-caption' ) ) {
+						_this.css({ 'margin-left': ( ( cache.$entryContent.width() / 2 ) - ( cache.$window.width() / 2 ) ), 'max-width': 'none' });
+						_this.add( _this.find( 'img' ) ).css( 'width', cache.$window.width() );
+					} else {
+						_this.css({ 'margin-left': ( ( cache.$entryContent.width() / 2 ) - ( cache.$window.width() / 2 ) ), 'max-width': 'none', 'width': cache.$window.width() });
 					}
 				}
 
 			});
 		}
 
-		function infinitePosts(el) {
-			el.parent().addClass('loading');
+		function infinitePosts( el ) {
+			el.parent().addClass( 'loading' );
 
-			el.spin('medium', '#000');
+			el.spin( 'medium', '#000' );
 
 			cache.$page++;
 
@@ -182,46 +178,22 @@
 				action: 'stag_inifinite_scroll',
 				nonce: postSettings.nonce,
 				search: postSettings.search,
-				archive: el.data('archive'),
-				page: cache.$page,
+				archive: el.data( 'archive' ),
+				page: cache.$page
 			}, function( data ) {
+
 				// Remove load more button if no pages are left
-				if(cache.$page >= data.pages) el.parent().fadeOut();
+				if ( cache.$page >= data.pages ) {
+el.parent().fadeOut();
+}
 
 				//Append the content
-				$('#main').append(data.content);
+				$( '#main' ).append( data.content );
 			}, 'json' );
 
-			jqxhr.done(function(){
-				el.parent().removeClass('loading');
-				el.spin(false);
-			});
-		}
-
-		/**
-		 * Setup backgrounds and colors for static content sections on widgetized templates.
-		 *
-		 * @return void
-		 */
-		function staticContentBackground() {
-			if( !cache.$isWidgetized )
-				return;
-
-			$('.page-template-widgetized-php').find('.stag_widget_static_content, .stag_widget_recent_posts').each(function(){
-				var _this = $(this),
-					bgColor = _this.find('.hentry').data('bg-color'),
-					bgImage = _this.find('.hentry').data('bg-image'),
-					bgOpacity = parseInt(_this.find('.hentry').data('bg-opacity'), 10),
-					textColor = _this.find('.hentry').data('text-color'),
-					linkColor = _this.find('.hentry').data('link-color');
-
-				_this.prepend('<div class="static-content-cover" />');
-				_this.find('.static-content-cover').css({ 'background-image' : 'url('+bgImage+')', 'opacity' : bgOpacity/100, '-ms-filter': '"alpha(opacity='+bgOpacity+')"' });
-
-				_this.css({ 'background-color': bgColor, 'color' : textColor });
-				_this.find('a').css('color', linkColor);
-				_this.find('a').css('border-color', linkColor);
-				_this.find('h1, h2, h3, h4, h5, h6').css('color', textColor);
+			jqxhr.done( function() {
+				el.parent().removeClass( 'loading' );
+				el.spin( false );
 			});
 		}
 
@@ -231,7 +203,7 @@
 		 * @return void
 		 */
 		function setupRetinaCookie() {
-			if( document.cookie.indexOf('retina') === -1 && 'devicePixelRatio' in window && window.devicePixelRatio === 2 ){
+			if ( -1 === document.cookie.indexOf( 'retina' ) && 'devicePixelRatio' in window && 2 === window.devicePixelRatio ) {
 				document.cookie = 'retina=' + window.devicePixelRatio + ';';
 			}
 		}
@@ -242,7 +214,7 @@
 		 * @returns {boolean}
 		 */
 		function isiPod() {
-			return (/(iPhone|iPod)/g).test(navigator.userAgent);
+			return ( /(iPhone|iPod)/g ).test( navigator.userAgent );
 		}
 
 		/**
@@ -251,7 +223,7 @@
 		 * @returns {boolean}
 		 */
 		function isSafari() {
-			return (-1 !== navigator.userAgent.indexOf('Safari') && -1 === navigator.userAgent.indexOf('Chrome'));
+			return ( -1 !== navigator.userAgent.indexOf( 'Safari' ) && -1 === navigator.userAgent.indexOf( 'Chrome' ) );
 		}
 
 		/**
@@ -262,25 +234,26 @@
 		 *
 		 * @return void
 		 */
-		function setDivHeight(element, others) {
+		function setDivHeight( element, others ) {
+
 			// iOS devices return an incorrect value with height() so availHeight is used instead.
-			var windowHeight = (true === cache.isiPod && true === cache.isSafari) ? window.screen.availHeight : cache.$window.height();
+			var windowHeight = ( true === cache.isiPod && true === cache.isSafari ) ? window.screen.availHeight : cache.$window.height();
 			var offsetHeight = 0;
 
 			// Add up the heights of other elements
-			for (var i = 0; i < others.length; i++) {
-				offsetHeight += $(others[i]).outerHeight();
+			for ( var i = 0; i < others.length; i++ ) {
+				offsetHeight += $( others[i]).outerHeight();
 			}
 
-			var newHeight = windowHeight - offsetHeight - parseInt( $('html').css('margin-top') );
+			var newHeight = windowHeight - offsetHeight - parseInt( $( 'html' ).css( 'margin-top' ) );
 
-			if (cache.$body.hasClass('traditional-navigation') || cache.$body.hasClass('header-normal')) {
-				newHeight = newHeight - $('.site-header').outerHeight();
+			if ( cache.$body.hasClass( 'traditional-navigation' ) || cache.$body.hasClass( 'header-normal' ) ) {
+				newHeight = newHeight - $( '.site-header' ).outerHeight();
 			}
 
 			// Only set the height if the new height is greater than the original
-			if (newHeight > 0) {
-				$(element).outerHeight(newHeight);
+			if ( 0 < newHeight ) {
+				$( element ).outerHeight( newHeight );
 			}
 		}
 
@@ -296,29 +269,29 @@
 		 * @param   immediate
 		 * @returns {Function}
 		 */
-		function debounce (func, wait, immediate) {
+		function debounce( func, wait, immediate ) {
 			var timeout, args, context, timestamp, result;
 			return function() {
 				context = this;
 				args = arguments;
 				timestamp = new Date();
 				var later = function() {
-					var last = (new Date()) - timestamp;
-					if (last < wait) {
-						timeout = setTimeout(later, wait - last);
+					var last = ( new Date() ) - timestamp;
+					if ( last < wait ) {
+						timeout = setTimeout( later, wait - last );
 					} else {
 						timeout = null;
-						if (!immediate) {
-							result = func.apply(context, args);
+						if ( ! immediate ) {
+							result = func.apply( context, args );
 						}
 					}
 				};
-				var callNow = immediate && !timeout;
-				if (!timeout) {
-					timeout = setTimeout(later, wait);
+				var callNow = immediate && ! timeout;
+				if ( ! timeout ) {
+					timeout = setTimeout( later, wait );
 				}
-				if (callNow) {
-					result = func.apply(context, args);
+				if ( callNow ) {
+					result = func.apply( context, args );
 				}
 				return result;
 			};
@@ -326,41 +299,41 @@
 
 		function RCPStyles() {
 
-			var $rcpForm = $('.rcp_form');
-            var $gateway = $rcpForm.find("#rcp_gateway");
+			var $rcpForm = $( '.rcp_form' );
+            var $gateway = $rcpForm.find( '#rcp_gateway' );
 
-			$(".rcp_form #rcp_subscription_levels li:first-child").addClass("checked");
-			$(".rcp_form #rcp_subscription_levels input:radio").on('click', function(){
-            	$(".rcp_form #rcp_subscription_levels li").removeClass("checked"),
-            	$(this).parent().addClass("checked");
-            });
+			$( '.rcp_form #rcp_subscription_levels li:first-child' ).addClass( 'checked' );
+			$( '.rcp_form #rcp_subscription_levels input:radio' ).on( 'click', function() {
+				$( '.rcp_form #rcp_subscription_levels li' ).removeClass( 'checked' ),
+				$( this ).parent().addClass( 'checked' );
+			});
 
 			// check if payment gateway dropdown exist.
-			if ($gateway.length) {
-				$rcpForm.find("#rcp_auto_renew_wrap").addClass('adjust-padding');
+			if ( $gateway.length ) {
+				$rcpForm.find( '#rcp_auto_renew_wrap' ).addClass( 'adjust-padding' );
 			}
 
-        }
+		}
 
-        // Touch Device Detection
-        function removeNoTouchClass() {
-        	var isTouchDevice = 'ontouchstart' in document.documentElement;
-			if( isTouchDevice ) {
-				$('body').removeClass('no-touch');
+		// Touch Device Detection
+		function removeNoTouchClass() {
+			var isTouchDevice = 'ontouchstart' in document.documentElement;
+			if ( isTouchDevice ) {
+				$( 'body' ).removeClass( 'no-touch' );
 			}
-        }
+		}
 
-        // Run Slider
-        function runSliderSection() {
-			$('.page-template-widgetized').find('.stag_widget_feature_slides').each(function(){
-				var _this = $(this),
-					flexTransition = _this.find('.featured-slides').data('transition'),
-					flexSpeed = _this.find('.featured-slides').data('speed'),
-					flexPause = _this.find('.featured-slides').data('pause'),
-					pagination = _this.find('.featured-slides').data('pagination'),
+		// Run Slider
+		function runSliderSection() {
+			$( '.page-template-widgetized' ).find( '.stag_widget_feature_slides' ).each( function() {
+				var _this = $( this ),
+					flexTransition = _this.find( '.featured-slides' ).data( 'transition' ),
+					flexSpeed = _this.find( '.featured-slides' ).data( 'speed' ),
+					flexPause = _this.find( '.featured-slides' ).data( 'pause' ),
+					pagination = _this.find( '.featured-slides' ).data( 'pagination' ),
 					paginate = false,
 					dataPause = false,
-					navContainer = _this.find('.control-nav-container');
+					navContainer = _this.find( '.control-nav-container' );
 
 				if ( 1 === flexPause ) {
 					dataPause = true;
@@ -369,8 +342,8 @@
 					paginate = true;
 				}
 
-				if ( typeof ($.fn.flexslider) !== 'undefined' ) {
-					$('.site-slider').flexslider({
+				if ( 'undefined' !== typeof( $.fn.flexslider ) ) {
+					$( '.site-slider' ).flexslider({
 						animation: flexTransition,
 						controlNav: paginate,
 						controlsContainer: navContainer,
@@ -380,8 +353,8 @@
 						animationSpeed: 600,
 						pauseOnHover: dataPause,
 						smoothHeight: true,
-						start: function(){
-							$('.site-slider').removeClass('loading');
+						start: function() {
+							$( '.site-slider' ).removeClass( 'loading' );
 						}
 					});
 				}
@@ -394,4 +367,4 @@
 
 	// Instantiate the "class".
 	window.Stag = new Stag();
-})(window, jQuery);
+}( window, jQuery ) );

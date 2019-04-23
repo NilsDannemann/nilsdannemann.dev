@@ -97,7 +97,7 @@ if ( $restricted_condition ) {
 
 	<?php if ( '' !== $caption ) : ?>
 	<div class="article-cover__caption">
-		<p><?php echo esc_html( $caption ); ?></p>
+		<p><?php echo wp_kses( $caption, ink_allowed_html() ); ?></p>
 	</div>
 	<?php endif; ?>
 

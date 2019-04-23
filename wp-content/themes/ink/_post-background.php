@@ -10,9 +10,10 @@ $id = get_the_ID();
 
 $thumb_id         = get_post_thumbnail_id( $id );
 $background_image = '';
+$image_size = ( wp_is_mobile() ) ? 'ink-post-cover' : 'full';
 
 if ( '' !== $thumb_id ) {
-	$thumb_url          = wp_get_attachment_image_src( $thumb_id, 'full', true );
+	$thumb_url          = wp_get_attachment_image_src( $thumb_id, $image_size, true );
 	$background_image   = $thumb_url[0];
 }
 

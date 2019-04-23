@@ -16,7 +16,17 @@ get_header(); ?>
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'search' ); ?>
+				<?php
+
+				$layout = stag_theme_mod( 'layout_options', 'layout' );
+
+				if ( in_array( $layout, array( 'seven', 'eight', 'nine' ), true ) ) {
+					get_template_part( 'template-parts/layout/layout', $layout );
+				} else {
+					get_template_part( 'content', get_post_format() );
+				}
+
+				?>
 
 			<?php endwhile; ?>
 

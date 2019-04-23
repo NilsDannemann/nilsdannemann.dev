@@ -3,50 +3,29 @@
  * Theme URI: https://codestag.com/themes/ink
  * Author: Codestag
  * Author URI: https://codestag.com
- * Description: A Modern and Elegant Photography theme for WordPress.
- * Version: 2.1.6
+ * Description: Ink is a WordPress theme with a minimalist design that lets your narrative take centre stage, so your content can shine. Uncluttered, straight-forward theme options, are inside the default WordPress live customizer, ensuring an experience with a native look and feel, and a great blog right out of the box.
+ * Version: 2.2.14
  * License: GNU General Public License v2.0
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Tags: theme-options, fluid-layout, featured-images, translation-ready
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Tags: custom-header, custom-colors, gutenberg, custom-menu, editor-style, fluid-layout, featured-images, sticky-post, theme-options, threaded-comments, footer-widgets, blog, entertainment, photography, translation-ready
  * Text Domain: stag
  */
 
-@import "bourbon";
+@import 'compass';
 
-// Variables
-@import "preboot";
-@import "variables";
-
-// Relay
-@import 'base/_hfc-relay-core-helpers.scss';
-@import 'base/_hfc-relay-core-transition.scss';
-@import 'base/_hfc-relay-ui-elements-arrow.scss';
-@import 'base/_hfc-relay-ui-elements-button.scss';
-@import 'base/_hfc-relay-grid-functions.scss';
-@import 'base/_hfc-relay-grid.scss';
-@import 'base/_hfc-relay-grid-column.scss';
-@import 'base/_hfc-relay-grid-container.scss';
-@import 'base/_hfc-relay-grid-queries.scss';
-
-// Base
-@import 'base/reset.scss';
-@import 'base/base.scss';
-@import 'base/typography.scss';
-
-// Components
-@import "components/grid";
-@import "components/scaffolding";
-@import "components/elements";
-@import "components/patterns";
-@import "components/posts";
-@import "components/pages";
-@import "components/sidebar";
-@import "components/comments";
-@import "components/forms";
-@import "components/support";
-@import "components/hero";
-
-
+@import 'contents';
+@import 'reset';
+@import 'preboot';
+@import 'grid';
+@import 'scaffolding';
+@import 'elements';
+@import 'patterns';
+@import 'posts';
+@import 'pages';
+@import 'sidebar';
+@import 'comments';
+@import 'forms';
+@import 'support';
 
 // Small fix for side menu under IE9
 .site-nav-drawer-open.ie9 {
@@ -64,7 +43,7 @@
 
 @-webkit-keyframes bounceIn {
 	from {
-		-webkit-transform: scale(.85);
+		-webkit-transform: scale(0.85);
 	}
 
 	to {
@@ -73,7 +52,7 @@
 }
 @-moz-keyframes bounceIn {
 	from {
-		-moz-transform: scale(.85);
+		-moz-transform: scale(0.85);
 	}
 
 	to {
@@ -82,7 +61,7 @@
 }
 @keyframes bounceIn {
 	from {
-		transform: scale(.85);
+		transform: scale(0.85);
 	}
 
 	to {
@@ -108,9 +87,22 @@
 	}
 }
 
-
 #disqus_thread {
 	max-width: 1010px;
 	margin: 30px auto 10px auto;
 	padding: 0 20px;
+}
+
+[class*='wp-block-sgb-'] h1,
+[class*='wp-block-sgb-'] h2,
+[class*='wp-block-sgb-'] h3,
+[class*='wp-block-sgb-'] h4,
+[class*='wp-block-sgb-'] h5,
+[class*='wp-block-sgb-'] h6,
+[class*='wp-block-sgb-'] p {
+	margin: 0;
+}
+
+.wp-block-pullquote, .wp-block-pullquote blockquote {
+	margin: 0;
 }

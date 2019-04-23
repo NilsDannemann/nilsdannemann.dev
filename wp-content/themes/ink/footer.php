@@ -25,8 +25,10 @@ if ( $sidebar_count > 0 ) {
 
 ?>
 		<footer id="colophon" class="site-footer" role="contentinfo">
-			<?php // Footer widget areas.
-			if ( true === $has_active_sidebar ) : ?>
+			<?php
+			// Footer widget areas.
+			if ( true === $has_active_sidebar ) :
+			?>
 			<div class="footer-widget-container columns-<?php echo esc_attr( $sidebar_count ); ?>">
 				<div class="inside">
 					<div class="footer-widgets grid">
@@ -35,7 +37,8 @@ if ( $sidebar_count > 0 ) {
 						while ( $current_sidebar <= $sidebar_count ) :
 							get_sidebar( 'footer-' . $current_sidebar );
 							$current_sidebar++;
-						endwhile; ?>
+						endwhile;
+						?>
 					</div>
 				</div>
 			</div>
@@ -53,7 +56,16 @@ if ( $sidebar_count > 0 ) {
 
 						<?php if ( has_nav_menu( 'footer' ) ) : ?>
 						<div class="unit one-of-two">
-							<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_class' => 'footer-menu', 'container' => false, 'fallback_cb' => false, 'before' => '<span class="divider">/</span>' ) ); ?>
+							<?php
+							wp_nav_menu( array(
+								'theme_location' => 'footer',
+								'menu_class'     => 'footer-menu',
+								'container'      => false,
+								'fallback_cb'    => false,
+								'depth'          => -1,
+								'before'         => '<span class="divider">/</span>',
+							) );
+							?>
 						</div>
 						<?php endif; ?>
 					</div>

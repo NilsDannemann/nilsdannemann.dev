@@ -31,7 +31,7 @@ $header_class       = ( $header_text || $header_description ) ? ' has-header-tex
 
 			<?php if ( '' !== $header_description ) : ?>
 			<?php remove_all_filters( 'sharing_display' ); ?>
-			<div class="custom-header-description"><?php echo apply_filters( 'the_content', $header_description ); ?></div>
+			<div class="custom-header-description"><?php echo do_shortcode( $header_description ); ?></div>
 			<?php endif; ?>
 		</div>
 	</div>
