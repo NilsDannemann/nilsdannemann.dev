@@ -167,7 +167,7 @@
 	dl,
 	table,
 	blockquote {
-		@include rem('margin-bottom', $base * 3);
+		@include rem('margin-bottom', $base * 1);
 	}
 
 	h1 {
