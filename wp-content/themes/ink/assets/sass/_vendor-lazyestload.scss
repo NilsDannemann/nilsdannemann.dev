@@ -1,5 +1,10 @@
 img {
+	max-width: 100%;
+	height: auto;
+	transition: filter 0.85s; //For: Lazyloading w lazyestload
+
 	&.lazyestload {
 		filter: blur(8px);
+		width: 100%;
 	}
 }
