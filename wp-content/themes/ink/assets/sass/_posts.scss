@@ -331,6 +331,7 @@
 		& > p:first-child {
 		  font-size: 1.65rem;
 		  font-family: Georgia;
+		  @include rem('margin-bottom', $base * 2);
 		}
 		& > p:first-child:first-letter {
 		  float: left;
