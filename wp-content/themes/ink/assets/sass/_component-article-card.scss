@@ -13,6 +13,7 @@
 
 	&__image {
 		border-radius: 5px;
+		filter: sepia(1) saturate(1.5) contrast(1.5);
 	}
 	&__caption {
 		margin-top: .5em;
