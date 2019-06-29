@@ -456,5 +456,9 @@ require_once get_template_directory() . '/inc/updater/theme-updater.php';
 /**
 * Include AOS
 */
-// wp_register_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.js', [], '2.3.4', true );
 wp_enqueue_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.js', [], '2.3.4', true );
+
+/**
+* Include Lazyestload
+*/
+wp_enqueue_script( 'nd-lazyestload', get_template_directory_uri() . '/assets/js/lazyestload.min.js', [], '1.0.0', true );
