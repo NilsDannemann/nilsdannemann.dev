@@ -112,6 +112,6 @@ if ( $restricted_condition ) {
 <?php if ( in_category( 'artbook' )) { ?>
 	<div class="article-card" data-aos="fade-up">
 		<img src="<?php echo the_post_thumbnail_url( 'thumbnail' );  ?>" data-src="<?php echo the_post_thumbnail_url( 'large' );  ?>" class="article-card__image lazyestload" alt="Artwork for <?php the_title(); ?>">
-		<div class="article-card__caption" data-aos="fade-right" aos-delay="300">Artwork for: <?php the_title(); ?></div>
+		<div class="article-card__caption">Artwork for: <?php the_title(); ?></div>
 </div>
 <?php } ?>
