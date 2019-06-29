@@ -1,0 +1,25 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>README.md</title>
+      </head>
+      <body>
+        <h1 id="jetpack-logo">Jetpack logo</h1>
+<p>A simple package that allows you to display a Jetpack logo somewhere.</p>
+<h3 id="usage">Usage</h3>
+<p>Display the default Jetpack logo:</p>
+<pre><code class="lang-php">use Automattic\Jetpack\Assets\Logo;
+
+$logo = new Logo();
+echo $logo-&gt;render();
+</code></pre>
+<p>Display a custom Jetpack logo of your choice:</p>
+<pre><code class="lang-php">use Automattic\Jetpack\Assets\Logo;
+
+$url = plugins_url( &#39;images/jetpack-logo.svg&#39;, __DIR__ );
+$logo = new Logo( $url );
+echo $logo-&gt;render();
+</code></pre>
+
+      </body>
+    </html>
