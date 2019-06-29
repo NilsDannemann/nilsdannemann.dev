@@ -110,8 +110,8 @@ if ( $restricted_condition ) {
 </div>
 
 <?php if ( in_category( 'artbook' )) { ?>
-	<div class="article-card" data-aos="zoom-in-down">
+	<div class="article-card" data-aos="fade-up">
 		<?php echo get_the_post_thumbnail( $post_id, 'large', array( 'class' => 'article-card__image' ) ); ?>
-		<div class="article-card__caption">Artwork for: <?php the_title(); ?></div>
+		<div class="article-card__caption" data-aos="fade-right" aos-delay="300">Artwork for: <?php the_title(); ?></div>
 </div>
 <?php } ?>

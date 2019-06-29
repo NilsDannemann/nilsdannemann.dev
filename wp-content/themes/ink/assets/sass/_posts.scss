@@ -470,13 +470,13 @@
 
 		@-webkit-keyframes image-pulse {
 		  0% {
-		    filter: blur(3px) brightness(1) contrast(100%);
+		    filter: blur(3px) brightness(0.75) contrast(100%);
 		  }
 		  50% {
 		    filter: blur(3px) brightness(1.25) contrast(125%);
 		  }
 		  100% {
-		    filter: blur(3px) brightness(1) contrast(100%);
+		    filter: blur(3px) brightness(0.75) contrast(100%);
 		  }
 		}
 	}
