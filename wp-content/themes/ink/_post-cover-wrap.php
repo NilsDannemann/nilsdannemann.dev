@@ -107,5 +107,11 @@ if ( $restricted_condition ) {
 		<?php echo esc_html( $scroll_text ); ?>
 		<?php endif; ?>
 	</a>
-
 </div>
+
+<?php if ( in_category( 'artbook' )) { ?>
+	<div class="article-card" data-aos="zoom-in-down">
+		<?php echo get_the_post_thumbnail( $post_id, 'large', array( 'class' => 'article-card__image' ) ); ?>
+		<div class="article-card__caption">Artwork for: <?php the_title(); ?></div>
+</div>
+<?php } ?>

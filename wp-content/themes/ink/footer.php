@@ -80,5 +80,11 @@ if ( $sidebar_count > 0 ) {
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+
+<!-- Init AOS -->
+<script>
+    AOS.init();
+</script>
+
 </body>
 </html>

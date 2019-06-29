@@ -451,3 +451,10 @@ require_once $tmp_dir . '/rcp/init.php';
 * Include theme updater file
 */
 require_once get_template_directory() . '/inc/updater/theme-updater.php';
+
+
+/**
+* Include AOS
+*/
+// wp_register_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.js', [], '2.3.4', true );
+wp_enqueue_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.js', [], '2.3.4', true );
