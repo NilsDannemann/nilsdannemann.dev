@@ -462,3 +462,13 @@ wp_enqueue_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.
 * Include Lazyestload
 */
 wp_enqueue_script( 'nd-lazyestload', get_template_directory_uri() . '/assets/js/lazyestload.min.js', [], '1.0.0', true );
+
+
+// Change thumbnail size
+function jetpackchange_image_size ( $thumbnail_size ) {
+// $thumbnail_size['width'] = 226;
+// $thumbnail_size['height'] = 339;
+$thumbnail_size['crop'] = false;
+ return $thumbnail_size;
+}
+add_filter( 'jetpack_relatedposts_filter_thumbnail_size', 'jetpackchange_image_size' );
