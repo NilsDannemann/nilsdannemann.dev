@@ -4,7 +4,7 @@ Tags: Story Chief, storychief, marketing, content, social, publishing, blogging,
 Requires at least: 4.6
 Tested up to: 5.4
 Requires PHP: 5.4
-Stable tag: 1.0.16
+Stable tag: 1.0.17
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -84,6 +84,9 @@ Support for [WPBakery](https://help.storychief.io/en/articles/2111311-wordpress-
 5.  Publishing with StoryChief
 
 == Changelog ==
+
+= 1.0.17 =
+* Improvement: Try to map categories and tags on slug before name.
 
 = 1.0.15 =
 * Tested up to WordPress 5.4

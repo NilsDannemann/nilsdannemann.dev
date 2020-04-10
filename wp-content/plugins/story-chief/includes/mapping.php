@@ -11,13 +11,25 @@ use Storychief\ImageUploader;
  * @return array
  */
 function saveTags($story) {
+    if (!function_exists('wp_create_tag')) {
+        require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
+    }
+
     if (isset($story['tags']['data'])) {
         $tags = array();
         foreach ($story['tags']['data'] as $tag) {
-            if (\Storychief\Settings\get_sc_option('tag_create') || get_term_by('name', $tag['name'], 'post_tag')) {
-                $tags[] = $tag['name'];
+            $term = get_term_by('slug', $tag['slug'], 'post_tag');
+            if(!$term){
+                $term = get_term_by('name', $tag['name'], 'post_tag');
+            }
+
+            if($term){
+                $tags[] = (int)$term->term_id;
+            } elseif (\Storychief\Settings\get_sc_option('tag_create')) {
+                $tags[] = (int)wp_create_tag($tag['name']);
             }
         }
+
         wp_set_post_tags($story['external_id'], $tags, false);
     }
 
@@ -32,16 +44,22 @@ add_action('storychief_save_tags_action', __NAMESPACE__ . '\saveTags');
  * @return array
  */
 function saveCategories($story) {
+    if (!function_exists('wp_create_category')) {
+        require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
+    }
+
     if (isset($story['categories']['data'])) {
         $categories = array();
         foreach ($story['categories']['data'] as $category) {
-            $categoryId = get_cat_ID($category['name']);
-            if (!$categoryId && \Storychief\Settings\get_sc_option('category_create')) {
-                if (!function_exists('wp_create_category')) require_once(ABSPATH . 'wp-admin/includes/taxonomy.php');
-                $categoryId = wp_create_category($category['name']);
+            $term = get_term_by('slug', $category['slug'], 'category');
+            if (!$term) {
+                $term = get_term_by('name', $category['name'], 'category');
             }
-            if (isset($categoryId)) {
-                $categories[] = $categoryId;
+
+            if($term){
+                $categories[] = (int)$term->term_id;
+            } elseif (\Storychief\Settings\get_sc_option('category_create')) {
+                $categories[] = (int)wp_create_category($category['name']);
             }
         }
         wp_set_post_categories($story['external_id'], $categories, false);
