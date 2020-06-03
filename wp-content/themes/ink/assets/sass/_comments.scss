@@ -3,7 +3,7 @@
 -------------------------------------------------------- */
 .comment {
 	list-style: none; //reset
-	@include rem('margin', 50px 0);
+	@include rem('margin', 0 0);
 	&:first-of-type {
 		margin-top: 0; //reset
 	}
@@ -85,8 +85,8 @@
 }
 
 .comment-form {
-	background: #f6f6f6;
-	padding: 35px 35px 0 35px;
+	background: #fff;
+	padding: 15px 0;
 
 	input:not([type=submit]), textarea {
 		width: 100%;
@@ -139,8 +139,8 @@
 }
 
 #reply-title {
-	background: #f6f6f6;
-	padding: 60px 35px 0 35px;
+	background: #fff;
+	padding: 0;
 }
 
 .blog-textarea {
