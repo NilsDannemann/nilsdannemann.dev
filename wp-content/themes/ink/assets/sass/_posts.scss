@@ -350,11 +350,13 @@
 	@include transition(all 100ms ease-in-out);	
 	opacity: 0.55!important;
 	filter: blur(2px);
+	box-shadow: 0px 0px 0px 400px rgba(0, 0, 0, 0.45) inset;
 }
 
 .post-grid:hover .post-cover {
 	opacity: 0.75!important;		
 	filter: blur(0);
+	box-shadow: none;
 }
 
 .post-cover {
