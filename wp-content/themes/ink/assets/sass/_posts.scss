@@ -346,13 +346,13 @@
 	}
 }
 
-.post.post-grid .post-cover {
+.post-grid .post-cover {
 	@include transition(all 100ms ease-in-out);	
 	opacity: 0.55!important;
 	filter: blur(2px);
 }
 
-.post.post-grid:hover .post-cover {
+.post-grid:hover .post-cover {
 	opacity: 0.75!important;		
 	filter: blur(0);
 }
