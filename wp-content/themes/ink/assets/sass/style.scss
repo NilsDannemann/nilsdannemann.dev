@@ -120,6 +120,12 @@
 
 // Custom Fixes
 .jp-relatedposts {
+	width: 33.3333333% !important;
+	opacity: 1 !important;
+	
+	.jp-relatedposts-headline {
+		font-family: "Montserrat";
+	}
 	.jp-relatedposts-post-img {
 		max-width: 100%;
 		border: 5px solid #fff;
@@ -133,14 +139,12 @@
 	.jp-relatedposts-post-a {
 		border-bottom: none;
 		font-weight: inherit !important;
+		font-family: "Montserrat";
 		text-decoration: none;
 	}
-	.jp-relatedposts-post-date {
-		font-size: 12px;
-		float: left;
-	} 
+	.jp-relatedposts-post-date, 
 	.jp-relatedposts-post-context {
 		font-size: 12px;
-		float: right;
+
 	}
 }
