@@ -357,7 +357,6 @@
 	opacity: 0.75!important;		
 	filter: blur(0);
 	opacity: 1 !important;
-	@include background-size(105%);
 }
 
 .post-cover {
@@ -366,7 +365,7 @@
 	height: 100%;
 	background-repeat: no-repeat;
 	background-position: center center;
-	@include background-size(100%);
+	@include background-size(cover);
 	@include transform(translate3d(0, 0, 0));
 }
 
