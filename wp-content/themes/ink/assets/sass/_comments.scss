@@ -23,8 +23,8 @@
 }
 
 .comments-area {
-	@include rem('margin-bottom', 50px);
-	@include rem('margin-top', 50px);
+	@include rem('margin-top', 15px);
+	@include rem('margin-bottom', 0px);
 }
 
 .comment-author {
@@ -209,11 +209,7 @@
 }
 
 .comment-respond {
-	@include rem('margin-top', $base*2);
-	@include media(max-width $one) {
-		margin-left: -20px;
-		margin-right: -20px;
-	}
+	margin-top: 0;
 }
 
 .toggle-comments {

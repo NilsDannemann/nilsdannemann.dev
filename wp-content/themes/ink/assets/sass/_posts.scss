@@ -824,15 +824,13 @@ div.wp-caption {
 	border-top: 2px solid #333;
 	font-weight: bold;
 	line-height: 1;
+	
+	.nav-previous {
+		float: left;
+	}
 
-	@include media(min-width $grid-breakpoint) {
-		.nav-previous {
-			float: left;
-		}
-
-		.nav-next {
-			float: right;
-		}
+	.nav-next {
+		float: right;
 	}
 
 	@include media(max-width($grid-breakpoint - 1)) {

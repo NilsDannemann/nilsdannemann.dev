@@ -117,3 +117,32 @@
 .wp-block-pullquote, .wp-block-pullquote blockquote {
 	margin: 0;
 }
+
+// Custom Fixes
+.jp-relatedposts {
+	.jp-relatedposts-post-img {
+		max-width: 100%;
+		border: 5px solid #fff;
+		border-radius: 10px;
+		box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+		background: #fff;
+		margin-bottom: 5px;
+
+		@extend .filter-juno;
+	}
+	.jp-relatedposts-post-a {
+		border-bottom: none;
+		font-size: inherit;
+		font-weight: inherit;
+		text-decoration: none;
+		opacity: 1;
+	}
+	.jp-relatedposts-post-date {
+		font-size: 12px;
+		float: left;
+	} 
+	.jp-relatedposts-post-context {
+		font-size: 12px;
+		float: right;
+	}
+}
