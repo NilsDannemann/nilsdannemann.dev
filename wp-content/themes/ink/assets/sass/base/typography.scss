@@ -1,0 +1,189 @@
+/*--------------------------------------------------------------
+0.0 - Module - Typography
+--------------------------------------------------------------*/
+
+/*Typography - General*/
+p {
+	line-height: $line-height;
+	&:not(:last-child){margin-bottom: $whitespace;}
+}
+
+/*For -> Angebote Grid + Anbieter Notes*/
+.text {
+
+	&--small {
+		font-size: $font-size-m;
+		line-height: $line-height-m;
+		&:not(:last-child) {margin-bottom: ($whitespace*0.5);}
+	}
+
+	&--fullwidth {
+		display: block;
+		width: 100%;
+	}
+
+	&--white {
+		color: #fff;
+	}
+
+	&--light {
+		color: $color-text-light;
+	}
+
+	&--dark {
+		color: $color-spaceblack;
+	}
+
+	&--centered {
+		text-align: center;
+	}
+
+	&--left {
+		text-align: left;
+	}
+
+	&--left-floated {
+		float: left;
+	}
+
+	&--right {
+		text-align: right;
+	}
+
+	&--right-floated {
+		float: right;
+	}
+
+	&--fun {
+		font-family: $font-family-fun;
+		color: $color-darkblue;
+	}
+
+	&--highlighted {
+		border-radius: 1em 0 1em 0;
+		background-image: linear-gradient(-100deg,rgba(247,198,2,.05),rgba(232, 247, 2, 0.75) 65%,rgba(247,198,2,0));
+		border: none; //For: if used on links
+
+		&.addclass-on-scroll-inview {
+			background-repeat: no-repeat;
+			transition: color calc(1s / 4) cubic-bezier(0.25, 1, 0.5, 1) 350ms,background-color calc(1s / 4) cubic-bezier(0.25, 1, 0.5, 1) 350ms,background-size 1s cubic-bezier(0.25, 1, 0.5, 1) 350ms;
+			background-size: 0% 100%;
+			&.is-inview {background-size: 100% 100%;}
+		}
+	}
+
+}
+
+a {
+	color: var(--color-brand, #{$color-brand});
+	text-decoration: none;
+}
+
+strong, b {
+	font-family: $font-family-headline;
+	font-weight: $font-family-headline-weight;
+}
+
+
+/*Typography - Headlines*/
+h1, h2, h3, h4, h5, h6 {
+	width: 100%;
+	line-height: 1.3;
+	font-family: $font-family-headline;
+	font-weight: $font-family-headline-weight;
+}
+
+h1 {
+	font-size: 42px;
+	margin-bottom: ($whitespace*2);
+}
+h2 {
+	font-size: 23px;
+	margin-bottom: $whitespace;
+
+	&.is-styled {
+		width: initial;
+		background: $color-grey;
+		margin: ($whitespace*2) (-$whitespace) ($whitespace) (-$whitespace);
+		padding: $whitespace;
+		@include respond-above($app-mobile-breakpoint) {
+			margin: ($whitespace*4) (-$whitespace*2) ($whitespace*2) (-$whitespace*2);
+			padding: ($whitespace) ($whitespace*2) ($whitespace) ($whitespace*2);
+		}
+	}
+}
+h3 {
+	font-size: 20px;
+	margin-bottom: $whitespace;
+
+	&.is-styled {
+		margin-bottom: ($whitespace);
+		margin-top: 12px; //For: Styles ol lists correction
+		padding: 18px 0 0 0; //For: Styles ol lists correction
+	}
+}
+h4 {
+	font-size: 18px;
+	margin-bottom: ($whitespace*0.5);
+
+	&.is-styled {
+		padding-top: 18px; //For: Styles ol lists correction
+		margin-top: -18px; //For: Styles ol lists correction
+	}
+}
+h5 {
+	font-size: 16px;
+	margin-bottom: ($whitespace*0.5);
+}
+h6 {
+	font-size: 14px;
+	margin-bottom: ($whitespace*0.5);
+}
+
+
+
+@include respond-below($app-mobile-breakpoint) {
+	h1, .shortcode_h1 {
+		font-size: 25px;
+		margin-bottom: 10px;
+	}
+	h2, .shortcode_h2 {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	h3, .shortcode_h3 {
+		font-size: 18px;
+		margin-bottom: 12px;
+	}
+	h4, .shortcode_h4 {
+		font-size: 16px;
+		margin-bottom: 12px;
+	}
+	h5, .shortcode_h5 {
+		font-size: 16px;
+		margin-bottom: 6px;
+	}
+	h6, .shortcode_h6 {
+		font-size: 14px;
+		margin-bottom: 6px;
+	}
+}
+
+hr {
+  height: 0;
+  border: $border;
+  border-width: 0 0 1px 0;
+  margin: $whitespace (-$whitespace);
+
+  &.dashed {border-style: dashed;}
+  &.long {
+  	@include respond-above($app-mobile-breakpoint) {
+  		margin: $whitespace (-$whitespace*2);
+  	}
+  }
+}
+
+.screen-reader-text {
+	position: absolute;
+	left: -100000px;
+}

@@ -76,7 +76,6 @@ a {
 	@include rem('font-size', 30px);
 	margin: 0;
 	line-height: 1;
-
 	@include media(max-width 600px) {
 		@include rem('font-size', 20px);
 		padding-right: 30px;

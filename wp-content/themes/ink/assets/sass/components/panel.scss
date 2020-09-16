@@ -1,0 +1,289 @@
+.panel {
+	padding: $whitespace;
+	background: #fff;
+	border-radius: var(--border-radius, #{$border-radius});
+	box-shadow: $box-shadow;
+	position: relative; /*For -> panels with mascots above*/
+	overflow: hidden; /*For -> Needed in multiple cases. Without too many Elements overflow & break*/
+
+	&:not(:last-child) {margin-bottom: $whitespace;}
+
+	&--small {
+		padding: ($whitespace*0.5) ($whitespace*0.75);
+
+		.panel__content--more {
+			margin: ($whitespace*0.5) (-$whitespace*0.75) 0 (-$whitespace*0.75);
+			padding: ($whitespace*0.5) $whitespace 0 $whitespace;
+		}
+
+		>  .panel__controls 		{margin: 0 (-$whitespace*0.5) (-$whitespace*0.5) (-$whitespace*0.5);}
+		>  .panel__controls--top 	{
+			margin: (-$whitespace*0.5) (-$whitespace*0.75) ($whitespace*0.5) (-$whitespace*0.75);
+			padding: ($whitespace*0.75);
+		}
+	}
+
+	&--big {
+		@include respond-above($app-mobile-breakpoint) {
+			padding: ($whitespace*2) !important; //For: More whitespace for main content
+		}
+		> .panel__title {
+			margin: (-$whitespace) (-$whitespace) $whitespace (-$whitespace);
+			@include respond-above($app-mobile-breakpoint) {
+				margin: (-$whitespace*2) (-$whitespace*2) $whitespace (-$whitespace*2);
+			}
+		}
+		>  .panel__controls 		{margin: 0 (-$whitespace*2) (-$whitespace*2) (-$whitespace*2);}
+		>  .panel__controls--top 	{margin: (-$whitespace*2) (-$whitespace*2) $whitespace (-$whitespace*2);}
+	}
+
+	&--overflow {
+		overflow: visible;
+	}
+
+	&--highlight {
+		background: $color-grey;
+		box-shadow: $box-shadow;
+	}
+
+	&--flat {
+		border: $border;
+		box-shadow: none;
+
+		.panel__title {
+			background: #fff;
+			border-bottom: $border;
+		}
+	}
+
+	&--bubble {
+		position: relative; // For: Triangle absolute positioning
+		overflow: visible; // For: Triangle absolute positioning
+		border-radius: $border-radius-xl;
+		border: $border;
+		box-shadow: none;
+
+		&::after {
+			content: '';
+			@include position(absolute, $left: #{calc(50% - 7.5px)}, $top: 47px);
+			width: 15px;
+			height: 15px;
+			background: #fff;
+		    box-shadow: 1px 1px 0px darken($color-grey, 4%);
+		    transform: rotate(45deg);
+
+			@include respond-below($app-mobile-breakpoint) {
+				display: none;
+			}
+		}
+	}
+
+	&--blank {
+		box-shadow: none;
+
+		@include respond-below($app-mobile-breakpoint) {
+			width: calc(100% + #{$whitespace*2}) !important;
+		    margin-left: (-$whitespace);
+		    border-radius: 0;
+		}
+		.panel__title {
+			background: #fff;
+			margin-bottom: 0;
+		}
+	}
+
+	&__title {
+		width: initial;
+		height: 45px;
+		line-height: 17px;
+		font-size: $font-size + 1px;
+		color: $color-headline;
+		font-family: $font-family-headline;
+		font-weight: $font-family-headline-weight;
+		padding: $whitespace;
+		margin: (-$whitespace) (-$whitespace) $whitespace (-$whitespace);
+		background: $color-grey;
+		border-top-left-radius: var(--border-radius, #{$border-radius});
+		border-top-right-radius: var(--border-radius, #{$border-radius});
+
+		a {
+			color: $color-headline;
+			border: none;
+		}
+	}
+
+	&__title--highlight {
+		border-bottom: $border;
+	}
+
+	&__title--flat {
+		border-bottom: $border;
+		background: initial;
+	}
+
+	&__title--blank {
+		border-bottom: none !important;
+		background: initial;
+		height: initial;
+		padding-bottom: 0;
+	}
+
+	&__title--centered {
+		text-align: center;
+	}
+
+	&__title-label {
+		float: right;
+		border: $border;
+		border-radius: var(--border-radius, #{$border-radius});
+		font-size: $font-size-s;
+		line-height: 25px;
+		padding: 0 ($whitespace*0.5);
+		margin-top: -5px;
+		margin-right: -5px;
+		height: 25px;
+	}
+
+	&__info {
+		width: 16px;
+		height: 16px;
+		display: inline-block;
+		background: url(../images/icon_ui_info.svg);
+		background-size: contain;
+		margin-left: ($whitespace*0.25);
+		@include position(absolute, $right: $whitespace, $top: $whitespace);
+	}
+
+	&__image {
+		display: block;
+		max-width: initial; //For: override base.scss default
+		min-height: 150px;
+		width: calc(100% + #{$whitespace*2});
+		margin: 0 (-$whitespace) $whitespace (-$whitespace);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		object-fit: cover;
+		object-position: center;
+
+		&--readnext {
+			height: 115px;
+			margin-top: (-$whitespace);
+		}
+	}
+
+	&__icon {
+		@extend .panel;
+		width: 100%;
+		height: 165px;
+		padding-top: 0; //For: in case <img> is used
+		padding-bottom: 0; //For: in case <img> is used
+		display: block;
+		margin: auto;
+		object-fit: contain;
+		background-size: contain; //For: in case <a> is used
+		background-repeat: no-repeat; //For: in case <a> is used
+		background-position: center; //For: in case <a> is used
+		z-index: 1; //For: Fix issue with chained AOS animations (e.g. on about page)
+
+		&--small {
+			height: 85px;
+		}
+		&--flat {
+			box-shadow: none;
+			border: $border;
+		}
+		&--blank {
+			box-shadow: none;
+			border: none;
+		}
+	}
+
+	&__icon--shop {
+		display: block;
+		margin: 0 auto ($whitespace*0.5) auto;
+	}
+
+	&__content {
+		&:not(:last-child) {
+			margin-bottom: $whitespace;
+		}
+	}
+
+	&__content--small {
+		@extend .text--small;
+	}
+
+	&__content--centered {
+		text-align: center;
+	}
+
+	&__content--more {
+		margin: (-$whitespace) (-$whitespace) ($whitespace * 0.35) (-$whitespace);
+		padding: $whitespace $whitespace 0 $whitespace;
+
+		&:not(:last-child) {
+			padding: ($whitespace / 2) $whitespace;
+		}
+	}
+
+	&__filter {
+		@include grid($justify: space-between, $align: center)
+	    border-bottom: $border;
+		margin: (-$whitespace) (-$whitespace) $whitespace (-$whitespace);
+		padding: $whitespace;
+	}
+
+	&__socials {
+		@include grid($justify:center, $align: center);
+	}
+	&__socials-web,
+	&__socials-email,
+	&__socials-facebook,
+	&__socials-youtube,
+	&__socials-twitter {
+		width: ($whitespace*2);
+		height: ($whitespace*2);
+		background: $color-grey;
+		color: #fff;
+		margin: 0 ($whitespace*0.5);
+		border-radius: 100%;
+	}
+	&__socials-email {
+		background-image: url(../images/icon_ui_email.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 16px;
+	}
+	&__socials-web {
+		background-image: url(../images/icon_ui_web.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 16px;
+    }
+	&__socials-facebook {
+		background-image: url(../images/icon_ui_facebook.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 16px;
+	}
+
+	&__controls {
+		@include grid($justify: space-between, $align:center);
+	    border-top: $border;
+		margin: 0 (-$whitespace) (-$whitespace) (-$whitespace);
+		padding: $whitespace;
+		overflow: hidden; //For: Comments-reply-link button
+
+		&--top {
+			border-top: 0;
+			border-bottom: $border;
+			margin: (-$whitespace) (-$whitespace) 0 (-$whitespace);
+		}
+
+		&--blank {
+			border: 0;
+			padding-top: 0;
+		}
+	}
+}

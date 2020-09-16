@@ -1,0 +1,192 @@
+.button {
+	@include grid($align: center, $justify: center);
+	@include transition();
+	height: 40px;
+	color: $color-text;
+	text-align: center;
+	margin: 0;
+	padding: 5px 10px;
+	border: $border;
+	border-radius: var(--border-radius, #{$border-radius});
+	font-size: $font-size;
+	font-family: $font-family-text;
+	font-weight: $font-family-text-weight;
+	text-decoration: none;
+	cursor: pointer;
+	background: transparent; //For: override browser input styles
+	line-height: 29px;
+	&:not(:last-child) {margin-bottom: $whitespace;}
+
+	&:hover {
+		box-shadow: 0px 0px 0px 100px rgba(0, 0, 0, 0.045) inset;
+	}
+
+	&.is-loading::before {background-image: url('../images/spinner.svg');}
+
+	&--green,
+	&--black,
+	&--red {&.is-loading::before {background-image: url('../images/spinner_light.svg');}}
+
+	&--medium {
+		font-size: $font-size-m !important;
+		padding: 7px 10px 7px 10px !important;
+		height: 35px;
+		line-height: initial;
+
+		&.button--icon {padding-left: 45px !important;}
+		&.button--icon::before {width: 35px;}
+	}
+
+	&--small {
+		font-size: $font-size-m !important;
+		padding: 7px 10px 7px 10px !important;
+		height: 30px;
+		line-height: initial;
+
+		&.button--icon {padding-left: 40px !important;}
+		&.button--icon::before {width: 30px;}
+	}
+
+	&--fit-content {
+		width: fit-content;
+	}
+
+	&--long {
+		width: 100%;
+	}
+
+	&--round {
+		border-radius: 50px;
+	}
+
+	&--centered {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	&--green {
+		color: #fff;
+		background: var(--color-brand, #{$color-brand});
+		border-color: transparent;
+
+		&.button--icon::before {border-color: $color-grey-rgba;}
+	}
+
+	&--black {
+		color: #fff;
+		background: $color-spaceblack;
+		border-color: transparent;
+	}
+
+	&--red {
+		color: #fff;
+		background: $color-red;
+		border-color: transparent;
+	}
+
+	&--blank {
+		border: none;
+	}
+
+	&--checklist {
+		position: absolute;
+		right: 15px;
+		margin-top: -30px;
+		transition: none;
+	}
+
+	&--loading {
+	    position: relative;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			content: '';
+		    display: block;
+		    width: 30px;
+		    height: 100%;
+			background-size: 18px;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+	    &.is-loading {
+	    	padding-left: 30px !important;
+	    }
+	}
+
+	//Fixme: ugly solution for edd_links (last-child hidden problem)
+	&--margin-fix,
+	&--download-fix {
+		margin-bottom: 0 !important;
+	}
+	&--navigation-mobile-fix {
+		margin: $whitespace $whitespace ($whitespace*0.35) $whitespace;
+		text-align: left;
+		line-height: 9px;
+		padding-left: 50px !important;
+	}
+	&--icon {
+		@include grid($align: center, $justify: start);
+		position: relative;
+		padding-left: 45px !important;
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			content: '';
+			display: block;
+			width: 36px;
+			height: 100%;
+			border-right: $border;
+			background-size: 16px;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		&-edit::before {background-image: url("../images/icon_ui_edit.svg");}
+		&-add::before {background-image: url("../images/icon_ui_add.svg");}
+		&-add-circle-outline::before {background-image: url("../images/icon_ui_add_circle_outlin.svg");}
+		&-email::before {background-image: url("../images/icon_ui_email.svg");}
+		&-facebook::before {background-image: url("../images/icon_ui_facebook.svg");}
+		&-google::before {background-image: url("../images/icon_ui_google.svg");}
+		&-phone::before {background-image: url("../images/icon_ui_phone.svg");}
+		&-whatsapp::before {background-image: url("../images/icon_ui_phone.svg");}
+		&-telegram::before {background-image: url("../images/icon_ui_phone.svg");}
+		&-download::before {background-image: url('../images/icon_ui_download.svg');}
+		&-download-light::before {background-image: url('../images/icon_ui_download_light.svg');}
+		&-open-in-new::before {background-image: url('../images/icon_ui_open_in_new.svg');}
+		&-open-in-browser::before {background-image: url('../images/icon_ui_open_in_browser.svg');}
+		&-messages::before {background-image: url('../images/icon_ui_messages.svg');}
+		&-info::before {background-image: url('../images/icon_ui_info.svg');}
+		&-help::before {background-image: url('../images/icon_ui_help.svg');}
+		&-help-outline::before {background-image: url('../images/icon_ui_help_outline.svg');}
+		&-coffee::before {background-image: url('../images/icon-coffee.svg');}
+		&-profile::before {background-image: url('../images/icon_ui_account_circle.svg');}
+		&-map-pin::before {background-image: url('../images/icon_ui_map_pin.svg');}
+		&-supportchat::before {background-image: url('../images/icon_ui_messages.svg');}
+		&-checklist::before {background-image: url('../images/icon_ui_checklist.svg');}
+	}
+
+	&--coffee-small,
+	&--coffee-medium,
+	&--coffee-large,
+	&--coffee-huge {
+		font-size: 11px;
+		padding-left: 30px !important;
+		background-image: url('../images/icon-coffee.svg');
+		background-repeat: no-repeat;
+		background-position: 10px center;
+		background-size: 21px;
+		font-weight: 700;
+	}
+
+	&--coffee-small {}
+	&--coffee-medium {}
+	&--coffee-large {}
+	&--coffee-huge {}
+
+}

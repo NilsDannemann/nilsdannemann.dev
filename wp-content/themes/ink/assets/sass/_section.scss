@@ -1,0 +1,103 @@
+.section {
+	
+	&__title {
+		@include container();
+		font-size: 35px;
+		margin-bottom: 60px;
+
+		&--centered {
+			text-align: center;
+		}
+	}
+
+	&__header {
+		min-height: 300px;
+		position: relative;
+		margin-bottom: 90px;
+		background: $color-spaceblack;
+		
+		&::before {
+			content: '';
+			background: url('assets/img/divider.png') repeat-x top left;
+			transform: rotate(180deg);
+			display: block;
+			height: 50px;
+			width: 100%;
+			position: absolute;
+			bottom: -50px;
+			background-size: 1280px 50px;
+		}
+	}
+
+	&__posts {
+		@include grid($direction: column);
+		@include container();
+	}
+	&__post {
+		@include grid();
+		border-bottom: $border;
+		padding-bottom: 15px;
+		margin-bottom: 40px;
+
+		&-image{
+			@include column('165px', $gutter: 30px, $stacking: true);
+			&-card {
+				border: 5px solid #fff;
+				border-radius: 10px;
+				box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+				background: #fff;
+			}
+		}
+		&-meta{
+			@include column('200px', $gutter: 60px, $stacking: true);
+			&-title {
+				font-size: $font-size-l;
+			}
+			&-value {
+				font-size: $font-size-m;
+				line-height: $line-height-m;
+				max-height: 44px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				&:not(:last-child) {margin-bottom: ($whitespace*0.75);}
+			}
+		}
+		&-content{
+			@include column('auto', $gutter: 30px, $stacking: true);
+			&-title {
+				font-size: 23px;
+			}
+			&-excerpt {}
+		}
+	}
+
+	&__offers {
+		@include grid($align: center);
+		@include container();
+	}
+	
+	&__cta {
+		@include grid($align: center);
+		@include container();
+		margin-bottom: 40px;
+
+		&-button {
+			height: 40px;
+			color: $color-text;
+			text-align: center;
+			margin: 0;
+			padding: 5px 10px;
+			border: $border;
+			font-size: $font-size;
+			font-family: $font-family-text;
+			font-weight: $font-family-text-weight;
+			text-decoration: none;
+			cursor: pointer;
+			background: transparent; //For: override browser input styles
+			line-height: 29px;
+			&:not(:last-child) {margin-bottom: $whitespace;}
+		}
+	}
+	
+}

@@ -1,0 +1,123 @@
+@mixin content__link() {
+	color: $color-text;
+	margin-bottom: -1px;
+	border-bottom: 1px solid var(--color-brand, #{$color-brand});
+	cursor: pointer;
+
+	&:hover {
+		border-color: var(--color-brand, #{$color-brand});
+	}
+}
+
+
+
+@mixin hide-scrollbars() {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none;  /* Internet Explorer 10+ */
+	&::-webkit-scrollbar {height: 0px;width: 0px;}
+}
+
+// Mixin to work with webp detection script (in heaper.php)
+// Note: The .webp increases specificity
+// Link: https://github.com/djpogo/webp-inline-support
+// Link: https://raoulkramer.de/webp-image-and-background-usage-in-web-projects/
+@mixin background($url, $url2x: false, $webp: false, $webp2x: false) {
+	background-image: url($url);
+		@if $webp {
+			.webp & {
+				background-image: url($webp);
+			}
+		}
+		@if $url2x {
+			@media
+			screen and (-webkit-min-device-pixel-ratio: 2),
+			screen and (min-resolution: 192dpi),
+			screen and (min-resolution: 2dppx) {
+				background-image: url($url2x);
+				@if $webp2x {
+					.webp & {
+						background-image: url($webp2x);
+					}
+				}
+		}
+	}
+}
+
+@mixin add-background() {
+	@include background($url: '../images/hero_layer_mobile.jpg', $webp: '../images/hero_layer_mobile.webp');
+	background-size: 100vw auto;
+	@include respond-above($app-mobile-breakpoint) {
+		@include background($url: '../images/hero_layer_full.jpg', $webp: '../images/hero_layer_full.webp');
+		background-size: 960px 575px;
+	}
+	@include respond-below($app-mobile-breakpoint) {
+		overflow-x: hidden;
+	}
+	background-color: $color-lightblue;
+	background-position: top 40px center;
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+}
+
+
+.margin-0 {
+  margin-bottom: 0px !important;
+}
+.margin-3 {
+  margin-bottom: 3.5px !important;
+}
+.margin-5 {
+  margin-bottom: 5px !important;
+}
+.margin-7 {
+  margin-bottom: 7.5px !important;
+}
+.margin-10 {
+  margin-bottom: 10px !important;
+}
+.margin-15 {
+  margin-bottom: 15px !important;
+}
+.margin-20 {
+  margin-bottom: 20px !important;
+}
+.margin-25 {
+  margin-bottom: 25px !important;
+}
+.margin-30 {
+  margin-bottom: 30px !important;
+}
+
+.is-centered {
+	margin: auto;
+}
+.is-fullwidth {
+	display: block;
+	width: 100%;
+}
+.is-fixed-width-xs 	{max-width: 75px;}
+.is-fixed-width-s 	{max-width: 125px;}
+.is-fixed-width-m 	{max-width: 175px;}
+.is-fixed-width-l 	{max-width: 225px;}
+.is-fixed-width-xl 	{max-width: 275px;}
+.is-fixed-width-xxl {max-width: 325px;}
+
+.is-hidden-on-mobile {
+	@include respond-below($app-mobile-breakpoint) {display: none !important;}
+}
+.is-hidden-on-desktop {
+	@include respond-above($app-mobile-breakpoint) {display: none !important;}
+}
+
+.breaking-string-fix {
+	// From: https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+
+	/* These are technically the same, but use both */
+	 overflow-wrap: break-word;
+	 word-wrap: break-word;
+	 /* Instead use this non-standard one: */
+	 word-break: break-word;
+	 /* Adds a hyphen where the word breaks, if supported (No Blink) */
+	 hyphens: auto;
+}
+

@@ -1,0 +1,221 @@
+/* =======================================*/
+/*
+/*
+/* VARIABLES
+/*
+/*
+/* =======================================*/
+
+/* =======================================*/
+/* Color Defaults
+/* =======================================*/
+$color-spaceblack    : #263743;
+$color-black         : #333333;
+$color-spacegrey     : #f1f7f9;
+$color-darkspacegrey : #e2eef3;
+$color-grey          : $color-spacegrey;
+$color-grey-rgba     : rgba(0,0,0,0.0375);
+
+$color-red           : #F44336;
+$color-pink          : #E91E63;
+$color-purple        : #9C27B0;
+
+$color-lightblue     : #AEDBED;
+$color-blue          : #279ef9;
+$color-darkblue      : #83A2D3;
+
+$color-indigo        : #3F51B5;
+$color-cyan          : #00BCD4;
+$color-teal          : #009688;
+
+$color-green         : #65BF61;
+$color-lightgreen    : #8BC34A;
+$color-lime          : #AEEA00;
+
+$color-yellow        : #FFEB3B;
+$color-amber         : #FFB300;
+$color-orange        : #FFA500;
+
+/* =======================================*/
+/* Color Hooks
+/* =======================================*/
+$color-brand            : $color-green;
+$color-headline         : $color-spaceblack;
+$color-text             : lighten($color-black, 15%);
+$color-text-light       : lighten($color-text, 20%);
+$color-text-lighter     : lighten($color-text, 40%);
+$color-text-lightest    : lighten($color-text, 50%);
+$color-text-icon        : lighten($color-text, 35%);
+$color-warning  	    : #FFF3E0;
+$color-border  	    	: darken($color-grey, 4%);
+$color-border-dark  	: darken($color-spaceblack, 3%);
+
+/* =======================================*/
+/* Spacing
+/* =======================================*/
+$whitespace: 15px;
+$app-sidebar-width: '325px';
+
+/* =======================================*/
+/* Breakpoints
+/* =======================================*/
+$breakpoints: (
+  'xs'  : 0px,
+  's'   : 485px,
+  'm'   : 650px,
+  'l'   : 800px,
+  'xl'  : 1000px,
+  'xxl' : 1100px
+);
+$app-mobile-breakpoint : 'xl';
+
+
+/* =======================================*/
+/* Font Families
+/* =======================================*/
+
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v19-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('../fonts/roboto-v19-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v19-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* kalam-regular - latin */
+@font-face {
+  font-family: 'Kalam';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kalam'), local('Kalam-Regular'),
+       url('../fonts/kalam-v9-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/kalam-v9-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+$font-family-headline              : 'Roboto', sans-serif;
+$font-family-headline-weight       : 700;
+$font-family-text                  : 'Roboto', sans-serif;
+$font-family-text-weight           : 400;
+$font-family-fun                   : 'Kalam', serif;
+$font-family-fun-weight            : 400;
+
+/* =======================================*/
+/* Sizes
+/* =======================================*/
+$font-size-xs  : 11px;
+$font-size-s   : 12px;
+$font-size-m   : 13px;
+$font-size-l   : 14px;
+$font-size-xl  : 18px;
+$font-size-xxl : 28px;
+$font-size     : $font-size-l;
+
+/* =======================================*/
+/* Other
+/* =======================================*/
+$line-height-xs	 : 1.45;
+$line-height-s 	 : 1.55;
+$line-height-m 	 : 1.65;
+$line-height-l 	 : 1.85;
+$line-height-xl  : 2.25;
+$line-height-xxl : 2.25;
+$line-height     : $line-height-l;
+
+
+/* =======================================*/
+/* Borders
+/* =======================================*/
+$border        : 1px solid $color-border;
+$border-dark   : 1px solid $color-border-dark;
+
+
+/* =======================================*/
+/* Border Radius
+/* =======================================*/
+$border-radius-xs  : 2px;
+$border-radius-s   : 4px;
+$border-radius-m   : 5px;
+$border-radius-l   : 6px;
+$border-radius-xl  : 10px;
+$border-radius-xxl : 12px;
+$border-radius     : $border-radius-s;
+
+
+/* =======================================*/
+/* Shadows
+/* =======================================*/
+$box-shadow-xs     : 0 1px 3px rgba(0, 0, 0, 0.075), 0 3px 6px rgba(0, 0, 0, 0.075);
+$box-shadow-s      : 0px 2px 5px rgba(0, 0, 0, 0.2);
+$box-shadow-m      : 0px 4px 9px rgba(0, 0, 0, 0.2);
+$box-shadow-l      : 0px 8px 18px rgba(0, 0, 0, 0.2);
+$box-shadow-xl     : 0px 16px 32px rgba(0, 0, 0, 0.2);
+$box-shadow-xxl    : 0px 32px 64px rgba(0, 0, 0, 0.2);
+$box-shadow        : $box-shadow-xs;
+
+
+/* =======================================*/
+/* Transitions
+/* =======================================*/
+$transition-type-sine  : ease-out-sine;
+$transition-type-quad  : ease-out-quad;
+$transition-type-cubic : ease-out-cubic;
+$transition-type-quart : ease-out-quart;
+$transition-type-quint : ease-out-quint;
+$transition-type-expo  : ease-out-expo;
+$transition-type-circ  : ease-out-circ;
+$transition-type-back  : ease-out-back;
+$transition-duration   : 400ms;
+$transition-type       : $transition-type-quint;
+
+
+/* =======================================*/
+/* Incrementally adding css vars
+/* Info: for theming of partner iframes - template-fomrs.php
+/* =======================================*/
+:root {
+	--color-spaceblack 		: #{$color-spaceblack};
+	--color-black 			: #{$color-black};
+	--color-spacegrey 		: #{$color-spacegrey};
+	--color-darkspacegrey   : #{$color-darkspacegrey};
+	--color-grey 			: #{$color-grey};
+
+	--color-red 			: #{$color-red};
+	--color-pink 			: #{$color-pink};
+	--color-purple 			: #{$color-purple};
+
+	--color-lightblue 		: #{$color-lightblue};
+	--color-blue 			: #{$color-blue};
+	--color-darkblue 		: #{$color-darkblue};
+
+	--color-indigo 			: #{$color-indigo};
+	--color-cyan 			: #{$color-cyan};
+	--color-teal 			: #{$color-teal};
+
+	--color-green 			: #{$color-green};
+	--color-lightgreen 		: #{$color-lightgreen};
+	--color-lime 			: #{$color-lime};
+
+	--color-yellow 			: #{$color-yellow};
+	--color-amber 			: #{$color-amber};
+	--color-orange 			: #{$color-orange};
+
+	--color-brand   		 : #{$color-green};
+	--color-brand-secondary  : #{$color-blue};
+	--color-headline         : #{$color-spaceblack};
+
+	--border-radius 	     : #{$border-radius};
+}

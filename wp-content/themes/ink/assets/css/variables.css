@@ -1,0 +1,96 @@
+/* =======================================*/
+/*
+/*
+/* VARIABLES
+/*
+/*
+/* =======================================*/
+/* =======================================*/
+/* Color Defaults
+/* =======================================*/
+/* =======================================*/
+/* Color Hooks
+/* =======================================*/
+/* =======================================*/
+/* Spacing
+/* =======================================*/
+/* =======================================*/
+/* Breakpoints
+/* =======================================*/
+/* =======================================*/
+/* Font Families
+/* =======================================*/
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-v19-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v19-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v19-latin-700.woff2") format("woff2"), url("../fonts/roboto-v19-latin-700.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* kalam-regular - latin */
+@font-face {
+  font-family: 'Kalam';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Kalam"), local("Kalam-Regular"), url("../fonts/kalam-v9-latin-regular.woff2") format("woff2"), url("../fonts/kalam-v9-latin-regular.woff") format("woff");
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */ }
+
+/* =======================================*/
+/* Sizes
+/* =======================================*/
+/* =======================================*/
+/* Other
+/* =======================================*/
+/* =======================================*/
+/* Borders
+/* =======================================*/
+/* =======================================*/
+/* Border Radius
+/* =======================================*/
+/* =======================================*/
+/* Shadows
+/* =======================================*/
+/* =======================================*/
+/* Transitions
+/* =======================================*/
+/* =======================================*/
+/* Incrementally adding css vars
+/* Info: for theming of partner iframes - template-fomrs.php
+/* =======================================*/
+:root {
+  --color-spaceblack: #263743;
+  --color-black: #333333;
+  --color-spacegrey: #f1f7f9;
+  --color-darkspacegrey: #e2eef3;
+  --color-grey: #f1f7f9;
+  --color-red: #F44336;
+  --color-pink: #E91E63;
+  --color-purple: #9C27B0;
+  --color-lightblue: #AEDBED;
+  --color-blue: #279ef9;
+  --color-darkblue: #83A2D3;
+  --color-indigo: #3F51B5;
+  --color-cyan: #00BCD4;
+  --color-teal: #009688;
+  --color-green: #65BF61;
+  --color-lightgreen: #8BC34A;
+  --color-lime: #AEEA00;
+  --color-yellow: #FFEB3B;
+  --color-amber: #FFB300;
+  --color-orange: #FFA500;
+  --color-brand: #65BF61;
+  --color-brand-secondary: #279ef9;
+  --color-headline: #263743;
+  --border-radius: 4px; }
