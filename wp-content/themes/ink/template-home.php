@@ -72,7 +72,7 @@ get_header(); ?>
 							<h4 class="section__post-content-title"><?php the_title(); ?></h4>
 						</a>
 						<p class="section__post-content-excerpt"><?php the_excerpt(); ?></p>
-						<a href="<?php get_the_permalink() ?>" class="section__post-button">View Article</a>
+						<a href="<?php get_the_permalink() ?>" class="section__post-button">Read more</a>
 					</div>
 				</article>
 			<?php endwhile; ?>

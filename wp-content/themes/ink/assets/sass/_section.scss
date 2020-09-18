@@ -44,7 +44,7 @@
 		&-image{
 			@include column('1/1', $gutter: 30px);
 			@include respond-above($app-mobile-breakpoint) {
-				@include column('200px', $gutter: 30px);
+				@include column('235px', $gutter: 30px);
 			}
 			&-card {
 				border-radius: 5px;
