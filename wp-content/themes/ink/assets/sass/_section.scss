@@ -53,9 +53,18 @@
 			}
 		}
 		&-meta{
+			@include grid();
 			@include column('1/1', $gutter: 30px);
 			@include respond-above($app-mobile-breakpoint) {
 				@include column('200px', $gutter: 60px);
+			}
+			&-block {
+				@include column('1/3', $gutter: 30px);
+				&:last-child {@include column('1/1');}
+				&:not(:last-child) {margin-bottom: ($whitespace*0.75);}
+				@include respond-above($app-mobile-breakpoint) {
+					@include column('1/1', $gutter: 7.5px);
+				}
 			}
 			&-title {
 				font-size: $font-size-l;
@@ -65,10 +74,11 @@
 				font-size: $font-size-l;
 				line-height: $line-height-l;
 				max-height: 44px;
-				overflow: hidden;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				&:not(:last-child) {margin-bottom: ($whitespace*0.75);}
+				@include respond-above($app-mobile-breakpoint) {
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
 			}
 		}
 		&-content{

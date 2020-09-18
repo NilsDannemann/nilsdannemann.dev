@@ -33,23 +33,31 @@ get_header(); ?>
 						</a>
 					</div>
 					<div class="section__post-meta">
-						<div class="section__post-meta-title">Date</div>
-						<div class="section__post-meta-value"><?php echo get_the_date(); ?></div>
-						<div class="section__post-meta-title">Topics</div>
-						<div class="section__post-meta-value">
-							<?php 
-								$post_tags = get_the_tags();
-								if ( $post_tags ) {
-									foreach( $post_tags as $tag ) {
-										echo $tag->name . ', '; 
-									}
-								}
-							?>
+						<div class="section__post-meta-block">
+							<div class="section__post-meta-title">Date</div>
+							<div class="section__post-meta-value"><?php echo get_the_date(); ?></div>
 						</div>
-						<div class="section__post-meta-title">Reading Time</div>
-						<div class="section__post-meta-value"><?php echo stag_post_reading_time(); ?></div>
-						<div class="section__post-meta-title">Author</div>
-						<div class="section__post-meta-value"><?php echo get_author_name(); ?></div>
+						<div class="section__post-meta-block">
+							<div class="section__post-meta-title">Reading Time</div>
+							<div class="section__post-meta-value"><?php echo stag_post_reading_time(); ?></div>
+						</div>
+						<div class="section__post-meta-block">
+							<div class="section__post-meta-title">Author</div>
+							<div class="section__post-meta-value"><?php echo get_author_name(); ?></div>
+						</div>
+						<div class="section__post-meta-block">
+							<div class="section__post-meta-title">Topics</div>
+							<div class="section__post-meta-value">
+								<?php 
+									$post_tags = get_the_tags();
+									if ( $post_tags ) {
+										foreach( $post_tags as $tag ) {
+											echo $tag->name . ', '; 
+										}
+									}
+								?>
+							</div>
+						</div>
 					</div>
 					<div class="section__post-content">
 						<a href="<?php the_permalink(); ?>">
@@ -74,6 +82,6 @@ get_header(); ?>
 			<div class="grid__third">Offer</div>
 		</div>
 	</div> -->
-	
+
 <?php
 get_footer();
