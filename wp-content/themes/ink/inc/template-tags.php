@@ -201,11 +201,17 @@ function stag_post_reading_time( $post_id = null ) {
 	// If less than a minute.
 	if ( $minutes < 1 ) {
 		// $estimated_time = __( '1 minute read', 'stag' );
+		$estimated_time = $minutes . ' Minutes';
+	}
+	
+	// If exactely one minute.
+	if ( $minutes == 1 ) {
+		// $estimated_time = __( '1 minute read', 'stag' );
 		$estimated_time = $minutes . ' Minute';
 	}
 
-	// If more than a minute.
-	if ( $minutes >= 1 ) {
+	// If more than one minute.
+	if ( $minutes >= 2 ) {
 
 		if ( $seconds > 30 ) {
 			$minutes++;

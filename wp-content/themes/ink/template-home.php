@@ -61,9 +61,7 @@ get_header(); ?>
 										foreach( $post_tags as $tag ) {
 											$post_tags_string .= $tag->name . ', ';
 										}
-
 										echo rtrim(trim($post_tags_string), ',');
-										// echo $post_tags_string;
 									}
 								?>
 							</div>
