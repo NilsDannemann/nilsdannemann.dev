@@ -42,7 +42,7 @@
 		margin-bottom: 40px;
 
 		&-image{
-			@include column('1/2', $gutter: 30px);
+			@include column('1/1', $gutter: 30px);
 			@include respond-above($app-mobile-breakpoint) {
 				@include column('200px', $gutter: 30px);
 			}
@@ -53,7 +53,7 @@
 			}
 		}
 		&-meta{
-			@include column('1/2', $gutter: 30px);
+			@include column('1/1', $gutter: 30px);
 			@include respond-above($app-mobile-breakpoint) {
 				@include column('200px', $gutter: 60px);
 			}
