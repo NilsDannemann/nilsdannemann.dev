@@ -198,16 +198,10 @@ function stag_post_reading_time( $post_id = null ) {
 	$minutes = floor( $char_count / $wpm );
 	$seconds = floor( ($char_count / ($wpm / 60) ) - ( $minutes * 60 ) );
 
-	// If less than a minute.
-	if ( $minutes < 1 ) {
+	// If less than a minute or exactely one minute.
+	if ( $minutes < 1 || $minutes == 1 ) {
 		// $estimated_time = __( '1 minute read', 'stag' );
-		$estimated_time = $minutes . ' Minutes';
-	}
-	
-	// If exactely one minute.
-	if ( $minutes == 1 ) {
-		// $estimated_time = __( '1 minute read', 'stag' );
-		$estimated_time = $minutes . ' Minute';
+		$estimated_time = '1 Minute';
 	}
 
 	// If more than one minute.
