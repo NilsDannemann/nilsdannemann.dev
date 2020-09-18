@@ -76,12 +76,15 @@
 			&-value {
 				font-size: $font-size-l;
 				line-height: $line-height-l;
-				max-height: 44px;
-				@include respond-above($app-mobile-breakpoint) {
-					overflow: hidden;
-					white-space: nowrap;
-					text-overflow: ellipsis;
-				}
+			}
+			&-label {
+				background: $color-grey;
+				padding: 0px 7.5px;
+				margin-right: 5px;
+				margin-bottom: 2.5px;
+				display: inline-block;
+				border-radius: 3px;
+				font-size: $font-size-s;
 			}
 		}
 		&-content{

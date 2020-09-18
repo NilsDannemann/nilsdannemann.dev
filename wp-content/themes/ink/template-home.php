@@ -59,9 +59,9 @@ get_header(); ?>
 									$post_tags_string = '';
 									if ( $post_tags ) {
 										foreach( $post_tags as $tag ) {
-											$post_tags_string .= $tag->name . ', ';
+											$post_tags_string .= '<span class="section__post-meta-label">' . $tag->name . '</span>';
 										}
-										echo rtrim(trim($post_tags_string), ',');
+										echo $post_tags_string;
 									}
 								?>
 							</div>
