@@ -35,7 +35,7 @@ get_header(); ?>
 					<div class="section__post-meta">
 						<div class="section__post-meta-block">
 							<div class="section__post-meta-title">Date</div>
-							<div class="section__post-meta-value"><?php echo get_the_date(); ?></div>
+							<div class="section__post-meta-value"><?php echo get_the_date('d. M Y'); ?></div>
 						</div>
 						<div class="section__post-meta-block">
 							<div class="section__post-meta-title">Read Time</div>
@@ -56,10 +56,14 @@ get_header(); ?>
 							<div class="section__post-meta-value">
 								<?php 
 									$post_tags = get_the_tags();
+									$post_tags_string = '';
 									if ( $post_tags ) {
 										foreach( $post_tags as $tag ) {
-											echo $tag->name . ', '; 
+											$post_tags_string .= $tag->name . ', ';
 										}
+
+										echo rtrim(trim($post_tags_string), ',');
+										// echo $post_tags_string;
 									}
 								?>
 							</div>
