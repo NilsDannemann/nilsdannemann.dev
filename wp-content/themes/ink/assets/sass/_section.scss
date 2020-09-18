@@ -111,18 +111,17 @@
 		margin-bottom: 40px;
 
 		&-button {
-			height: 40px;
 			color: $color-text;
 			text-align: center;
 			margin: 0;
-			padding: 5px 10px;
-			border: $border;
-			font-size: $font-size;
+			padding: 10px 20px;
+			font-size: $font-size-l;
 			font-family: $font-family-text;
 			font-weight: $font-family-text-weight;
 			text-decoration: none;
 			cursor: pointer;
-			background: transparent; //For: override browser input styles
+			border: none;
+			background: $color-grey; //For: override browser input styles
 			line-height: 29px;
 			&:not(:last-child) {margin-bottom: $whitespace;}
 		}

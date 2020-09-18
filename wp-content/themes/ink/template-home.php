@@ -66,13 +66,14 @@ get_header(); ?>
 		</div>
 	</div>
 
-	<div class="section">
+	<!-- <div class="section">
 		<h2 class="section__title">Section Offers</h2>
 		<div class="section__offers">
 			<div class="grid__third">Offer</div>
 			<div class="grid__third">Offer</div>
 			<div class="grid__third">Offer</div>
 		</div>
-	</div>
+	</div> -->
+	
 <?php
 get_footer();
