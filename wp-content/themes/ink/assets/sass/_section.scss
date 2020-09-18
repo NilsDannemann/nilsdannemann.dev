@@ -1,19 +1,21 @@
 .section {
-	
+	padding: 30px;
+
 	&__title {
 		@include container();
-		font-size: 35px;
-		margin-bottom: 60px;
-
-		&--centered {
+		font-size: 37.5px;
+		margin-bottom: 105px;
+		text-transform: uppercase;
+		
+		@include respond-above($app-mobile-breakpoint) {
 			text-align: center;
 		}
 	}
 
 	&__header {
-		min-height: 300px;
+		min-height: 500px;
 		position: relative;
-		margin-bottom: 90px;
+		margin: -30px -30px 90px -30px;
 		background: $color-spaceblack;
 		
 		&::before {
@@ -40,23 +42,28 @@
 		margin-bottom: 40px;
 
 		&-image{
-			@include column('165px', $gutter: 30px, $stacking: true);
+			@include column('1/2', $gutter: 30px);
+			@include respond-above($app-mobile-breakpoint) {
+				@include column('200px', $gutter: 30px);
+			}
 			&-card {
-				border: 5px solid #fff;
-				border-radius: 10px;
-				box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+				border-radius: 5px;
+				box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 5px 15px rgba(0, 0, 0, 0.15);
 				background: #fff;
 			}
 		}
 		&-meta{
-			@include column('200px', $gutter: 60px, $stacking: true);
+			@include column('1/2', $gutter: 30px);
+			@include respond-above($app-mobile-breakpoint) {
+				@include column('200px', $gutter: 60px);
+			}
 			&-title {
 				font-size: $font-size-l;
 				color: $color-text-light;
 			}
 			&-value {
-				font-size: $font-size-m;
-				line-height: $line-height-m;
+				font-size: $font-size-l;
+				line-height: $line-height-l;
 				max-height: 44px;
 				overflow: hidden;
 				white-space: nowrap;
@@ -65,11 +72,31 @@
 			}
 		}
 		&-content{
-			@include column('auto', $gutter: 30px, $stacking: true);
+			@include column('1/1', $gutter: 30px);
+			@include respond-above($app-mobile-breakpoint) {
+				@include column('auto', $gutter: 30px);
+			}
 			&-title {
-				font-size: 23px;
+				text-transform: uppercase;
+				font-size: 22px;
 			}
 			&-excerpt {}
+		}
+		&-button {
+			height: 40px;
+			color: $color-text;
+			text-align: center;
+			margin: 0;
+			padding: 7.5px 10px;
+			border: $border;
+			font-size: $font-size;
+			font-family: $font-family-text;
+			font-weight: $font-family-text-weight;
+			text-decoration: none;
+			cursor: pointer;
+			background: transparent; //For: override browser input styles
+			line-height: 29px;
+			&:not(:last-child) {margin-bottom: $whitespace;}
 		}
 	}
 

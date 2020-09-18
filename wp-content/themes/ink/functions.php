@@ -470,6 +470,6 @@ wp_enqueue_script( 'nd-lazyestload', get_template_directory_uri() . '/assets/js/
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 40;
+    return 43;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );

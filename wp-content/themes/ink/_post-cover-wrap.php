@@ -110,10 +110,5 @@ if ( $restricted_condition ) {
 </div>
 
 <?php if ( in_category( 'artbook' )) { ?>
-	<div class="article-card" data-aos="fade-up">
-		<figure class="article-card__filter filter-juno">
-			<img src="<?php echo the_post_thumbnail_url( 'thumbnail' );  ?>" data-src="<?php echo the_post_thumbnail_url( 'large' );  ?>" class="article-card__image lazyestload" alt="Artwork for <?php the_title(); ?>">
-		</figure>
-		<div class="article-card__caption">Artwork for: <?php the_title(); ?></div>
-	</div>
+	<img class="article-card filter-juno" data-aos="fade-up" src="<?php echo the_post_thumbnail_url( 'thumbnail' );  ?>" data-src="<?php echo the_post_thumbnail_url( 'large' );  ?>" class="article-card__image lazyestload" alt="Artwork for <?php the_title(); ?>">
 <?php } ?>

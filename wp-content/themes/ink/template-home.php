@@ -10,7 +10,6 @@ get_header(); ?>
 	
 	<div class="section">
 		<div class="section__header">
-			Header
 		</div>
 	</div>
 
@@ -19,7 +18,7 @@ get_header(); ?>
 		<div class="section__posts">
 			<?php 
 				$args = array(
-				  'posts_per_page' => 6,
+				  'posts_per_page' => 9,
 				  'orderby' => 'date',
 				  'order' => 'DESC',
 				  'category_name' => 'Artbook'
@@ -57,6 +56,7 @@ get_header(); ?>
 							<h4 class="section__post-content-title"><?php the_title(); ?></h4>
 						</a>
 						<p class="section__post-content-excerpt"><?php the_excerpt(); ?></p>
+						<a href="<?php get_the_permalink() ?>" class="section__post-button">View Article</a>
 					</div>
 				</article>
 			<?php endwhile; ?>
