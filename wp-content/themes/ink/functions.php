@@ -462,3 +462,14 @@ wp_enqueue_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.
 * Include Lazyestload
 */
 wp_enqueue_script( 'nd-lazyestload', get_template_directory_uri() . '/assets/js/lazyestload.min.js', [], '1.0.0', true );
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 40;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );

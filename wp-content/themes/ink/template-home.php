@@ -34,10 +34,10 @@ get_header(); ?>
 						</a>
 					</div>
 					<div class="section__post-meta">
-						<h6 class="section__post-meta-title">Date</h6>
-						<p class="section__post-meta-value"><?php echo get_the_date(); ?></p>
-						<h6 class="section__post-meta-title">Topics</h6>
-						<p class="section__post-meta-value">
+						<div class="section__post-meta-title">Date</div>
+						<div class="section__post-meta-value"><?php echo get_the_date(); ?></div>
+						<div class="section__post-meta-title">Topics</div>
+						<div class="section__post-meta-value">
 							<?php 
 								$post_tags = get_the_tags();
 								if ( $post_tags ) {
@@ -46,11 +46,11 @@ get_header(); ?>
 									}
 								}
 							?>
-						</p>
-						<h6 class="section__post-meta-title">Reading Time</h6>
-						<p class="section__post-meta-value"><?php echo stag_post_reading_time(); ?></p>
-						<h6 class="section__post-meta-title">Author</h6>
-						<p class="section__post-meta-value"><?php echo get_author_name(); ?></p>
+						</div>
+						<div class="section__post-meta-title">Reading Time</div>
+						<div class="section__post-meta-value"><?php echo stag_post_reading_time(); ?></div>
+						<div class="section__post-meta-title">Author</div>
+						<div class="section__post-meta-value"><?php echo get_author_name(); ?></div>
 					</div>
 					<div class="section__post-content">
 						<a href="<?php the_permalink(); ?>">

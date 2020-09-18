@@ -52,6 +52,7 @@
 			@include column('200px', $gutter: 60px, $stacking: true);
 			&-title {
 				font-size: $font-size-l;
+				color: $color-text-light;
 			}
 			&-value {
 				font-size: $font-size-m;
