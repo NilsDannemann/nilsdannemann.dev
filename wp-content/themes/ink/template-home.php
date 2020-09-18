@@ -43,7 +43,13 @@ get_header(); ?>
 						</div>
 						<div class="section__post-meta-block">
 							<div class="section__post-meta-title">Author</div>
-							<div class="section__post-meta-value"><?php echo get_author_name(); ?></div>
+							<div class="section__post-meta-value">
+								<?php
+									$author_id = get_the_author_meta( 'ID' );
+									$author_name = get_the_author_meta( 'user_firstname', $author_id );;
+									echo '<img class="avatar avatar--round avatar--xs avatar--inline" src="'.get_avatar_url($author_id).'"><span>'.$author_name.'</span>';
+								?>
+							</div>
 						</div>
 						<div class="section__post-meta-block">
 							<div class="section__post-meta-title">Topics</div>

@@ -59,7 +59,7 @@
 				@include column('200px', $gutter: 60px);
 			}
 			&-block {
-				@include column('1/3', $gutter: 30px);
+				@include column('1/3', $gutter: 5px);
 				&:last-child {@include column('1/1');}
 				&:not(:last-child) {margin-bottom: ($whitespace*0.75);}
 				@include respond-above($app-mobile-breakpoint) {

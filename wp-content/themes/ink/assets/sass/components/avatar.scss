@@ -1,0 +1,35 @@
+.avatar {
+	&:not(:last-child) {
+		margin-bottom: $whitespace;
+	}
+
+	&--xxl {width: 125px; height: 250px;}
+	&--xl {width: 90px; height: 90px;}
+	&--l {width: 75px; height: 75px;}
+	&--m {width: 50px; height: 50px;}
+	&--s {width: 25px; height: 25px;}
+	&--xs {width: 17px; height: 17px;}
+
+	&--inline {
+		&:not(:last-child) {
+			margin-bottom: 0;
+			margin-right: ($whitespace*0.35);
+		}
+	}
+	&--inline-overlap {
+		box-shadow: 0px 0px 0px 3px #fff;
+		&:not(:last-child) {
+			margin-bottom: 0;
+			margin-right: (-$whitespace*0.15);
+		}
+	}
+	&--centered {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	&--round {
+		border-radius: 100px;
+	}
+
+}

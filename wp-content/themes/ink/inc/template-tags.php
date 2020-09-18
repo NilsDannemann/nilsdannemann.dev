@@ -200,7 +200,8 @@ function stag_post_reading_time( $post_id = null ) {
 
 	// If less than a minute.
 	if ( $minutes < 1 ) {
-		$estimated_time = __( '1 minute read', 'stag' );
+		// $estimated_time = __( '1 minute read', 'stag' );
+		$estimated_time = $minutes . ' Minute';
 	}
 
 	// If more than a minute.
@@ -211,7 +212,8 @@ function stag_post_reading_time( $post_id = null ) {
 		}
 
 		/* translators: %d = minute count */
-		$estimated_time = sprintf( __( '%d minute read', 'stag' ), $minutes );
+		// $estimated_time = sprintf( __( '%d minute read', 'stag' ), $minutes );
+		$estimated_time = $minutes . ' Minutes';
 	}
 
 	return $estimated_time;
