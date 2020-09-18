@@ -38,7 +38,7 @@ get_header(); ?>
 							<div class="section__post-meta-value"><?php echo get_the_date(); ?></div>
 						</div>
 						<div class="section__post-meta-block">
-							<div class="section__post-meta-title">Reading Time</div>
+							<div class="section__post-meta-title">Read Time</div>
 							<div class="section__post-meta-value"><?php echo stag_post_reading_time(); ?></div>
 						</div>
 						<div class="section__post-meta-block">
