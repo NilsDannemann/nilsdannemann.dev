@@ -18,7 +18,7 @@ get_header(); ?>
 		<div class="section__posts">
 			<?php 
 				$args = array(
-				  'posts_per_page' => 27,
+				  'posts_per_page' => 30,
 				  'orderby' => 'date',
 				  'order' => 'DESC',
 				  'category_name' => 'Artbook'
