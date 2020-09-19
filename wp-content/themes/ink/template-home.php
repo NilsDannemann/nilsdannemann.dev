@@ -18,7 +18,7 @@ get_header(); ?>
 		<div class="section__posts">
 			<?php 
 				$args = array(
-				  'posts_per_page' => 9,
+				  'posts_per_page' => 27,
 				  'orderby' => 'date',
 				  'order' => 'DESC',
 				  'category_name' => 'Artbook'
@@ -59,7 +59,7 @@ get_header(); ?>
 									$post_tags_string = '';
 									if ( $post_tags ) {
 										foreach( $post_tags as $tag ) {
-											$post_tags_string .= '<span class="section__post-meta-label">' . $tag->name . '</span>';
+											$post_tags_string .= '<a class="section__post-meta-label" href="'.get_tag_link($tag->term_id).'">' . $tag->name . '</a>';
 										}
 										echo $post_tags_string;
 									}
@@ -72,7 +72,7 @@ get_header(); ?>
 							<h4 class="section__post-content-title"><?php the_title(); ?></h4>
 						</a>
 						<p class="section__post-content-excerpt"><?php the_excerpt(); ?></p>
-						<a href="<?php get_the_permalink() ?>" class="section__post-button">Read more</a>
+						<a href="<?php echo get_the_permalink(); ?>" class="section__post-button">Continue reading...</a>
 					</div>
 				</article>
 			<?php endwhile; ?>
