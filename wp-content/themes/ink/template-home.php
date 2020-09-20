@@ -26,7 +26,7 @@ get_header(); ?>
 				$loop = new WP_Query( $args );
 			?>
 			<?php while ( $loop->have_posts() ) : $loop->the_post();?>
-				<article class="section__post">
+				<article id="post-<?php the_ID(); ?>" class="section__post">
 					<div class="section__post-image">
 						<a href="<?php the_permalink(); ?>">
 							<img class="section__post-image-card filter-juno" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="image for post <?php the_title(); ?>">
@@ -69,10 +69,21 @@ get_header(); ?>
 					</div>
 					<div class="section__post-content">
 						<a href="<?php the_permalink(); ?>">
-							<h4 class="section__post-content-title"><?php the_title(); ?></h4>
+							<h2 class="section__post-content-title"><?php the_title(); ?></h2>
 						</a>
-						<p class="section__post-content-excerpt"><?php the_excerpt(); ?></p>
-						<a href="<?php echo get_the_permalink(); ?>" class="section__post-button">Continue reading...</a>
+						<p class="section__post-content-excerpt">
+							<div class="excerpt-content" action-id="<?php the_ID(); ?>">
+			                    <?php the_excerpt(); ?>
+			                </div>
+			                <div class="full-content" action-id="<?php the_ID(); ?>" style="display: none;">
+								<?php 
+				                    $the_content = get_the_content();
+				                    $the_content = str_replace('<h2>', '<h3>', $the_content);
+				                    $the_content = str_replace('</h2>', '</h3>', $the_content);
+				                    echo $the_content;
+			                    ?>
+			                </div>
+						</p>
 					</div>
 				</article>
 			<?php endwhile; ?>

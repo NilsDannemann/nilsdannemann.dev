@@ -452,6 +452,10 @@ require_once $tmp_dir . '/rcp/init.php';
 */
 require_once get_template_directory() . '/inc/updater/theme-updater.php';
 
+/**
+* Include Main.js
+*/
+wp_enqueue_script( 'nd-main', get_template_directory_uri() . '/assets/js/main.min.js', [], '1.0.0', true );
 
 /**
 * Include AOS
@@ -464,12 +468,18 @@ wp_enqueue_script( 'nd-aos', get_template_directory_uri() . '/assets/js/aos.min.
 wp_enqueue_script( 'nd-lazyestload', get_template_directory_uri() . '/assets/js/lazyestload.min.js', [], '1.0.0', true );
 
 /**
- * Filter the except length to 20 words.
- *
- * @param int $length Excerpt length.
- * @return int (Maybe) modified excerpt length.
- */
+* Change Excerpt length
+*/
 function wpdocs_custom_excerpt_length( $length ) {
     return 38;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+/**
+* Include Exerpt more
+*/
+function new_excerpt_more( $more ) {
+    global $post;
+    return '... <a class="reveal-full-content"  action-id="' . $post->ID .'" href="#">Load Article</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');

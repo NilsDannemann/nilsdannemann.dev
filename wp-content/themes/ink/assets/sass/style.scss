@@ -17,6 +17,8 @@
  @import "compass/css3";
 
 @import 'variables.scss';
+@import 'reset';
+@import 'preboot';
 
 // Relay
 @import 'base/hfc-relay-core-helpers.scss';
@@ -42,8 +44,6 @@
 @import 'components/avatar.scss';
 
 @import 'contents';
-@import 'reset';
-@import 'preboot';
 @import 'grid';
 @import 'scaffolding';
 @import 'section';
