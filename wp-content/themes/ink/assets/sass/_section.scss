@@ -97,7 +97,12 @@
 				text-transform: uppercase;
 				font-size: 27px;
 			}
-			&-excerpt {}
+			&-excerpt {
+
+				p {
+					font-size: $font-size-xl;
+				}
+			}
 		}
 		&-button {
 			@include grid($justify: center, $align: center);

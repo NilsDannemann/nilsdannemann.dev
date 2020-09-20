@@ -71,7 +71,7 @@ get_header(); ?>
 						<a href="<?php the_permalink(); ?>">
 							<h2 class="section__post-content-title"><?php the_title(); ?></h2>
 						</a>
-						<p class="section__post-content-excerpt">
+						<div class="section__post-content-excerpt">
 							<div class="excerpt-content" action-id="<?php the_ID(); ?>">
 			                    <?php the_excerpt(); ?>
 			                </div>
@@ -83,7 +83,7 @@ get_header(); ?>
 				                    echo $the_content;
 			                    ?>
 			                </div>
-						</p>
+						</div>
 					</div>
 				</article>
 			<?php endwhile; ?>
