@@ -100,20 +100,25 @@
 			&-excerpt {}
 		}
 		&-button {
-			height: 40px;
+			@include grid($justify: center, $align: center);
+			width: fit-content;
 			color: $color-text;
-			text-align: center;
 			margin: 0;
-			padding: 7.5px 10px;
+			padding: 0 7.5px;
 			border: $border;
+			border-radius: $border-radius; 
 			font-size: $font-size;
 			font-family: $font-family-text;
 			font-weight: $font-family-text-weight;
 			text-decoration: none;
 			cursor: pointer;
 			background: transparent; //For: override browser input styles
-			line-height: 29px;
 			&:not(:last-child) {margin-bottom: $whitespace;}
+
+			&--more {
+				display: block;
+				margin-top: 7.5px;
+			}
 		}
 	}
 

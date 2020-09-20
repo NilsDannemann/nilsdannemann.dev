@@ -480,6 +480,6 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 */
 function new_excerpt_more( $more ) {
     global $post;
-    return '... <a class="reveal-full-content"  action-id="' . $post->ID .'" href="#">Load Article</a>';
+    return '...<a class="reveal-full-content section__post-button section__post-button--more"  action-id="' . $post->ID .'" href="#">Load Article</a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
