@@ -459,7 +459,6 @@ body:not(.header-over),
 }
 
 .site {
-	overflow: hidden;
 	z-index: 100;
 	// @include transition(transform 200ms cubic-bezier(0.2,0.3,0.25,0.9));
 	@include transition(transform 250ms cubic-bezier(.694,.0482,.335,1));

@@ -40,6 +40,16 @@
 		border-bottom: $border;
 		padding-bottom: 15px;
 		margin-bottom: 40px;
+		
+		&--sticky {
+			.section__post-image,
+			.section__post-meta {
+				@include respond-above($app-mobile-breakpoint) {
+					position: sticky;
+					top: 30px;
+				}
+			}
+		}
 
 		&-image{
 			@include column('1/1', $gutter: 30px);
@@ -109,10 +119,10 @@
 			width: fit-content;
 			color: $color-text;
 			margin: 0;
-			padding: 3.5px 12.5px;
+			padding: 0px 7.5px;
 			border: $border;
 			border-radius: $border-radius; 
-			font-size: $font-size-xl;
+			font-size: $font-size-l;
 			font-family: $font-family-text;
 			font-weight: $font-family-text-weight;
 			text-decoration: none;
