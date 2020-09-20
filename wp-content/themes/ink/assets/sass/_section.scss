@@ -56,6 +56,9 @@
 			@include respond-above($app-mobile-breakpoint) {
 				@include column('235px', $gutter: 30px);
 			}
+			a {
+				border-bottom: none;
+			}
 			&-card {
 				border-radius: 5px;
 				box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 5px 15px rgba(0, 0, 0, 0.15);
