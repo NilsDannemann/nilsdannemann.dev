@@ -14,7 +14,7 @@ get_header(); ?>
 	</div>
 
 	<div class="section">
-		<h2 class="section__title section__title--centered">RECENT ARTICLES</h2>
+		<h2 class="section__title section__title--centered">ARTICLES</h2>
 		<div class="section__posts">
 			<?php 
 				$args = array(
