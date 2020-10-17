@@ -127,6 +127,7 @@ class Screen implements IScreen {
 				'customPermalinks' => (bool) get_option( 'permalink_structure', false ),
 				'isUserRegistered' => Helper::is_site_connected(),
 				'maxTags'          => $this->do_filter( 'focus_keyword/maxtags', 5 ),
+				'trendsIcon'       => Admin_Helper::get_trends_icon_svg(),
 				'showScore'        => Helper::is_score_enabled(),
 				'canUser'          => [
 					'general'  => Helper::has_cap( 'onpage_general' ),
@@ -139,7 +140,7 @@ class Screen implements IScreen {
 					'serpData'         => $this->get_object_values(),
 					'powerWords'       => $this->power_words(),
 					'sentimentKbLink'  => KB::get( 'sentiments' ),
-					'hundredScoreLink' => KB::get( 'score-100' ),
+					'hundredScoreLink' => KB::get( 'score-100-ge' ),
 					'researchesTests'  => $this->get_analysis(),
 				],
 				'is_front_page'    => Admin_Helper::is_home_page(),
@@ -233,6 +234,8 @@ class Screen implements IScreen {
 		$twitter_username           = Helper::get_settings( 'titles.twitter_author_names' );
 		$data['twitterAuthor']      = $twitter_username ? $twitter_username : esc_html__( 'username', 'rank-math' );
 		$data['twitterUseFacebook'] = 'off' === $data['twitterUseFacebook'] ? false : true;
+		$data['facebookHasOverlay'] = empty( $data['facebookHasOverlay'] ) || 'off' === $data['facebookHasOverlay'] ? false : true;
+		$data['twitterHasOverlay']  = empty( $data['twitterHasOverlay'] ) || 'off' === $data['twitterHasOverlay'] ? false : true;
 
 		return wp_parse_args( $this->screen->get_object_values(), $data );
 	}
@@ -275,17 +278,17 @@ class Screen implements IScreen {
 	 */
 	private function load_screen( $manual = '' ) {
 		if ( Admin_Helper::is_post_edit() || 'post' === $manual ) {
-			$this->screen = new Post_Screen;
+			$this->screen = new Post_Screen();
 			return;
 		}
 
 		if ( Admin_Helper::is_term_edit() || 'term' === $manual ) {
-			$this->screen = new Taxonomy_Screen;
+			$this->screen = new Taxonomy_Screen();
 			return;
 		}
 
 		if ( User_Screen::is_enable() || 'user' === $manual ) {
-			$this->screen = new User_Screen;
+			$this->screen = new User_Screen();
 			return;
 		}
 	}

@@ -22,6 +22,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Frontend class.
+ *
+ * Some functionality inspired from Yoast (https://github.com/Yoast/wordpress-seo/)
  */
 class Frontend {
 
@@ -31,6 +33,10 @@ class Frontend {
 	 * The Constructor.
 	 */
 	public function __construct() {
+		if ( \MyThemeShop\Helpers\Param::get( 'et_fb' ) ) {
+			return;
+		}
+
 		$this->includes();
 		$this->hooks();
 
@@ -45,7 +51,7 @@ class Frontend {
 	 */
 	private function includes() {
 
-		rank_math()->shortcodes = new Shortcodes;
+		rank_math()->shortcodes = new Shortcodes();
 
 		if ( Helper::get_settings( 'general.breadcrumbs' ) ) {
 			/**
@@ -54,7 +60,8 @@ class Frontend {
 			add_filter( 'bbp_get_breadcrumb', '__return_false' );
 		}
 
-		new Comments;
+		new Link_Attributes();
+		new Comments();
 	}
 
 	/**
@@ -76,6 +83,10 @@ class Frontend {
 		if ( Helper::get_settings( 'titles.disable_author_archives' ) || Helper::get_settings( 'titles.disable_date_archives' ) ) {
 			$this->action( 'wp', 'archive_redirect' );
 		}
+
+		// Add support for shortcode in the Category/Term description.
+		add_filter( 'category_description', 'do_shortcode' );
+		add_filter( 'term_description', 'do_shortcode' );
 	}
 
 	/**
@@ -88,15 +99,20 @@ class Frontend {
 		}
 
 		Paper::get();
-		new Facebook;
-		new Twitter;
+		new Facebook();
+		new Twitter();
 
 		// Leave this for backwards compatibility as AMP plugin uses head function. We can remove this in the future update.
-		rank_math()->head = new Head;
+		rank_math()->head = new Head();
+
+		if ( function_exists( 'amp_is_dev_mode' ) && amp_is_dev_mode() ) {
+			$this->filter( 'script_loader_tag', 'add_amp_dev_mode_attributes', 10, 2 );
+			$this->filter( 'amp_dev_mode_element_xpaths', 'add_amp_dev_mode_xpaths' );
+		}
 	}
 
 	/**
-	 * Enqueue Styles and Scripts required by plugin.
+	 * Enqueue Styles and Scripts
 	 */
 	public function enqueue() {
 		if ( ! is_admin_bar_showing() || ! Helper::has_cap( 'admin_bar' ) ) {
@@ -179,6 +195,40 @@ class Frontend {
 	}
 
 	/**
+	 * Add data-ampdevmode attribute to enqueued scripts.
+	 *
+	 * @since 1.0.45
+	 *
+	 * @param string $tag    The script tag.
+	 * @param string $handle The script handle.
+	 *
+	 * @return string Modified script tag.
+	 */
+	public function add_amp_dev_mode_attributes( $tag, $handle ) {
+		if ( ! in_array( $handle, [ 'rank-math', 'jquery-core', 'jquery-migrate' ], true ) ) {
+			return $tag;
+		}
+
+		return preg_replace( '/(?<=<script)(?=\s|>)/i', ' data-ampdevmode', $tag );
+	}
+
+	/**
+	 * Add data-ampdevmode attributes to the elements that need it.
+	 *
+	 * @since 1.0.45
+	 *
+	 * @param string[] $xpaths XPath queries for elements that should get the data-ampdevmode attribute.
+	 *
+	 * @return string[] XPath queries.
+	 */
+	public function add_amp_dev_mode_xpaths( $xpaths ) {
+		$xpaths[] = '//script[ contains( text(), "var rankMath" ) ]';
+		$xpaths[] = '//*[ @id = "rank-math-css" ]';
+		$xpaths[] = '//a[starts-with(@href, "tel://")]';
+		return $xpaths;
+	}
+
+	/**
 	 * Inserts the RSS header and footer messages in the RSS feed item.
 	 *
 	 * @param string $content Feed item content.
@@ -208,6 +258,8 @@ class Frontend {
 	/**
 	 * Check if we can add the RSS footer and/or header to the RSS feed item.
 	 *
+	 * Forked from Yoast (https://github.com/Yoast/wordpress-seo/)
+	 *
 	 * @param string $content Feed item content.
 	 * @param string $context Feed item context, either 'excerpt' or 'full'.
 	 *
@@ -228,9 +280,9 @@ class Frontend {
 	}
 
 	/**
-	 * Get rss content for specified location.
+	 * Get RSS content for specified location.
 	 *
-	 * @param string $which Location id.
+	 * @param string $which Location ID.
 	 *
 	 * @return string
 	 */

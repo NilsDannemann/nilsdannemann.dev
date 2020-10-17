@@ -17,8 +17,8 @@ $cmb->add_field(
 		'name'    => esc_html__( 'Author Archives', 'rank-math' ),
 		'desc'    => esc_html__( 'Enables or disables Author Archives. If disabled, the Author Archives are redirected to your homepage. To avoid duplicate content issues, noindex author archives if you keep them enabled.', 'rank-math' ),
 		'options' => [
-			'on'  => esc_html__( 'Disabled', 'rank-math' ),
-			'off' => esc_html__( 'Enabled', 'rank-math' ),
+			'on' => esc_html__( 'Disabled', 'rank-math' ),
+			'off'  => esc_html__( 'Enabled', 'rank-math' ),
 		],
 		'default' => $this->do_filter( 'settings/titles/disable_author_archives', 'off' ),
 	]
@@ -94,26 +94,25 @@ $cmb->add_field(
 		'classes'         => 'rank-math-supports-variables rank-math-title rank-math-advanced-option',
 		'default'         => '%name% %sep% %sitename% %page%',
 		'dep'             => $dep,
-		'sanitization_cb' => false,
+		'sanitization_cb' => [ '\RankMath\CMB2', 'sanitize_textfield' ],
 		'attributes'      => [ 'data-exclude-variables' => 'seo_title,seo_description' ],
 	]
 );
 
 $cmb->add_field(
 	[
-		'id'              => 'author_archive_description',
-		'type'            => 'textarea_small',
-		'name'            => esc_html__( 'Author Archive Description', 'rank-math' ),
-		'desc'            => esc_html__( 'Author archive meta description. SEO options for specific author archives can be set with the meta box in the user profiles.', 'rank-math' ),
-		'classes'         => 'rank-math-supports-variables rank-math-description rank-math-advanced-option',
-		'dep'             => $dep,
-		'attributes'      => [
+		'id'         => 'author_archive_description',
+		'type'       => 'textarea_small',
+		'name'       => esc_html__( 'Author Archive Description', 'rank-math' ),
+		'desc'       => esc_html__( 'Author archive meta description. SEO options for specific author archives can be set with the meta box in the user profiles.', 'rank-math' ),
+		'classes'    => 'rank-math-supports-variables rank-math-description rank-math-advanced-option',
+		'dep'        => $dep,
+		'attributes' => [
 			'class'                  => 'cmb2-textarea-small wp-exclude-emoji',
 			'data-gramm_editor'      => 'false',
 			'rows'                   => 2,
 			'data-exclude-variables' => 'seo_title,seo_description',
 		],
-		'sanitization_cb' => false,
 	]
 );
 

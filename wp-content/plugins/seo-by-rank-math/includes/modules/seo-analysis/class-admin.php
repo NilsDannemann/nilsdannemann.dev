@@ -31,17 +31,13 @@ class Admin extends Base {
 			[
 				'id'        => 'seo-analysis',
 				'directory' => $directory,
-				'help'      => [
-					'title' => esc_html__( 'SEO Analysis', 'rank-math' ),
-					'view'  => $directory . '/views/help.php',
-				],
 			]
 		);
 		parent::__construct();
 
 		if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || $this->page->is_current_page() ) {
 			include_once 'seo-analysis-tests.php';
-			$this->analyzer = new SEO_Analyzer;
+			$this->analyzer = new SEO_Analyzer();
 		}
 	}
 
@@ -55,7 +51,7 @@ class Admin extends Base {
 			'rank-math-seo-analysis',
 			esc_html__( 'SEO Analysis', 'rank-math' ),
 			[
-				'position'   => 12,
+				'position'   => 60,
 				'parent'     => 'rank-math',
 				'capability' => 'rank_math_site_analysis',
 				'classes'    => [ 'rank-math-page' ],
@@ -63,11 +59,11 @@ class Admin extends Base {
 				'assets'     => [
 					'styles'  => [
 						'rank-math-common'       => '',
-						'rank-math-seo-analysis' => $uri . '/assets/seo-analysis.css',
+						'rank-math-seo-analysis' => $uri . '/assets/css/seo-analysis.css',
 					],
 					'scripts' => [
-						'circle-progress'        => $uri . '/assets/circle-progress.min.js',
-						'rank-math-seo-analysis' => $uri . '/assets/seo-analysis.js',
+						'circle-progress'        => $uri . '/assets/js/circle-progress.min.js',
+						'rank-math-seo-analysis' => $uri . '/assets/js/seo-analysis.js',
 					],
 				],
 			]

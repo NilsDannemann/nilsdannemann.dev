@@ -22,6 +22,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Head class.
+ *
+ * Some functionality inspired from Yoast (https://github.com/Yoast/wordpress-seo/)
  */
 class Head {
 
@@ -94,6 +96,7 @@ class Head {
 
 		foreach ( $tools as $id => $name ) {
 			$content = trim( Helper::get_settings( "general.{$id}" ) );
+			$content = $this->do_filter( 'webmaster/' . $id, $content );
 			if ( empty( $content ) ) {
 				continue;
 			}
@@ -178,9 +181,7 @@ class Head {
 		$generated = Paper::get()->get_description();
 
 		if ( Str::is_non_empty( $generated ) ) {
-			echo '<meta name="description" content="', $generated, '"/>', "\n";
-		} elseif ( Helper::has_cap( 'general' ) && is_singular() ) {
-			echo '<!-- ', \html_entity_decode( esc_html__( 'Admin only notice: this page has no meta description set. Please edit the page to add one, or setup a template in Rank Math -> Titles &amp; Metas.', 'rank-math' ) ), ' -->', "\n";
+			echo '<meta name="description" content="' . $generated . '"/>', "\n";
 		}
 	}
 
