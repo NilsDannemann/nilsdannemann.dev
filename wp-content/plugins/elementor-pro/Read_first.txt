@@ -1,9 +1,0 @@
-1- To use blocks and models you must install the 2 plugins included in this package. Free version and pro version. These two plugins work together, so when you see an update to the free version, do not update. Wait for update on our website and then just download and install the new version of plugin.
-
-2- On the Elementor > License page, enter any code to activate the plugin (if needed).
-
-3- From version 2.8, Elementor introduced a compulsory functionality: "Connect to template library". On the first time you attempt to import a template (free or pro), the elementor will request connection to the templates library - that means that, to import the templates (even the free), the user must have an account on the elementor website.
-
-4- To get more about Template Library, you can browse the related documentation: https://docs.elementor.com/article/60-library
-
-Enjoy!
