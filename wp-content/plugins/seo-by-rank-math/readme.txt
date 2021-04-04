@@ -1,19 +1,19 @@
-=== Rank Math - SEO Plugin for WordPress ===
+=== Rank Math SEO - Best SEO Plugin for WordPress ===
 Contributors: rankmath
 Plugin link: https://rankmath.com/?utm_source=LP&utm_campaign=WP
-Tags: seo, sitemap, google search console, schema, redirection
-Tested up to: 5.5.1
-Requires at least: 5.2
-Requires PHP: 7.0
-Stable tag: 1.0.49
+Tags: seo, sitemap, google search console, schema, redirection, WordPress SEO
+Tested up to: 5.7
+Requires at least: 5.5
+Requires PHP: 7.2
+Stable tag: 1.0.61.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.txt
 
-Rank Math is a revolutionary WordPress SEO plugin that combines the features of many SEO tools in a single package & helps you multiply your traffic.
+Rank Math SEO is a revolutionary WordPress SEO plugin that combines the features of many SEO tools in a single package & helps you multiply your traffic.
 
 == Description ==
 
-**SEO Plugin For WordPress**
+**Rank Math SEO - Best SEO Plugin for WordPress**
 ★★★★★<br>
 
 **SEO is the most consistent source of traffic for any website.** We created <a href="https://rankmath.com/wordpress/plugin/seo-suite/?utm_source=LP&utm_campaign=WP" target="_blank">**Rank Math, a WordPress SEO plugin**</a>, to help every website owner get access to the SEO tools they need to improve their SEO and attract more traffic to their website.
@@ -27,7 +27,7 @@ SEO might be the best and most **consistent source of traffic** for one's websit
 
 Its host of **intelligent features** brings top SEO capabilities in your hands that were previously out of reach. The **smart automation** features give you the **power of an entire SEO team** with just a few clicks. A **well thought out design, powerful features, and years of development** by the MyThemeShop squad make Rank Math a game-changing SEO plugin that will level the SEO playing field in your favor to help increase traffic.
 
-###  Rank Math beats the competition with hands tied behind its back. ###
+### Rank Math beats all of its competitors hands down. ###
 
 See the features which are exclusive to Rank Math SEO plugin and to understand why Rank Math is possibly the **Best SEO Plugin for WordPress**.
 
@@ -379,7 +379,7 @@ No, you won't. When you install Rank Math, it will seamlessly import your settin
 If you setup Rank Math from scratch, then your search engine rankings will depend on how you configure it. But please be advised that Google and other search engines prefer good, useful content over anything else.
 
 = What are the technical requirements for using Rank Math? =
-Rank Math requires at least PHP 5.6, cURL lib, cron jobs, to be installed and enabled on the server. Those things are mostly installed on every good hosting server. When you initiate Rank Math's setup process, Rank Math will also perform a compatibility check to confirm if your server can run Rank Math. If your server has a lower configuration of any Software, please ask your hosting to update it to the latest version.
+Rank Math requires at least PHP 7.2, cURL lib, cron jobs, to be installed and enabled on the server. Those things are mostly installed on every good hosting server. When you initiate Rank Math's setup process, Rank Math will also perform a compatibility check to confirm if your server can run Rank Math. If your server has a lower configuration of any Software, please ask your hosting to update it to the latest version.
 
 = Can I use Rank Math on a WordPress.com website? =
 Yes, as the plugin is provided through WordPress.org, it is available on WordPress.com as well. However, you might be required to opt for the Business plan of WordPress.com
@@ -475,25 +475,33 @@ Please drop us an email at support@rankmath.com and we would be more than happy 
 
 == Changelog ==
 
-= 1.0.49 [Oct 10, 2020] =
-* Added: [NEW!] [HUGE!] Introducing the revamped [Analytics module](https://rankmath.com/kb/search-console/)! Now you can track your site's SEO performance from one place. Preview [https://i.rankmath.com/mk2pTt](https://i.rankmath.com/mk2pTt)
-* Added: [NEW!] [HUGE!] Google Analytics integration! Install Google Analytics code with a click of a button and track your unique visitors for every post/page of your website inside WordPress
-* Added: Automatically verify, add and configure your website for Google Search Console without leaving WordPress
-* Added: Automatically verify, add and configure your website for Google Analytics without leaving WordPress
-* Added: An option to exclude logged-in users from Google Analytics tracking
-* Added: Rank Math can automatically add [Sitemaps](https://rankmath.com/kb/configure-sitemaps/) into the Google Search Console. No more worrying about adding the Sitemaps manually inside Google Search Console
-* Added: New Analytics page shows your website's overall [SEO scores](https://rankmath.com/kb/score-100-in-tests/) & optimization
-* Added: Keyword Position graph shows the number of keywords ranking in the top 3, 10, 50, and 100 positions that are driving traffic to your website
-* Added: Advanced graph in the Performance tab of the Analytics module that gives you an overview of overall Site Traffic, Search Impressions, Search Clicks, CTR, & Average Position of your keywords
-* Added: An option to select the timeframe for your Analytics stats. Choose between past 7, 15, 30, or 90 days
-* Improved: "SEO Score: Bad" post-filter now shows only the posts that have a Focus keyword added to them
-* Fixed: [Auto-update](https://rankmath.com/kb/version-control/#auto-update) cannot be enabled from the plugins admin page
-* Fixed: Empty `itemList` element in the [Breadcrumbs Schema](https://rankmath.com/kb/general-settings/#bread-crumbs) for the blog page when show homepage link option was enabled in the settings
-* Fixed: An `Invalid object type` error for the "publisher" field if the [Local SEO](https://rankmath.com/kb/titles-and-meta/#local-seo) module was disabled
-* Fixed: A PHP notice appearing on some installations while saving category or a tag page
-* Fixed: `Save All` button in the bulk edit was showing a `400 Bad request` error if there were no changes in any of the posts
-* Fixed: Enable/Disable `Author Archive` toggle was not working as expected
+= 1.0.61 [Apr 03, 2021] =
+* Fixed: Link modal freezes when trying to add a link in the Relation field of ACF
+* Fixed: Optimized one Analytics query, which was causing high CPU usage on some setups from the last update
+* Fixed: Wrong closing H4 tag in the shortcode
 
-Note: We do not store or process any data on our servers. Your website's database will be used for storing and processing the data. You can read the plugin's usage policy [here](https://rankmath.com/usage-tracking/)
+= 1.0.61 [Apr 01, 2021] =
+* Added: [NEW!] Post author schema property prints gravatar, social profile URLs(`sameAs`), author archive URL(if enabled), and `worksFor` attribute
+* Added: [NEW!] Focus keywords as `keywords` attribute in the [Article Schema](https://rankmath.com/kb/article-schema/) output
+* Added: Video duration data in the [Recipe Schema](https://rankmath.com/kb/recipe-schema/) output
+* Added: Width and height data in the `ImageObject` Schema property
+* Improved: Feedback Messages related to the Rank Math's [Database tools](https://rankmath.com/kb/rank-math-status-and-tools/#tools)
+* Improved: Avoid saving General settings after hitting the enter button while editing any text field
+* Improved: Browser title for the [KML file](https://rankmath.com/kb/kml-sitemap/) in the sitemap
+* Improved: Replaced deprecated Javascript functions
+* Fixed: PHP notices showing right after installation on some installations
+* Fixed: Dashboard widget was throwing PHP errors sometimes due to cache clearing issue
+* Fixed: Rebuild Analytics Index tool was not indexing all available posts/pages
+* Fixed: `rankmath_google_api_failed_attempts_data` option was becoming too large on some websites
+* Fixed: [Star Rating](https://rankmath.com/kb/review-schema/) was not showing correctly on the frontend if a maximum value was more than 5
+* Fixed: Settings tab were hidden for a post type which has word 'Notice' in its name
+* Fixed: Remove Data fetch scheduled actions if Analytics Module is disabled
+* Fixed: [Sitemaps](https://rankmath.com/kb/configure-sitemaps/) were not working with the plain permalinks
+* Fixed: Sitemap was not updating when Scheduled posts were published
+* Fixed: Analytics Dashboard page was not loading due to console error on some setups
+* Fixed: Missing [schema markup](https://rankmath.com/kb/rich-snippets/) code on the Static Homepage
+* Fixed: Analytics Graphs were showing wrong data when the “7 Days” timeframe was Selected
+* Fixed: An error appearing in the PHP 8.0
+* Fixed: Title attribute was getting added after the ending slash in `img` tag
 
-Full changelog can be found here - **[Rank Math SEO changelog](https://rankmath.com/changelog/?utm_source=LP&utm_campaign=WP)**
+Full changelog can be found here - **[Rank Math SEO changelog](https://rankmath.com/changelog/?utm_source=Plugin&utm_medium=Changelog&utm_campaign=WP)**

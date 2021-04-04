@@ -2,7 +2,7 @@
 /**
  * The Analytics Module
  *
- * @since      0.9.0
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
@@ -10,11 +10,10 @@
 
 namespace RankMath\Analytics;
 
-use Exception;
 use RankMath\Helper;
-use RankMath\Google\Api;
 use RankMath\Traits\Hooker;
 use MyThemeShop\Helpers\Param;
+use RankMathPro\Analytics\Pageviews;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -30,35 +29,35 @@ class Stats extends Keywords {
 	 *
 	 * @var string
 	 */
-	protected $start_date = '';
+	public $start_date = '';
 
 	/**
 	 * End date.
 	 *
 	 * @var string
 	 */
-	protected $end_date = '';
+	public $end_date = '';
 
 	/**
 	 * Compare Start date.
 	 *
 	 * @var string
 	 */
-	protected $compare_start_date = '';
+	public $compare_start_date = '';
 
 	/**
 	 * Compare End date.
 	 *
 	 * @var string
 	 */
-	protected $compare_end_date = '';
+	public $compare_end_date = '';
 
 	/**
 	 * Number of days.
 	 *
 	 * @var int
 	 */
-	protected $days = 0;
+	public $days = 0;
 
 	/**
 	 * Main instance
@@ -86,7 +85,7 @@ class Stats extends Keywords {
 	public function set_date_range( $range = false ) {
 		// Dates.
 		$subtract = DAY_IN_SECONDS * 3;
-		$start    = strtotime( false !== $range ? $range : $this->get_date_from_cookie( 'date_range', '-30 days' ) ) - $subtract - ( DAY_IN_SECONDS * 5 );
+		$start    = strtotime( false !== $range ? $range : $this->get_date_from_cookie( 'date_range', '-30 days' ) ) - $subtract;
 		$end      = strtotime( $this->do_filter( 'analytics/end_date', 'today' ) ) - $subtract;
 
 		// Timestamp.
@@ -95,14 +94,14 @@ class Stats extends Keywords {
 
 		// Period.
 		$this->end_date   = date_i18n( 'Y-m-d 23:59:59', $end );
-		$this->start_date = date_i18n( 'Y-m-d 00:00:01', $start );
+		$this->start_date = date_i18n( 'Y-m-d 00:00:00', $start );
 
 		// Compare with.
 		$this->days               = ceil( abs( $end - $start ) / DAY_IN_SECONDS );
 		$this->compare_end_date   = $start - DAY_IN_SECONDS;
 		$this->compare_start_date = $this->compare_end_date - ( $this->days * DAY_IN_SECONDS );
 		$this->compare_end_date   = date_i18n( 'Y-m-d 23:59:59', $this->compare_end_date );
-		$this->compare_start_date = date_i18n( 'Y-m-d 00:00:01', $this->compare_start_date );
+		$this->compare_start_date = date_i18n( 'Y-m-d 00:00:00', $this->compare_start_date );
 	}
 
 	/**
@@ -112,7 +111,7 @@ class Stats extends Keywords {
 	 *
 	 * @return string
 	 */
-	protected function get_sql_range( $column = 'date' ) {
+	public function get_sql_range( $column = 'date' ) {
 		$range    = $this->get_date_from_cookie( 'date_range', '-30 days' );
 		$interval = [
 			'-30 days'  => 'WEEK(' . $column . ')',
@@ -129,7 +128,7 @@ class Stats extends Keywords {
 	 *
 	 * @return array
 	 */
-	protected function get_intervals() {
+	public function get_intervals() {
 		$range    = $this->get_date_from_cookie( 'date_range', '-30 days' );
 		$interval = [
 			'-7 days'   => '0 days',
@@ -206,13 +205,41 @@ class Stats extends Keywords {
 	}
 
 	/**
+	 * Get date intervals sql part.
+	 *
+	 * @param  array  $intervals Date Intervals.
+	 * @param  string $column Column name to check.
+	 * @param  string $newcolumn Column name to return.
+	 * @return string
+	 */
+	public function get_sql_date_intervals( $intervals, $column = 'created', $newcolumn = 'range_group' ) {
+		$sql_parts = [];
+		array_push( $sql_parts, 'CASE' );
+
+		$index = 1;
+		foreach ( $intervals['dates'] as $date_range ) {
+			$start_date = $date_range['start'] . ' 00:00:00';
+			$end_date   = $date_range['end'] . ' 23:59:59';
+
+			array_push( $sql_parts, sprintf( "WHEN %s BETWEEN '%s' AND '%s' THEN 'range%d'", $column, $start_date, $end_date, $index ) );
+
+			$index ++;
+		}
+
+		array_push( $sql_parts, "ELSE 'none'" );
+		array_push( $sql_parts, sprintf( "END AS '%s'", $newcolumn ) );
+
+		return implode( ' ', $sql_parts );
+	}
+
+	/**
 	 * Get date array
 	 *
 	 * @param  array $dates Dates.
 	 * @param  array $default Default value.
 	 * @return array
 	 */
-	protected function get_date_array( $dates, $default ) {
+	public function get_date_array( $dates, $default ) {
 		$data = [];
 		foreach ( $dates as $date => $d ) {
 			$data[ $date ]                  = $default;
@@ -229,7 +256,7 @@ class Stats extends Keywords {
 	 * @param  array $row Row to normalize.
 	 * @return array
 	 */
-	protected function normalize_graph_rows( $row ) {
+	public function normalize_graph_rows( $row ) {
 		foreach ( $row as $col => $val ) {
 			if ( in_array( $col, [ 'query', 'page', 'date', 'created', 'dateFormatted' ], true ) ) {
 				continue;
@@ -247,6 +274,108 @@ class Stats extends Keywords {
 	}
 
 	/**
+	 * Remove uncessary graph rows.
+	 *
+	 * @param  array $rows Rows to filter.
+	 * @return array
+	 */
+	public function filter_graph_rows( $rows ) {
+		foreach ( $rows as $key => $row ) {
+			if ( isset( $row->range_group ) && 'none' === $row->range_group ) {
+				unset( $rows[ $key ] );
+			}
+		}
+		return $rows;
+	}
+
+	/**
+	 * Extract proper data.
+	 *
+	 * @param  array  $rows   Data rows.
+	 * @param  string $column Column name contains mixed data.
+	 * @param  string $sep    Separator for mixed data.
+	 * @param  array  $keys   Column array to extract.
+	 * @return array
+	 */
+	public function extract_data_from_mixed( $rows, $column, $sep, $keys ) {
+		foreach ( $rows as $index => &$row ) {
+			if ( ! isset( $row->$column ) ) {
+				continue;
+			}
+
+			$mixed       = explode( $sep, $row->$column );
+			$mixed_count = count( $mixed );
+			if ( ! $mixed_count ) {
+				continue;
+			}
+
+			foreach ( $keys as $key_idx => $key ) {
+				if ( 'position' === $key ) {
+					$value = 100 - (int) $mixed[ $mixed_count - $key_idx - 1 ];
+				} else {
+					$value = $mixed[ $mixed_count - $key_idx - 1 ];
+				}
+				$row->$key = $value;
+			}
+
+			unset( $row->$column );
+		}
+
+		return $rows;
+	}
+
+	/**
+	 * Merge two metrics array into one
+	 *
+	 * @param  array   $metrics_rows1 Metrics Rows to merge.
+	 * @param  array   $metrics_rows2 Metrics Rows to merge.
+	 * @param  boolean $has_traffic   Flag to include/exclude traffic data.
+	 * @return array
+	 */
+	public function get_merged_metrics( $metrics_rows1, $metrics_rows2, $has_traffic = false ) {
+		$data = [];
+
+		$base_array = [
+			'position'        => 0,
+			'diffPosition'    => 0,
+			'clicks'          => 0,
+			'diffClicks'      => 0,
+			'impressions'     => 0,
+			'diffImpressions' => 0,
+			'ctr'             => 0,
+			'diffCtr'         => 0,
+		];
+
+		if ( $has_traffic ) {
+			$base_array['pageviews']  = 0;
+			$base_array['difference'] = 0;
+		}
+
+		foreach ( $metrics_rows1 as $key => $row ) {
+			if ( isset( $metrics_rows2[ $key ] ) ) {
+				if ( is_object( $row ) ) {
+					$data[ $key ] = (object) array_merge( $base_array, (array) $row, (array) $metrics_rows2[ $key ] );
+				} else {
+					$data[ $key ] = array_merge( $base_array, $row, $metrics_rows2[ $key ] );
+				}
+				unset( $metrics_rows2[ $key ] );
+			} else {
+				$data[ $key ] = array_merge( $base_array, $row );
+			}
+		}
+
+		foreach ( $metrics_rows2 as $key => $row ) {
+			if ( is_object( $row ) ) {
+				$metrics_rows2[ $key ] = (object) array_merge( $base_array, (array) $row );
+			} else {
+				$metrics_rows2[ $key ] = array_merge( $base_array, $row );
+			}
+		}
+
+		return array_merge( $data, $metrics_rows2 );
+	}
+
+	/**
 	 * [get_merge_data_graph description]
 	 *
 	 * @param  array $rows Rows to merge.
@@ -254,19 +383,22 @@ class Stats extends Keywords {
 	 * @param  array $map  Interval map.
 	 * @return array
 	 */
-	protected function get_merge_data_graph( $rows, $data, $map ) {
+	public function get_merge_data_graph( $rows, $data, $map ) {
 		foreach ( $rows as $row ) {
 			if ( ! isset( $map[ $row->date ] ) ) {
 				continue;
 			}
 
 			$date = $map[ $row->date ];
-
 			foreach ( $row as $key => $value ) {
 				if ( 'date' === $key || 'created' === $key ) {
 					continue;
 				}
 
+				// trick to invert Position Graph YAxis.
+				if ( 'position' === $key ) {
+					$value = 0 - $value;
+				}
 				$data[ $date ][ $key ][] = $value;
 			}
 		}
@@ -280,7 +412,7 @@ class Stats extends Keywords {
 	 * @param  array $rows Graph data.
 	 * @return array
 	 */
-	protected function get_graph_data_flat( $rows ) {
+	public function get_graph_data_flat( $rows ) {
 		foreach ( $rows as &$row ) {
 			if ( isset( $row['clicks'] ) ) {
 				$row['clicks'] = \array_sum( $row['clicks'] );
@@ -288,6 +420,10 @@ class Stats extends Keywords {
 
 			if ( isset( $row['impressions'] ) ) {
 				$row['impressions'] = \array_sum( $row['impressions'] );
+			}
+
+			if ( isset( $row['earnings'] ) ) {
+				$row['earnings'] = \array_sum( $row['earnings'] );
 			}
 
 			if ( isset( $row['pageviews'] ) ) {
@@ -299,7 +435,11 @@ class Stats extends Keywords {
 			}
 
 			if ( isset( $row['position'] ) ) {
-				$row['position'] = empty( $row['position'] ) ? 0 : ceil( array_sum( $row['position'] ) / count( $row['position'] ) );
+				if ( empty( $row['position'] ) ) {
+					unset( $row['position'] );
+				} else {
+					$row['position'] = ceil( array_sum( $row['position'] ) / count( $row['position'] ) );
+				}
 			}
 
 			if ( isset( $row['keywords'] ) ) {
@@ -318,7 +458,7 @@ class Stats extends Keywords {
 	 *
 	 * @return mixed
 	 */
-	protected function get_date_from_cookie( $filter, $default ) {
+	public function get_date_from_cookie( $filter, $default ) {
 		$cookie_key = 'rank_math_analytics_' . $filter;
 		$new_value  = sanitize_title( Param::post( $filter ) );
 		if ( $new_value ) {
@@ -339,7 +479,7 @@ class Stats extends Keywords {
 	 * @param  array $args Array of arguments.
 	 * @return array
 	 */
-	protected function get_analytics_data( $args = [] ) {
+	public function get_analytics_data( $args = [] ) {
 		global $wpdb;
 
 		$args = wp_parse_args(
@@ -352,62 +492,88 @@ class Stats extends Keywords {
 				'pageview'  => false,
 				'where'     => '',
 				'sub_where' => '',
-				'dates'     => ' AND created BETWEEN %s AND %s',
-				'limit'     => 'LIMIT 5',
 				'pages'     => [],
+				'type'      => '',
+				'offset'    => 0,
+				'perpage'   => 5,
 			]
 		);
 
-		$where     = $args['where'];
-		$limit     = $args['limit'];
-		$dimension = $args['dimension'];
-		$sub_where = $args['sub_where'];
-		$dates     = $args['dates'];
-		$created   = '';
+		$dimension      = $args['dimension'];
+		$type           = $args['type'];
+		$offset         = $args['offset'];
+		$perpage        = $args['perpage'];
+		$order_by_field = $args['orderBy'];
 
-		if ( 'date' === $args['orderBy'] ) {
-			$created         = 'created, ';
-			$args['orderBy'] = 't1.created';
+		$order_position_fields = [ 'position', 'diffPosition' ];
+		$order_metrics_fields  = [ 'clicks', 'diffClicks', 'impressions', 'diffImpressions', 'ctr', 'diffCtr' ];
+
+		if ( in_array( $order_by_field, $order_position_fields, true ) ) {
+			// In case order by position related fields, get position data first.
+			$positions = $this->get_position_data_by_dimension( $args );
+
+			// Filter position data by condition.
+			$positions = $this->filter_analytics_data( $positions, $args );
+
+			// Get dimension list from above result.
+			$dimensions = wp_list_pluck( $positions, $dimension );
+			$dimensions = array_map( 'esc_sql', $dimensions );
+
+			// Get metrics data based on above dimension list.
+			$metrics = $this->get_metrics_data_by_dimension(
+				[
+					'dimension' => $dimension,
+					'sub_where' => ' AND ' . $dimension . " IN ('" . join( "', '", $dimensions ) . "')",
+				]
+			);
+
+			// Merge above two data into one.
+			$rows = $this->get_merged_metrics( $positions, $metrics, true );
+
+		} elseif ( in_array( $order_by_field, $order_metrics_fields, true ) ) {
+			// In case order by fields which are not related with position, get metrics data first.
+			$metrics = $this->get_metrics_data_by_dimension( $args );
+
+			// Filter metrics data by condition.
+			$metrics = $this->filter_analytics_data( $metrics, $args );
+
+			// Get dimension list from above result.
+			$dimensions = wp_list_pluck( $metrics, $dimension );
+			$dimensions = array_map( 'esc_sql', $dimensions );
+
+			// Get position data based on above dimension list.
+			$positions = $this->get_position_data_by_dimension(
+				[
+					'dimension' => $dimension,
+					'sub_where' => ' AND ' . $dimension . " IN ('" . join( "', '", $dimensions ) . "')",
+				]
+			);
+
+			// Merge above two data into one.
+			$rows = $this->get_merged_metrics( $metrics, $positions, true );
+		} else {
+			// Get position data and other metrics data separately.
+			$positions = $this->get_position_data_by_dimension( $args );
+			$metrics   = $this->get_metrics_data_by_dimension( $args );
+
+			// Merge above two data into one.
+			$rows = $this->get_merged_metrics( $positions, $metrics, true );
+
+			// Filter array by condition.
+			$rows = $this->filter_analytics_data( $rows, $args );
 		}
-		$order = sprintf( 'ORDER BY %s %s', $args['orderBy'], $args['order'] );
 
-		// phpcs:disable
-		$query = $wpdb->prepare(
-			"SELECT
-				t1.{$dimension} as {$dimension}, t1.clicks, t1.impressions, ROUND( t1.position, 0 ) as position, t1.ctr,
-				COALESCE( t2.clicks - t1.clicks, 0 ) as diffClicks,
-				COALESCE( t2.impressions - t1.impressions, 0 ) as diffImpressions,
-				COALESCE( ROUND( t2.position - t1.position, 0 ), 0 ) as diffPosition,
-				COALESCE( t2.ctr - t1.ctr, 0 ) as diffCtr
-			FROM
-				( SELECT {$created}{$dimension}, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(position) as position, AVG(ctr) as ctr FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE clicks > 0{$dates}{$sub_where} GROUP BY {$dimension}) as t1
-			LEFT JOIN
-				( SELECT {$dimension}, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(position) as position, AVG(ctr) as ctr FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE clicks > 0{$dates}{$sub_where} GROUP BY {$dimension}) as t2
-			ON t1.{$dimension} = t2.{$dimension}
-			{$where}
-			{$order}
-			{$limit}",
-			$this->start_date,
-			$this->end_date,
-			$this->compare_start_date,
-			$this->compare_end_date
-		);
-		$data = $wpdb->get_results( $query, ARRAY_A );
-		// phpcs:enable
-
-		$rows      = 'page' === $dimension ? $this->set_page_as_key( $data ) : $data;
 		$page_urls = \array_merge( \array_keys( $rows ), $args['pages'] );
 
 		$pageviews = [];
-		if ( $args['pageview'] && ! empty( $page_urls ) ) {
-			$pageviews = $this->get_pageviews( [ 'pages' => $page_urls ] );
+		if ( \class_exists( 'RankMathPro\Analytics\Pageviews' ) && $args['pageview'] && ! empty( $page_urls ) ) {
+			$pageviews = Pageviews::get_pageviews( [ 'pages' => $page_urls ] );
 			$pageviews = $pageviews['rows'];
 		}
 
 		if ( $args['objects'] ) {
 			$objects = $this->get_objects( $page_urls );
 		}
-
 		foreach ( $rows as $page => $row ) {
 			$rows[ $page ]['pageviews'] = [
 				'total'      => 0,
@@ -438,7 +604,8 @@ class Stats extends Keywords {
 				$rows[ $page ]['diffClicks'],
 				$rows[ $page ]['diffImpressions'],
 				$rows[ $page ]['diffPosition'],
-				$rows[ $page ]['diffCtr']
+				$rows[ $page ]['diffCtr'],
+				$rows[ $page ]['difference']
 			);
 		}
 
@@ -450,8 +617,8 @@ class Stats extends Keywords {
 				}
 
 				$rows[ $page ]['pageviews'] = [
-					'total'      => $pageview['pageviews'],
-					'difference' => $pageview['difference'],
+					'total'      => (int) $pageview['pageviews'],
+					'difference' => (int) $pageview['difference'],
 				];
 			}
 		}
@@ -470,12 +637,225 @@ class Stats extends Keywords {
 	}
 
 	/**
+	 * Get position data.
+	 *
+	 * @param array $args Argument array.
+	 * @return array
+	 */
+	public function get_position_data_by_dimension( $args = [] ) {
+		global $wpdb;
+
+		$args = wp_parse_args(
+			$args,
+			[
+				'dimension' => 'page',
+				'where'     => '',
+				'sub_where' => '',
+			]
+		);
+
+		$dimension = $args['dimension'];
+		$where     = $args['where'];
+		$sub_where = $args['sub_where'];
+
+		if ( 'page' === $dimension ) {
+			// phpcs:disable
+			// Get current position data.
+			$query = $wpdb->prepare(
+				"SELECT {$dimension}, MAX(CONCAT({$dimension}, ':', DATE(created), ':', LPAD((100 - position), 3, '0'))) as uid
+				FROM {$wpdb->prefix}rank_math_analytics_gsc 
+				WHERE created BETWEEN %s AND %s {$sub_where}
+				GROUP BY {$dimension}",
+				$this->start_date,
+				$this->end_date
+			);
+			$positions = $wpdb->get_results( $query );
+
+			// Get old position data.
+			$query = $wpdb->prepare(
+				"SELECT {$dimension}, MAX(CONCAT({$dimension}, ':', DATE(created), ':', LPAD((100 - position), 3, '0'))) as uid
+				FROM {$wpdb->prefix}rank_math_analytics_gsc 
+				WHERE created BETWEEN %s AND %s 
+				GROUP BY {$dimension}",
+				$this->compare_start_date,
+				$this->compare_end_date
+			);
+			$old_positions = $wpdb->get_results( $query );
+			// phpcs:enable
+
+			// Extract proper position data.
+			$positions     = $this->extract_data_from_mixed( $positions, 'uid', ':', [ 'position', 'date' ] );
+			$old_positions = $this->extract_data_from_mixed( $old_positions, 'uid', ':', [ 'position', 'date' ] );
+
+			// Set 'page' as key.
+			$positions     = $this->set_dimension_as_key( $positions, $dimension );
+			$old_positions = $this->set_dimension_as_key( $old_positions, $dimension );
+
+			// Calculate position difference, merge old into current.
+			foreach ( $positions as $page => &$row ) {
+				$row = (array) $row; // force to convert as array.
+				if ( ! isset( $old_positions[ $page ] ) ) {
+					$old_position_value = 100; // Should set as 100 here to get correct position difference.
+				} else {
+					$old_position_value = $old_positions[ $page ]->position;
+				}
+
+				$row['diffPosition'] = $row['position'] - $old_position_value;
+			}
+		} else {
+			// phpcs:disable
+			$query = $wpdb->prepare(
+				"SELECT MAX(id) as id FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE created BETWEEN %s AND %s {$sub_where} GROUP BY {$dimension}",
+				$this->start_date,
+				$this->end_date
+			);
+			$ids = $wpdb->get_results( $query );
+			// phpcs:enable
+
+			// Get id list from above result.
+			$ids       = wp_list_pluck( $ids, 'id' );
+			$ids_where = " AND id IN ('" . join( "', '", $ids ) . "')";
+
+			// phpcs:disable
+			$query = $wpdb->prepare(
+				"SELECT MAX(id) as id FROM {$wpdb->prefix}rank_math_analytics_gsc WHERE created BETWEEN %s AND %s {$sub_where} GROUP BY {$dimension}",
+				$this->compare_start_date,
+				$this->compare_end_date
+			);
+			$old_ids = $wpdb->get_results( $query );
+			// phpcs:enable
+
+			// Get id list from above result.
+			$old_ids       = wp_list_pluck( $old_ids, 'id' );
+			$old_ids_where = " AND id IN ('" . join( "', '", $old_ids ) . "')";
+
+			// phpcs:disable
+			$positions = $wpdb->get_results(
+				"SELECT
+					t1.{$dimension} as {$dimension}, ROUND( t1.position, 0 ) as position,
+					COALESCE( ROUND( t1.position - COALESCE( t2.position, 100 ), 0 ), 0 ) as diffPosition
+				FROM
+					( SELECT a.{$dimension}, a.position FROM {$wpdb->prefix}rank_math_analytics_gsc AS a WHERE 1 = 1{$ids_where}) AS t1
+				LEFT JOIN
+					( SELECT a.{$dimension}, a.position FROM {$wpdb->prefix}rank_math_analytics_gsc AS a WHERE 1 = 1{$old_ids_where}) AS t2
+				ON t1.{$dimension} = t2.{$dimension}
+				{$where}",
+				ARRAY_A
+			);
+			// phpcs:enable
+
+			$positions = $this->set_dimension_as_key( $positions, $dimension );
+		}
+
+		return $positions;
+	}
+
+	/**
+	 * Get metrics data.
+	 *
+	 * @param array $args Argument array.
+	 * @return array
+	 */
+	public function get_metrics_data_by_dimension( $args = [] ) {
+		global $wpdb;
+
+		$args = wp_parse_args(
+			$args,
+			[
+				'dimension' => 'page',
+				'sub_where' => '',
+			]
+		);
+
+		$dimension = $args['dimension'];
+		$sub_where = $args['sub_where'];
+
+		// phpcs:disable
+		// Get metrics data like impressions, click, ctr, etc.
+		$query = $wpdb->prepare(
+			"SELECT
+				t1.{$dimension} as {$dimension}, t1.clicks, t1.impressions, t1.ctr,
+				COALESCE( t1.clicks - t2.clicks, 0 ) as diffClicks,
+				COALESCE( t1.impressions - t2.impressions, 0 ) as diffImpressions,
+				COALESCE( t1.ctr - t2.ctr, 0 ) as diffCtr
+			FROM
+				( SELECT {$dimension}, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(ctr) as ctr
+					FROM {$wpdb->prefix}rank_math_analytics_gsc
+					WHERE 1 = 1 AND created BETWEEN %s AND %s {$sub_where}
+					GROUP BY {$dimension}) as t1
+			LEFT JOIN
+				( SELECT {$dimension}, SUM( clicks ) as clicks, SUM(impressions) as impressions, AVG(ctr) as ctr
+					FROM {$wpdb->prefix}rank_math_analytics_gsc
+					WHERE 1 = 1 AND created BETWEEN %s AND %s {$sub_where}
+					GROUP BY {$dimension}) as t2
+			ON t1.{$dimension} = t2.{$dimension}",
+			$this->start_date,
+			$this->end_date,
+			$this->compare_start_date,
+			$this->compare_end_date
+		);
+		
+		$metrics = $wpdb->get_results( $query, ARRAY_A );
+		// phpcs:enable
+
+		$metrics = $this->set_dimension_as_key( $metrics, $dimension );
+
+		return $metrics;
+	}
+
+	/**
+	 * Filter analytics data.
+	 *
+	 * @param array $data Data to process.
+	 * @param array $args Argument array.
+	 * @return array
+	 */
+	public function filter_analytics_data( $data, $args ) {
+		$order_position_fields = [ 'position', 'diffPosition' ];
+		$dimension             = $args['dimension'];
+		$type                  = $args['type'];
+		$offset                = $args['offset'];
+		$perpage               = $args['perpage'];
+		$order_by_field        = $args['orderBy'];
+
+		// Filter array by $type value.
+		$order_by_position = in_array( $order_by_field, [ 'diffPosition', 'position' ], true ) ? true : false;
+
+		if ( ( 'win' === $type && $order_by_position ) || ( 'lose' === $type && ! $order_by_position ) ) {
+			$data = array_filter(
+				$data,
+				function( $row ) use ( $order_by_field ) {
+					return $row[ $order_by_field ] < 0;
+				}
+			);
+		} elseif ( ( 'lose' === $type && $order_by_position ) || ( 'win' === $type && ! $order_by_position ) ) {
+			$data = array_filter(
+				$data,
+				function( $row ) use ( $order_by_field ) {
+					return $row[ $order_by_field ] > 0;
+				}
+			);
+		}
+
+		// Sort array by $args['order'], $order_by_field value.
+		if ( ! empty( $args['order'] ) ) {
+			$sort_base_arr = array_column( $data, $order_by_field, $dimension );
+			array_multisort( $sort_base_arr, 'ASC' === $args['order'] ? SORT_ASC : SORT_DESC, $data );
+		}
+
+		// Filter array by $offset, $perpage value.
+		$data = array_slice( $data, $offset, $perpage, true );
+
+		return $data;
+	}
+
+	/**
 	 * Set page as key.
 	 *
 	 * @param array $data Rows to process.
 	 * @return array
 	 */
-	protected function set_page_as_key( $data ) {
+	public function set_page_as_key( $data ) {
 		$rows = [];
 		foreach ( $data as $row ) {
 			$page          = $this->get_relative_url( $row['page'] );
@@ -491,10 +871,31 @@ class Stats extends Keywords {
 	 * @param array $data Rows to process.
 	 * @return array
 	 */
-	protected function set_query_as_key( $data ) {
+	public function set_query_as_key( $data ) {
 		$rows = [];
 		foreach ( $data as $row ) {
 			$rows[ $row['query'] ] = $row;
+		}
+		return $rows;
+	}
+
+	/**
+	 * Set dimension as key.
+	 *
+	 * @param array  $data      Rows to process.
+	 * @param string $dimension Dimension to set as key.
+	 * @return array
+	 */
+	public function set_dimension_as_key( $data, $dimension = 'query' ) {
+		$rows = [];
+		foreach ( $data as $row ) {
+			if ( is_object( $row ) ) {
+				$value = $row->$dimension;
+			} else {
+				$value = $row[ $dimension ];
+			}
+			$key          = 'page' === $dimension ? $this->get_relative_url( $value ) : strtolower( $value );
+			$rows[ $key ] = $row;
 		}
 
 		return $rows;
@@ -508,8 +909,12 @@ class Stats extends Keywords {
 	 *
 	 * @return array
 	 */
-	protected function set_query_position( $data, $history ) {
+	public function set_query_position( $data, $history ) {
 		foreach ( $history as $row ) {
+			if ( ! isset( $data[ $row->query ]['query'] ) ) {
+				$data[ $row->query ]['query'] = $row->query;
+			}
+
 			if ( ! isset( $data[ $row->query ]['graph'] ) ) {
 				$data[ $row->query ]['graph'] = [];
 			}
@@ -528,7 +933,7 @@ class Stats extends Keywords {
 	 *
 	 * @return array
 	 */
-	protected function set_page_position_graph( $data, $history ) {
+	public function set_page_position_graph( $data, $history ) {
 		foreach ( $history as $row ) {
 			if ( ! isset( $data[ $row->page ]['graph'] ) ) {
 				$data[ $row->page ]['graph'] = [];
@@ -548,7 +953,7 @@ class Stats extends Keywords {
 	 *
 	 * @return string
 	 */
-	protected function get_cache_key( $what, $args = [] ) {
+	public function get_cache_key( $what, $args = [] ) {
 		$key = 'rank_math_' . $what;
 
 		if ( ! empty( $args ) ) {
@@ -565,8 +970,19 @@ class Stats extends Keywords {
 	 * @return string
 	 */
 	public static function get_relative_url( $url ) {
-		$home_url = [ 'https://creativefan.com', home_url() ];
+		$home_url = home_url();
 
+		$domain = strtolower( wp_parse_url( home_url(), PHP_URL_HOST ) );
+		$domain = str_replace( [ 'www.', '.' ], [ '', '\.' ], $domain );
+		$regex  = "/http[s]?:\/\/(www\.)?$domain/mU";
+		$url    = strtolower( trim( $url ) );
+		$url    = preg_replace( $regex, '', $url );
+
+		/**
+		 * Google API and get_permalink sends URL Encoded strings so we need
+		 * to urldecode in order to get them to match with whats saved in DB.
+		 */
+		$url = urldecode( $url );
 		return \str_replace( $home_url, '', $url );
 	}
 }

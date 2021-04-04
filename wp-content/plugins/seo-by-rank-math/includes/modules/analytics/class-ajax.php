@@ -2,7 +2,7 @@
 /**
  * The Analytics AJAX
  *
- * @since      1.4.0
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
@@ -12,10 +12,10 @@ namespace RankMath\Analytics;
 
 use RankMath\Helper;
 use RankMath\Google\Api;
-use RankMath\Google\Analytics as Google_Analytics;
-use RankMath\Google\Authentication;
 use MyThemeShop\Helpers\Str;
 use MyThemeShop\Helpers\Param;
+use RankMath\Google\Authentication;
+use RankMath\Google\Console as Google_Analytics;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -32,15 +32,107 @@ class AJAX {
 	public function __construct() {
 		$this->ajax( 'query_analytics', 'query_analytics' );
 		$this->ajax( 'add_site_console', 'add_site_console' );
-		$this->ajax( 'analytics_delete_cache', 'delete_cache' );
 		$this->ajax( 'disconnect_google', 'disconnect_google' );
 		$this->ajax( 'verify_site_console', 'verify_site_console' );
-		$this->ajax( 'add_analytics_view', 'add_analytics_view' );
+		$this->ajax( 'google_check_all_services', 'check_all_services' );
+
+		// Data.
+		$this->ajax( 'analytics_delete_cache', 'delete_cache' );
+		$this->ajax( 'analytic_start_fetching', 'analytic_start_fetching' );
+		$this->ajax( 'analytic_cancel_fetching', 'analytic_cancel_fetching' );
+
+		// Save Services.
 		$this->ajax( 'save_analytic_profile', 'save_analytic_profile' );
 		$this->ajax( 'save_analytic_options', 'save_analytic_options' );
-		$this->ajax( 'google_check_all_services', 'check_all_services' );
-		$this->ajax( 'analytic_start_fetching', 'analytic_start_fetching' );
-		$this->ajax( 'save_adsense_account', 'save_adsense_account' );
+	}
+
+	/**
+	 * Save analytic profile.
+	 */
+	public function save_analytic_profile() {
+		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
+
+		$profile = Param::post( 'profile' );
+		$country = Param::post( 'country', 'all' );
+		$days    = Param::get( 'days', 90, FILTER_VALIDATE_INT );
+
+		$prev  = get_option( 'rank_math_google_analytic_profile', [] );
+		$value = [
+			'country' => $country,
+			'profile' => $profile,
+		];
+		update_option( 'rank_math_google_analytic_profile', $value );
+
+		// Remove other stored sites from option for privacy.
+		$all_accounts          = get_option( 'rank_math_analytics_all_services', [] );
+		$all_accounts['sites'] = [ $profile => $profile ];
+		update_option( 'rank_math_analytics_all_services', $all_accounts );
+
+		// Purge Cache.
+		if ( ! empty( array_diff( $prev, $value ) ) ) {
+			DB::purge_cache();
+		}
+
+		Workflow\Workflow::do_workflow(
+			'console',
+			$days,
+			$prev,
+			$value
+		);
+
+		$this->success();
+	}
+
+	/**
+	 * Save analytic profile.
+	 */
+	public function save_analytic_options() {
+		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
+
+		$value = [
+			'account_id'       => Param::post( 'accountID' ),
+			'property_id'      => Param::post( 'propertyID' ),
+			'view_id'          => Param::post( 'viewID' ),
+			'country'          => Param::post( 'country', 'all' ),
+			'install_code'     => Param::post( 'installCode', false, FILTER_VALIDATE_BOOLEAN ),
+			'anonymize_ip'     => Param::post( 'anonymizeIP', false, FILTER_VALIDATE_BOOLEAN ),
+			'local_ga_js'      => Param::post( 'localGAJS', false, FILTER_VALIDATE_BOOLEAN ),
+			'cookieless_ga'    => Param::post( 'cookielessGA', false, FILTER_VALIDATE_BOOLEAN ),
+			'exclude_loggedin' => Param::post( 'excludeLoggedin', false, FILTER_VALIDATE_BOOLEAN ),
+		];
+
+		$prev = get_option( 'rank_math_google_analytic_options' );
+		$days = Param::get( 'days', 90, FILTER_VALIDATE_INT );
+
+		if ( isset( $prev['adsense_id'] ) ) {
+			$value['adsense_id'] = $prev['adsense_id'];
+		}
+		update_option( 'rank_math_google_analytic_options', $value );
+
+		// Remove other stored accounts from option for privacy.
+		$all_accounts = get_option( 'rank_math_analytics_all_services', [] );
+		if ( isset( $all_accounts['accounts'][ $value['account_id'] ] ) ) {
+			$account = $all_accounts['accounts'][ $value['account_id'] ];
+
+			if ( isset( $account['properties'][ $value['property_id'] ] ) ) {
+				$property              = $account['properties'][ $value['property_id'] ];
+				$account['properties'] = [ $value['property_id'] => $property ];
+			}
+
+			$all_accounts['accounts'] = [ $value['account_id'] => $account ];
+		}
+		update_option( 'rank_math_analytics_all_services', $all_accounts );
+
+		Workflow\Workflow::do_workflow(
+			'analytics',
+			$days,
+			$prev,
+			$value
+		);
+
+		$this->success();
 	}
 
 	/**
@@ -50,9 +142,20 @@ class AJAX {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
 		$this->has_cap_ajax( 'analytics' );
 		Api::get()->revoke_token();
-		Data_Fetcher::get()->kill_process();
+		Workflow\Workflow::kill_workflows();
 
 		$this->success();
+	}
+
+	/**
+	 * Cancel fetching data.
+	 */
+	public function analytic_cancel_fetching() {
+		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
+		Workflow\Workflow::kill_workflows();
+
+		$this->success( esc_html__( 'Data fetching cancelled.', 'rank-math' ) );
 	}
 
 	/**
@@ -62,14 +165,30 @@ class AJAX {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
 		$this->has_cap_ajax( 'analytics' );
 
-		$this->should_fetch();
-
-		try {
-			Data_Fetcher::get()->start_process( Param::get( 'days', 90, FILTER_VALIDATE_INT ) );
-			$this->success( 'Data fetching started in the background.' );
-		} catch ( Exception $error ) {
-			$this->error( $error->getMessage() );
+		if ( ! Authentication::is_authorized() ) {
+			$this->error( esc_html__( 'Google oAuth is not authorized.', 'rank-math' ) );
 		}
+
+		$days = Param::get( 'days', 90, FILTER_VALIDATE_INT );
+
+		$rows = DB::objects()
+			->selectCount( 'id' )
+			->getVar();
+
+		if ( empty( $rows ) ) {
+			delete_option( 'rank_math_analytics_installed' );
+		}
+
+		foreach ( [ 'console', 'analytics', 'adsense' ] as $action ) {
+			Workflow\Workflow::do_workflow(
+				$action,
+				$days,
+				null,
+				null
+			);
+		}
+
+		$this->success( esc_html__( 'Data fetching started in the background.', 'rank-math' ) );
 	}
 
 	/**
@@ -85,7 +204,8 @@ class AJAX {
 		}
 
 		DB::delete_by_days( $days );
-		Data_Fetcher::get()->kill_process();
+		Workflow\Workflow::kill_workflows();
+		delete_transient( 'rank_math_analytics_data_info' );
 		$db_info            = DB::info();
 		$db_info['message'] = sprintf( '<div class="rank-math-console-db-info"><span class="dashicons dashicons-calendar-alt"></span> Cached Days: <strong>%s</strong></div>', $db_info['days'] ) .
 		sprintf( '<div class="rank-math-console-db-info"><span class="dashicons dashicons-editor-ul"></span> Data Rows: <strong>%s</strong></div>', Str::human_number( $db_info['rows'] ) ) .
@@ -99,14 +219,15 @@ class AJAX {
 	 */
 	public function query_analytics() {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
 
 		$query = Param::get( 'query' );
 
 		$data = DB::objects()
-			->whereLike( 'title', $query )
-			->orWhereLike( 'page', $query )
-			->limit( 10 )
-			->get();
+		->whereLike( 'title', $query )
+		->orWhereLike( 'page', $query )
+		->limit( 10 )
+		->get();
 
 		$this->send( [ 'data' => $data ] );
 	}
@@ -116,6 +237,7 @@ class AJAX {
 	 */
 	public function check_all_services() {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
 
 		$result = [
 			'isVerified'           => false,
@@ -140,7 +262,9 @@ class AJAX {
 			$result['hasAnalyticsProperty'] = $this->is_site_in_analytics( $result['accounts'] );
 		}
 
-		$result['adsenseAccounts'] = Api::get()->get_adsense_accounts();
+		$result = apply_filters( 'rank_math/analytics/check_all_services', $result );
+
+		update_option( 'rank_math_analytics_all_services', $result );
 
 		$this->success( $result );
 	}
@@ -150,18 +274,11 @@ class AJAX {
 	 */
 	public function add_site_console() {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
 
 		$home_url = Google_Analytics::get_site_url();
 		Api::get()->add_site( $home_url );
 		Api::get()->verify_site( $home_url );
-
-		update_option(
-			'rank_math_google_analytic_profile',
-			[
-				'country' => 'all',
-				'profile' => $home_url,
-			]
-		);
 
 		$this->success( [ 'sites' => Api::get()->get_sites() ] );
 	}
@@ -171,115 +288,12 @@ class AJAX {
 	 */
 	public function verify_site_console() {
 		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
+		$this->has_cap_ajax( 'analytics' );
 
 		$home_url = Google_Analytics::get_site_url();
 		Api::get()->verify_site( $home_url );
 
 		$this->success( [ 'verified' => true ] );
-	}
-
-	/**
-	 * Add view to search console
-	 */
-	public function add_analytics_view() {
-		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
-
-		$response = Api::get()->add_analytics_web_view(
-			Param::post( 'accountID' ),
-			Param::post( 'propertyID' ),
-			Param::post( 'viewName' )
-		);
-
-		$this->success( $response );
-	}
-
-	/**
-	 * Save analytic profile.
-	 */
-	public function save_analytic_profile() {
-		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
-
-		$prev  = get_option( 'rank_math_google_analytic_profile' );
-		$value = [
-			'country' => Param::post( 'country', 'all' ),
-			'profile' => Param::post( 'profile' ),
-		];
-		update_option( 'rank_math_google_analytic_profile', $value );
-
-		if ( empty( $prev['profile'] ) ) {
-			$this->shoul_pull_data();
-			$this->success();
-		}
-
-		if ( $prev['profile'] !== $value['profile'] ) {
-			Data_Fetcher::get()->kill_process();
-			Data_Fetcher::get()->start_process( Param::post( 'days', 90, FILTER_VALIDATE_INT ) );
-		}
-
-		$this->success();
-	}
-
-	/**
-	 * Save analytic profile.
-	 */
-	public function save_analytic_options() {
-		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
-
-		$value = [
-			'account_id'       => Param::post( 'accountID' ),
-			'property_id'      => Param::post( 'propertyID' ),
-			'view_id'          => Param::post( 'viewID' ),
-			'country'          => Param::post( 'country', 'all' ),
-			'install_code'     => Param::post( 'installCode', false, FILTER_VALIDATE_BOOLEAN ),
-			'anonymize_ip'     => Param::post( 'anonymizeIP', false, FILTER_VALIDATE_BOOLEAN ),
-			'exclude_loggedin' => Param::post( 'excludeLoggedin', false, FILTER_VALIDATE_BOOLEAN ),
-		];
-
-		$prev = get_option( 'rank_math_google_analytic_options' );
-		if ( isset( $prev['adsense_id'] ) ) {
-			$value['adsense_id'] = $prev['adsense_id'];
-		}
-		update_option( 'rank_math_google_analytic_options', $value );
-
-		if ( empty( $prev['view_id'] ) ) {
-			$this->shoul_pull_data();
-			$this->success();
-		}
-
-		if ( $prev['view_id'] !== $value['view_id'] ) {
-			Data_Fetcher::get()->kill_process();
-			Data_Fetcher::get()->start_process( Param::post( 'days', 90, FILTER_VALIDATE_INT ) );
-		}
-
-		$this->success();
-	}
-
-	/**
-	 * Pull data.
-	 */
-	private function shoul_pull_data() {
-		$ga  = get_option( 'rank_math_google_analytic_options' );
-		$gsc = get_option( 'rank_math_google_analytic_profile' );
-
-		if ( empty( $gsc['profile'] ) || empty( $ga['view_id'] ) ) {
-			return;
-		}
-
-		DB::purge_cache();
-		Data_Fetcher::get()->start_process( Param::post( 'days', 90, FILTER_VALIDATE_INT ) );
-	}
-
-	/**
-	 * Save adsense profile.
-	 */
-	public function save_adsense_account() {
-		check_ajax_referer( 'rank-math-ajax-nonce', 'security' );
-
-		$values               = get_option( 'rank_math_google_analytic_options', [] );
-		$values['adsense_id'] = Param::post( 'accountID' );
-		update_option( 'rank_math_google_analytic_options', $values );
-
-		$this->success();
 	}
 
 	/**
@@ -325,7 +339,7 @@ class AJAX {
 	private function is_site_in_analytics( $accounts ) {
 		$home_url = Google_Analytics::get_site_url();
 
-		foreach ( $accounts as $account_id => $account ) {
+		foreach ( $accounts as $account ) {
 			foreach ( $account['properties'] as $property ) {
 				if ( trailingslashit( $property['url'] ) === $home_url ) {
 					return true;
@@ -345,6 +359,10 @@ class AJAX {
 		$home_url = Google_Analytics::get_site_url();
 		$sitemaps = Api::get()->get_sitemaps( $home_url );
 
+		if ( ! \is_array( $sitemaps ) || empty( $sitemaps ) ) {
+			return false;
+		}
+
 		foreach ( $sitemaps as $sitemap ) {
 			if ( $sitemap['path'] === $home_url . 'sitemap_index.xml' ) {
 				return true;
@@ -352,27 +370,5 @@ class AJAX {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Should fetch data.
-	 */
-	private function should_fetch() {
-		if ( ! Authentication::is_authorized() ) {
-			$this->error( esc_html__( 'Google oAuth is not authorized.', 'rank-math' ) );
-		}
-
-		$options = get_option( 'rank_math_google_analytic_options' );
-		if ( empty( $options ) ) {
-			$this->error( esc_html__( 'No Google Account setup.', 'rank-math' ) );
-		}
-
-		if ( empty( $options['view_id'] ) ) {
-			$this->error( esc_html__( 'No Google Search Console Account selected.', 'rank-math' ) );
-		}
-
-		if ( empty( $options['account_id'] ) || empty( $options['property_id'] ) ) {
-			$this->error( esc_html__( 'No Google Analytics Account selected.', 'rank-math' ) );
-		}
 	}
 }

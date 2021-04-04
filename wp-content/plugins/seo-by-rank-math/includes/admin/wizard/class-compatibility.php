@@ -49,10 +49,10 @@ class Compatibility implements Wizard_Step {
 					/* translators: Option Description */
 					'advanced' => '<div class="rank-math-mode-title">' . sprintf( __( 'Advanced %s', 'rank-math' ), '</div><p>' . __( 'For the advanced users who want to control every SEO aspect of the website. You are offered options to change everything and have full control over the website’s SEO.', 'rank-math' ) . '</p>' ),
 					/* translators: Option Description */
-					'custom'   => '<div class="rank-math-mode-title">' . sprintf( __( 'Custom Mode %s', 'rank-math' ), '</div><p><strong>' . __( 'Coming Soon', 'rank-math' ) . '</strong></p>' ),
+					'custom'   => '<div class="rank-math-mode-title">' . sprintf( __( 'Custom Mode %s', 'rank-math' ), '</div><p class="rank-math-mode-description">' . __( 'Select this if you have a custom Rank Math settings file you want to use.', 'rank-math' ) . '</p>' ),
 				],
 				'default' => Helper::get_settings( 'general.setup_mode', 'advanced' ),
-				'classes' => 'rank-math-setup-mode',
+				'classes' => ! defined( 'RANK_MATH_PRO_FILE' ) ? 'rank-math-setup-mode is-free' : 'rank-math-setup-mode',
 				'desc'    => __( '<strong>Note</strong> You can easily switch between modes at any point.', 'rank-math' ),
 			]
 		);
@@ -124,7 +124,6 @@ class Compatibility implements Wizard_Step {
 			'facebook-revised-open-graph-meta-tag/index.php' => 'Facebook Revised Open Graph Meta Tag.',
 			'facebook-thumb-fixer/_facebook-thumb-fixer.php' => 'Facebook Thumb Fixer.',
 			'facebook-and-digg-thumbnail-generator/facebook-and-digg-thumbnail-generator.php' => 'Fedmich\'s Facebook Open Graph Meta.',
-			'header-footer/plugin.php'                     => 'Header and Footer.',
 			'network-publisher/networkpub.php'             => 'Network Publisher.',
 			'nextgen-facebook/nextgen-facebook.php'        => 'NextGEN Facebook OG.',
 			'opengraph/opengraph.php'                      => 'Open Graph.',

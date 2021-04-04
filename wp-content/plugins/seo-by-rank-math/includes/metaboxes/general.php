@@ -11,6 +11,8 @@ use RankMath\Helper;
 use MyThemeShop\Helpers\WordPress;
 use RankMath\Admin\Admin_Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 $cmb->add_field(
 	[
 		'id'   => 'rank_math_serp_preview',
@@ -21,7 +23,7 @@ $cmb->add_field(
 
 $serp_footer = '<div class="serp-preview-footer wp-clearfix">
 			<div class="rank-math-ui">
-				<a href="#" class="button button-secondary rank-math-edit-snippet">' . esc_html__( 'Edit Snippet', 'rank-math' ) . '</a>
+				<a href="#" class="button button-primary rank-math-edit-snippet">' . esc_html__( 'Edit Snippet', 'rank-math' ) . '</a>
 				<a href="#" class="button button-secondary rank-math-edit-snippet hidden">' . esc_html__( 'Close Editor', 'rank-math' ) . '</a>
 			</div>
 		</div>';
@@ -80,12 +82,15 @@ $cmb->add_field(
 		'name'            => esc_html__( 'Focus Keyword', 'rank-math' ),
 		/* translators: Link to kb article */
 		'desc'            => sprintf( wp_kses_post( __( 'Insert keywords you want to rank for. Try to <a href="%s" target="_blank">attain 100/100 points</a> for better chances of ranking.', 'rank-math' ) ), \RankMath\KB::get( 'score-100-ce' ) ),
-		'after_field'     => '<div class="notice notice-warning inline rank-math-notice"><p>' . sprintf(
-				/* translators: link to connect page. */
-				__( 'Want more? PRO version is coming soon. %s', 'rank-math' ),
-				'<a href="' . KB::get( 'pro-general-ce' ) . '" target="_blank">' . __( 'Notify me!', 'rank-math' ) . '</a>'
-			) . '</p></div>',
-		'before'          => '<a href="https://rankmath.com/pro/?utm_source=Plugin&utm_medium=CE%20General%20Tab%20Trends&utm_campaign=WP" id="rank-math-compare-keywords-trigger" class="rank-math-compare-keywords-trigger button button-secondary" target="_blank" title="' . esc_attr__( 'Trends', 'rank-math' ) . '">' . Admin_Helper::get_trends_icon_svg() . '</a>',
+		'after_field'     => apply_filters(
+			'rank_math/analytics/classic/pro_notice',
+			'<div class="notice notice-warning inline rank-math-notice"><p>' . sprintf(
+				/* translators: link to pricing page. */
+				__( 'Want more? %s version', 'rank-math' ),
+				'<a href="' . KB::get( 'pro-general-ce' ) . '" target="_blank"><strong>' . __( 'Upgrade today to the PRO', 'rank-math' ) . '</strong></a>'
+			) . '</p></div>'
+		),
+		'before'          => '<a href="https://rankmath.com/pricing/?utm_source=Plugin&utm_medium=CE%20General%20Tab%20Trends&utm_campaign=WP" id="rank-math-compare-keywords-trigger" class="rank-math-compare-keywords-trigger button button-secondary" target="_blank" title="' . esc_attr__( 'Trends', 'rank-math' ) . '">' . Admin_Helper::get_trends_icon_svg() . '</a>',
 		'classes'         => 'nob',
 		'attributes'      => [
 			'placeholder' => esc_html__( 'Example: Rank Math SEO', 'rank-math' ),

@@ -84,19 +84,23 @@ class Admin extends Base {
 	 * @param CMB2 $cmb CMB2 instance.
 	 */
 	public function save_schemas( $cmb ) {
+		if ( 'post' !== $cmb->object_type ) {
+			return;
+		}
+
+		$this->do_action( 'pre_update_metadata', $cmb->object_id );
 		if ( empty( $cmb->data_to_save['rank-math-schemas'] ) ) {
 			return;
 		}
 
-		$sanitizer = Sanitize::get();
-		$schemas   = \json_decode( stripslashes( $cmb->data_to_save['rank-math-schemas'] ), true );
-
+		$schemas = \json_decode( stripslashes( $cmb->data_to_save['rank-math-schemas'] ), true );
 		foreach ( $schemas as $meta_id => $schema ) {
 			$meta_key = 'rank_math_schema_' . $schema['@type'];
+			$schema   = wp_kses_post_deep( $schema );
 
 			// Add new.
 			if ( Str::starts_with( 'new-', $meta_id ) ) {
-				$new_ids[ $meta_id ] = add_post_meta( $cmb->object_id, $meta_key, $sanitizer->sanitize( $meta_key, $schema ) );
+				$new_ids[ $meta_id ] = add_post_meta( $cmb->object_id, $meta_key, $schema );
 				continue;
 			}
 
@@ -104,6 +108,8 @@ class Admin extends Base {
 			$db_id      = absint( str_replace( 'schema-', '', $meta_id ) );
 			$prev_value = update_metadata_by_mid( 'post', $db_id, $schema, $meta_key );
 		}
+
+		do_action( 'rank_math/schema/update', $cmb->object_id, $schemas );
 	}
 
 	/**
@@ -144,7 +150,7 @@ class Admin extends Base {
 		?>
 			<span class="rank-math-column-display schema-type">
 				<strong><?php esc_html_e( 'Schema', 'rank-math' ); ?>:</strong>
-				<?php echo esc_html( ucfirst( $schema ) ); ?>
+				<?php echo esc_html( self::sanitize_schema_title( $schema ) ); ?>
 			</span>
 		<?php
 	}
@@ -179,7 +185,8 @@ class Admin extends Base {
 			wp_enqueue_script( 'rank-math-schema', rank_math()->plugin_url() . 'includes/modules/schema/assets/js/schema-gutenberg.js', null, rank_math()->version, true );
 		}
 
-		if ( ! $is_gutenberg && ! $is_elementor ) {
+		$screen = get_current_screen();
+		if ( ! $is_gutenberg && ! $is_elementor && 'rank_math_schema' !== $screen->post_type ) {
 			wp_enqueue_script( 'rank-math-schema-classic', rank_math()->plugin_url() . 'includes/modules/schema/assets/js/schema-classic.js', [ 'rank-math-metabox', 'clipboard' ], rank_math()->version, true );
 		}
 	}
@@ -231,13 +238,12 @@ class Admin extends Base {
 			return [];
 		}
 
-		$schema_title = in_array( $default_type, [ 'BlogPosting', 'NewsArticle' ], true ) ? 'Article' : $default_type;
-
 		$schemas['new-9999'] = [
 			'@type'    => $default_type,
 			'metadata' => [
-				'title'     => $schema_title,
+				'title'     => self::sanitize_schema_title( $default_type ),
 				'type'      => 'template',
+				'shortcode' => uniqid( 's-' ),
 				'isPrimary' => true,
 			],
 		];
@@ -246,27 +252,37 @@ class Admin extends Base {
 	}
 
 	/**
-	 * Get Default Schema Type.
+	 * Sanitize schema title.
 	 *
-	 * @param string $post_type Post Type.
-	 *
-	 * @return string Default Scehma type.
+	 * @param  string $schema Schema.
+	 * @return string
 	 */
-	private function get_default_schema_type( $post_type ) {
-		$default_type = Helper::get_settings( "titles.pt_{$post_type}_default_rich_snippet" );
-		if ( ! $default_type ) {
-			return false;
+	public static function sanitize_schema_title( $schema ) {
+		if ( in_array( $schema, [ 'BlogPosting', 'NewsArticle' ], true ) ) {
+			return esc_html__( 'Article', 'rank-math' );
 		}
 
-		if ( class_exists( 'WooCommerce' ) && 'product' === $post_type ) {
-			return 'WooCommerceProduct';
+		if ( 'WooCommerceProduct' === $schema ) {
+			return esc_html__( 'WooCommerce Product', 'rank-math' );
 		}
 
-		if ( class_exists( 'Easy_Digital_Downloads' ) && 'download' === $post_type ) {
-			return 'EDDProduct';
+		if ( 'EDDProduct' === $schema ) {
+			return esc_html__( 'EDD Product', 'rank-math' );
 		}
 
-		return 'article' === $default_type ? Helper::get_settings( "titles.pt_{$post_type}_default_article_type" ) : ucfirst( $default_type );
+		if ( 'VideoObject' === $schema ) {
+			return esc_html__( 'Video', 'rank-math' );
+		}
+
+		if ( 'JobPosting' === $schema ) {
+			return esc_html__( 'Job Posting', 'rank-math' );
+		}
+
+		if ( 'MusicGroup' === $schema || 'MusicAlbum' === $schema ) {
+			return esc_html__( 'Music', 'rank-math' );
+		}
+
+		return $schema;
 	}
 
 	/**
@@ -305,7 +321,7 @@ class Admin extends Base {
 
 		$types = [];
 		foreach ( $schemas as $schema ) {
-			$types[] = $schema['@type'];
+			$types[] = self::sanitize_schema_title( $schema['@type'] );
 		}
 
 		return implode( ', ', $types );

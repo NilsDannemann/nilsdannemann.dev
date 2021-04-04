@@ -130,11 +130,12 @@ class Screen implements IScreen {
 				'trendsIcon'       => Admin_Helper::get_trends_icon_svg(),
 				'showScore'        => Helper::is_score_enabled(),
 				'canUser'          => [
-					'general'  => Helper::has_cap( 'onpage_general' ),
-					'advanced' => Helper::has_cap( 'onpage_advanced' ) && Helper::is_advanced_mode(),
-					'snippet'  => Helper::has_cap( 'onpage_snippet' ),
-					'social'   => Helper::has_cap( 'onpage_social' ),
-					'analysis' => Helper::has_cap( 'onpage_analysis' ),
+					'general'   => Helper::has_cap( 'onpage_general' ),
+					'advanced'  => Helper::has_cap( 'onpage_advanced' ) && Helper::is_advanced_mode(),
+					'snippet'   => Helper::has_cap( 'onpage_snippet' ),
+					'social'    => Helper::has_cap( 'onpage_social' ),
+					'analysis'  => Helper::has_cap( 'onpage_analysis' ),
+					'analytics' => Helper::has_cap( 'analytics' ),
 				],
 				'assessor'         => [
 					'serpData'         => $this->get_object_values(),
@@ -143,6 +144,7 @@ class Screen implements IScreen {
 					'hundredScoreLink' => KB::get( 'score-100-ge' ),
 					'researchesTests'  => $this->get_analysis(),
 				],
+				'isPro'            => defined( 'RANK_MATH_PRO_FILE' ),
 				'is_front_page'    => Admin_Helper::is_home_page(),
 			]
 		);
@@ -219,14 +221,7 @@ class Screen implements IScreen {
 		$data['robots'] = $this->normalize_robots( $this->get_meta( $object_type, $object_id, 'rank_math_robots' ) );
 
 		// Advanced Robots.
-		$data['advancedRobots'] = empty( $data['advancedRobots'] ) ? [] : $data['advancedRobots'];
-		if ( ! metadata_exists( $object_type, $object_id, 'rank_math_advanced_robots' ) ) {
-			$data['advancedRobots'] = [
-				'max-snippet'       => -1,
-				'max-video-preview' => -1,
-				'max-image-preview' => 'large',
-			];
-		}
+		$data['advancedRobots'] = $this->normalize_advanced_robots( $this->get_meta( $object_type, $object_id, 'rank_math_advanced_robots' ) );
 
 		$data['pillarContent'] = 'on' === $data['pillarContent'];
 
@@ -253,6 +248,21 @@ class Screen implements IScreen {
 		}
 
 		return array_fill_keys( $robots, true );
+	}
+
+	/**
+	 * Normalize advanced robots.
+	 *
+	 * @param array $advanced_robots Array to normalize.
+	 *
+	 * @return array
+	 */
+	private function normalize_advanced_robots( $advanced_robots ) {
+		if ( ! empty( $advanced_robots ) ) {
+			return $advanced_robots;
+		}
+
+		return Helper::get_advanced_robots_defaults();
 	}
 
 	/**

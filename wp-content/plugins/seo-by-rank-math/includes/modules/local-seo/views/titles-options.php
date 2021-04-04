@@ -8,6 +8,8 @@
 
 use RankMath\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 $company = [ [ 'knowledgegraph_type', 'company' ] ];
 $person  = [ [ 'knowledgegraph_type', 'person' ] ];
 
@@ -109,6 +111,21 @@ $cmb->add_field(
 	]
 );
 
+$cmb->add_field(
+	[
+		'id'      => 'opening_hours_format',
+		'type'    => 'switch',
+		'name'    => esc_html__( 'Opening Hours Format', 'rank-math' ),
+		'options' => [
+			'off' => '24:00',
+			'on'  => '12:00',
+		],
+		'desc'    => esc_html__( 'Time format used in the contact shortcode.', 'rank-math' ),
+		'default' => 'off',
+		'dep'     => $company,
+	]
+);
+
 $opening_hours = $cmb->add_field(
 	[
 		'id'      => 'opening_hours',
@@ -144,24 +161,10 @@ $cmb->add_group_field(
 $cmb->add_group_field(
 	$opening_hours,
 	[
-		'id'         => 'time',
-		'type'       => 'text',
-		'attributes' => [ 'placeholder' => esc_html__( 'e.g. 09:00-17:00', 'rank-math' ) ],
-	]
-);
-
-$cmb->add_field(
-	[
-		'id'      => 'opening_hours_format',
-		'type'    => 'switch',
-		'name'    => esc_html__( 'Opening Hours Format', 'rank-math' ),
-		'options' => [
-			'off' => '24:00',
-			'on'  => '12:00',
-		],
-		'desc'    => esc_html__( 'Time format used in the contact shortcode.', 'rank-math' ),
-		'default' => 'off',
-		'dep'     => $company,
+		'id'          => 'time',
+		'type'        => 'text',
+		'attributes'  => [ 'placeholder' => esc_html__( 'e.g. 09:00-17:00', 'rank-math' ) ],
+		'time_format' => 'H:i',
 	]
 );
 
@@ -247,12 +250,13 @@ $cmb->add_field(
 
 $cmb->add_field(
 	[
-		'id'   => 'maps_api_key',
-		'type' => 'text',
-		'name' => esc_html__( 'Google Maps API Key', 'rank-math' ),
+		'id'         => 'maps_api_key',
+		'type'       => 'text',
+		'name'       => esc_html__( 'Google Maps API Key', 'rank-math' ),
 		/* translators: %s expands to "Google Maps Embed API" https://developers.google.com/maps/documentation/embed/ */
-		'desc' => sprintf( esc_html__( 'An API Key is required to display embedded Google Maps on your site. Get it here: %s', 'rank-math' ), '<a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">' . __( 'Google Maps Embed API', 'rank-math' ) . '</a>' ),
-		'dep'  => $company,
+		'desc'       => sprintf( esc_html__( 'An API Key is required to display embedded Google Maps on your site. Get it here: %s', 'rank-math' ), '<a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">' . __( 'Google Maps Embed API', 'rank-math' ) . '</a>' ),
+		'dep'        => $company,
+		'attributes' => [ 'type' => 'password' ],
 	]
 );
 
@@ -263,6 +267,6 @@ $cmb->add_field(
 		'name'  => esc_html__( 'Geo Coordinates', 'rank-math' ),
 		'desc'  => esc_html__( 'Latitude and longitude values separated by comma.', 'rank-math' ),
 		'dep'   => $company,
-		'after' => '<strong style="margin-top:20px; display:block; text-align:right;">' . __( '*Multiple Location option is coming soon.', 'rank-math' ) . '</strong>',
+		'after' => '<strong style="margin-top:20px; display:block; text-align:right;">' . sprintf( __( 'Multiple Locations are available in the %s.', 'rank-math' ), '<a href="https://rankmath.com/pricing/?utm_source=Plugin&utm_medium=Multiple%20Location%20Notice&utm_campaign=WP" target="_blank">PRO Version</a>' ) . '</strong>',
 	]
 );

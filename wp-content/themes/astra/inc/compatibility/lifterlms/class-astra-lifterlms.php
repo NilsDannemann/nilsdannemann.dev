@@ -185,7 +185,6 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 			 */
 			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/class-astra-lifter-container-configs.php';
 			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/class-astra-lifter-sidebar-configs.php';
-			require ASTRA_THEME_DIR . 'inc/compatibility/lifterlms/customizer/sections/layout/class-astra-lifter-general-configs.php';
 			// @codingStandardsIgnoreEnd WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		}
 
@@ -239,7 +238,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 				<h3><?php echo apply_filters( 'lifterlms_reviews_section_title', _e( 'What Others Have Said', 'astra' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h3>
 				<?php
 				$args        = array(
-					'posts_per_page'   => get_post_meta( get_the_ID(), '_llms_num_reviews', true ),
+					'posts_per_page'   => get_post_meta( get_the_ID(), '_llms_num_reviews', true ), // phpcs:ignore WPThemeReview.CoreFunctionality.PostsPerPage.posts_per_page_posts_per_page, WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
 					'post_type'        => 'llms_review',
 					'post_status'      => 'publish',
 					'post_parent'      => get_the_ID(),
@@ -658,12 +657,45 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 		 * @return string $default_fields Updated custom field definitions.
 		 */
 		public function register_builder_fields( $default_fields ) {
-			$disable_fields   = array();
-			$show_meta_field  = ! Astra_Meta_Boxes::is_bb_themer_layout();
+			$disable_fields  = array();
+			$show_meta_field = ! Astra_Meta_Boxes::is_bb_themer_layout();
+			/**
+			 * Main Header.
+			 */
 			$disable_fields[] = array(
 				'attribute' => 'ast-main-header-display',
 				'id'        => 'ast-main-header-display',
 				'label'     => esc_html__( 'Disable Primary Header', 'astra' ),
+				'switch_on' => 'disabled',
+				'type'      => 'switch',
+			);
+			/**
+			 * Above Header
+			 */
+			$disable_fields[] = array(
+				'attribute' => 'ast-hfb-above-header-display',
+				'id'        => 'ast-hfb-above-header-display',
+				'label'     => esc_html__( 'Disable Above Header', 'astra' ),
+				'switch_on' => 'disabled',
+				'type'      => 'switch',
+			);
+			/**
+			 * Below Header
+			 */
+			$disable_fields[] = array(
+				'attribute' => 'ast-hfb-below-header-display',
+				'id'        => 'ast-hfb-below-header-display',
+				'label'     => esc_html__( 'Disable Below Header', 'astra' ),
+				'switch_on' => 'disabled',
+				'type'      => 'switch',
+			);
+			/**
+			 * Mobile Header
+			 */
+			$disable_fields[] = array(
+				'attribute' => 'ast-hfb-mobile-header-display',
+				'id'        => 'ast-hfb-mobile-header-display',
+				'label'     => esc_html__( 'Disable Mobile Header', 'astra' ),
 				'switch_on' => 'disabled',
 				'type'      => 'switch',
 			);
@@ -689,7 +721,7 @@ if ( ! class_exists( 'Astra_LifterLMS' ) ) :
 				$disable_fields[] = array(
 					'attribute' => 'footer-sml-layout',
 					'id'        => 'footer-sml-layout',
-					'label'     => esc_html__( 'Disable Footer Bar', 'astra' ),
+					'label'     => esc_html__( 'Disable Footer', 'astra' ),
 					'switch_on' => 'disabled',
 					'type'      => 'switch',
 				);

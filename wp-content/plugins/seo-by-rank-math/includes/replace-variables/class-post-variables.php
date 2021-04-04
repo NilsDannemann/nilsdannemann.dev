@@ -271,7 +271,7 @@ class Post_Variables extends Advanced_Variables {
 	 * @return string
 	 */
 	public function get_seo_title() {
-		if ( is_singular() ) {
+		if ( is_singular() || is_category() || is_tag() || is_tax() ) {
 			return Paper::get()->get_title();
 		}
 
@@ -296,7 +296,23 @@ class Post_Variables extends Advanced_Variables {
 	 * @return string
 	 */
 	public function get_seo_description() {
-		return Paper::get()->get_description();
+		if ( is_singular() || is_category() || is_tag() || is_tax() ) {
+			return Paper::get()->get_description();
+		}
+
+		$object = $this->args;
+
+		// Early Bail!
+		if ( empty( $object ) || empty( $object->ID ) ) {
+			return '';
+		}
+
+		$description = Post::get_meta( 'description', $object->ID );
+		if ( '' !== $description ) {
+			return $description;
+		}
+
+		return Paper::get_from_options( "pt_{$object->post_type}_description", $object, '%excerpt%' );
 	}
 
 	/**
@@ -518,6 +534,6 @@ class Post_Variables extends Advanced_Variables {
 		}
 
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $this->args->ID ), 'full' );
-		return $image[0];
+		return ! empty( $image ) ? $image[0] : '';
 	}
 }

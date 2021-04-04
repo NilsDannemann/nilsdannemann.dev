@@ -33,14 +33,14 @@ class Publisher implements Snippet {
 			'@type' => $this->get_publisher_type( $type ),
 			'@id'   => home_url( "/#{$type}" ),
 			'name'  => $jsonld->get_website_name(),
-			'logo'  => [
-				'@type' => 'ImageObject',
-				'url'   => Helper::get_settings( 'titles.knowledgegraph_logo' ),
-			],
 		];
 
+		$jsonld->add_prop( 'image', $data['publisher'] );
 		if ( 'person' === $type ) {
 			$data['publisher']['image'] = $data['publisher']['logo'];
+		}
+
+		if ( ! is_singular() ) {
 			unset( $data['publisher']['logo'] );
 		}
 

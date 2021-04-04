@@ -78,8 +78,13 @@ class Singular implements Snippet {
 
 		$schemas = DB::get_schemas( $jsonld->post_id );
 		if ( ! empty( $schemas ) ) {
-			$schema_data = current( $schemas );
-			return ! empty( $schema_data['@type'] ) && in_array( $schema_data['@type'], [ 'WooCommerceProduct', 'EDDProduct' ], true ) ? 'product' : false;
+			$has_product = array_filter(
+				$schemas,
+				function( $schema ) {
+					return ! empty( $schema['@type'] ) && in_array( $schema['@type'], [ 'WooCommerceProduct', 'EDDProduct' ], true );
+				}
+			);
+			return ! empty( $has_product ) ? 'product' : false;
 		}
 
 		if ( metadata_exists( 'post', $jsonld->post_id, 'rank_math_rich_snippet' ) ) {
@@ -106,13 +111,15 @@ class Singular implements Snippet {
 			return false;
 		}
 
-		$schema = in_array( $schema, [ 'BlogPosting', 'NewsArticle' ], true ) ? 'article' : $schema;
+		if ( in_array( $schema, [ 'BlogPosting', 'NewsArticle', 'Article' ], true ) ) {
+			return 'article';
+		}
+
 		if (
-			'article' === $schema ||
 			( Conditional::is_woocommerce_active() && is_singular( 'product' ) ) ||
 			( Conditional::is_edd_active() && is_singular( 'download' ) )
 		) {
-			return $schema;
+			return 'product';
 		}
 
 		return false;

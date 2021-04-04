@@ -23,6 +23,3 @@ function child_enqueue_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
-
-
-// Test Deploy

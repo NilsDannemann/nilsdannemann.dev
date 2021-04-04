@@ -6,15 +6,14 @@
  * @subpackage RankMath\Admin
  */
 
-use RankMath\KB;
 use RankMath\Helper;
-use MyThemeShop\Helpers\Param;
-use RankMath\Admin\Admin_Helper;
 use RankMath\Google\Authentication;
+
+defined( 'ABSPATH' ) || exit;
 
 // Header.
 rank_math()->admin->display_admin_header();
-$path = rank_math()->admin_dir() . 'wizard/views/';
+$path = rank_math()->admin_dir() . 'wizard/views/'; // phpcs:ignore
 ?>
 <div class="wrap rank-math-wrap analytics">
 

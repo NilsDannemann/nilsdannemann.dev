@@ -8,6 +8,8 @@
 
 use RankMath\KB;
 
+defined( 'ABSPATH' ) || exit;
+
 ?>
 
 <p>
@@ -22,16 +24,16 @@ use RankMath\KB;
 	<li>
 		<a href="<?php echo KB::get( '404-monitor' ); ?>" target="_blank">
 			<?php esc_html_e( '404 Monitor', 'rank-math' ); ?>
-		<a>
+</a>
 	</li>
 	<li>
 		<a href="<?php echo KB::get( '404-monitor-settings' ); ?>" target="_blank">
 			<?php esc_html_e( '404 Monitor Settings', 'rank-math' ); ?>
-		<a>
+</a>
 	</li>
 	<li>
 		<a href="<?php echo KB::get( 'fix-404' ); ?>" target="_blank">
 			<?php esc_html_e( 'Fix 404 Errors', 'rank-math' ); ?>
-		<a>
+</a>
 	</li>
 </ul>

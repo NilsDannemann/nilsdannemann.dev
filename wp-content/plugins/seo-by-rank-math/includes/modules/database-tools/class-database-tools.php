@@ -9,8 +9,11 @@
 namespace RankMath\Tools;
 
 use RankMath\Helper;
+use RankMath\Installer;
 use RankMath\Traits\Hooker;
 use MyThemeShop\Helpers\Conditional;
+
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Database_Tools class.
@@ -88,20 +91,34 @@ class Database_Tools {
 		);
 
 		if ( empty( $transients ) ) {
-			return;
+			return [
+				'status'  => 'error',
+				'message' => __( 'No Rank Math transients found.', 'rank-math' ),
+			];
 		}
 
+		$count = 0;
 		foreach ( $transients as $transient ) {
 			delete_option( $transient );
+			$count++;
 		}
 
-		return __( 'Rank Math transients cleared.', 'rank-math' );
+		// Translators: placeholder is the number of transients deleted.
+		return sprintf( _n( '%d Rank Math transient cleared.', '%d Rank Math transients cleared.', $count, 'rank-math' ), $count );
 	}
 
 	/**
 	 * Function to reset SEO Analysis.
 	 */
 	public function clear_seo_analysis() {
+		$stored = get_option( 'rank_math_seo_analysis_results' );
+		if ( empty( $stored ) ) {
+			return [
+				'status'  => 'error',
+				'message' => __( 'SEO Analysis data has already been cleared.', 'rank-math' ),
+			];
+		}
+
 		delete_option( 'rank_math_seo_analysis_results' );
 
 		return __( 'SEO Analysis data successfully deleted.', 'rank-math' );
@@ -112,8 +129,17 @@ class Database_Tools {
 	 */
 	public function delete_links() {
 		global $wpdb;
-		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_internal_links;" );
-		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_internal_meta;" );
+
+		$exists = $wpdb->get_var( "SELECT EXISTS ( SELECT 1 FROM {$wpdb->prefix}rank_math_internal_links )" );
+		if ( empty( $exists ) ) {
+			return [
+				'status'  => 'error',
+				'message' => __( 'No Internal Links data found.', 'rank-math' ),
+			];
+		}
+
+		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_internal_links" );
+		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_internal_meta" );
 
 		return __( 'Internal Links successfully deleted.', 'rank-math' );
 	}
@@ -123,6 +149,15 @@ class Database_Tools {
 	 */
 	public function delete_log() {
 		global $wpdb;
+
+		$exists = $wpdb->get_var( "SELECT EXISTS ( SELECT 1 FROM {$wpdb->prefix}rank_math_404_logs )" );
+		if ( empty( $exists ) ) {
+			return [
+				'status'  => 'error',
+				'message' => __( 'No 404 log data found.', 'rank-math' ),
+			];
+		}
+
 		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_404_logs;" );
 
 		return __( '404 Log successfully deleted.', 'rank-math' );
@@ -133,6 +168,15 @@ class Database_Tools {
 	 */
 	public function delete_redirections() {
 		global $wpdb;
+
+		$exists = $wpdb->get_var( "SELECT EXISTS ( SELECT 1 FROM {$wpdb->prefix}rank_math_redirections )" );
+		if ( empty( $exists ) ) {
+			return [
+				'status'  => 'error',
+				'message' => __( 'No Redirections found.', 'rank-math' ),
+			];
+		}
+
 		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_redirections;" );
 		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}rank_math_redirections_cache;" );
 
@@ -147,7 +191,10 @@ class Database_Tools {
 	public function convert_review() {
 		$posts = Helper::get_review_posts();
 		if ( empty( $posts ) ) {
-			return __( 'No review posts found.', 'rank-math' );
+			return [
+				'status'  => 'error',
+				'message' => __( 'No review posts found.', 'rank-math' ),
+			];
 		}
 
 		$count = 0;
@@ -171,12 +218,88 @@ class Database_Tools {
 	public function convert_schema() {
 		$posts = Schema_Converter::get()->find_posts();
 		if ( empty( $posts['posts'] ) ) {
-			return esc_html__( 'No posts found to convert.', 'rank-math' );
+			return [
+				'status'  => 'error',
+				'message' => __( 'No posts found to convert.', 'rank-math' ),
+			];
 		}
 
 		Schema_Converter::get()->start( $posts['posts'] );
 
 		return __( 'Conversion started. A success message will be shown here once the process completes. You can close this page.', 'rank-math' );
+	}
+
+	/**
+	 * Re-create Database Tables.
+	 *
+	 * @return string
+	 */
+	public function recreate_tables() {
+		// Base.
+		Installer::create_tables( get_option( 'rank_math_modules', [] ) );
+
+		// ActionScheduler.
+		$this->maybe_recreate_actionscheduler_tables();
+
+		// Analytics module.
+		if ( Helper::is_module_active( 'analytics' ) ) {
+			as_enqueue_async_action(
+				'rank_math/analytics/workflow/create_tables',
+				[],
+				'workflow'
+			);
+		}
+
+		return __( 'Table re-creation started. It might take a couple of minutes.', 'rank-math' );
+	}
+
+	/**
+	 * Recreate ActionScheduler tables if missing.
+	 */
+	public function maybe_recreate_actionscheduler_tables() {
+		global $wpdb;
+
+		if ( Conditional::is_woocommerce_active() ) {
+			return;
+		}
+
+		if (
+			! class_exists( 'ActionScheduler_HybridStore' )
+			|| ! class_exists( 'ActionScheduler_StoreSchema' )
+			|| ! class_exists( 'ActionScheduler_LoggerSchema' )
+		) {
+			return;
+		}
+
+		$table_list = [
+			'actionscheduler_actions',
+			'actionscheduler_logs',
+			'actionscheduler_groups',
+			'actionscheduler_claims',
+		];
+
+		$found_tables = $wpdb->get_col( "SHOW TABLES LIKE '{$wpdb->prefix}actionscheduler%'" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		foreach ( $table_list as $table_name ) {
+			if ( ! in_array( $wpdb->prefix . $table_name, $found_tables, true ) ) {
+				$this->recreate_actionscheduler_tables();
+				return;
+			}
+		}
+	}
+
+	/**
+	 * Force the data store schema updates.
+	 */
+	public function recreate_actionscheduler_tables() {
+		$store = new \ActionScheduler_HybridStore();
+		add_action( 'action_scheduler/created_table', [ $store, 'set_autoincrement' ], 10, 2 );
+
+		$store_schema  = new \ActionScheduler_StoreSchema();
+		$logger_schema = new \ActionScheduler_LoggerSchema();
+		$store_schema->register_tables( true );
+		$logger_schema->register_tables( true );
+
+		remove_action( 'action_scheduler/created_table', [ $store, 'set_autoincrement' ], 10 );
 	}
 
 	/**
@@ -187,7 +310,10 @@ class Database_Tools {
 	public function yoast_blocks() {
 		$posts = Yoast_Blocks::get()->find_posts();
 		if ( empty( $posts['posts'] ) ) {
-			return esc_html__( 'No posts found to convert.', 'rank-math' );
+			return [
+				'status' => 'error',
+				'message' => __( 'No posts found to convert.', 'rank-math' ),
+			];
 		}
 
 		Yoast_Blocks::get()->start( $posts['posts'] );
@@ -236,17 +362,23 @@ class Database_Tools {
 				'confirm_text' => __( 'Are you sure you want to delete the 404 log? This action is irreversible.', 'rank-math' ),
 				'button_text'  => __( 'Clear 404 Log', 'rank-math' ),
 			],
-			'yoast_blocks'        => [
-				'title'        => __( 'Yoast Block Converter', 'rank-math' ),
-				'description'  => __( 'Convert FAQ & HowTo Blocks created using Yoast. Use this option to easily move your previous blocks into Rank Math.', 'rank-math' ),
-				'confirm_text' => __( 'Are you sure you want to convert Yoast blocks into Rank Math blocks? This action is irreversible.', 'rank-math' ),
-				'button_text'  => __( 'Convert Blocks', 'rank-math' ),
+			'recreate_tables'     => [
+				'title'       => __( 'Re-create Missing Database Tables', 'rank-math' ),
+				/* translators: 1. Review Schema documentation link */
+				'description' => __( 'Check if required tables exist and create them if not.', 'rank-math' ),
+				'button_text' => __( 'Re-create Tables', 'rank-math' ),
 			],
 			'convert_schema'      => [
 				'title'        => __( 'Schema Converter', 'rank-math' ),
 				'description'  => __( 'If you are using v1.0.48 or higher, and if some of the Schema data from previous versions is missing, then use this tool. Please note: Use this tool only if our support staff asked you to run it.', 'rank-math' ),
 				'confirm_text' => __( 'Are you sure you want to do this? This is not recommended until and unless you are facing any issues with the revamped Schema Generator.', 'rank-math' ),
 				'button_text'  => __( 'Convert Schema', 'rank-math' ),
+			],
+			'yoast_blocks'        => [
+				'title'        => __( 'Yoast Block Converter', 'rank-math' ),
+				'description'  => __( 'Convert FAQ & HowTo Blocks created using Yoast. Use this option to easily move your previous blocks into Rank Math.', 'rank-math' ),
+				'confirm_text' => __( 'Are you sure you want to convert Yoast blocks into Rank Math blocks? This action is irreversible.', 'rank-math' ),
+				'button_text'  => __( 'Convert Blocks', 'rank-math' ),
 			],
 			'delete_links'        => [
 				'title'        => __( 'Delete Internal Links Data', 'rank-math' ),

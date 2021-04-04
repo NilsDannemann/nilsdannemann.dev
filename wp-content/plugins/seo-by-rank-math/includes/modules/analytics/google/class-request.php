@@ -2,7 +2,7 @@
 /**
  * Google API Request.
  *
- * @since      1.0.34
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
@@ -46,6 +46,13 @@ class Request {
 	protected $last_code = 0;
 
 	/**
+	 * Is refresh token notice added.
+	 *
+	 * @var bool
+	 */
+	private $is_notice_added = false;
+
+	/**
 	 * Was the last request successful?
 	 *
 	 * @return bool  True for success, false for failure
@@ -80,7 +87,7 @@ class Request {
 	 * @param array  $args    Assoc array of arguments (usually your data).
 	 * @param int    $timeout Timeout limit for request in seconds.
 	 *
-	 * @return array|false     Assoc array of API response, decoded from JSON.
+	 * @return WP_Error|array|false     Assoc array of API response, decoded from JSON.
 	 */
 	public function http_get( $url, $args = [], $timeout = 10 ) {
 		return $this->make_request( 'GET', $url, $args, $timeout );
@@ -93,7 +100,7 @@ class Request {
 	 * @param array  $args    Assoc array of arguments (usually your data).
 	 * @param int    $timeout Timeout limit for request in seconds.
 	 *
-	 * @return array|false     Assoc array of API response, decoded from JSON.
+	 * @return WP_Error|array|false     Assoc array of API response, decoded from JSON.
 	 */
 	public function http_post( $url, $args = [], $timeout = 10 ) {
 		return $this->make_request( 'POST', $url, $args, $timeout );
@@ -106,7 +113,7 @@ class Request {
 	 * @param array  $args    Assoc array of arguments (usually your data).
 	 * @param int    $timeout Timeout limit for request in seconds.
 	 *
-	 * @return array|false     Assoc array of API response, decoded from JSON.
+	 * @return WP_Error|array|false     Assoc array of API response, decoded from JSON.
 	 */
 	public function http_put( $url, $args = [], $timeout = 10 ) {
 		return $this->make_request( 'PUT', $url, $args, $timeout );
@@ -119,7 +126,7 @@ class Request {
 	 * @param array  $args    Assoc array of arguments (usually your data).
 	 * @param int    $timeout Timeout limit for request in seconds.
 	 *
-	 * @return array|false     Assoc array of API response, decoded from JSON.
+	 * @return WP_Error|array|false     Assoc array of API response, decoded from JSON.
 	 */
 	public function http_delete( $url, $args = [], $timeout = 10 ) {
 		return $this->make_request( 'DELETE', $url, $args, $timeout );
@@ -136,6 +143,20 @@ class Request {
 	 * @return array|false Assoc array of decoded result.
 	 */
 	private function make_request( $http_verb, $url, $args = [], $timeout = 10 ) {
+		// Early Bail!!
+		if ( ! $this->refresh_token() || ! is_scalar( $this->token ) ) {
+			if ( ! $this->is_notice_added ) {
+				$this->is_notice_added = true;
+				$this->is_success      = false;
+				$this->last_error      = sprintf(
+					/* translators: reconnect link */
+					wp_kses_post( __( 'There is a problem with the Google auth token. Please <a href="%1$s" class="button button-link rank-math-reconnect-google">reconnect your app</a>', 'rank-math' ) ),
+					wp_nonce_url( admin_url( 'admin.php?reconnect=google' ), 'rank_math_reconnect_google' )
+				);
+			}
+			return;
+		}
+
 		$params = [
 			'timeout' => $timeout,
 			'method'  => $http_verb,

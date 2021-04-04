@@ -9,17 +9,16 @@
 	'use strict'
 
 	$( function() {
-		const after = $( '.nav-tab-wrapper' )
+		const after = $( '.rank-math-tab-nav' )
 
 		function addNotice( msg, which, fadeout = 3000 ) {
 			which = which || 'error'
-			const notice = $(
-				'<div class="notice notice-' +
-					which +
-					' is-dismissible"><p>' +
-					msg +
-					'</p></div>'
-			).hide()
+			const notice = $( '<div class="notice is-dismissible rank-math-tool-notice"><p></p></div>' )
+
+			notice
+				.hide()
+				.addClass(  'notice-' + which )
+				.find( 'p' ).text( msg )
 
 			after.prev( '.notice' ).remove()
 			after.before( notice )
@@ -77,21 +76,19 @@
 				} )
 				.done( function( response ) {
 					if ( response ) {
-						addNotice( response, 'success', false )
-						return
+						if ( typeof response === 'string' ) {
+							addNotice( response, 'success', false )
+							return
+						} else if ( typeof response === 'object' && response.status && response.message ) {
+							addNotice( response.message, response.status, false )
+							return
+						}
 					}
 
 					addNotice( 'Something went wrong. Please try again later.' )
 				} )
 
 			return false
-		} )
-
-		$( 'input[name="enable_auto_update"]' ).on( 'change', function() {
-			$( this )
-				.parents( 'tr' )
-				.next( 'tr.rank-math-auto-update-email' )
-				.toggle( 'on' === $( this ).attr( 'value' ) )
 		} )
 	} )
 } )( jQuery )

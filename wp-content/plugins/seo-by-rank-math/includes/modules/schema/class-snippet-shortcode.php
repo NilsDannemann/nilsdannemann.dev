@@ -45,7 +45,11 @@ class Snippet_Shortcode {
 			[
 				'render_callback' => [ $this, 'rich_snippet' ],
 				'attributes'      => [
-					'id' => [
+					'id'      => [
+						'default' => '',
+						'type'    => 'string',
+					],
+					'post_id' => [
 						'default' => '',
 						'type'    => 'integer',
 					],
@@ -64,7 +68,10 @@ class Snippet_Shortcode {
 	 */
 	public function rich_snippet( $atts ) {
 		$atts = shortcode_atts(
-			[ 'id' => false ],
+			[
+				'id'      => false,
+				'post_id' => Param::get( 'post_id' ) ? Param::get( 'post_id' ) : get_the_ID(),
+			],
 			$atts,
 			'rank_math_rich_snippet'
 		);
@@ -73,34 +80,45 @@ class Snippet_Shortcode {
 			rank_math()->variables->setup();
 		}
 
-		$data = $this->get_data( $atts['id'] );
-		if ( empty( $data ) ) {
+		$data = $this->get_data( $atts['id'], $atts['post_id'] );
+		if ( empty( $data ) || empty( $data['schema'] ) ) {
 			return esc_html__( 'No schema found.', 'rank-math' );
 		}
 
-		$post   = get_post( $data['post_id'] );
-		$schema = $this->replace_variables( $data['schema'], $post );
-		$schema = $this->do_filter( 'schema/shortcode/filter_attributes', $schema, $atts );
+		$post    = get_post( $data['post_id'] );
+		$schemas = ! empty( $atts['id'] ) ? [ $data['schema'] ] : $data['schema'];
 
-		return $this->do_filter( 'snippet/html', $this->get_snippet_content( $schema, $post ), $schema, $post, $this );
+		ob_start();
+		foreach ( $schemas as $schema ) {
+			$schema = $this->replace_variables( $schema, $post );
+			$schema = $this->do_filter( 'schema/shortcode/filter_attributes', $schema, $atts );
+
+			echo $this->do_filter( 'snippet/html', $this->get_snippet_content( $schema, $post ), $schema, $post, $this );
+		}
+
+		return ob_get_clean();
 	}
 
 	/**
 	 * Get schema data.
 	 *
-	 * @param  string $id Shortcode id.
+	 * @param  string $schema_id Schema id.
+	 * @param  string $post_id   Shortcode id.
 	 * @return array
 	 */
-	private function get_data( $id ) {
-		if ( ! empty( $id ) && is_string( $id ) ) {
-			return DB::get_schema_by_shortcode_id( $id );
+	private function get_data( $schema_id, $post_id = false ) {
+		if ( ! empty( $schema_id ) && is_string( $schema_id ) ) {
+			return DB::get_schema_by_shortcode_id( $schema_id );
 		}
 
-		$post_id = Param::get( 'post_id' ) ? Param::get( 'post_id' ) : get_the_ID();
-		$data    = DB::get_schemas( $post_id );
+		if ( ! $post_id ) {
+			$post_id = Param::get( 'post_id' ) ? Param::get( 'post_id' ) : get_the_ID();
+		}
+
+		$data = DB::get_schemas( $post_id );
 		return empty( $data ) ? false : [
 			'post_id' => $post_id,
-			'schema'  => current( $data ),
+			'schema'  => $data,
 		];
 	}
 
@@ -112,8 +130,11 @@ class Snippet_Shortcode {
 	 * @return array
 	 */
 	private function replace_variables( $schemas, $post ) {
-		$new_schemas = [];
+		if ( ! is_array( $schemas ) && ! is_object( $schemas ) ) {
+			return [];
+		}
 
+		$new_schemas = [];
 		foreach ( $schemas as $key => $schema ) {
 			if ( 'metadata' === $key ) {
 				continue;
@@ -124,7 +145,7 @@ class Snippet_Shortcode {
 				continue;
 			}
 
-			$new_schemas[ $key ] = Str::contains( '%', $schema ) ? Helper::replace_vars( $schema, $post ) : $schema;
+			$new_schemas[ $key ] = Str::contains( '%', $schema ) ? Helper::replace_seo_fields( $schema, $post ) : $schema;
 		}
 
 		return $new_schemas;
@@ -151,6 +172,10 @@ class Snippet_Shortcode {
 
 		if ( Str::ends_with( 'event', $type ) ) {
 			$type = 'event';
+		}
+
+		if ( 'resturant' === $type ) {
+			$type = 'restaurant';
 		}
 
 		ob_start();
@@ -180,6 +205,10 @@ class Snippet_Shortcode {
 	public function get_field_value( $field_id, $default = null ) {
 		$array = $this->schema;
 		if ( isset( $array[ $field_id ] ) ) {
+			if ( isset( $array[ $field_id ]['@type'] ) ) {
+				unset( $array[ $field_id ]['@type'] );
+			}
+
 			return $array[ $field_id ];
 		}
 
@@ -216,6 +245,50 @@ class Snippet_Shortcode {
 	}
 
 	/**
+	 * Get Opening hours data.
+	 *
+	 * @param string $field_id Field id to get value.
+	 */
+	public function get_opening_hours( $field_id ) {
+		$opening_hours = $this->get_field_value( $field_id );
+		if ( empty( $opening_hours ) ) {
+			return;
+		}
+
+		if ( count( array_filter( array_keys( $opening_hours ), 'is_string' ) ) > 0 ) {
+			$this->get_opening_hour( $opening_hours );
+			return;
+		}
+
+		echo '<div>';
+		echo '<strong>' . esc_html__( 'Opening Hours', 'rank-math' ) . '</strong><br />';
+		foreach ( $opening_hours as $opening_hour ) {
+			$this->get_opening_hour( $opening_hour );
+		}
+		echo '</div>';
+	}
+
+	/**
+	 * Get Opening hours.
+	 *
+	 * @param array $opening_hour Opening hours data.
+	 */
+	public function get_opening_hour( $opening_hour ) {
+		$labels = [
+			'dayOfWeek' => esc_html__( 'Days', 'rank-math' ),
+			'opens'     => esc_html__( 'Opening Time', 'rank-math' ),
+			'closes'    => esc_html__( 'Closing Time', 'rank-math' ),
+		];
+		foreach ( $labels as $key => $label ) {
+			if ( empty( $opening_hour[ $key ] ) ) {
+				continue;
+			}
+
+			$this->output_field( $label, $opening_hour[ $key ] );
+		}
+	}
+
+	/**
 	 * Get field.
 	 *
 	 * @param string $title Field title.
@@ -224,7 +297,7 @@ class Snippet_Shortcode {
 	public function output_field( $title, $value ) {
 		?>
 		<p>
-			<strong><?php echo $title; // phpcs:ignore ?>: </strong>
+			<strong><?php echo esc_html( $title ); // phpcs:ignore ?>: </strong>
 			<?php echo is_array( $value ) ? implode( ', ', $value ) : wp_kses_post( $value ); // phpcs:ignore ?>
 		</p>
 		<?php
@@ -241,7 +314,7 @@ class Snippet_Shortcode {
 		$title = isset( $this->schema['title'] ) ? $this->schema['title'] : $this->schema['name'];
 		$title = $title && '' !== $title ? $title : Helper::replace_vars( '%title%', $this->post );
 		?>
-		<h5 class="rank-math-title"><?php echo $title; // phpcs:ignore ?></h5>
+		<h5 class="rank-math-title"><?php echo esc_html( $title ); // phpcs:ignore ?></h5>
 		<?php
 	}
 
@@ -257,7 +330,7 @@ class Snippet_Shortcode {
 		}
 		$description = $description && '' !== $description ? $description : ( $excerpt ? $excerpt : Helper::get_post_meta( 'description', $this->post->ID ) );
 		?>
-		<p><?php echo do_shortcode( $description ); ?></p>
+		<p><?php echo wp_kses_post( do_shortcode( $description ) ); ?></p>
 		<?php
 	}
 
@@ -290,6 +363,8 @@ class Snippet_Shortcode {
 		if ( empty( $rating ) ) {
 			return;
 		}
+
+		$best_rating = (int) $this->get_field_value( 'review.reviewRating.bestRating', 5 );
 		?>
 		<div class="rank-math-total-wrapper">
 
@@ -301,10 +376,10 @@ class Snippet_Shortcode {
 
 				<div class="rank-math-review-result-wrapper">
 
-					<?php echo \str_repeat( '<i class="rank-math-star"></i>', 5 ); // phpcs:ignore ?>
+					<?php echo \str_repeat( '<i class="rank-math-star"></i>', $best_rating ); // phpcs:ignore ?>
 
-					<div class="rank-math-review-result" style="width:<?php echo ( $rating * 20 ); // phpcs:ignore ?>%;">
-						<?php echo \str_repeat( '<i class="rank-math-star"></i>', 5 ); // phpcs:ignore ?>
+					<div class="rank-math-review-result" style="width:<?php echo ( $rating * ( 100 / $best_rating ) ); // phpcs:ignore ?>%;">
+						<?php echo \str_repeat( '<i class="rank-math-star"></i>', $best_rating ); // phpcs:ignore ?>
 					</div>
 
 				</div>
@@ -324,30 +399,38 @@ class Snippet_Shortcode {
 	 * @since 1.0.12
 	 */
 	public function add_review_to_content( $content ) {
-		$location = $this->get_content_location();
-		if ( false === $location ) {
+		$schemas = $this->get_schemas();
+		if ( empty( $schemas ) ) {
 			return $content;
 		}
 
-		$review = do_shortcode( '[rank_math_review_snippet]' );
+		foreach ( $schemas as $schema ) {
+			$location = $this->get_content_location( $schema );
+			if ( false === $location || 'custom' === $location ) {
+				continue;
+			}
 
-		if ( in_array( $location, [ 'top', 'both' ], true ) ) {
-			$content = $review . $content;
-		}
+			$review = do_shortcode( '[rank_math_rich_snippet id="' . $schema['metadata']['shortcode'] . '"]' );
+			if ( in_array( $location, [ 'top', 'both' ], true ) ) {
+				$content = $review . $content;
+			}
 
-		if ( in_array( $location, [ 'bottom', 'both' ], true ) && $this->can_add_multi_page() ) {
-			$content .= $review;
+			if ( in_array( $location, [ 'bottom', 'both' ], true ) && $this->can_add_multi_page() ) {
+				$content .= $review;
+			}
 		}
 
 		return $content;
 	}
 
 	/**
-	 * Check if we can inject the review in the content.
+	 * Get schema data to show in the content.
 	 *
-	 * @return boolean|string
+	 * @return boolean|array
+	 *
+	 * @since 1.0.59
 	 */
-	private function get_content_location() {
+	private function get_schemas() {
 		/**
 		 * Filter: Allow disabling the review display.
 		 *
@@ -357,18 +440,28 @@ class Snippet_Shortcode {
 			return false;
 		}
 
-		$data = $this->get_data( false );
-		if ( empty( $data ) ) {
+		$schemas = $this->get_data( false );
+		if ( empty( $schemas ) ) {
 			return false;
 		}
 
-		$schema = $data['schema'];
-		$type   = \strtolower( $schema['@type'] );
-		if ( ! in_array( $type, [ 'book', 'review', 'course', 'event', 'product', 'recipe', 'softwareapplication' ], true ) ) {
-			return false;
-		}
+		return array_filter(
+			$schemas['schema'],
+			function( $schema ) {
+				return ! empty( $schema['metadata']['reviewLocation'] );
+			}
+		);
+	}
 
-		$location = isset( $schema['metadata']['reviewLocation'] ) ? $schema['metadata']['reviewLocation'] : false;
+	/**
+	 * Check if we can inject the review in the content.
+	 *
+	 * @param array $schema Schema Data.
+	 *
+	 * @return boolean|string
+	 */
+	private function get_content_location( $schema ) {
+		$location = ! empty( $schema['metadata']['shortcode'] ) && isset( $schema['metadata']['reviewLocation'] ) ? $schema['metadata']['reviewLocation'] : false;
 		return $this->do_filter( 'snippet/review/location', $location );
 	}
 

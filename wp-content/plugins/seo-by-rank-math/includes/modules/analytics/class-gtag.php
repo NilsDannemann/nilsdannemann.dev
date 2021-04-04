@@ -2,15 +2,13 @@
 /**
  * The GTag
  *
- * @since      1.4.0
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
  *
- * @credit forked from Google site kit.
  * @copyright 2019 Google LLC
- * @license   https://www.apache.org/licenses/LICENSE-2.0 Apache License 2.0
- * @link      https://sitekit.withgoogle.com
+ * The following code is a derivative work of the code from the Site Kit Plugin(https://sitekit.withgoogle.com), which is licensed under Apache License 2.0.
  */
 
 namespace RankMath\Analytics;
@@ -61,9 +59,6 @@ class GTag {
 	 * The Constructor
 	 */
 	public function __construct() {
-		$this->action( 'wp_head', 'print_tracking_opt_out', 0 ); // For non-AMP and AMP.
-		$this->action( 'web_stories_story_head', 'print_tracking_opt_out', 0 ); // For Web Stories plugin.
-
 		$this->action( 'template_redirect', 'add_analytics_tag' );
 	}
 
@@ -82,7 +77,9 @@ class GTag {
 			return;
 		}
 
-		// for AMP and non-AMP.
+		$this->action( 'wp_head', 'print_tracking_opt_out', 0 ); // For non-AMP and AMP.
+		$this->action( 'web_stories_story_head', 'print_tracking_opt_out', 0 ); // For Web Stories plugin.
+
 		if ( $this->is_amp() ) {
 			$this->action( 'amp_print_analytics', 'print_amp_gtag' ); // For all AMP modes.
 			$this->action( 'wp_footer', 'print_amp_gtag', 20 ); // For AMP Standard and Transitional.
@@ -94,6 +91,7 @@ class GTag {
 		} else {
 			// For non-AMP.
 			$this->action( 'wp_enqueue_scripts', 'enqueue_gtag_js' );
+			$this->action( 'wp_enqueue_scripts', 'gtag_js_config', 25 );
 		}
 	}
 
@@ -151,9 +149,13 @@ class GTag {
 	 */
 	public function enqueue_gtag_js() {
 		$property_id = $this->get( 'property_id' );
+
+		$url = 'https://www.googletagmanager.com/gtag/js?id=' . esc_attr( $property_id );
+		$url = $this->do_filter( 'analytics/ga_js_url', $url );
+
 		wp_enqueue_script( // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 			'google_gtagjs',
-			'https://www.googletagmanager.com/gtag/js?id=' . esc_attr( $property_id ),
+			$url,
 			false,
 			null,
 			false
@@ -172,11 +174,6 @@ class GTag {
 			];
 		}
 
-		if ( $this->get( 'anonymize_ip' ) ) {
-			// See https://developers.google.com/analytics/devguides/collection/gtagjs/ip-anonymization.
-			$gtag_opt['anonymize_ip'] = true;
-		}
-
 		if ( ! empty( $gtag_opt['linker'] ) ) {
 			wp_add_inline_script(
 				'google_gtagjs',
@@ -189,45 +186,22 @@ class GTag {
 			'google_gtagjs',
 			'gtag(\'js\', new Date());'
 		);
-
-		// Site Kit developer ID.
-		wp_add_inline_script(
-			'google_gtagjs',
-			'gtag(\'set\', \'developer_id.dZTNiMT\', true);'
-		);
-
-		if ( empty( $gtag_opt ) ) {
-			wp_add_inline_script(
-				'google_gtagjs',
-				'gtag(\'config\', \'' . esc_attr( $property_id ) . '\');'
-			);
-		} else {
-			wp_add_inline_script(
-				'google_gtagjs',
-				'gtag(\'config\', \'' . esc_attr( $property_id ) . '\', ' . wp_json_encode( $gtag_opt ) . ' );'
-			);
-		}
 	}
 
 	/**
-	 * Print the user tracking opt-out code
+	 * Add the config() call for gtag.js.
 	 *
-	 * This script opts out of all Google Analytics tracking, for all measurement IDs, regardless of implementation.
-	 *
-	 * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-opt-out
+	 * @return void
 	 */
-	public function print_tracking_opt_out() {
-		if ( ! $this->is_tracking_disabled() ) {
-			return;
-		}
+	public function gtag_js_config() {
+		$property_id = $this->get( 'property_id' );
 
-		if ( $this->is_amp() ) :
-			?>
-		<script type="application/ld+json" id="__gaOptOutExtension"></script>
-		<?php else : ?>
-		<script type="text/javascript">window["_gaUserPrefs"] = { ioo : function() { return true; } }</script>
-			<?php
-		endif;
+		$gtag_config = [];
+		$gtag_config = $this->do_filter( 'analytics/gtag_config', $gtag_config );
+		wp_add_inline_script(
+			'google_gtagjs',
+			'gtag(\'config\', \'' . esc_attr( $property_id ) . '\', {' . join( ', ', $gtag_config ) . '} );'
+		);
 	}
 
 	/**
@@ -352,5 +326,26 @@ class GTag {
 		}
 
 		return $options;
+	}
+
+	/**
+	 * Print the user tracking opt-out code
+	 *
+	 * This script opts out of all Google Analytics tracking, for all measurement IDs, regardless of implementation.
+	 *
+	 * @link https://developers.google.com/analytics/devguides/collection/analyticsjs/user-opt-out
+	 */
+	public function print_tracking_opt_out() {
+		if ( ! $this->is_tracking_disabled() ) {
+			return;
+		}
+
+		if ( $this->is_amp() ) :
+			?>
+		<script type="application/ld+json" id="__gaOptOutExtension"></script>
+		<?php else : ?>
+		<script type="text/javascript">window['ga-disable-<?php echo esc_js( $this->get( 'property_id' ) ); ?>'] = true;</script>
+			<?php
+		endif;
 	}
 }

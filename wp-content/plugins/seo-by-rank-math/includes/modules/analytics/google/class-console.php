@@ -2,15 +2,13 @@
 /**
  *  Google Search Console.
  *
- * @since      1.0.34
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
  */
 
 namespace RankMath\Google;
-
-use RankMath\Helpers\Security;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -187,9 +185,11 @@ class Console extends Analytics {
 		}
 
 		$response = $this->http_post(
-			'https://www.googleapis.com/webmasters/v3/sites/' . rawurlencode( Analytics::get_site_url() ) . '/searchAnalytics/query',
+			'https://www.googleapis.com/webmasters/v3/sites/' . rawurlencode( self::get_site_url() ) . '/searchAnalytics/query',
 			$args
 		);
+
+		$this->log_failed_request( $response, 'console', $start_date, func_get_args() );
 
 		if ( ! $this->is_success() || ! isset( $response['rows'] ) ) {
 			return false;
@@ -218,7 +218,7 @@ class Console extends Analytics {
 	 * Sync sitemaps with google search console.
 	 */
 	public function sync_sitemaps() {
-		$site_url = Analytics::get_site_url();
+		$site_url = self::get_site_url();
 		$data     = $this->get_sitemap_to_sync();
 
 		// Submit it.
@@ -244,7 +244,7 @@ class Console extends Analytics {
 	private function get_sitemap_to_sync() {
 		$delete_sitemaps  = [];
 		$sitemaps_in_list = false;
-		$site_url         = Analytics::get_site_url();
+		$site_url         = self::get_site_url();
 		$sitemaps         = $this->get_sitemaps( $site_url );
 		$local_sitemap    = trailingslashit( $site_url ) . 'sitemap_index.xml';
 
@@ -263,5 +263,39 @@ class Console extends Analytics {
 		}
 
 		return compact( 'delete_sitemaps', 'sitemaps_in_list', 'local_sitemap' );
+	}
+
+	/**
+	 * Get site url.
+	 *
+	 * @return string
+	 */
+	public static function get_site_url() {
+		static $rank_math_site_url;
+
+		if ( is_null( $rank_math_site_url ) ) {
+			$default            = trailingslashit( strtolower( home_url() ) );
+			$rank_math_site_url = get_option( 'rank_math_google_analytic_profile', [ 'profile' => $default ] );
+			$rank_math_site_url = empty( $rank_math_site_url['profile'] ) ? $default : $rank_math_site_url['profile'];
+		}
+
+		return $rank_math_site_url;
+	}
+
+	/**
+	 * Get site url.
+	 *
+	 * @return string
+	 */
+	public static function is_console_connected() {
+		$profile = wp_parse_args(
+			get_option( 'rank_math_google_analytic_profile' ),
+			[
+				'profile' => '',
+				'country' => 'all',
+			]
+		);
+
+		return ! empty( $profile['profile'] );
 	}
 }

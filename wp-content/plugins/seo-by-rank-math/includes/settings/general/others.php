@@ -6,19 +6,16 @@
  * @subpackage RankMath\Settings
  */
 
-use RankMath\KB;
 use RankMath\Helper;
+
+defined( 'ABSPATH' ) || exit;
 
 $cmb->add_field(
 	[
 		'id'      => 'frontend_seo_score',
 		'type'    => 'toggle',
-		'name'    => esc_html__( 'Show SEO Score', 'rank-math' ),
-		'desc'    => sprintf(
-			/* translators: %s is the shortcode */
-			esc_html__( 'Show the calculated SEO Score as a badge on the front end for selected post types. It can be disabled for specific posts.', 'rank-math' ),
-			'<code>[rank_math_seo_score]</code>'
-		),
+		'name'    => esc_html__( 'Show SEO Score to Visitors', 'rank-math' ),
+		'desc'    => esc_html__( 'Proudly display the calculated SEO Score as a badge on the front end. It can be disabled for specific posts in the post editor.', 'rank-math' ),
 		'default' => 'off',
 	]
 );

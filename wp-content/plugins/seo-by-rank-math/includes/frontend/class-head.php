@@ -23,7 +23,8 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Head class.
  *
- * Some functionality inspired from Yoast (https://github.com/Yoast/wordpress-seo/)
+ * @copyright Copyright (C) 2008-2019, Yoast BV
+ * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
  */
 class Head {
 
@@ -67,6 +68,9 @@ class Head {
 			$this->action( 'get_header', 'start_ob', 0 );
 			$this->action( 'wp_head', 'rewrite_title', 9999 );
 		}
+
+		// Remove core robots data.
+		remove_all_filters( 'wp_robots' );
 	}
 
 	/**
@@ -248,6 +252,16 @@ class Head {
 	 * Output the meta keywords value.
 	 */
 	public function metakeywords() {
+		/**
+		 * Passing a truthy value to the filter will effectively short-circuit the
+		 * set keywords process.
+		 *
+		 * @param bool $return Short-circuit return value. Either false or true.
+		 */
+		if ( ! $this->do_filter( 'frontend/show_keywords', false ) ) {
+			return;
+		}
+
 		$keywords = Paper::get()->get_keywords();
 		if ( Str::is_non_empty( $keywords ) ) {
 			echo '<meta name="keywords" content="', esc_attr( $keywords ), '"/>', "\n";
@@ -364,8 +378,10 @@ class Head {
 		}
 
 		if ( false === $closing ) {
-			if ( ! Helper::is_whitelabel() ) {
+			if ( ! Helper::is_whitelabel() && ! defined( 'RANK_MATH_PRO_FILE' ) ) {
 				echo "\n<!-- " . esc_html__( 'Search Engine Optimization by Rank Math - https://s.rankmath.com/home', 'rank-math' ) . " -->\n";
+			} elseif ( defined( 'RANK_MATH_PRO_FILE' ) ) {
+				echo "\n<!-- " . esc_html__( 'Search Engine Optimization by Rank Math PRO - https://s.rankmath.com/home', 'rank-math' ) . " -->\n";
 			}
 			return;
 		}

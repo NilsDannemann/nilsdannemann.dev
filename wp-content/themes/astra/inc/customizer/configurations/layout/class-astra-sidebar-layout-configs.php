@@ -138,11 +138,12 @@ if ( ! class_exists( 'Astra_Sidebar_Layout_Configs' ) ) {
 					'name'        => ASTRA_THEME_SETTINGS . '[site-sidebar-width]',
 					'type'        => 'control',
 					'control'     => 'ast-slider',
-					'default'     => 30,
+					'default'     => astra_get_option( 'site-sidebar-width' ),
 					'section'     => 'section-sidebars',
 					'priority'    => 15,
 					'title'       => __( 'Sidebar Width', 'astra' ),
 					'suffix'      => '%',
+					'transport'   => 'postMessage',
 					'input_attrs' => array(
 						'min'  => 15,
 						'step' => 1,

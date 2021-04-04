@@ -10,8 +10,8 @@
 
 use RankMath\KB;
 use RankMath\Helper;
+use RankMath\Google\Console;
 use RankMath\Google\Authentication;
-use RankMath\Google\Analytics;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -108,7 +108,7 @@ function rank_math_register_seo_analysis_advance_tests( $tests ) {
 			/* translators: link to plugin search console setting screen */
 			'<p>' . sprintf( wp_kses_post( __( 'You can integrate the Google Search Console with Rank math in the <a href="%1$s" target="_blank">Search Console tab</a>. of Rank Math\'s General Settings menu.', 'rank-math' ) ), esc_url( Helper::get_admin_url( 'options-general#setting-panel-analytics' ) ) ) . '</p>' .
 			/* translators: Link to Search Console KB article */
-			'<p>' . sprintf( wp_kses_post( __( 'Read <a href="%1$s" target="_blank">this article</a> for detailed instructions on setting up your Google Webmaster account and getting Rank Math to work with the Google Search Console.', 'rank-math' ) ), KB::get( 'analytics' ) ) . '</p>',
+			'<p>' . sprintf( wp_kses_post( __( 'Read <a href="%1$s" target="_blank">this article</a> for detailed instructions on setting up your Google Webmaster account and getting Rank Math to work with the Google Search Console.', 'rank-math' ) ), KB::get( 'seo-analysis-gsc-test' ) ) . '</p>',
 		'callback'    => 'rank_math_analyze_search_console',
 	];
 
@@ -265,7 +265,7 @@ function rank_math_has_postname_in_permalink() {
  * @return array
  */
 function rank_math_analyze_search_console() {
-	$status = Authentication::is_authorized() && Analytics::get_site_url();
+	$status = Authentication::is_authorized() && Console::get_site_url();
 
 	return [
 		'status'  => $status ? 'ok' : 'fail',

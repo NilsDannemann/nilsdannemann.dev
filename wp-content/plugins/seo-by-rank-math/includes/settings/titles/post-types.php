@@ -8,6 +8,8 @@
 
 use RankMath\Helper;
 
+defined( 'ABSPATH' ) || exit;
+
 $post_type = $tab['post_type'];
 if ( 'attachment' === $post_type && Helper::get_settings( 'general.attachment_redirect_urls', true ) ) {
 	$cmb->add_field(
@@ -119,7 +121,7 @@ if ( ( class_exists( 'WooCommerce' ) && 'product' === $post_type ) || ( class_ex
 			'desc'    => __( 'Default rich snippet selected when creating a new product.', 'rank-math' ),
 			'options' => [
 				'off'     => esc_html__( 'None', 'rank-math' ),
-				'product' => esc_html__( 'Product', 'rank-math' ),
+				'product' => 'download' === $post_type ? esc_html__( 'EDD Product', 'rank-math' ) : esc_html__( 'WooCommerce Product', 'rank-math' ),
 			],
 			'default' => $this->do_filter( 'settings/snippet/type', 'product', $post_type ),
 		]
@@ -272,7 +274,7 @@ if ( $taxonomies ) {
 			'type'    => 'select',
 			'name'    => esc_html__( 'Primary Taxonomy', 'rank-math' ),
 			/* translators: post type name */
-			'desc'    => sprintf( esc_html__( 'Select taxonomy to show in the Breadcrumbs when a single %1$s is being viewed.', 'rank-math' ), $name ),
+			'desc'    => sprintf( esc_html__( 'Choose which taxonomy you want to use with the Primary Term feature. This will also be the taxonomy shown in the Breadcrumbs when a single %1$s is being viewed.', 'rank-math' ), $name ),
 			'options' => $taxonomies,
 			'default' => isset( $primary_taxonomy_hash[ $post_type ] ) ? $primary_taxonomy_hash[ $post_type ] : 'off',
 			'classes' => 'rank-math-advanced-option',

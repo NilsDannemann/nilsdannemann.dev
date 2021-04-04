@@ -2,9 +2,9 @@
 /**
  * Methods for frontend and backend in admin-only module
  *
- * @since      0.9.0
+ * @since      1.0.49
  * @package    RankMath
- * @subpackage RankMath\modules
+ * @subpackage RankMath\Analytics
  * @author     Rank Math <support@rankmath.com>
  */
 
@@ -12,7 +12,10 @@ namespace RankMath\Analytics;
 
 use RankMath\Helper;
 use RankMath\Traits\Hooker;
+use RankMath\Google\Console;
 use MyThemeShop\Helpers\Conditional;
+use RankMath\Analytics\Workflow\Jobs;
+use RankMath\Analytics\Workflow\Workflow;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -36,7 +39,8 @@ class Analytics_Common {
 		}
 
 		new GTag();
-		Data_Fetcher::get();
+		Jobs::get();
+		Workflow::get();
 
 		$this->action( 'rest_api_init', 'init_rest_api' );
 		$this->filter( 'rank_math/webmaster/google_verify', 'add_site_verification' );
@@ -77,10 +81,15 @@ class Analytics_Common {
 	 * @param Admin_Bar_Menu $menu Menu class instance.
 	 */
 	public function admin_bar_items( $menu ) {
+		$dot_color = '#ed5e5e';
+		if ( Console::is_console_connected() ) {
+			$dot_color = '#11ac84';
+		}
+
 		$menu->add_sub_menu(
 			'analytics',
 			[
-				'title'    => esc_html__( 'Analytics', 'rank-math' ),
+				'title'    => esc_html__( 'Analytics', 'rank-math' ) . '<span class="rm-menu-new update-plugins" style="background: ' . $dot_color . ';margin-left: 5px;min-width: 10px;height: 10px;margin-bottom: -1px;display: inline-block;border-radius: 5px;"><span class="plugin-count"></span></span>',
 				'href'     => Helper::get_admin_url( 'analytics' ),
 				'meta'     => [ 'title' => esc_html__( 'Review analytics and sitemaps', 'rank-math' ) ],
 				'priority' => 20,
@@ -104,10 +113,15 @@ class Analytics_Common {
 	 * @return string
 	 */
 	public function analytics_reindex_posts() {
-		DB::objects()->truncate();
-		DB::table( 'postmeta' )->where( 'meta_key', 'rank_math_analytic_object_id' )->delete();
-		delete_option( 'rank_math_flat_posts_done' );
-		Data_Fetcher::get()->flat_posts();
+		DB::objects()
+			->truncate();
+
+		DB::table( 'postmeta' )
+			->where( 'meta_key', 'rank_math_analytic_object_id' )
+			->delete();
+
+		( new \RankMath\Analytics\Workflow\Objects() )->flat_posts();
+
 		return __( 'Post re-index in progress.', 'rank-math' );
 	}
 }

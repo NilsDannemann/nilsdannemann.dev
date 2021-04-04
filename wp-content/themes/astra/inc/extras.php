@@ -285,6 +285,10 @@ if ( ! function_exists( 'astra_get_prop' ) ) :
 			return $default;
 		}
 
+		if ( ( isset( $array[ $prop ] ) && false === $array[ $prop ] ) ) {
+			return false;
+		}
+
 		if ( isset( $array[ $prop ] ) ) {
 			$value = $array[ $prop ];
 		} else {
@@ -313,17 +317,36 @@ function astra_attr( $context, $attributes = array(), $args = array() ) {
 	return Astra_Attr::get_instance()->astra_attr( $context, $attributes, $args );
 }
 
-	/**
-	 * Check the WordPress version.
-	 *
-	 * @since  2.5.4
-	 * @param string $version   WordPress version to compare with the current version.
-	 * @param string $compare   Comparison value i.e > or < etc.
-	 * @return bool            True/False based on the  $version and $compare value.
-	 */
+/**
+ * Check the WordPress version.
+ *
+ * @since  2.5.4
+ * @param string $version   WordPress version to compare with the current version.
+ * @param string $compare   Comparison value i.e > or < etc.
+ * @return bool            True/False based on the  $version and $compare value.
+ */
 function astra_wp_version_compare( $version, $compare ) {
 
 	return version_compare( get_bloginfo( 'version' ), $version, $compare );
+}
+
+/**
+ * Get the theme author details 
+ *
+ * @since  3.1.0
+ * @return array            Return theme author URL and name.
+ */
+function astra_get_theme_author_details() {
+
+	$theme_author = apply_filters(
+		'astra_theme_author',
+		array(
+			'theme_name'       => __( 'Astra WordPress Theme', 'astra' ),
+			'theme_author_url' => 'https://wpastra.com/',
+		)
+	);
+
+	return $theme_author;
 }
 
 /**
@@ -354,3 +377,44 @@ function astra_remove_controls( $wp_customize ) {
 }
 
 add_filter( 'astra_customizer_configurations', 'astra_remove_controls', 99 );
+
+/**
+ * Is theme existing header footer configs enable.
+ *
+ * @since 3.0.0
+ *
+ * @return boolean true/false.
+ */
+function astra_existing_header_footer_configs() {
+
+	return apply_filters( 'astra_existing_header_footer_configs', true );
+}
+
+/**
+ * Get Spacing value
+ *
+ * @param  array  $value        Responsive spacing value with unit.
+ * @param  string $operation    + | - | * | /.
+ * @param  string $from         Perform operation from the value.
+ * @param  string $from_unit    Perform operation from the value of unit.
+ *
+ * @since 3.0.0
+ * @return mixed
+ */
+function astra_calculate_spacing( $value, $operation = '', $from = '', $from_unit = '' ) {
+
+	$css = '';
+	if ( ! empty( $value ) ) {
+		$css = $value;
+		if ( ! empty( $operation ) && ! empty( $from ) ) {
+			if ( ! empty( $from_unit ) ) {
+				$css = 'calc( ' . $value . ' ' . $operation . ' ' . $from . $from_unit . ' )';
+			}
+			if ( '*' === $operation || '/' === $operation ) {
+				$css = 'calc( ' . $value . ' ' . $operation . ' ' . $from . ' )';
+			}
+		}
+	}
+
+	return $css;
+}

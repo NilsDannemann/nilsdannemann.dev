@@ -36,13 +36,44 @@ class Helper {
 	 * @param array  $args    Context object, can be post, taxonomy or term.
 	 * @param array  $exclude Excluded variables won't be replaced.
 	 *
-	 * Inspired from Yoast (https://github.com/Yoast/wordpress-seo/)
+	 * @copyright Copyright (C) 2008-2019, Yoast BV
+	 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
 	 *
 	 * @return string
 	 */
 	public static function replace_vars( $content, $args = [], $exclude = [] ) {
 		$replace = new Replacer();
 		return $replace->replace( $content, $args, $exclude );
+	}
+
+	/**
+	 * Replace `%variables%` with context-dependent value.
+	 *
+	 * @param string $content The string containing the %variables%.
+	 * @param array  $post    Context object, can be post, taxonomy or term.
+	 *
+	 * @return string
+	 */
+	public static function replace_seo_fields( $content, $post ) {
+		if ( empty( $post ) || ! in_array( $content, [ '%seo_title%', '%seo_description%', '%url%' ], true ) ) {
+			return self::replace_vars( $content, $post );
+		}
+
+		if ( '%seo_title%' === $content ) {
+			$default = self::get_settings( "titles.pt_{$post->post_type}_title", '%title% %sep% %sitename%' );
+			$title   = self::get_post_meta( 'title', $post->ID, $default );
+
+			return self::replace_vars( $title, $post );
+		}
+
+		if ( '%seo_description%' === $content ) {
+			$default = self::get_settings( "titles.pt_{$post->post_type}_description", '%excerpt%' );
+			$desc    = self::get_post_meta( 'description', $post->ID, $default );
+
+			return self::replace_vars( $desc, $post );
+		}
+
+		return self::get_post_meta( 'canonical', $post->ID, get_the_permalink( $post->ID ) );
 	}
 
 	/**
@@ -73,9 +104,16 @@ class Helper {
 	 * @return int
 	 */
 	public static function get_midnight( $time ) {
+		$org_time = $time;
 		if ( is_numeric( $time ) ) {
 			$time = date_i18n( 'Y-m-d H:i:s', $time );
 		}
+
+		// Early bail if time format is invalid.
+		if ( false === strtotime( $time ) ) {
+			return $org_time;
+		}
+
 		$date = new \DateTime( $time );
 		$date->setTime( 0, 0, 0 );
 
@@ -89,7 +127,8 @@ class Helper {
 	 * @param  string $part The URL part to retrieve.
 	 * @return string The extracted URL part.
 	 *
-	 * Adapted from Yoast (https://github.com/Yoast/wordpress-seo/)
+	 * @copyright Copyright (C) 2008-2019, Yoast BV
+	 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
 	 */
 	public static function get_url_part( $url, $part ) {
 		$url_parts = wp_parse_url( $url );
@@ -132,7 +171,7 @@ class Helper {
 	/**
 	 * Modify module status.
 	 *
-	 * @param string $modules Modules to modify.
+	 * @param array $modules Modules to modify.
 	 */
 	public static function update_modules( $modules ) {
 		$stored = get_option( 'rank_math_modules', [] );
@@ -146,9 +185,32 @@ class Helper {
 			}
 
 			$stored[] = $module;
+			Installer::create_tables( [ $module ] );
 		}
 
 		update_option( 'rank_math_modules', array_unique( $stored ) );
+	}
+
+	/**
+	 * Get list of currently active modules.
+	 *
+	 * @return array
+	 */
+	public static function get_active_modules() {
+		$registered_modules = rank_math()->manager->modules;
+		$stored             = array_values( get_option( 'rank_math_modules', [] ) );
+		foreach ( $stored as $key => $value ) {
+			if (
+				! isset( $registered_modules[ $value ] )
+				|| ! is_object( $registered_modules[ $value ] )
+				|| ! method_exists( $registered_modules[ $value ], 'is_disabled' )
+				|| $registered_modules[ $value ]->is_disabled()
+			) {
+				unset( $stored[ $key ] );
+			}
+		}
+
+		return $stored;
 	}
 
 	/**

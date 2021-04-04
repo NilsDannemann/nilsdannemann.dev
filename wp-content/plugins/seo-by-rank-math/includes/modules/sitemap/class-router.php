@@ -7,7 +7,8 @@
  * @subpackage RankMath\Sitemap
  * @author     Rank Math <support@rankmath.com>
  *
- * Some functionality adapted from Yoast (https://github.com/Yoast/wordpress-seo/)
+ * @copyright Copyright (C) 2008-2019, Yoast BV
+ * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
  */
 
 namespace RankMath\Sitemap;
@@ -168,6 +169,7 @@ class Router {
 
 		$page = \preg_replace( '/([^\/]+?)-sitemap([0-9]+)?\.xml$/', '?sitemap=$1&sitemap_n=$2', $page );
 		$page = \preg_replace( '/([a-z]+)?-?sitemap\.xsl$/', '?xsl=$1', $page );
+		$page = str_replace( 'locations.kml', '?sitemap=locations', $page );
 
 		return $page;
 	}

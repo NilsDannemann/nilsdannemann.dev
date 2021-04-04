@@ -2,7 +2,7 @@
 /**
  * The Analytics module database operations
  *
- * @since      0.9.0
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
@@ -11,7 +11,9 @@
 namespace RankMath\Analytics;
 
 use RankMath\Helper;
+use RankMath\Google\Api;
 use MyThemeShop\Helpers\Str;
+use MyThemeShop\Helpers\DB as DB_Helper;
 use MyThemeShop\Database\Database;
 
 defined( 'ABSPATH' ) || exit;
@@ -42,24 +44,6 @@ class DB {
 	}
 
 	/**
-	 * Get traffic table.
-	 *
-	 * @return \MyThemeShop\Database\Query_Builder
-	 */
-	public static function traffic() {
-		return Database::table( 'rank_math_analytics_ga' );
-	}
-
-	/**
-	 * Get adsense table.
-	 *
-	 * @return \MyThemeShop\Database\Query_Builder
-	 */
-	public static function adsense() {
-		return Database::table( 'rank_math_analytics_adsense' );
-	}
-
-	/**
 	 * Get objects table.
 	 *
 	 * @return \MyThemeShop\Database\Query_Builder
@@ -69,39 +53,21 @@ class DB {
 	}
 
 	/**
-	 * Get links table.
-	 *
-	 * @return \MyThemeShop\Database\Query_Builder
-	 */
-	public static function links() {
-		return Database::table( 'rank_math_internal_meta' );
-	}
-
-	/**
-	 * Get keywords table.
-	 *
-	 * @return \MyThemeShop\Database\Query_Builder
-	 */
-	public static function keywords() {
-		return Database::table( 'rank_math_analytics_keyword_manager' );
-	}
-
-	/**
 	 * Delete a record.
 	 *
 	 * @param  int $days Decide whether to delete all or delete 90 days data.
 	 */
 	public static function delete_by_days( $days ) {
 		if ( -1 === $days ) {
-			self::traffic()->truncate();
 			self::analytics()->truncate();
 		} else {
 			$start = date_i18n( 'Y-m-d H:i:s', strtotime( '-1 days' ) );
 			$end   = date_i18n( 'Y-m-d H:i:s', strtotime( '-' . $days . ' days' ) );
 
-			self::traffic()->whereBetween( 'created', [ $end, $start ] )->delete();
 			self::analytics()->whereBetween( 'created', [ $end, $start ] )->delete();
 		}
+
+		do_action( 'rank_math/analytics/delete_by_days', $days );
 		self::purge_cache();
 
 		return true;
@@ -115,8 +81,9 @@ class DB {
 
 		$start = date_i18n( 'Y-m-d H:i:s', strtotime( '-' . ( $days * 2 ) . ' days' ) );
 
-		self::traffic()->where( 'created', '<', $start )->delete();
 		self::analytics()->where( 'created', '<', $start )->delete();
+
+		do_action( 'rank_math/analytics/delete_data_log', $start );
 	}
 
 	/**
@@ -124,15 +91,13 @@ class DB {
 	 */
 	public static function purge_cache() {
 		$table = Database::table( 'options' );
-		$table->whereLike( 'option_name', 'rank_math_analytics_data_info' )->delete();
-		$table->whereLike( 'option_name', 'tracked_keywords_summary' )->delete();
 		$table->whereLike( 'option_name', 'top_keywords' )->delete();
-		$table->whereLike( 'option_name', 'top_keywords_graph' )->delete();
-		$table->whereLike( 'option_name', 'winning_keywords' )->delete();
-		$table->whereLike( 'option_name', 'losing_keywords' )->delete();
 		$table->whereLike( 'option_name', 'posts_summary' )->delete();
-		$table->whereLike( 'option_name', 'winning_posts' )->delete();
-		$table->whereLike( 'option_name', 'losing_posts' )->delete();
+		$table->whereLike( 'option_name', 'top_keywords_graph' )->delete();
+		$table->whereLike( 'option_name', 'dashboard_stats_widget' )->delete();
+		$table->whereLike( 'option_name', 'rank_math_analytics_data_info' )->delete();
+
+		do_action( 'rank_math/analytics/purge_cache', $table );
 
 		wp_cache_flush();
 	}
@@ -144,6 +109,10 @@ class DB {
 	 */
 	public static function info() {
 		global $wpdb;
+
+		if ( ! Api::get()->is_console_connected() ) {
+			return [];
+		}
 
 		$key  = 'rank_math_analytics_data_info';
 		$data = get_transient( $key );
@@ -160,8 +129,9 @@ class DB {
 			->getVar();
 
 		$size = $wpdb->get_var( 'SELECT SUM((data_length + index_length)) AS size FROM information_schema.TABLES WHERE table_schema="' . $wpdb->dbname . '" AND (table_name="' . $wpdb->prefix . 'rank_math_analytics_gsc")' ); // phpcs:ignore
-
 		$data = compact( 'days', 'rows', 'size' );
+
+		$data = apply_filters( 'rank_math/analytics/analytics_tables_info', $data );
 
 		set_transient( $key, $data, DAY_IN_SECONDS );
 
@@ -180,9 +150,9 @@ class DB {
 		}
 
 		$id = self::objects()
-			->select( 'id' )
-			->limit( 1 )
-			->getVar();
+		->select( 'id' )
+		->limit( 1 )
+		->getVar();
 
 		$rank_math_gsc_has_data = $id > 0 ? true : false;
 		return $rank_math_gsc_has_data;
@@ -191,12 +161,51 @@ class DB {
 	/**
 	 * Check if a date exists in the sysyem.
 	 *
-	 * @param string $date Date.
-	 *
+	 * @param  string $date   Date.
+	 * @param  string $action Action.
 	 * @return boolean
 	 */
-	public static function date_exists( $date ) {
-		$id = self::analytics()
+	public static function date_exists( $date, $action = 'console' ) {
+		$table = [
+			'console'   => 'rank_math_analytics_gsc',
+			'analytics' => 'rank_math_analytics_ga',
+		];
+
+		if ( DB_Helper::check_table_exists( 'rank_math_analytics_adsense' ) ) {
+			$table['adsense'] = 'rank_math_analytics_adsense';
+		}
+
+		$table = self::table( $table[ $action ] );
+
+		$id = $table
+			->select( 'id' )
+			->where( 'created', $date )
+			->getVar();
+
+		return $id > 0 ? true : false;
+	}
+
+	/**
+	 * Check if a date exists in the sysyem.
+	 *
+	 * @param  string $date  Date.
+	 * @param  string $table Table name.
+	 * @return boolean
+	 */
+	public static function job_date_exists( $date, $table = 'console' ) {
+		$tables = [
+			'analytics' => 'rank_math_analytics_ga',
+			'console'   => 'rank_math_analytics_gsc',
+		];
+
+		if ( DB_Helper::check_table_exists( 'rank_math_analytics_adsense' ) ) {
+			$table['adsense'] = 'rank_math_analytics_adsense';
+		}
+
+		$table = isset( $tables[ $table ] ) ? $tables [ $table ] : $table;
+		$id    = self::table( $table );
+
+		$id = $id
 			->select( 'id' )
 			->where( 'created', $date )
 			->getVar();
@@ -215,6 +224,8 @@ class DB {
 		if ( empty( $args ) ) {
 			return false;
 		}
+
+		unset( $args['id'] );
 
 		$args = wp_parse_args(
 			$args,
@@ -252,9 +263,9 @@ class DB {
 			unset( $args['id'] );
 
 			$updated = self::objects()->set( $args )
-				->where( 'id', $old_id )
-				->where( 'object_id', absint( $args['object_id'] ) )
-				->update();
+			->where( 'id', $old_id )
+			->where( 'object_id', absint( $args['object_id'] ) )
+			->update();
 
 			if ( ! empty( $updated ) ) {
 				return $old_id;
@@ -332,67 +343,9 @@ class DB {
 			$placeholders[] = '(' . implode( ', ', $placeholder ) . ')';
 		}
 
-		// Stitch all rows together.
-		$sql .= implode( ",\n", $placeholders );
-
-		// Run the query.  Returns number of affected rows.
-		return $wpdb->query( $wpdb->prepare( $sql, $data ) ); // phpcs:ignore
-	}
-
-	/**
-	 * Add analytic records.
-	 *
-	 * @param string $date Date of creation.
-	 * @param array  $rows Data rows to insert.
-	 */
-	public static function add_analytics_bulk( $date, $rows ) {
-		$chunks = array_chunk( $rows, 50 );
-
-		foreach ( $chunks as $chunk ) {
-			self::bulk_insert_analytics_data( $date . ' 00:00:00', $chunk );
-		}
-	}
-
-	/**
-	 * Bulk inserts records into a table using WPDB.  All rows must contain the same keys.
-	 *
-	 * @param  string $date        Date.
-	 * @param  array  $rows        Rows to insert.
-	 */
-	public static function bulk_insert_analytics_data( $date, $rows ) {
-		global $wpdb;
-
-		$data         = [];
-		$placeholders = [];
-		$columns      = [
-			'created',
-			'page',
-			'pageviews',
-			'visitors',
-		];
-		$columns      = '`' . implode( '`, `', $columns ) . '`';
-		$placeholder  = [
-			'%s',
-			'%s',
-			'%d',
-			'%d',
-		];
-
-		// Start building SQL, initialise data and placeholder arrays.
-		$sql = "INSERT INTO `{$wpdb->prefix}rank_math_analytics_ga` ( $columns ) VALUES\n";
-
-		// Build placeholders for each row, and add values to data array.
-		foreach ( $rows as $row ) {
-			if ( empty( $row['dimensions'][1] ) || Str::contains( '?', $row['dimensions'][1] ) ) {
-				continue;
-			}
-
-			$data[] = $date;
-			$data[] = self::remove_hash( $row['dimensions'][1] );
-			$data[] = $row['metrics'][0]['values'][0];
-			$data[] = $row['metrics'][0]['values'][1];
-
-			$placeholders[] = '(' . implode( ', ', $placeholder ) . ')';
+		// Don't run insert with empty dataset, return 0 since no rows affected.
+		if ( empty( $data ) ) {
+			return 0;
 		}
 
 		// Stitch all rows together.
@@ -415,32 +368,6 @@ class DB {
 
 		$url = \explode( '#', $url );
 		return $url[0];
-	}
-
-	/**
-	 * Add adsense records.
-	 *
-	 * @param string $date Date of creation.
-	 * @param array  $rows Data rows to insert.
-	 */
-	public static function add_adsense( $date, $rows ) {
-		global $wpdb;
-
-		foreach ( $rows as $row ) {
-			$earnings = floatval( $row[1] );
-			if ( empty( $earnings ) ) {
-				continue;
-			}
-
-			self::adsense()
-				->insert(
-					[
-						'created'  => $date . ' 00:00:00',
-						'earnings' => $earnings,
-					],
-					[ '%s', '%f' ]
-				);
-		}
 	}
 
 	/**

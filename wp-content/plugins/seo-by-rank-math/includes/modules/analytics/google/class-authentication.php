@@ -2,7 +2,7 @@
 /**
  *  Google Authentication wrapper.
  *
- * @since      1.0.34
+ * @since      1.0.49
  * @package    RankMath
  * @subpackage RankMath\modules
  * @author     Rank Math <support@rankmath.com>
@@ -10,11 +10,10 @@
 
 namespace RankMath\Google;
 
-use RankMath\Data_Encryption;
-use RankMath\Helpers\Security;
 use MyThemeShop\Helpers\Str;
+use RankMath\Data_Encryption;
 use MyThemeShop\Helpers\Param;
-use RankMath\Helper as GlobalHelper;
+use RankMath\Helpers\Security;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -22,6 +21,13 @@ defined( 'ABSPATH' ) || exit;
  * Authentication class.
  */
 class Authentication {
+
+	/**
+	 * API version.
+	 *
+	 * @var string
+	 */
+	protected static $api_version = '2.1';
 
 	/**
 	 * Get or update Search Console data.
@@ -98,53 +104,17 @@ class Authentication {
 	 * @return string
 	 */
 	public static function get_auth_url() {
-		$page = Param::get( 'page' );
-		$page = 'rank-math-wizard' === $page ? 'rank-math-wizard&step=analytics' : 'rank-math-options-general';
+		$page = self::get_page_slug();
+
 		return Security::add_query_arg_raw(
 			[
 				'version'      => defined( 'RANK_MATH_PRO_VERSION' ) ? 'pro' : 'free',
+				'api_version'  => static::$api_version,
 				'redirect_uri' => rawurlencode( admin_url( 'admin.php?page=' . $page ) ),
 				'security'     => wp_create_nonce( 'rank_math_oauth_token' ),
 			],
 			self::get_auth_app_url()
 		);
-	}
-
-	/**
-	 * Get access token after redirect.
-	 */
-	public static function get_tokens_from_server() {
-		// Bail if the user is not authenticated at all yet.
-		$id = Param::get( 'process_oauth', 0, FILTER_VALIDATE_INT );
-		if ( $id < 1 ) {
-			return;
-		}
-
-		$response = wp_remote_get( self::get_auth_app_url() . '/get.php?id=' . $id );
-		if ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
-			return;
-		}
-
-		$response = wp_remote_retrieve_body( $response );
-		if ( empty( $response ) ) {
-			return;
-		}
-
-		$response = \json_decode( $response, true );
-		unset( $response['id'] );
-
-		// Save new token.
-		self::tokens( $response );
-
-		$redirect = Security::remove_query_arg_raw( [ 'process_oauth', 'security' ] );
-		if ( Str::contains( 'rank-math-options-general', $redirect ) ) {
-			$redirect .= '#setting-panel-analytics';
-		}
-
-		GlobalHelper::remove_notification( 'rank_math_analytics_reauthenticate' );
-
-		wp_safe_redirect( $redirect );
-		exit;
 	}
 
 	/**
@@ -154,5 +124,24 @@ class Authentication {
 	 */
 	public static function get_auth_app_url() {
 		return apply_filters( 'rank_math/analytics/app_url', 'https://oauth.rankmath.com' );
+	}
+
+	/**
+	 * Get page slug according to request.
+	 *
+	 * @return string
+	 */
+	public static function get_page_slug() {
+		$page = Param::get( 'page' );
+		if ( ! empty( $page ) ) {
+			return 'rank-math-wizard' === $page ? 'rank-math-wizard&step=analytics' : 'rank-math-options-general#setting-panel-analytics';
+		}
+
+		$page = wp_get_referer();
+		if ( ! empty( $page ) && Str::contains( 'wizard', $page ) ) {
+			return 'rank-math-wizard&step=analytics';
+		}
+
+		return 'rank-math-options-general#setting-panel-analytics';
 	}
 }
